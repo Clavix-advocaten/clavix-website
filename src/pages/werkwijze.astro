@@ -1,0 +1,179 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABand from '@components/CTABand.astro'
+import { breadcrumbSchema } from '@lib/schema-markup'
+
+const schemas = [breadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Werkwijze', url: '/werkwijze' },
+])]
+
+const stappen = [
+  {
+    number: '1',
+    title: 'Eerste gesprek',
+    body: '30 minuten, vrijblijvend, kosteloos. U vertelt wat speelt, wij vertellen of wij elkaar verder kunnen helpen. Past de zaak niet bij ons profiel? Dan verwijzen wij u kosteloos door naar een advocaat die wel de juiste fit is.',
+  },
+  {
+    number: '2',
+    title: 'Opdrachtbevestiging',
+    body: 'Bij vervolg sturen wij een schriftelijke opdrachtbevestiging waarin staat wat wij voor u doen, hoe wij factureren en wat de scope is. Pas na uw schriftelijke akkoord begint het werk.',
+  },
+  {
+    number: '3',
+    title: 'Strategie en dossieropstart',
+    body: 'De strategie wordt helder gezet voordat het werk begint. Wat speelt, welke routes er zijn binnen de rechtszaal en daarbuiten, welke route wij u adviseren en waarom. U krijgt een schriftelijke positie-analyse: dit is wat speelt, dit zijn de routes, dit is wat wij u adviseren te doen.',
+  },
+  {
+    number: '4',
+    title: 'Lopende behandeling',
+    body: 'Hierna is het dossier-werk: corresponderen, onderhandelen, procederen of adviseren. U krijgt updates wanneer er iets gebeurt, niet wanneer er niets gebeurt. Vragen tussendoor lopen via e-mail of telefoon.',
+  },
+  {
+    number: '5',
+    title: 'Afsluiting',
+    body: 'Bij afsluiting volgt een eindafrekening en een korte schriftelijke samenvatting van het dossier. Documenten blijven 7 jaar bewaard volgens de Verordening op de advocatuur.',
+  },
+]
+
+const faqs = [
+  {
+    q: 'Krijg ik vooraf een prijsindicatie?',
+    a: 'Ja. Tijdens of direct na het eerste gesprek geven wij een indicatie van het tarief-model en de bandbreedte. De definitieve afspraak wordt vastgelegd in de opdrachtbevestiging voordat wij beginnen.',
+  },
+  {
+    q: 'Wat als ik halverwege wil stoppen?',
+    a: 'Dat kan altijd. U bent slechts gehouden tot de werkzaamheden die tot dat moment zijn verricht. Het dossier wordt op uw verzoek overgedragen aan een andere advocaat.',
+  },
+  {
+    q: 'Wat als jullie halverwege willen stoppen?',
+    a: 'Wij beëindigen een opdracht alleen wanneer voortzetting in strijd zou zijn met de gedragsregels of wanneer de vertrouwensbasis zoek is. In beide gevallen volgt overdracht aan een andere advocaat zonder dat u extra kosten draagt.',
+  },
+  {
+    q: 'Hoe lang duurt een procedure of advies-traject?',
+    a: 'Dat verschilt sterk per zaak en per rechtbank. Tijdens het eerste gesprek geven wij een indicatie op basis van wat wij in vergelijkbare dossiers hebben gezien.',
+  },
+]
+---
+
+<BaseLayout
+  title="Hoe wij werken"
+  description="Persoonlijk en strategisch advocaten-werk vanuit Amsterdam Zuidas. Heldere afspraken voorafgaand aan elk dossier."
+  schemaJsonLd={schemas}
+>
+  {/* === HERO === */}
+  <section class="bg-bg-tinted">
+    <div class="max-w-content mx-auto px-4 md:px-8 py-16 md:py-24">
+      <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
+        Home › Werkwijze
+      </p>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
+        Hoe wij werken
+      </h1>
+      <p class="text-h3 text-text-secondary font-display font-semibold mb-6 italic">
+        Persoonlijk. Strategisch. Met heldere afspraken voorafgaand aan elk dossier.
+      </p>
+      <p class="text-lead text-text-secondary mb-8 max-w-readable">
+        Voor wie eerst wil weten waar hij aan begint. Wat speelt, welke routes er zijn, wat het traject vraagt. Pas daarna beginnen wij aan een dossier.
+      </p>
+      <a
+        href="#contact"
+        class="bg-action text-action-fg hover:bg-action-hover px-7 py-3.5 rounded-md font-semibold no-underline transition inline-block"
+      >
+        Plan een eerste gesprek
+      </a>
+    </div>
+  </section>
+
+  {/* === HET PROCES === */}
+  <section class="max-w-content mx-auto px-4 md:px-8 py-20">
+    <h2 class="text-h2 font-bold mb-2 text-text">Van eerste gesprek tot afsluiting</h2>
+    <div class="space-y-12 mt-12">
+      {stappen.map((stap) => (
+        <div class="flex gap-6">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-brand-primary text-text-inverse font-bold text-xl flex items-center justify-center">
+            {stap.number}
+          </div>
+          <div class="flex-1">
+            <h3 class="text-h3 font-semibold text-text mb-3">{stap.title}</h3>
+            <p class="text-body text-text-secondary">{stap.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {/* === TARIEFMODELLEN === */}
+  <section class="bg-bg-tinted py-20">
+    <div class="max-w-content mx-auto px-4 md:px-8">
+      <h2 class="text-h2 font-bold mb-6 text-text">Vaste prijs of uurtarief</h2>
+      <p class="text-body text-text mb-4">
+        Voor zowel buitengerechtelijke trajecten als procedures werken wij waar mogelijk met een vaste prijs. U weet vooraf wat het kost en wij dragen het scope-risico, niet u.
+      </p>
+      <p class="text-body text-text">
+        Wanneer de scope vooraf moeilijk in te schatten is, hanteren wij een uurtarief. Maandelijkse declaratie, met urenoverzicht en korte werkomschrijving per regel. De keuze tussen beide modellen maken wij in overleg, voordat de opdrachtbevestiging eruit gaat.
+      </p>
+    </div>
+  </section>
+
+  {/* === WAT WEL/NIET INBEGREPEN === */}
+  <section class="max-w-content mx-auto px-4 md:px-8 py-20">
+    <h2 class="text-h2 font-bold mb-8 text-text">Wat zit erin, wat niet</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div>
+        <h3 class="text-h4 font-semibold text-text mb-4">Wel inbegrepen</h3>
+        <ul class="space-y-2 text-body text-text">
+          <li class="flex gap-2"><span class="text-success">✓</span> Juridisch werk en advies</li>
+          <li class="flex gap-2"><span class="text-success">✓</span> Schriftelijke en telefonische communicatie</li>
+          <li class="flex gap-2"><span class="text-success">✓</span> Dossier-management</li>
+          <li class="flex gap-2"><span class="text-success">✓</span> Concept-correspondentie en stukken</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-h4 font-semibold text-text mb-4">Niet inbegrepen (1-op-1 doorbelast)</h3>
+        <ul class="space-y-2 text-body text-text-secondary">
+          <li>Griffierechten</li>
+          <li>Deurwaarderskosten</li>
+          <li>Externe experts (taxatie, accountancy, IT-forensisch onderzoek)</li>
+          <li>Reiskosten buiten Amsterdam</li>
+          <li>Vertaalkosten</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  {/* === WAT WIJ NIET DOEN === */}
+  <section class="bg-bg-tinted py-20">
+    <div class="max-w-content mx-auto px-4 md:px-8">
+      <h2 class="text-h2 font-bold mb-6 text-text">Wat wij niet doen</h2>
+      <p class="text-body text-text">
+        Clavix verleent geen rechtsbijstand op toevoegingsbasis (gefinancierde rechtsbijstand). Voor zaken die in aanmerking komen voor een toevoeging verwijzen wij u graag door naar een advocaat die deze rechtsbijstand wel verleent. Het Juridisch Loket helpt u bij die doorverwijzing.
+      </p>
+    </div>
+  </section>
+
+  {/* === FAQ === */}
+  <section class="max-w-content mx-auto px-4 md:px-8 py-20">
+    <h2 class="text-h2 font-bold mb-8 text-text">Vaak gestelde vragen</h2>
+    <div class="space-y-4">
+      {faqs.map((faq) => (
+        <details class="group bg-bg-elevated border border-border rounded-lg p-6 cursor-pointer hover:border-border-strong">
+          <summary class="font-semibold text-text list-none flex items-start justify-between gap-4">
+            <span class="flex-1">{faq.q}</span>
+            <svg class="w-5 h-5 mt-1 flex-shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="mt-4 text-text-secondary">{faq.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <CTABand />
+</BaseLayout>
+
+<style>
+  summary::-webkit-details-marker { display: none; }
+  summary { list-style: none; }
+</style>

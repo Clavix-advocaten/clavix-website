@@ -1,0 +1,164 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABand from '@components/CTABand.astro'
+import AnswerCapsule from '@components/AnswerCapsule.astro'
+import TLDR from '@components/TLDR.astro'
+import FAQAccordion from '@components/FAQAccordion.astro'
+import { getPillarPage, getAllPillarSlugs } from '@lib/queries'
+import { renderPortableText } from '@lib/portable-text'
+import { articleSchema, faqPageSchema, breadcrumbSchema, legalCaseSchema } from '@lib/schema-markup'
+
+export async function getStaticPaths() {
+  const slugs = await getAllPillarSlugs().catch(() => [])
+  return slugs.map((s: any) => ({ params: { slug: s.slug } }))
+}
+
+const { slug } = Astro.params
+const pillar = await getPillarPage(slug as string)
+
+if (!pillar) return Astro.redirect('/404')
+
+// Build schemas
+const schemas: any[] = [
+  articleSchema(pillar, pillar.author?.name || 'mr. Mukesh Kumar'),
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Praktijkgebieden', url: '/praktijkgebieden' },
+    { name: pillar.shortTitle || pillar.title, url: `/praktijkgebieden/${slug}` },
+  ]),
+]
+
+if (pillar.faqs && pillar.faqs.length > 0) {
+  const fp = faqPageSchema(pillar.faqs)
+  if (fp) schemas.push(fp)
+}
+
+if (pillar.relatedCases) {
+  pillar.relatedCases.forEach((c: any) => schemas.push(legalCaseSchema(c)))
+}
+
+const seoTitle = pillar.seo?.metaTitle || pillar.title
+const seoDescription = pillar.seo?.metaDescription || pillar.tldr?.body?.slice(0, 160) || pillar.subtitle
+
+const formatDate = (iso: string) => new Date(iso).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })
+---
+
+<BaseLayout title={seoTitle} description={seoDescription} schemaJsonLd={schemas}>
+  <article>
+    {/* === HERO === */}
+    <section class="bg-bg-tinted">
+      <div class="max-w-content mx-auto px-4 md:px-8 py-12 md:py-16">
+        <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
+          <a href="/" class="hover:text-text-accent">Home</a> ›{' '}
+          Praktijkgebieden ›{' '}
+          {pillar.shortTitle || pillar.title}
+        </p>
+        <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
+          {pillar.title}
+        </h1>
+        {pillar.subtitle && (
+          <p class="text-h3 text-text-secondary font-display font-semibold mb-6 italic">
+            {pillar.subtitle}
+          </p>
+        )}
+        {pillar.leadParagraph && (
+          <p class="text-lead text-text-secondary mb-6 max-w-readable">
+            {pillar.leadParagraph}
+          </p>
+        )}
+        <div class="text-tiny text-text-muted mb-6">
+          {pillar.modifiedAt && <>Laatst bijgewerkt: {formatDate(pillar.modifiedAt)}</>}
+          {pillar.author?.name && <> · Door {pillar.author.name}</>}
+        </div>
+        <a
+          href="#contact"
+          class="bg-action text-action-fg hover:bg-action-hover px-7 py-3.5 rounded-md font-semibold no-underline transition inline-block"
+        >
+          Plan een eerste gesprek
+        </a>
+      </div>
+    </section>
+
+    {/* === BODY === */}
+    <div class="max-w-content mx-auto px-4 md:px-8 py-12">
+      {/* TL;DR */}
+      {pillar.tldr?.body && <TLDR heading={pillar.tldr.heading} body={pillar.tldr.body} />}
+
+      {/* Sections */}
+      {pillar.sections && pillar.sections.map((section: any) => (
+        <section id={section.anchor} class="mt-16 scroll-mt-24">
+          <h2 class="text-h2 font-bold mb-4 text-text">{section.heading}</h2>
+          {section.answerCapsule && <AnswerCapsule text={section.answerCapsule} />}
+          {section.body && (
+            <div
+              class="prose-content space-y-4 text-body text-text mt-6"
+              set:html={renderPortableText(section.body)}
+            />
+          )}
+        </section>
+      ))}
+
+      {/* Cases */}
+      {pillar.relatedCases && pillar.relatedCases.length > 0 && (
+        <section class="mt-20">
+          <h2 class="text-h2 font-bold mb-8 text-text">Recente zaken</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            {pillar.relatedCases.map((c: any) => (
+              <article class="p-6 bg-bg-elevated border border-border rounded-lg">
+                <div class="text-tiny font-mono text-text-muted mb-2">
+                  {c.isConfidential ? 'Vertrouwelijk' : c.ecli}
+                </div>
+                <h3 class="text-h4 font-semibold text-text mb-3">{c.title}</h3>
+                <p class="text-small text-text-secondary mb-4">{c.summary}</p>
+                {c.tags && (
+                  <div class="text-tiny text-text-muted italic mb-3">
+                    {c.tags.join(' · ')} {c.caseYear && ` · ${c.caseYear}`}
+                  </div>
+                )}
+                {c.externalLink && (
+                  <a href={c.externalLink} target="_blank" rel="noopener noreferrer" class="text-small text-text-accent font-semibold hover:underline no-underline">
+                    Lees op rechtspraak.nl →
+                  </a>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* FAQ */}
+      {pillar.faqs && pillar.faqs.length > 0 && <FAQAccordion faqs={pillar.faqs} />}
+
+      {/* Related clusters */}
+      {pillar.relatedClusters && pillar.relatedClusters.length > 0 && (
+        <section class="mt-20">
+          <h2 class="text-h2 font-bold mb-8 text-text">Verdiepende artikelen</h2>
+          <ul class="space-y-3">
+            {pillar.relatedClusters.map((c: any) => (
+              <li>
+                <a href={`/clusters/${c.slug}`} class="block p-4 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary no-underline transition">
+                  <div class="font-semibold text-text">{c.title}</div>
+                  {c.subtitle && <div class="text-small text-text-secondary mt-1">{c.subtitle}</div>}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {/* Author byline */}
+      {pillar.author?.name && (
+        <div class="mt-20 pt-8 border-t border-border text-tiny text-text-muted italic">
+          Door {pillar.author.name}
+          {pillar.publishedAt && <> — gepubliceerd {formatDate(pillar.publishedAt)}</>}
+          {pillar.modifiedAt && <>, laatst gewijzigd {formatDate(pillar.modifiedAt)}</>}
+        </div>
+      )}
+    </div>
+
+    <CTABand
+      heading="Heeft u een vraag over dit onderwerp?"
+      description="Plan een eerste gesprek. 30 minuten, vrijblijvend. U weet daarna of wij elkaar verder kunnen helpen, en zo ja in welke vorm."
+    />
+  </article>
+</BaseLayout>

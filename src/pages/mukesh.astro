@@ -1,0 +1,187 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABand from '@components/CTABand.astro'
+import { getAttorney } from '@lib/queries'
+import { renderPortableText } from '@lib/portable-text'
+import { personSchema, breadcrumbSchema } from '@lib/schema-markup'
+
+const attorney = await getAttorney().catch(() => null)
+
+const schemas = []
+if (attorney) schemas.push(personSchema(attorney))
+schemas.push(breadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'mr. Mukesh Kumar', url: '/mukesh' },
+]))
+
+const formatDate = (dateStr: string) => {
+  if (!dateStr) return ''
+  const d = new Date(dateStr)
+  return d.toLocaleDateString('nl-NL', { month: 'long', year: 'numeric' })
+}
+---
+
+<BaseLayout
+  title={attorney?.name || 'mr. Mukesh Kumar'}
+  description={attorney?.tagline || 'Advocaat-ondernemer in Amsterdam Zuidas. NOvA-geregistreerd voor ondernemingsrecht en burgerlijk procesrecht.'}
+  schemaJsonLd={schemas}
+>
+  {!attorney ? (
+    <section class="max-w-content mx-auto px-4 md:px-8 py-20">
+      <h1 class="text-h1 font-bold mb-4">Bio nog niet ingevoerd</h1>
+      <p class="text-text-secondary">
+        De Sanity CMS heeft nog geen attorney-data. Ga naar <a href="http://localhost:3333" class="text-text-accent">localhost:3333</a> en vul de "Mukesh-bio" singleton in. De pagina laadt dan automatisch.
+      </p>
+    </section>
+  ) : (
+    <>
+      {/* === HERO === */}
+      <section class="bg-bg-tinted">
+        <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24 grid md:grid-cols-5 gap-12 items-center">
+          <div class="md:col-span-3">
+            <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
+              Home › {attorney.name}
+            </p>
+            <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
+              {attorney.name}
+            </h1>
+            <p class="text-h3 text-text-accent font-display font-semibold mb-6">
+              {attorney.title}
+            </p>
+            {attorney.tagline && (
+              <p class="text-lead text-text-secondary mb-8 max-w-readable">
+                {attorney.tagline}
+              </p>
+            )}
+            <a
+              href="#contact"
+              class="bg-action text-action-fg hover:bg-action-hover px-7 py-3.5 rounded-md font-semibold no-underline transition inline-block"
+            >
+              Plan een eerste gesprek
+            </a>
+          </div>
+          <div class="md:col-span-2">
+            {attorney.photoUrl && (
+              <img
+                src={attorney.photoUrl}
+                alt={`Portretfoto van ${attorney.name}`}
+                class="rounded-lg shadow-lg w-full h-auto aspect-[4/5] object-cover"
+                loading="eager"
+              />
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* === CREDENTIALS BLOCK === */}
+      <section class="max-w-content mx-auto px-4 md:px-8 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          {/* Beëdiging */}
+          {attorney.beediging && (
+            <div>
+              <h3 class="text-tiny font-semibold uppercase tracking-wider text-text-muted mb-2">
+                Beëdigd advocaat
+              </h3>
+              <p class="text-body text-text">
+                Sinds {formatDate(attorney.beediging)}
+              </p>
+            </div>
+          )}
+
+          {/* Talen */}
+          {attorney.languages && attorney.languages.length > 0 && (
+            <div>
+              <h3 class="text-tiny font-semibold uppercase tracking-wider text-text-muted mb-2">
+                Talen
+              </h3>
+              <ul class="space-y-1">
+                {attorney.languages.map((lang: string) => (
+                  <li class="text-body text-text">{lang}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* NOvA registraties */}
+          {attorney.novaRegistrations && attorney.novaRegistrations.length > 0 && (
+            <div class="md:col-span-2">
+              <h3 class="text-tiny font-semibold uppercase tracking-wider text-text-muted mb-2">
+                NOvA-registraties
+              </h3>
+              <ul class="space-y-2">
+                {attorney.novaRegistrations.map((reg: any) => (
+                  <li class="text-body text-text">
+                    <strong>{reg.area}</strong>
+                    {reg.specialisations && (
+                      <span class="text-text-secondary"> — {reg.specialisations}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Lidmaatschappen */}
+          {attorney.memberships && attorney.memberships.length > 0 && (
+            <div>
+              <h3 class="text-tiny font-semibold uppercase tracking-wider text-text-muted mb-2">
+                Lidmaatschappen
+              </h3>
+              <ul class="space-y-1">
+                {attorney.memberships.map((m: string) => (
+                  <li class="text-body text-text">{m}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Opleiding */}
+          {attorney.education && attorney.education.length > 0 && (
+            <div>
+              <h3 class="text-tiny font-semibold uppercase tracking-wider text-text-muted mb-2">
+                Opleiding
+              </h3>
+              <ul class="space-y-1">
+                {attorney.education.map((edu: any) => (
+                  <li class="text-body text-text">
+                    {edu.institution}
+                    {edu.degree && <span class="text-text-secondary"> — {edu.degree}</span>}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        {/* Bio narrative */}
+        {attorney.bio && (
+          <div class="mb-16">
+            <h2 class="text-h2 font-bold mb-6 text-text">Wie is mr. Kumar</h2>
+            <div class="prose-content space-y-4 text-body text-text" set:html={renderPortableText(attorney.bio)} />
+          </div>
+        )}
+
+        {/* Personal note */}
+        {attorney.personalNote && (
+          <div class="mb-16 p-6 bg-bg-tinted rounded-lg border border-brand-secondary/30">
+            <h3 class="text-h4 font-semibold mb-3 text-text">Buiten kantoor</h3>
+            <p class="text-body text-text-secondary">{attorney.personalNote}</p>
+          </div>
+        )}
+
+        {/* Substitution */}
+        {attorney.substitutionInfo && (
+          <div class="mb-16">
+            <h3 class="text-h4 font-semibold mb-3 text-text">Continuïteit bij afwezigheid</h3>
+            <p class="text-body text-text-secondary">{attorney.substitutionInfo}</p>
+          </div>
+        )}
+      </section>
+    </>
+  )}
+
+  <CTABand
+    heading="Plan een gesprek met Mukesh"
+    description="30 minuten, vrijblijvend. U weet daarna of wij elkaar verder kunnen helpen, en zo ja in welke vorm."
+  />
+</BaseLayout>

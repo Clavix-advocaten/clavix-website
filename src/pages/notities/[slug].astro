@@ -1,0 +1,91 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABand from '@components/CTABand.astro'
+import { getBlogPost, getAllBlogSlugs } from '@lib/queries'
+import { renderPortableText } from '@lib/portable-text'
+import { articleSchema, breadcrumbSchema } from '@lib/schema-markup'
+
+export async function getStaticPaths() {
+  const slugs = await getAllBlogSlugs().catch(() => [])
+  return slugs.map((s: any) => ({ params: { slug: s.slug } }))
+}
+
+const { slug } = Astro.params
+const post = await getBlogPost(slug as string)
+
+if (!post) return Astro.redirect('/404')
+
+const schemas = [
+  articleSchema(post, post.author?.name || 'mr. Mukesh Kumar'),
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Notities', url: '/notities' },
+    { name: post.title, url: `/notities/${slug}` },
+  ]),
+]
+
+const formatDate = (iso: string) => new Date(iso).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })
+
+const seoTitle = post.seo?.metaTitle || post.title
+const seoDescription = post.seo?.metaDescription || post.excerpt
+---
+
+<BaseLayout title={seoTitle} description={seoDescription} schemaJsonLd={schemas}>
+  <article>
+    <section class="bg-bg-tinted">
+      <div class="max-w-content mx-auto px-4 md:px-8 py-12 md:py-16">
+        <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
+          <a href="/" class="hover:text-text-accent">Home</a> ›{' '}
+          <a href="/notities" class="hover:text-text-accent">Notities</a>
+        </p>
+        <h1 class="text-display font-extrabold text-text mb-4 tracking-tight">
+          {post.title}
+        </h1>
+        <div class="text-tiny text-text-muted">
+          {formatDate(post.publishedAt)}
+          {post.readTime && ` · ${post.readTime} min lezen`}
+          {post.author?.name && ` · door ${post.author.name}`}
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-content mx-auto px-4 md:px-8 py-12">
+      {post.featuredImageUrl && (
+        <img src={post.featuredImageUrl} alt={post.title} class="w-full h-auto rounded-lg mb-8" />
+      )}
+
+      <p class="text-lead text-text-secondary mb-8 max-w-readable">{post.excerpt}</p>
+
+      <div class="prose-content space-y-4 text-body text-text" set:html={renderPortableText(post.body)} />
+
+      {post.author && (
+        <div class="mt-16 pt-8 border-t border-border flex items-center gap-4">
+          {post.author.photoUrl && (
+            <img src={post.author.photoUrl} alt={post.author.name} class="w-16 h-16 rounded-full object-cover" />
+          )}
+          <div>
+            <div class="font-semibold text-text">{post.author.name}</div>
+            <a href="/mukesh" class="text-small text-text-accent hover:underline no-underline">Lees meer →</a>
+          </div>
+        </div>
+      )}
+
+      {post.relatedPosts && post.relatedPosts.length > 0 && (
+        <section class="mt-16">
+          <h3 class="text-h3 font-semibold mb-6 text-text">Lees ook</h3>
+          <div class="grid md:grid-cols-3 gap-6">
+            {post.relatedPosts.map((rp: any) => (
+              <a href={`/notities/${rp.slug}`} class="block p-4 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary no-underline transition">
+                <div class="text-tiny font-semibold uppercase tracking-wider text-text-accent mb-2">{rp.category}</div>
+                <h4 class="font-semibold text-text mb-2">{rp.title}</h4>
+                <p class="text-small text-text-secondary">{rp.excerpt}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+
+    <CTABand />
+  </article>
+</BaseLayout>

@@ -1,0 +1,113 @@
+---
+/**
+ * Top navigation — sticky on scroll, met dropdown voor praktijkgebieden.
+ */
+
+const navItems = [
+  { label: 'Praktijkgebieden', href: '#', children: [
+    { label: 'Vastgoed × Ondernemers', href: '/praktijkgebieden/vastgoed-en-ondernemers' },
+    { label: 'Ondernemingsrecht', href: '/praktijkgebieden/ondernemingsrecht' },
+    { label: 'Vastgoedrecht', href: '/praktijkgebieden/vastgoedrecht' },
+    { label: 'Insolventie & herstructurering', href: '/praktijkgebieden/insolventie-en-herstructurering' },
+  ] },
+  { label: 'Werkwijze', href: '/werkwijze' },
+  { label: 'Mukesh Kumar', href: '/mukesh' },
+  { label: 'Notities', href: '/notities' },
+]
+---
+
+<header class="sticky top-0 z-50 bg-bg/95 backdrop-blur-md border-b border-border">
+  <nav class="max-w-container mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
+    {/* Logo */}
+    <a href="/" class="block no-underline" aria-label="Clavix — naar homepage">
+      <img src="/clavix-logo.svg" alt="Clavix" class="h-9 w-auto" width="180" height="36" />
+    </a>
+
+    {/* Desktop nav */}
+    <ul class="hidden md:flex items-center gap-8 text-small">
+      {navItems.map((item) => (
+        <li class="relative group">
+          {item.children ? (
+            <>
+              <button
+                class="text-text hover:text-text-accent transition flex items-center gap-1"
+                aria-haspopup="true"
+              >
+                {item.label}
+                <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
+              </button>
+              <ul class="absolute top-full right-0 mt-2 bg-bg-elevated border border-border rounded-lg shadow-lg p-2 min-w-[280px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition">
+                {item.children.map((child) => (
+                  <li>
+                    <a href={child.href} class="block px-4 py-2 text-text hover:bg-bg-tinted rounded-md no-underline">
+                      {child.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <a href={item.href} class="text-text hover:text-text-accent transition no-underline">
+              {item.label}
+            </a>
+          )}
+        </li>
+      ))}
+    </ul>
+
+    {/* CTA */}
+    <a
+      href="/#contact"
+      class="hidden md:inline-block bg-action text-action-fg hover:bg-action-hover px-5 py-2.5 rounded-md font-semibold text-small no-underline transition"
+    >
+      Plan een gesprek
+    </a>
+
+    {/* Mobile menu button */}
+    <button
+      id="mobile-menu-toggle"
+      class="md:hidden p-2"
+      aria-label="Menu openen"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </nav>
+
+  {/* Mobile menu (verborgen by default) */}
+  <div id="mobile-menu" class="hidden md:hidden bg-bg-elevated border-t border-border">
+    <ul class="px-4 py-4 space-y-3">
+      {navItems.map((item) => (
+        <li>
+          <a href={item.href} class="block py-2 text-text no-underline">{item.label}</a>
+          {item.children && (
+            <ul class="pl-4 space-y-2 mt-2">
+              {item.children.map((child) => (
+                <li>
+                  <a href={child.href} class="block py-1 text-text-secondary text-small no-underline">{child.label}</a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+      <li>
+        <a
+          href="/#contact"
+          class="block bg-action text-action-fg text-center px-5 py-3 rounded-md font-semibold mt-4 no-underline"
+        >
+          Plan een gesprek
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('mobile-menu-toggle')
+  const menu = document.getElementById('mobile-menu')
+  toggle?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden')
+  })
+</script>

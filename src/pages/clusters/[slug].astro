@@ -1,0 +1,103 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABand from '@components/CTABand.astro'
+import AnswerCapsule from '@components/AnswerCapsule.astro'
+import TLDR from '@components/TLDR.astro'
+import FAQAccordion from '@components/FAQAccordion.astro'
+import { getClusterPage, getAllClusterSlugs } from '@lib/queries'
+import { renderPortableText } from '@lib/portable-text'
+import { articleSchema, faqPageSchema, breadcrumbSchema } from '@lib/schema-markup'
+
+export async function getStaticPaths() {
+  const slugs = await getAllClusterSlugs().catch(() => [])
+  return slugs.map((s: any) => ({ params: { slug: s.slug } }))
+}
+
+const { slug } = Astro.params
+const cluster = await getClusterPage(slug as string)
+
+if (!cluster) return Astro.redirect('/404')
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+]
+if (cluster.parentPillar) {
+  breadcrumbs.push({ name: cluster.parentPillar.shortTitle, url: `/praktijkgebieden/${cluster.parentPillar.slug}` })
+}
+breadcrumbs.push({ name: cluster.title, url: `/clusters/${slug}` })
+
+const schemas: any[] = [
+  articleSchema(cluster, cluster.author?.name || 'mr. Mukesh Kumar'),
+  breadcrumbSchema(breadcrumbs),
+]
+
+if (cluster.faqs && cluster.faqs.length > 0) {
+  const fp = faqPageSchema(cluster.faqs)
+  if (fp) schemas.push(fp)
+}
+
+const seoTitle = cluster.seo?.metaTitle || cluster.title
+const seoDescription = cluster.seo?.metaDescription || cluster.tldr?.body?.slice(0, 160) || cluster.subtitle
+
+const formatDate = (iso: string) => new Date(iso).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })
+---
+
+<BaseLayout title={seoTitle} description={seoDescription} schemaJsonLd={schemas}>
+  <article>
+    <section class="bg-bg-tinted">
+      <div class="max-w-content mx-auto px-4 md:px-8 py-12 md:py-16">
+        <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
+          {breadcrumbs.map((b, i) => (
+            <>
+              {i > 0 && ' › '}
+              {i === breadcrumbs.length - 1 ? (
+                <span>{b.name}</span>
+              ) : (
+                <a href={b.url} class="hover:text-text-accent">{b.name}</a>
+              )}
+            </>
+          ))}
+        </p>
+        <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
+          {cluster.title}
+        </h1>
+        {cluster.subtitle && (
+          <p class="text-h3 text-text-secondary font-display font-semibold mb-6 italic">
+            {cluster.subtitle}
+          </p>
+        )}
+        <div class="text-tiny text-text-muted">
+          {cluster.modifiedAt && <>Laatst bijgewerkt: {formatDate(cluster.modifiedAt)}</>}
+          {cluster.author?.name && <> · Door {cluster.author.name}</>}
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-content mx-auto px-4 md:px-8 py-12">
+      {cluster.tldr?.body && <TLDR heading={cluster.tldr.heading} body={cluster.tldr.body} />}
+
+      {cluster.sections && cluster.sections.map((section: any) => (
+        <section id={section.anchor} class="mt-16 scroll-mt-24">
+          <h2 class="text-h2 font-bold mb-4 text-text">{section.heading}</h2>
+          {section.answerCapsule && <AnswerCapsule text={section.answerCapsule} />}
+          {section.body && (
+            <div class="prose-content space-y-4 text-body text-text mt-6" set:html={renderPortableText(section.body)} />
+          )}
+        </section>
+      ))}
+
+      {cluster.faqs && cluster.faqs.length > 0 && <FAQAccordion faqs={cluster.faqs} />}
+
+      {cluster.parentPillar && (
+        <section class="mt-20 p-6 bg-bg-tinted rounded-lg">
+          <h3 class="text-h4 font-semibold text-text mb-3">Lees ook over het bredere onderwerp</h3>
+          <a href={`/praktijkgebieden/${cluster.parentPillar.slug}`} class="text-text-accent font-semibold no-underline hover:underline">
+            {cluster.parentPillar.shortTitle} →
+          </a>
+        </section>
+      )}
+    </div>
+
+    <CTABand />
+  </article>
+</BaseLayout>

@@ -1,0 +1,61 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import { getAllBlogPosts } from '@lib/queries'
+
+const posts = await getAllBlogPosts().catch(() => [])
+
+const formatDate = (iso: string) => new Date(iso).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })
+
+const categoryLabel = (cat: string) => {
+  const labels: Record<string, string> = {
+    'ondernemingsrecht': 'Ondernemingsrecht',
+    'vastgoedrecht': 'Vastgoedrecht',
+    'vastgoed-ondernemers': 'Vastgoed × Ondernemers',
+    'insolventie': 'Insolventie',
+    'procesrecht': 'Procesrecht',
+    'algemeen': 'Algemeen',
+  }
+  return labels[cat] || cat
+}
+---
+
+<BaseLayout
+  title="Notities"
+  description="Wat ons opvalt in jurisprudentie en praktijk. Korte stukken over ondernemingsrecht, vastgoed en insolventie."
+>
+  <section class="bg-bg-tinted">
+    <div class="max-w-content mx-auto px-4 md:px-8 py-16">
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Notities</h1>
+      <p class="text-lead text-text-secondary italic">
+        Wat ons opvalt in jurisprudentie en praktijk. Korte stukken, geen 10-tipsjes.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-content mx-auto px-4 md:px-8 py-16">
+    {posts.length === 0 ? (
+      <p class="text-text-secondary">Nog geen artikelen gepubliceerd. Voeg ze toe via Sanity Studio.</p>
+    ) : (
+      <div class="space-y-8">
+        {posts.map((post: any) => (
+          <article class="pb-8 border-b border-border last:border-b-0">
+            <div class="text-tiny font-semibold uppercase tracking-wider text-text-accent mb-2">
+              {categoryLabel(post.category)}
+            </div>
+            <h2 class="text-h2 font-bold mb-3">
+              <a href={`/notities/${post.slug}`} class="text-text hover:text-text-accent no-underline">
+                {post.title}
+              </a>
+            </h2>
+            <p class="text-body text-text-secondary mb-3 max-w-readable">{post.excerpt}</p>
+            <div class="text-tiny text-text-muted">
+              {formatDate(post.publishedAt)}
+              {post.readTime && ` · ${post.readTime} min lezen`}
+              {post.author?.name && ` · door ${post.author.name}`}
+            </div>
+          </article>
+        ))}
+      </div>
+    )}
+  </section>
+</BaseLayout>

@@ -1,0 +1,21 @@
+---
+/**
+ * Answer capsule — komt na elke H2 op pillar/cluster pages.
+ * 40-60 woorden, gold/sand-tinted achtergrond, perfect voor AI-citation.
+ */
+
+interface Props {
+  text: string
+}
+
+const { text } = Astro.props
+---
+
+<aside class="my-8 p-6 md:p-8 bg-bg-tinted border-l-4 border-brand-secondary rounded-r-lg">
+  <div class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-2">
+    In het kort
+  </div>
+  <p class="text-body text-text leading-relaxed mb-0">
+    {text}
+  </p>
+</aside>

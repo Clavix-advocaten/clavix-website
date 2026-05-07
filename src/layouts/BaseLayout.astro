@@ -1,0 +1,95 @@
+---
+/**
+ * Base layout — gebruikt op alle pagina's.
+ * Bevat: HTML doctype, head met meta + Montserrat font + schema markup, base structure.
+ */
+
+import '@styles/tokens.css'
+import Navigation from '@components/Navigation.astro'
+import Footer from '@components/Footer.astro'
+import { organizationSchema } from '@lib/schema-markup'
+
+interface Props {
+  title: string
+  description?: string
+  ogImage?: string
+  canonical?: string
+  noindex?: boolean
+  schemaJsonLd?: object | object[] | null
+}
+
+const {
+  title,
+  description = 'Clavix Advocaten — boutique advocatenkantoor in Amsterdam Zuidas voor ondernemers met vastgoed.',
+  ogImage = '/og-default.png',
+  canonical,
+  noindex = false,
+  schemaJsonLd,
+} = Astro.props
+
+const siteUrl = 'https://clavix.nl' // Wordt later netlify-env-aware
+const fullTitle = title === 'Clavix Advocaten' ? title : `${title} — Clavix Advocaten`
+const canonicalUrl = canonical || `${siteUrl}${Astro.url.pathname}`
+
+// Bouw schema-array
+const schemas = [organizationSchema()]
+if (schemaJsonLd) {
+  if (Array.isArray(schemaJsonLd)) schemas.push(...schemaJsonLd)
+  else schemas.push(schemaJsonLd)
+}
+---
+
+<!doctype html>
+<html lang="nl" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    {/* Open Graph */}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+    <meta property="og:locale" content="nl_NL" />
+    <meta property="og:site_name" content="Clavix Advocaten" />
+
+    {/* Twitter Card */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+
+    {/* Montserrat — preconnect + load */}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    {/* Schema.org JSON-LD */}
+    {schemas.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
+  </head>
+  <body class="bg-bg text-text font-body antialiased">
+    <a href="#main" class="skip-link">Direct naar inhoud</a>
+    <Navigation />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  /* Tailwind + Astro houden alles correct, deze section voor extra global styles */
+</style>

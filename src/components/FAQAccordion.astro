@@ -1,0 +1,46 @@
+---
+import { renderPortableText } from '@lib/portable-text'
+
+interface Faq {
+  _id: string
+  question: string
+  answer: any // Portable text
+}
+
+interface Props {
+  faqs: Faq[]
+  heading?: string
+}
+
+const { faqs, heading = 'Veelgestelde vragen' } = Astro.props
+
+if (!faqs || faqs.length === 0) return null
+---
+
+<section class="my-16">
+  <h2 class="text-h2 font-bold mb-8 text-text">{heading}</h2>
+  <div class="space-y-4">
+    {faqs.map((faq) => (
+      <details class="group bg-bg-elevated border border-border rounded-lg p-6 cursor-pointer hover:border-border-strong transition">
+        <summary class="font-semibold text-text list-none flex items-start justify-between gap-4">
+          <span class="flex-1">{faq.question}</span>
+          <svg
+            class="w-5 h-5 mt-1 flex-shrink-0 transition-transform group-open:rotate-180"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="mt-4 prose-content text-text-secondary" set:html={renderPortableText(faq.answer)} />
+      </details>
+    ))}
+  </div>
+</section>
+
+<style>
+  /* Verberg default summary marker in Safari/Firefox */
+  summary::-webkit-details-marker { display: none; }
+  summary { list-style: none; }
+</style>

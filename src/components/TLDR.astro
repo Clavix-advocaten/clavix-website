@@ -1,0 +1,15 @@
+---
+interface Props {
+  heading?: string
+  body: string
+}
+
+const { heading = 'In het kort', body } = Astro.props
+---
+
+<section class="my-10 p-6 md:p-8 bg-brand-secondary/30 border border-brand-secondary rounded-lg">
+  <h2 class="text-h4 font-bold mb-3 text-text">{heading}</h2>
+  <p class="text-body text-text leading-relaxed mb-0 max-w-none">
+    {body}
+  </p>
+</section>

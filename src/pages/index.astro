@@ -1,0 +1,269 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABand from '@components/CTABand.astro'
+import { getAttorney, getHomepageBlogPosts } from '@lib/queries'
+import { personSchema } from '@lib/schema-markup'
+
+const attorney = await getAttorney().catch(() => null)
+const recentPosts = await getHomepageBlogPosts().catch(() => [])
+
+const description = 'Boutique advocatenkantoor in Amsterdam Zuidas voor ondernemers met vastgoed. NOvA-geregistreerd ondernemingsrecht en burgerlijk procesrecht.'
+
+const schemas = []
+if (attorney) schemas.push(personSchema(attorney))
+
+// Featured pillar (full-width bovenaan)
+const featuredPillar = {
+  label: 'Onze focus',
+  title: 'Vastgoed × Ondernemers',
+  description: 'Het snijvlak waar het juridisch ingewikkeld wordt. De BV-structuur die goed lijkt tot er een geschil komt.',
+  items: [
+    'Vastgoed in de BV-structuur',
+    'M&A met vastgoed-component',
+    'Familievermogen en onroerend goed',
+    'Erfpacht voor ondernemers',
+    'Vastgoed-aandeelhoudersgeschillen',
+  ],
+  href: '/praktijkgebieden/vastgoed-en-ondernemers',
+}
+
+// Drie pijlers eronder (3-koloms grid)
+const pillars = [
+  {
+    title: 'Ondernemingsrecht',
+    description: 'Voor de ondernemer die problemen vóór wil zijn, en voor wie dat te laat is.',
+    items: [
+      'Aandeelhoudersgeschillen en 50/50-impasses',
+      'Bestuurdersaansprakelijkheid',
+      'Vennootschapstructurering',
+      'Fusies en overnames',
+      'Agentuur en distributie',
+    ],
+    href: '/praktijkgebieden/ondernemingsrecht',
+  },
+  {
+    title: 'Vastgoedrecht',
+    description: 'Zakelijk vastgoed van eerste koop tot finale ontvlechting.',
+    items: [
+      'Zakelijke huur (290- en 230a-bedrijfsruimte)',
+      'Koop, splitsing en erfpacht',
+      'Indeplaatsstelling en huurprijswijziging',
+      'Bouwgeschillen en aanneming',
+      'Vastgoed-BV-structuren',
+    ],
+    href: '/praktijkgebieden/vastgoedrecht',
+  },
+  {
+    title: 'Insolventie & herstructurering',
+    description: 'Voor ondernemers die in zwaar weer komen, en voor crediteuren die hun positie willen veiligstellen.',
+    items: [
+      'Verzet tegen faillissement',
+      'Doorstart en activatransactie',
+      'Bestuurdersaansprakelijkheid bij faillissement',
+      'Beslag en executie',
+      'Crediteurenpositie en uitwinning',
+    ],
+    href: '/praktijkgebieden/insolventie-en-herstructurering',
+  },
+]
+---
+
+<BaseLayout title="Clavix Advocaten" description={description} schemaJsonLd={schemas}>
+  {/* === HERO === */}
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24 grid md:grid-cols-5 gap-10 items-center">
+      <div class="md:col-span-3">
+        <h1 class="text-display font-extrabold text-text mb-4 tracking-tight">
+          Het juridisch huis voor ondernemers met vastgoed.
+        </h1>
+        <p class="text-lead text-text-accent italic mb-6">De sleutel tot uw oplossing.</p>
+        <p class="text-lead text-text-secondary mb-8 max-w-readable">
+          Boutique-kantoor aan de Strawinskylaan in Amsterdam Zuidas. Voor DGA's, familiebedrijven en vastgoedinvesteerders. U werkt direct met mr. Kumar, niet met een wisselend team.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 mb-8">
+          <a
+            href="#contact"
+            class="bg-action text-action-fg hover:bg-action-hover px-7 py-3.5 rounded-md font-semibold no-underline transition text-center"
+          >
+            Plan een eerste gesprek
+          </a>
+          <a
+            href="/werkwijze"
+            class="bg-action-secondary text-action-secondary-fg hover:bg-action-secondary-hover px-7 py-3.5 rounded-md font-semibold no-underline transition text-center"
+          >
+            Zo werken wij
+          </a>
+        </div>
+        <p class="text-tiny text-text-secondary">
+          NOvA-geregistreerd ondernemingsrecht en burgerlijk procesrecht • KvK 96800747 • Strawinskylaan, Amsterdam Zuidas
+        </p>
+      </div>
+      <div class="md:col-span-2">
+        {attorney?.photoUrl ? (
+          <img
+            src={attorney.photoUrl}
+            alt={`Portretfoto van ${attorney.name}`}
+            class="rounded-lg shadow-lg w-full h-auto aspect-[4/5] object-cover"
+            loading="eager"
+          />
+        ) : (
+          <div class="rounded-lg overflow-hidden aspect-[4/5] flex items-center justify-center" style="background: linear-gradient(135deg, var(--rb-600), var(--rb-700));">
+            <div class="text-center px-6">
+              <svg class="w-20 h-20 mx-auto mb-3 opacity-60" style="color: var(--ns-300);" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+              <p class="text-small font-semibold" style="color: var(--ns-100);">mr. Mukesh Kumar</p>
+              <p class="text-tiny mt-1" style="color: var(--ns-300);">Foto volgt</p>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  {/* === PRAKTIJKGEBIEDEN: 1 featured + 3 in een rij === */}
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <div class="mb-12">
+      <h2 class="text-h2 font-bold text-text mb-2">Praktijkgebieden</h2>
+      <p class="text-lead text-text-secondary italic">Wat doen wij, en waar zijn wij het scherpst.</p>
+    </div>
+
+    {/* Featured kaart bovenaan */}
+    <a
+      href={featuredPillar.href}
+      class="group block p-8 md:p-10 rounded-xl border border-brand-secondary bg-bg-tinted hover:shadow-lg transition no-underline mb-6"
+    >
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="md:col-span-1">
+          <div class="text-tiny font-semibold uppercase tracking-wider text-text-accent mb-3">
+            {featuredPillar.label}
+          </div>
+          <h3 class="text-h2 font-bold text-text mb-3">{featuredPillar.title}</h3>
+          <p class="text-body text-text-secondary mb-4">{featuredPillar.description}</p>
+          <div class="text-text-accent font-semibold text-small group-hover:underline">
+            Lees onze aanpak →
+          </div>
+        </div>
+        <div class="md:col-span-2">
+          <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-2">
+            {featuredPillar.items.map((item) => (
+              <li class="text-small text-text flex gap-2">
+                <span class="text-text-accent flex-shrink-0">→</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </a>
+
+    {/* Drie pijlers in een rij */}
+    <div class="grid md:grid-cols-3 gap-6">
+      {pillars.map((pillar) => (
+        <a
+          href={pillar.href}
+          class="group block p-6 rounded-xl border border-border bg-bg-elevated hover:border-brand-primary hover:shadow-md transition no-underline"
+        >
+          <h3 class="text-h3 font-bold text-text mb-3">{pillar.title}</h3>
+          <p class="text-small text-text-secondary mb-4">{pillar.description}</p>
+          <ul class="space-y-1.5 mb-5">
+            {pillar.items.slice(0, 4).map((item) => (
+              <li class="text-small text-text flex gap-2">
+                <span class="text-text-accent flex-shrink-0">→</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <div class="text-text-accent font-semibold text-small group-hover:underline">
+            Bekijk →
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  {/* === MUKESH BIO TEASER === */}
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-20 grid md:grid-cols-5 gap-10 items-center">
+      <div class="md:col-span-2">
+        {attorney?.photoSmallUrl || attorney?.photoUrl ? (
+          <img
+            src={attorney.photoSmallUrl || attorney.photoUrl}
+            alt={`Foto ${attorney.name}`}
+            class="rounded-lg shadow-md w-full h-auto aspect-[4/5] object-cover"
+            loading="lazy"
+          />
+        ) : (
+          <div class="rounded-lg overflow-hidden aspect-[4/5] flex items-center justify-center" style="background: linear-gradient(135deg, var(--rb-700), var(--rb-800));">
+            <div class="text-center px-6">
+              <svg class="w-20 h-20 mx-auto mb-3 opacity-60" style="color: var(--ns-300);" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+              <p class="text-small font-semibold" style="color: var(--ns-100);">mr. Mukesh Kumar</p>
+              <p class="text-tiny mt-1" style="color: var(--ns-300);">Foto volgt</p>
+            </div>
+          </div>
+        )}
+      </div>
+      <div class="md:col-span-3">
+        <div class="text-tiny font-semibold uppercase tracking-wider text-text-accent mb-3">
+          Maak kennis met Mukesh
+        </div>
+        <blockquote class="text-h2 font-display font-semibold text-text mb-6 leading-snug">
+          "{attorney?.quoteOnHomepage || 'De beste oplossing is meestal niet de luidste. En zelden de eerste die op tafel ligt.'}"
+        </blockquote>
+        <p class="text-text mb-1">
+          <strong>{attorney?.name || 'mr. Mukesh Kumar'}</strong>
+        </p>
+        <p class="text-text-secondary italic mb-6">
+          {attorney?.title || 'Advocaat-ondernemer in Amsterdam Zuidas'}
+        </p>
+        <p class="text-body text-text-secondary mb-6 max-w-readable">
+          NOvA-geregistreerd voor ondernemingsrecht en burgerlijk procesrecht. Werkt persoonlijk aan elk dossier dat hij aanneemt. Gespecialiseerd in het juridisch snijvlak van vastgoed en ondernemen.
+        </p>
+        <a href="/mukesh" class="font-semibold text-text-accent hover:underline no-underline">
+          Lees meer over Mukesh →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* === RECENT NOTITIES === */}
+  {recentPosts && recentPosts.length > 0 && (
+    <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+      <div class="mb-12">
+        <h2 class="text-h2 font-bold text-text mb-2">Notities</h2>
+        <p class="text-lead text-text-secondary italic">
+          Wat ons opvalt in jurisprudentie en praktijk. Korte stukken, geen 10-tipsjes.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {recentPosts.map((post: any) => (
+          <a
+            href={`/notities/${post.slug}`}
+            class="group block p-6 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary hover:shadow-md transition no-underline"
+          >
+            <div class="text-tiny font-semibold uppercase tracking-wider text-text-accent mb-3">
+              {post.category}
+            </div>
+            <h3 class="text-h4 font-semibold text-text mb-3 group-hover:text-text-accent">
+              {post.title}
+            </h3>
+            <p class="text-small text-text-secondary mb-4">{post.excerpt}</p>
+            <div class="text-tiny text-text-muted">
+              {new Date(post.publishedAt).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}
+              {post.readTime && ` · ${post.readTime} min lezen`}
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="mt-12 text-center">
+        <a href="/notities" class="font-semibold text-text-accent hover:underline no-underline">
+          Bekijk alle artikelen →
+        </a>
+      </div>
+    </section>
+  )}
+
+  {/* === FINAL CTA === */}
+  <CTABand
+    heading="Een eerste gesprek kost niets."
+    description="30 minuten, vrijblijvend. U weet daarna of wij de juiste fit zijn."
+  />
+</BaseLayout>

@@ -1,0 +1,51 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+  title="404 — Pagina niet gevonden"
+  description="De pagina die u zocht bestaat niet of is verplaatst."
+  noindex={true}
+>
+  <section class="min-h-[60vh] flex items-center">
+    <div class="max-w-content mx-auto px-4 md:px-8 py-20 text-center">
+      <div class="text-display font-extrabold text-brand-primary mb-4">404</div>
+      <h1 class="text-h1 font-bold text-text mb-4">Pagina niet gevonden.</h1>
+      <p class="text-lead text-text-secondary mb-8">
+        Klinkt mysterieuzer dan het is. De URL klopt niet, de pagina is verplaatst, of we hebben iets mis-gelinkt. Hier zijn drie routes terug:
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+        <a
+          href="/praktijkgebieden/ondernemingsrecht"
+          class="block p-4 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary no-underline"
+        >
+          <div class="font-semibold text-text mb-1">Ondernemingsrecht</div>
+          <div class="text-small text-text-secondary">Aandeelhouders, M&A, bestuurdersaansprakelijkheid</div>
+        </a>
+        <a
+          href="/praktijkgebieden/vastgoed-en-ondernemers"
+          class="block p-4 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary no-underline"
+        >
+          <div class="font-semibold text-text mb-1">Vastgoed × Ondernemers</div>
+          <div class="text-small text-text-secondary">Het juridisch snijvlak waar wij het scherpst zijn</div>
+        </a>
+        <a
+          href="/praktijkgebieden/insolventie-en-herstructurering"
+          class="block p-4 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary no-underline"
+        >
+          <div class="font-semibold text-text mb-1">Insolventie</div>
+          <div class="text-small text-text-secondary">Verzet, WHOA, doorstart, beslag</div>
+        </a>
+      </div>
+
+      <p class="text-text-secondary">
+        Niet gevonden wat u zocht?{' '}
+        <a href="tel:+31207471121" class="text-text-accent font-semibold">
+          Bel direct: 020 747 1121
+        </a>{' '}
+        of <a href="mailto:kumar@clavix.nl" class="text-text-accent font-semibold">stuur een bericht</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

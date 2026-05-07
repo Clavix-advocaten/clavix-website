@@ -1,0 +1,81 @@
+---
+const currentYear = new Date().getFullYear()
+---
+
+<footer class="bg-bg-inverse mt-32" style="color: var(--ns-50);">
+  <div class="max-w-container mx-auto px-4 md:px-8 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+      {/* Kolom 1: Clavix branding */}
+      <div>
+        <img src="/clavix-logo-light.svg" alt="Clavix" class="h-9 w-auto mb-3" width="180" height="36" />
+        <p class="text-small italic mb-4" style="color: var(--ns-300);">De sleutel tot uw oplossing.</p>
+        <address class="text-small not-italic space-y-1" style="color: var(--ns-100);">
+          <div>Strawinskylaan 257</div>
+          <div>1077 XX Amsterdam</div>
+          <div class="pt-2">
+            <a href="tel:+31207471121" class="hover:underline" style="color: var(--neutral-0);">020 747 1121</a>
+          </div>
+          <div>
+            <a href="mailto:kumar@clavix.nl" class="hover:underline" style="color: var(--neutral-0);">kumar@clavix.nl</a>
+          </div>
+        </address>
+        <div class="mt-4">
+          <a
+            href="https://www.linkedin.com/company/106861158/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block transition-colors"
+            style="color: var(--ns-200);"
+            aria-label="Clavix op LinkedIn"
+          >
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      {/* Kolom 2: Praktijkgebieden */}
+      <div>
+        <h4 class="font-semibold mb-4 text-base" style="color: var(--neutral-0);">Praktijkgebieden</h4>
+        <ul class="space-y-2 text-small">
+          <li><a href="/praktijkgebieden/vastgoed-en-ondernemers" class="no-underline hover:underline" style="color: var(--ns-100);">Vastgoed × Ondernemers</a></li>
+          <li><a href="/praktijkgebieden/ondernemingsrecht" class="no-underline hover:underline" style="color: var(--ns-100);">Ondernemingsrecht</a></li>
+          <li><a href="/praktijkgebieden/vastgoedrecht" class="no-underline hover:underline" style="color: var(--ns-100);">Vastgoedrecht</a></li>
+          <li><a href="/praktijkgebieden/insolventie-en-herstructurering" class="no-underline hover:underline" style="color: var(--ns-100);">Insolventie & herstructurering</a></li>
+        </ul>
+      </div>
+
+      {/* Kolom 3: Het kantoor */}
+      <div>
+        <h4 class="font-semibold mb-4 text-base" style="color: var(--neutral-0);">Het kantoor</h4>
+        <ul class="space-y-2 text-small">
+          <li><a href="/mukesh" class="no-underline hover:underline" style="color: var(--ns-100);">Over mr. Kumar</a></li>
+          <li><a href="/werkwijze" class="no-underline hover:underline" style="color: var(--ns-100);">Werkwijze en tarieven</a></li>
+          <li><a href="/notities" class="no-underline hover:underline" style="color: var(--ns-100);">Notities</a></li>
+          <li><a href="#contact" class="no-underline hover:underline" style="color: var(--ns-100);">Contact</a></li>
+        </ul>
+      </div>
+
+      {/* Kolom 4: Juridisch */}
+      <div>
+        <h4 class="font-semibold mb-4 text-base" style="color: var(--neutral-0);">Juridisch</h4>
+        <ul class="space-y-2 text-small">
+          <li><a href="/algemene-voorwaarden" class="no-underline hover:underline" style="color: var(--ns-100);">Algemene voorwaarden</a></li>
+          <li><a href="/klachtenregeling" class="no-underline hover:underline" style="color: var(--ns-100);">Klachtenregeling</a></li>
+          <li><a href="/privacy" class="no-underline hover:underline" style="color: var(--ns-100);">Privacyverklaring</a></li>
+          <li><a href="/cookies" class="no-underline hover:underline" style="color: var(--ns-100);">Cookieverklaring</a></li>
+          <li><a href="/toegankelijkheid" class="no-underline hover:underline" style="color: var(--ns-100);">Toegankelijkheid</a></li>
+        </ul>
+      </div>
+    </div>
+
+    {/* Bottom bar */}
+    <div class="border-t mt-12 pt-8 text-tiny flex flex-col md:flex-row justify-between gap-4" style="border-color: var(--rb-700); color: var(--ns-200);">
+      <div>
+        © {currentYear} Clavix B.V. — KvK 96800747
+      </div>
+      <div>
+        NOvA-geregistreerd ondernemingsrecht en burgerlijk procesrecht
+      </div>
+    </div>
+  </div>
+</footer>
