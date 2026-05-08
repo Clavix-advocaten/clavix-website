@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTABand from '../../components/CTABand.astro';
+
+const pageTitle = 'Bedrijfsoverdracht met vastgoed — strategie en transactie in één hand';
+const pageDescription = "Juridische bijstand bij bedrijfsoverdracht waarbij vastgoed een rol speelt. M&A-structuur, holdingherstructurering, SPA-bepalingen voor vastgoed, en lange-termijn huurarrangementen met de overnemer.";
+
+const voorWie = [
+  {
+    titel: "DGA's met exit-perspectief",
+    omschrijving: 'DGA s die hun onderneming overwegen te verkopen en zich afvragen wat er met het bedrijfspand moet gebeuren. Houden of mee verkopen, in een vastgoed-BV of in privé, met of zonder lopende huurovereenkomst aan de overnemer.',
+  },
+  {
+    titel: 'Familiebedrijven bij generatiewisseling',
+    omschrijving: 'Ondernemingen waarbij de overdracht naar de volgende generatie wordt voorbereid en waarbij vastgoed een belangrijke component is. Bedrijfsopvolgingsregeling (BOR), schenkingsstructuur, en de positie van familieleden die niet in de onderneming werken.',
+  },
+  {
+    titel: 'Beleggers en strategische kopers',
+    omschrijving: 'Partijen die een onderneming overnemen waarbij vastgoed onderdeel is van de structuur. Beoordeling van de structuur, vrijwaringen voor vastgoed-aansprakelijkheid (milieu, oplevering, lopende geschillen), en lange-termijn huurarrangementen.',
+  },
+  {
+    titel: 'Ondernemers in pre-exit-herstructurering',
+    omschrijving: "Ondernemers die nog jaren weg zijn van een verkoop, maar hun structuur al willen voorbereiden. Vastgoed afsplitsen, holdingstructuur opzetten, fiscaal optimaliseren, en paulianeuze risico s vermijden door tijdig te handelen.",
+  },
+];
+
+const watWeDoen = [
+  'Beoordeling van uw bestaande holding- en vastgoedstructuur in het licht van een toekomstige overdracht',
+  'Splitsing van werkmaatschappij en vastgoed-BV met aandacht voor timing, overdrachtsbelasting, en pauliana-risico s',
+  'Onderhandeling over de prijs van werkmaatschappij versus vastgoed bij externe overdracht',
+  'Opstellen van lange-termijn huurovereenkomsten tussen verkopende DGA en overnemende werkmaatschappij',
+  'SPA-bepalingen voor vastgoedcomponent: earn-outs, vrijwaringen, terugkooprechten, exit-arrangementen',
+];
+
+const aanpak = [
+  {
+    nummer: '01',
+    titel: 'Wedge-analyse',
+    omschrijving: 'Eerst beoordelen wij de drie waarde-lagen tegelijk: de operationele waarde van de onderneming, de vastgoedwaarde, en uw persoonlijke vermogensdoelen na de transactie. De optimale structuur voor de DGA verschilt aanzienlijk per situatie en is zelden alleen vanuit een M&A- of vastgoed-perspectief te beoordelen.',
+  },
+  {
+    nummer: '02',
+    titel: 'Strategische voorbereiding',
+    omschrijving: 'Een goede bedrijfsoverdracht met vastgoed wordt twaalf tot achttien maanden voorbereid. Herstructurering van de holdingstructuur, fiscaal vooroverleg met de Belastingdienst, en het op orde brengen van de huurrelaties tussen groepsmaatschappijen voorkomen problemen tijdens en na de transactie.',
+  },
+  {
+    nummer: '03',
+    titel: 'Transactiebegeleiding',
+    omschrijving: 'Wanneer de transactie zich aandient, voeren wij de juridische begeleiding: SPA-onderhandelingen met aandacht voor de vastgoedcomponent, leveringsdocumenten voor zowel aandelen als eventueel vastgoed, en de na-deal-arrangementen tussen verkopende DGA en kopende partij.',
+  },
+];
+
+const onderscheid = [
+  {
+    titel: 'M&A en vastgoed in één hand',
+    omschrijving: 'Bij andere kantoren is bedrijfsoverdracht typisch een M&A-team en is vastgoed een ander team, met overdrachtsmomenten en interpretatiefouten als gevolg. Wij combineren beide structureel, omdat dat is wat de DGA met vastgoed in zijn structuur werkelijk nodig heeft.',
+  },
+  {
+    titel: 'Vroege betrokkenheid, niet alleen deal-fase',
+    omschrijving: 'De grootste waarde voor de DGA ontstaat in de jaren voor een verkoop, niet in de zes weken erna. Wij werken graag al in de pre-exit-fase, wanneer de structuur nog flexibel is en herstructurering zonder tijdsdruk en pauliana-risico s kan plaatsvinden.',
+  },
+  {
+    titel: 'Persoonlijke begeleiding bij een gevoelig moment',
+    omschrijving: 'De verkoop van een onderneming met bedrijfspand is voor de meeste DGA s een eenmalige ervaring met grote financiele en emotionele impact. U heeft direct contact met de behandelend advocaat. Voor omvangrijke trajecten werken wij samen met mr. V.C. van der Velde van Alpha Advocaten.',
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <article>
+    {/* === HERO === */}
+    <section class="bg-bg-tinted">
+      <div class="max-w-content mx-auto px-4 md:px-8 py-12 md:py-16">
+        <p class="text-tiny text-text-muted uppercase tracking-wider mb-4">
+          Specialisme
+        </p>
+        <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
+          Bedrijfsoverdracht met vastgoed
+        </h1>
+        <p class="text-h3 text-text-secondary font-display font-semibold mb-6 italic">
+          Wanneer uw onderneming wordt verkocht en het bedrijfspand mee, of juist niet.
+        </p>
+        <p class="text-body text-text-secondary max-w-prose mb-8">
+          Voor DGA's, familiebedrijven, en ondernemers waar vastgoed een wezenlijk onderdeel uitmaakt van de structuur of de transactie. Wij combineren M&A-praktijk en vastgoedrecht in één hand, en werken liever vroeg dan laat — twaalf tot achttien maanden voorbereiding levert structureel meer op dan een gehaaste herstructurering vlak voor een deal.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/contact" class="inline-block bg-brand-primary text-white font-semibold px-6 py-3 rounded-lg no-underline hover:opacity-90 transition">
+            Plan een eerste gesprek
+          </a>
+          <a href="/clusters/verkoop-bedrijfspand-mna" class="inline-block border border-border text-text font-semibold px-6 py-3 rounded-lg no-underline hover:border-brand-primary transition">
+            Lees onze diepgaande analyse
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-content mx-auto px-4 md:px-8 py-16">
+
+      {/* === VOOR WIE === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Voor wie</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Bedrijfsoverdrachten met een vastgoedcomponent treffen partijen in verschillende stadia. Wij staan vier doelgroepen bij.
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+          {voorWie.map(item => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{item.titel}</h3>
+              <p class="text-small text-text-secondary">{item.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === WAARBIJ WIJ ONDERSTEUNEN === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Waarbij wij ondersteunen</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Vijf typische trajecten waarvoor cliënten ons inschakelen.
+        </p>
+        <ul class="space-y-3">
+          {watWeDoen.map(item => (
+            <li class="flex gap-3 items-start p-4 bg-bg-elevated border border-border rounded-lg">
+              <span class="text-brand-primary font-bold flex-shrink-0">→</span>
+              <span class="text-body text-text">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* === ONZE AANPAK === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Onze aanpak</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Drie stappen, in deze volgorde. De grootste waarde ontstaat in de voorbereiding, niet in de transactie zelf.
+        </p>
+        <div class="grid md:grid-cols-3 gap-4">
+          {aanpak.map(stap => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <div class="text-tiny text-brand-primary font-bold mb-2 tracking-wider">{stap.nummer}</div>
+              <h3 class="text-h4 font-bold text-text mb-2">{stap.titel}</h3>
+              <p class="text-small text-text-secondary">{stap.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === WAT ONS ONDERSCHEIDT === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Wat ons onderscheidt</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Drie specifieke kenmerken van onze bedrijfsoverdracht-praktijk met vastgoedcomponent.
+        </p>
+        <div class="space-y-4">
+          {onderscheid.map(item => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{item.titel}</h3>
+              <p class="text-body text-text-secondary">{item.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === VERDIEPING === */}
+      <section class="mb-16 p-6 bg-bg-tinted border border-border rounded-lg">
+        <h2 class="text-h3 font-bold text-text mb-2">Wilt u meer lezen?</h2>
+        <p class="text-body text-text-secondary mb-4">
+          Onze diepgaande analyses behandelen verschillende aspecten van bedrijfsoverdracht met vastgoed: de transactiestructuur en SPA-bepalingen bij M&A met vastgoed, de holdingstructuur die u in staat stelt flexibel te zijn bij een latere verkoop, de keuze tussen vastgoed in BV en privé, en specifiek de positie van familiebedrijven met vastgoed bij generatiewisseling.
+        </p>
+        <ul class="space-y-2">
+          <li>
+            <a href="/clusters/verkoop-bedrijfspand-mna" class="inline-block text-brand-primary font-semibold no-underline hover:underline">
+              Verkoop van een bedrijfspand bij M&A: earn-outs, vrijwaringen, en de transactiestructuur →
+            </a>
+          </li>
+          <li>
+            <a href="/clusters/vastgoed-bv-oprichten-holding-structuur" class="inline-block text-brand-primary font-semibold no-underline hover:underline">
+              Vastgoed-BV oprichten: de holdingstructuur die opties open houdt →
+            </a>
+          </li>
+          <li>
+            <a href="/clusters/vastgoed-in-bv-of-prive" class="inline-block text-brand-primary font-semibold no-underline hover:underline">
+              Vastgoed in BV of in privé: de keuze →
+            </a>
+          </li>
+          <li>
+            <a href="/clusters/familiebedrijf-vastgoed-opvolging" class="inline-block text-brand-primary font-semibold no-underline hover:underline">
+              Familiebedrijf en vastgoed: opvolging, schenking, en de bedrijfsopvolgingsregeling →
+            </a>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+
+    <CTABand
+      heading="Denkt u na over een bedrijfsoverdracht waarbij vastgoed een rol speelt?"
+      description="Plan een eerste gesprek. 30 minuten, vrijblijvend. Wij beoordelen samen waar u staat, wat de logische voorbereidingsstappen zijn, en op welk moment juridische begeleiding waarde toevoegt."
+    />
+  </article>
+</BaseLayout>

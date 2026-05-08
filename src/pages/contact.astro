@@ -1,0 +1,264 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = 'Plan een eerste gesprek';
+const pageDescription = 'Plan een eerste gesprek met mr. Mukesh Kumar van Clavix Advocaten. 30 minuten, vrijblijvend, kosteloos. Reactie binnen 24 uur op werkdagen.';
+
+// Detect success state from form submission redirect
+const url = new URL(Astro.request.url);
+const success = url.searchParams.get('success') === 'true';
+
+const watWeBeloven = [
+  {
+    titel: '30 minuten, geen kosten',
+    omschrijving: 'Het eerste gesprek is vrijblijvend en kosteloos. U weet daarna of een vervolg nodig is, en zo ja in welke vorm.',
+  },
+  {
+    titel: 'Direct met de advocaat',
+    omschrijving: 'U spreekt direct met mr. Mukesh Kumar, niet met een secretaresse of een junior. Op uw eerste gesprek krijgt u zijn volledige aandacht.',
+  },
+  {
+    titel: 'Reactie binnen 24 uur',
+    omschrijving: 'Op werkdagen reageren wij binnen 24 uur op uw bericht. Bij urgente zaken (curator-sommatie, aankomende termijn) bellen wij u typisch dezelfde dag.',
+  },
+  {
+    titel: 'Eerlijke beoordeling',
+    omschrijving: 'Wanneer een advocaat niet nodig is, zeggen wij dat. Wanneer een ander kantoor beter past, vertellen wij dat ook. Uw belang gaat voor het onze.',
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <article>
+    {/* === HERO === */}
+    <section class="bg-bg-tinted">
+      <div class="max-w-content mx-auto px-4 md:px-8 py-12 md:py-16">
+        <p class="text-tiny text-text-muted uppercase tracking-wider mb-4">
+          Contact
+        </p>
+        <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
+          Plan een eerste gesprek
+        </h1>
+        <p class="text-h3 text-text-secondary font-display font-semibold mb-6 italic">
+          30 minuten, vrijblijvend, persoonlijk.
+        </p>
+        <p class="text-body text-text-secondary max-w-prose">
+          Vul het formulier hieronder in, bel direct, of stuur een e-mail. Wat u prefereert. Op werkdagen reageren wij binnen 24 uur. Bij urgente zaken (een curator-sommatie, een aankomende termijn) bellen wij u typisch dezelfde dag.
+        </p>
+      </div>
+    </section>
+
+    <div class="max-w-content mx-auto px-4 md:px-8 py-16">
+
+      {/* === WAT WE BELOVEN === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Wat u van ons kunt verwachten</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Vier eenvoudige beloften die wij elke cliënt geven, ongeacht waar uw situatie over gaat.
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+          {watWeBeloven.map(item => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{item.titel}</h3>
+              <p class="text-small text-text-secondary">{item.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === SUCCESS MESSAGE === */}
+      {success && (
+        <section class="mb-12 p-6 bg-brand-primary text-white rounded-lg">
+          <h2 class="text-h3 font-bold mb-2">Uw bericht is verzonden</h2>
+          <p class="text-body">
+            Bedankt voor uw bericht. U ontvangt op werkdagen binnen 24 uur antwoord per e-mail of telefoon, afhankelijk van uw voorkeur. Bij een urgente zaak nemen wij vaak dezelfde dag contact op.
+          </p>
+        </section>
+      )}
+
+      {/* === GRID: FORMULIER + DIRECT CONTACT === */}
+      <div class="grid lg:grid-cols-3 gap-8 mb-16">
+
+        {/* === FORMULIER === */}
+        <section class="lg:col-span-2">
+          <h2 class="text-h2 font-bold text-text mb-2">Plan via het formulier</h2>
+          <p class="text-body text-text-secondary mb-6">
+            Vul de onderstaande velden in. Hoe meer context, hoe gerichter wij kunnen reageren — een korte beschrijving van uw situatie volstaat.
+          </p>
+
+          <form
+            name="contact"
+            method="POST"
+            action="/contact?success=true"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            class="space-y-5 p-6 bg-bg-elevated border border-border rounded-lg"
+          >
+            {/* Netlify form name field (verplicht) */}
+            <input type="hidden" name="form-name" value="contact" />
+
+            {/* Honeypot voor bots */}
+            <p class="hidden">
+              <label>
+                Niet invullen: <input name="bot-field" />
+              </label>
+            </p>
+
+            <div>
+              <label for="naam" class="block text-small font-semibold text-text mb-2">
+                Uw naam <span class="text-brand-primary">*</span>
+              </label>
+              <input
+                type="text"
+                id="naam"
+                name="naam"
+                required
+                class="w-full px-4 py-3 border border-border rounded-md bg-white text-text focus:outline-none focus:border-brand-primary"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block text-small font-semibold text-text mb-2">
+                E-mailadres <span class="text-brand-primary">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 border border-border rounded-md bg-white text-text focus:outline-none focus:border-brand-primary"
+              />
+            </div>
+
+            <div>
+              <label for="telefoon" class="block text-small font-semibold text-text mb-2">
+                Telefoonnummer <span class="text-text-muted text-tiny font-normal">(optioneel)</span>
+              </label>
+              <input
+                type="tel"
+                id="telefoon"
+                name="telefoon"
+                class="w-full px-4 py-3 border border-border rounded-md bg-white text-text focus:outline-none focus:border-brand-primary"
+              />
+            </div>
+
+            <div>
+              <label for="onderwerp" class="block text-small font-semibold text-text mb-2">
+                Het onderwerp ligt op het terrein van
+              </label>
+              <select
+                id="onderwerp"
+                name="onderwerp"
+                class="w-full px-4 py-3 border border-border rounded-md bg-white text-text focus:outline-none focus:border-brand-primary"
+              >
+                <option value="">Selecteer (optioneel)</option>
+                <option value="vastgoed-ondernemers">Vastgoed × Ondernemers</option>
+                <option value="vastgoedrecht">Vastgoedrecht (waaronder bouwgeschillen)</option>
+                <option value="ondernemingsrecht">Ondernemingsrecht (waaronder aandeelhoudersgeschillen)</option>
+                <option value="insolventie">Insolventie en bestuurdersaansprakelijkheid</option>
+                <option value="urgent">Urgente zaak (curator-sommatie, faillissementsaanvraag, termijn)</option>
+                <option value="anders">Anders of nog niet duidelijk</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="bericht" class="block text-small font-semibold text-text mb-2">
+                Korte beschrijving van uw situatie <span class="text-text-muted text-tiny font-normal">(optioneel)</span>
+              </label>
+              <textarea
+                id="bericht"
+                name="bericht"
+                rows="5"
+                placeholder="Bijvoorbeeld: U hebt een aangetekende brief ontvangen, er speelt een conflict met een compagnon, u overweegt een bedrijfsoverdracht..."
+                class="w-full px-4 py-3 border border-border rounded-md bg-white text-text focus:outline-none focus:border-brand-primary"
+              ></textarea>
+            </div>
+
+            <div>
+              <label class="block text-small font-semibold text-text mb-2">
+                Hoe wilt u dat wij reageren
+              </label>
+              <div class="space-y-2">
+                <label class="flex items-center gap-2">
+                  <input type="radio" name="voorkeur_reactie" value="telefoon" class="text-brand-primary" />
+                  <span class="text-body text-text">Telefonisch terugbellen</span>
+                </label>
+                <label class="flex items-center gap-2">
+                  <input type="radio" name="voorkeur_reactie" value="email" class="text-brand-primary" checked />
+                  <span class="text-body text-text">Per e-mail antwoorden</span>
+                </label>
+                <label class="flex items-center gap-2">
+                  <input type="radio" name="voorkeur_reactie" value="afspraak" class="text-brand-primary" />
+                  <span class="text-body text-text">Direct een gesprek inplannen</span>
+                </label>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full md:w-auto bg-brand-primary text-white font-semibold px-8 py-3 rounded-lg hover:opacity-90 transition cursor-pointer"
+            >
+              Verzenden
+            </button>
+
+            <p class="text-tiny text-text-muted">
+              Door te verzenden bevestigt u dat wij contact mogen opnemen via de aangeleverde gegevens. Uw informatie wordt niet gedeeld met derden en valt onder ons beroepsgeheim.
+            </p>
+          </form>
+        </section>
+
+        {/* === DIRECT CONTACT === */}
+        <aside class="space-y-6">
+          <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+            <h2 class="text-h3 font-bold text-text mb-4">Direct contact</h2>
+            <div class="space-y-4">
+              <div>
+                <p class="text-tiny text-text-muted uppercase tracking-wider mb-1">Telefoon</p>
+                <a href="tel:+31207471121" class="text-h4 font-semibold text-brand-primary no-underline hover:underline">
+                  020 747 1121
+                </a>
+                <p class="text-tiny text-text-muted mt-1">Werkdagen 09:00 — 18:00</p>
+              </div>
+              <div>
+                <p class="text-tiny text-text-muted uppercase tracking-wider mb-1">E-mail</p>
+                <a href="mailto:info@clavix.nl" class="text-body font-semibold text-brand-primary no-underline hover:underline">
+                  info@clavix.nl
+                </a>
+              </div>
+              <div>
+                <p class="text-tiny text-text-muted uppercase tracking-wider mb-1">Kantoor</p>
+                <p class="text-body text-text">
+                  Strawinskylaan 257<br />
+                  1077 XX Amsterdam<br />
+                  <span class="text-small text-text-secondary">Zuidas</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 bg-bg-tinted border border-border rounded-lg">
+            <h3 class="text-h4 font-bold text-text mb-2">Urgente zaak?</h3>
+            <p class="text-small text-text-secondary mb-4">
+              Bij een sommatie van de curator, een aankomende termijn, of een aangevraagd faillissement: bel direct. Wij zijn dezelfde week beschikbaar.
+            </p>
+            <a href="tel:+31207471121" class="inline-block bg-brand-primary text-white font-semibold px-5 py-2 rounded-md no-underline hover:opacity-90 transition text-small">
+              Bel 020 747 1121
+            </a>
+          </div>
+        </aside>
+      </div>
+
+      {/* === HOE EEN EERSTE GESPREK VERLOOPT === */}
+      <section class="p-6 bg-bg-tinted border border-border rounded-lg">
+        <h2 class="text-h3 font-bold text-text mb-2">Wat gebeurt er na uw bericht</h2>
+        <p class="text-body text-text-secondary mb-4">
+          U ontvangt op werkdagen binnen 24 uur antwoord. Bij urgente situaties typisch sneller. Wanneer u een gesprek wilt inplannen, sturen wij twee of drie tijdstipopties die voor u kunnen werken. Het eerste gesprek vindt plaats op kantoor, telefonisch, of via videoverbinding, naar uw voorkeur.
+        </p>
+        <a href="/notities/hoe-eerste-gesprek-verloopt" class="inline-block text-brand-primary font-semibold no-underline hover:underline">
+          Lees uitgebreid hoe een eerste gesprek bij ons verloopt →
+        </a>
+      </section>
+
+    </div>
+  </article>
+</BaseLayout>

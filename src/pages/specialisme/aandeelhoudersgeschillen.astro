@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTABand from '../../components/CTABand.astro';
+
+const pageTitle = 'Aandeelhoudersgeschillen — van patstelling tot uitkoop';
+const pageDescription = "Juridische bijstand bij aandeelhoudersgeschillen voor DGA's, compagnons, en investeerders. 50/50-patstellingen, uittreedprocedures, geschillenregeling (2:336-2:343 BW), en procedures bij de Ondernemingskamer.";
+
+const voorWie = [
+  {
+    titel: 'Compagnons in 50/50-patstelling',
+    omschrijving: "Twee aandeelhouders met gelijk gewicht waarbij meningsverschillen tot blokkade leiden. De besluitvorming staat stil, de onderneming komt onder druk, en zonder vooraf afgesproken mechanismen ontstaat een dynamiek die zelden uit zichzelf oplost.",
+  },
+  {
+    titel: 'Minderheidsaandeelhouders onder druk',
+    omschrijving: 'Aandeelhouders met een minderheidspositie die zich ontnomen voelen van invloed of opbrengsten. Dividendbeleid dat tegen hun belang werkt, besluiten waar zij niet bij worden betrokken, of een meerderheid die hen wil uitkopen tegen ongunstige voorwaarden.',
+  },
+  {
+    titel: 'Meerderheid met blokkerende minderheid',
+    omschrijving: 'Aandeelhouders met een meerderheid die belangrijke besluiten niet door de vergadering krijgen omdat een minderheid weigert mee te werken. Verkoop, herstructurering, of investeringen worden geblokkeerd op statutaire of contractuele gronden.',
+  },
+  {
+    titel: 'Aandeelhouders bij overdracht of generatiewisseling',
+    omschrijving: 'Aandeelhouders bij familiebedrijven, bij overdracht aan een opvolger, of bij toetreding van een externe partij. Conflicten ontstaan vaak in deze overgangsmomenten, juist omdat de bestaande regelingen niet voorzien in de nieuwe situatie.',
+  },
+];
+
+const watWeDoen = [
+  'Wettelijke geschillenregeling (artikelen 2:336-2:343 BW) — uittredingsvordering, uitstotingsvordering, of overdrachtsvordering',
+  '50/50-patstellingen oplossen via shotgun-clausule, Texas shootout, of mediator-bindend advies',
+  'Aandeelhoudersovereenkomst opstellen of herzien wanneer er nog geen werkbare regeling is',
+  'Procedures bij de Ondernemingskamer (enquêteprocedure, voorlopige voorzieningen)',
+  'Onderhandelingen rond uitkoop, prijs, en exitvoorwaarden bij vrijwillige beëindiging',
+];
+
+const aanpak = [
+  {
+    nummer: '01',
+    titel: 'Positie-analyse',
+    omschrijving: 'Eerst beoordelen wij uw juridische positie: welke statuten en aandeelhoudersovereenkomst gelden, welke besluiten zijn waar genomen, welke escalatie-mechanismen liggen al klaar, en wat is realistisch te bereiken. Een chronologie van het conflict en een feiten-overzicht vormen de basis.',
+  },
+  {
+    nummer: '02',
+    titel: 'Mediation of onderhandeling waar mogelijk',
+    omschrijving: 'In de meeste gevallen zoeken wij eerst een werkbare oplossing buiten de procedure. Een gerichte mediation, een voorgestructureerde uitkoop-onderhandeling, of een bindend advies vraagt minder tijd en beschadigt de relatie minder dan een Ondernemingskamer-procedure.',
+  },
+  {
+    nummer: '03',
+    titel: 'Procedure waar nodig',
+    omschrijving: 'Wanneer onderhandeling vastloopt of acute maatregelen nodig zijn, voeren wij de procedure: enquêteprocedure bij de Ondernemingskamer, civiele procedure voor uittreding of uitstoting, of kort geding voor voorlopige voorzieningen. Met focus op feiten, bewijs, en strategische timing.',
+  },
+];
+
+const onderscheid = [
+  {
+    titel: 'Vroeg-betrokken, niet alleen reactief',
+    omschrijving: 'Veel aandeelhoudersgeschillen zijn te voorkomen of te beheersen door vroege juridische analyse. Wij werken liever vanaf de eerste signalen van onenigheid dan wanneer de relatie al beschadigd is. Dat scheelt de onderneming kosten, en het scheelt u stress.',
+  },
+  {
+    titel: 'Vastgoed en ondernemingsrecht in één hand',
+    omschrijving: 'Aandeelhoudersgeschillen raken regelmatig aan vastgoed: een bedrijfspand in de werkmaatschappij, een vastgoed-BV onder de holding, of een huurrelatie tussen aandeelhouders-BVs. Wij combineren die expertise structureel, wat bij andere kantoren vaak meerdere advocaten vraagt.',
+  },
+  {
+    titel: 'Persoonlijke betrokkenheid bij gevoelige dossiers',
+    omschrijving: 'Aandeelhoudersgeschillen tussen compagnons, familieleden, of langjarige zakenpartners zijn zelden alleen juridisch. Wij staan u persoonlijk bij in een dossier dat zowel juridische als relationele expertise vraagt. Voor omvangrijke procedures werken wij samen met mr. V.C. van der Velde van Alpha Advocaten.',
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <article>
+    {/* === HERO === */}
+    <section class="bg-bg-tinted">
+      <div class="max-w-content mx-auto px-4 md:px-8 py-12 md:py-16">
+        <p class="text-tiny text-text-muted uppercase tracking-wider mb-4">
+          Specialisme
+        </p>
+        <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
+          Aandeelhoudersgeschillen
+        </h1>
+        <p class="text-h3 text-text-secondary font-display font-semibold mb-6 italic">
+          Van patstelling tot uitkoop, van mediation tot Ondernemingskamer.
+        </p>
+        <p class="text-body text-text-secondary max-w-prose mb-8">
+          Voor DGA's, compagnons, en investeerders die in een conflict zijn beland of het zien aankomen. Wij combineren wettelijke geschillenregeling, contractuele patstellingsclausules, en de Ondernemingskamer-praktijk in een aanpak die op uitkomst stuurt zonder de relatie of de onderneming onnodig te beschadigen.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/contact" class="inline-block bg-brand-primary text-white font-semibold px-6 py-3 rounded-lg no-underline hover:opacity-90 transition">
+            Plan een eerste gesprek
+          </a>
+          <a href="/clusters/50-50-aandeelhoudersgeschil-oplossen" class="inline-block border border-border text-text font-semibold px-6 py-3 rounded-lg no-underline hover:border-brand-primary transition">
+            Lees onze diepgaande analyse
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-content mx-auto px-4 md:px-8 py-16">
+
+      {/* === VOOR WIE === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Voor wie</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Aandeelhoudersgeschillen treffen verschillende posities en belangen. Wij staan vier doelgroepen bij.
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+          {voorWie.map(item => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{item.titel}</h3>
+              <p class="text-small text-text-secondary">{item.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === WAARBIJ WIJ ONDERSTEUNEN === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Waarbij wij ondersteunen</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Vijf typische trajecten waarvoor cliënten ons inschakelen.
+        </p>
+        <ul class="space-y-3">
+          {watWeDoen.map(item => (
+            <li class="flex gap-3 items-start p-4 bg-bg-elevated border border-border rounded-lg">
+              <span class="text-brand-primary font-bold flex-shrink-0">→</span>
+              <span class="text-body text-text">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* === ONZE AANPAK === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Onze aanpak</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Drie stappen, in deze volgorde. Wij streven naar een uitkomst die werkt zonder dat de procedure de relatie of de onderneming onnodig beschadigt.
+        </p>
+        <div class="grid md:grid-cols-3 gap-4">
+          {aanpak.map(stap => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <div class="text-tiny text-brand-primary font-bold mb-2 tracking-wider">{stap.nummer}</div>
+              <h3 class="text-h4 font-bold text-text mb-2">{stap.titel}</h3>
+              <p class="text-small text-text-secondary">{stap.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === WAT ONS ONDERSCHEIDT === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Wat ons onderscheidt</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Drie specifieke kenmerken van onze aandeelhoudersgeschillen-praktijk.
+        </p>
+        <div class="space-y-4">
+          {onderscheid.map(item => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{item.titel}</h3>
+              <p class="text-body text-text-secondary">{item.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === VERDIEPING === */}
+      <section class="mb-16 p-6 bg-bg-tinted border border-border rounded-lg">
+        <h2 class="text-h3 font-bold text-text mb-2">Wilt u meer lezen?</h2>
+        <p class="text-body text-text-secondary mb-4">
+          Onze diepgaande analyses behandelen verschillende aspecten van aandeelhoudersgeschillen: het oplossen van 50/50-patstellingen, de juridische dynamiek wanneer een bedrijfspand in het geding is, de minimale inhoud van een aandeelhoudersovereenkomst, en concurrentiebedingen tussen ex-aandeelhouders na uittreden.
+        </p>
+        <ul class="space-y-2">
+          <li>
+            <a href="/clusters/50-50-aandeelhoudersgeschil-oplossen" class="inline-block text-brand-primary font-semibold no-underline hover:underline">
+              Vier wegen om een 50/50-aandeelhoudersgeschil op te lossen →
+            </a>
+          </li>
+          <li>
+            <a href="/clusters/aandeelhoudersovereenkomst-minimaal" class="inline-block text-brand-primary font-semibold no-underline hover:underline">
+              Aandeelhoudersovereenkomst: wat hoort er minimaal in →
+            </a>
+          </li>
+          <li>
+            <a href="/clusters/aandeelhoudersgeschil-bedrijfspand" class="inline-block text-brand-primary font-semibold no-underline hover:underline">
+              Aandeelhoudersgeschil met een bedrijfspand erbij →
+            </a>
+          </li>
+          <li>
+            <a href="/clusters/concurrentiebeding-ex-aandeelhouders" class="inline-block text-brand-primary font-semibold no-underline hover:underline">
+              Concurrentiebeding tussen ex-aandeelhouders →
+            </a>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+
+    <CTABand
+      heading="Loopt een conflict tussen aandeelhouders al, of ziet u het aankomen?"
+      description="Plan een eerste gesprek. 30 minuten, vrijblijvend. U weet daarna of wij elkaar verder kunnen helpen, en zo ja in welke vorm."
+    />
+  </article>
+</BaseLayout>

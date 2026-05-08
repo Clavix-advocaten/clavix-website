@@ -1,0 +1,182 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTABand from '../../components/CTABand.astro';
+
+const pageTitle = 'Bouwgeschillen — oplevering, verborgen gebreken, en wanprestatie';
+const pageDescription = 'Juridische bijstand bij bouwgeschillen voor opdrachtgevers, aannemers, VvE\'s en projectontwikkelaars. UAV 2012, UAV-GC 2005, en Wet kwaliteitsborging voor het bouwen.';
+
+const voorWie = [
+  {
+    titel: 'Opdrachtgevers',
+    omschrijving: 'Eigenaren en ondernemers die een aannemer hebben ingeschakeld en geconfronteerd worden met vertraging, gebrekkige uitvoering, of meerwerk-discussies bij eindafrekening.',
+  },
+  {
+    titel: 'Aannemers',
+    omschrijving: 'Bouwbedrijven die zich willen verdedigen tegen onterechte aansprakelijkstelling, klachten over oplevering, of vorderingen tot schadevergoeding.',
+  },
+  {
+    titel: "VvE's en eigenaren",
+    omschrijving: 'Verenigingen van Eigenaars en individuele appartementsrechten-eigenaars met onderhouds-issues, gebreken aan gemeenschappelijke delen, of conflicten met aannemers van renovaties.',
+  },
+  {
+    titel: 'Projectontwikkelaars en beleggers',
+    omschrijving: 'Vastgoedontwikkelaars en investeerders die hun positie willen beschermen bij grote bouw- of renovatie-trajecten en de risicos die daarbij ontstaan.',
+  },
+];
+
+const watWeDoen = [
+  'Oplevering-disputes en tekortkomingenlijsten — beoordeling, opstellen, of betwisten',
+  'Verborgen gebreken en Wkb-aansprakelijkheid — claims tegen aannemer of verdediging daartegen',
+  'Wanprestatie tijdens uitvoering — vertraging, bestek-afwijking, kwaliteits-issues',
+  'Geschillen via de Raad van Arbitrage voor de Bouw, of civiele procedure bij de kantonrechter',
+  'Contract-review vooraf (UAV 2012, UAV-GC 2005) en risicobeheersing tijdens het project',
+];
+
+const aanpak = [
+  {
+    nummer: '01',
+    titel: 'Strategische analyse',
+    omschrijving: 'Eerst beoordelen wij uw positie: welke contracten gelden, welke termijnen lopen, wat zijn uw sterke en zwakke punten, en welke alternatieven heeft u. Dit gebeurt op basis van het volledige dossier.',
+  },
+  {
+    nummer: '02',
+    titel: 'Onderhandeling waar mogelijk',
+    omschrijving: 'In de meeste gevallen werken wij eerst aan een werkbare oplossing buiten een procedure. Een goed-onderbouwde sommatie of een gerichte schikkings-onderhandeling lost veel zaken sneller op dan een arbitrage-traject.',
+  },
+  {
+    nummer: '03',
+    titel: 'Procedure waar nodig',
+    omschrijving: 'Wanneer onderhandeling vastloopt, voeren wij de procedure: kort geding, arbitrage bij de Raad van Arbitrage voor de Bouw, of civiele procedure bij de kantonrechter. Met een sterke voorbereiding van de feiten en het juridische kader.',
+  },
+];
+
+const onderscheid = [
+  {
+    titel: 'Geen toebehoren-praktijk',
+    omschrijving: 'Bouwrecht is voor ons geen randvak. Wij volgen de jurisprudentie actief, kennen de UAV en UAV-GC tot in de praktijk, en zijn vertrouwd met de Wet kwaliteitsborging voor het bouwen sinds invoering in 2024.',
+  },
+  {
+    titel: 'Vastgoed en ondernemingsrecht in één hand',
+    omschrijving: 'Bouwgeschillen raken vaak aan ondernemingsrecht: aansprakelijkheid van bestuurders bij gefailleerde aannemers, contractuele structuur tussen werkmaatschappij en vastgoed-BV, of geschillen tussen aandeelhouders rond bouwprojecten. Die combinatie is bij ons in één kantoor gedekt.',
+  },
+  {
+    titel: 'Persoonlijk, met schaal wanneer nodig',
+    omschrijving: 'U heeft direct contact met de behandelend advocaat, niet met een team van junioren. Voor omvangrijke trajecten werken wij samen met mr. V.C. van der Velde van Alpha Advocaten, zodat capaciteit nooit een beperking vormt.',
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <article>
+    {/* === HERO === */}
+    <section class="bg-bg-tinted">
+      <div class="max-w-content mx-auto px-4 md:px-8 py-12 md:py-16">
+        <p class="text-tiny text-text-muted uppercase tracking-wider mb-4">
+          Specialisme
+        </p>
+        <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
+          Bouwgeschillen
+        </h1>
+        <p class="text-h3 text-text-secondary font-display font-semibold mb-6 italic">
+          Oplevering, verborgen gebreken, en wanprestatie tussen opdrachtgever en aannemer.
+        </p>
+        <p class="text-body text-text-secondary max-w-prose mb-8">
+          Juridische bijstand voor opdrachtgevers, aannemers, VvE's en projectontwikkelaars op het kruisvlak van bouwrecht en ondernemingspraktijk. UAV 2012, UAV-GC 2005, en de Wet kwaliteitsborging voor het bouwen — wij kennen het kader. Wij sturen op snelle, werkbare oplossingen, en wij procederen scherp wanneer dat nodig is.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/contact" class="inline-block bg-brand-primary text-white font-semibold px-6 py-3 rounded-lg no-underline hover:opacity-90 transition">
+            Plan een eerste gesprek
+          </a>
+          <a href="/clusters/bouwgeschil-aannemer-wanprestatie" class="inline-block border border-border text-text font-semibold px-6 py-3 rounded-lg no-underline hover:border-brand-primary transition">
+            Lees onze diepgaande analyse
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-content mx-auto px-4 md:px-8 py-16">
+
+      {/* === VOOR WIE === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Voor wie</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Bouwgeschillen treffen partijen aan beide kanten van de bouwrelatie. Wij staan vier doelgroepen bij.
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+          {voorWie.map(item => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{item.titel}</h3>
+              <p class="text-small text-text-secondary">{item.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === WAARBIJ WIJ ONDERSTEUNEN === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Waarbij wij ondersteunen</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Vijf typische trajecten waarvoor cliënten ons inschakelen.
+        </p>
+        <ul class="space-y-3">
+          {watWeDoen.map(item => (
+            <li class="flex gap-3 items-start p-4 bg-bg-elevated border border-border rounded-lg">
+              <span class="text-brand-primary font-bold flex-shrink-0">→</span>
+              <span class="text-body text-text">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* === ONZE AANPAK === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Onze aanpak</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Drie stappen, in deze volgorde. Wij beginnen niet met een procedure tenzij dat strategisch noodzakelijk is.
+        </p>
+        <div class="grid md:grid-cols-3 gap-4">
+          {aanpak.map(stap => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <div class="text-tiny text-brand-primary font-bold mb-2 tracking-wider">{stap.nummer}</div>
+              <h3 class="text-h4 font-bold text-text mb-2">{stap.titel}</h3>
+              <p class="text-small text-text-secondary">{stap.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === WAT ONS ONDERSCHEIDT === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Wat ons onderscheidt</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Drie specifieke kenmerken van onze bouwgeschillen-praktijk.
+        </p>
+        <div class="space-y-4">
+          {onderscheid.map(item => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{item.titel}</h3>
+              <p class="text-body text-text-secondary">{item.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === VERDIEPING === */}
+      <section class="mb-16 p-6 bg-bg-tinted border border-border rounded-lg">
+        <h2 class="text-h3 font-bold text-text mb-2">Wilt u meer lezen?</h2>
+        <p class="text-body text-text-secondary mb-4">
+          Onze diepgaande analyse over bouwgeschillen behandelt het juridisch kader, de praktijk van oplevering, wanprestatie tijdens uitvoering, verborgen gebreken, aansprakelijkheidstermijnen, en de Wet kwaliteitsborging voor het bouwen.
+        </p>
+        <a href="/clusters/bouwgeschil-aannemer-wanprestatie" class="inline-block text-brand-primary font-semibold no-underline hover:underline">
+          Bouwgeschil met aannemer: wanprestatie, oplevering, en verborgen gebreken →
+        </a>
+      </section>
+
+    </div>
+
+    <CTABand
+      heading="Heeft u een bouwgeschil dat opgelost moet worden?"
+      description="Plan een eerste gesprek. 30 minuten, vrijblijvend. U weet daarna of wij elkaar verder kunnen helpen, en zo ja in welke vorm."
+    />
+  </article>
+</BaseLayout>

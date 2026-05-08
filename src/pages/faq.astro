@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABand from '../components/CTABand.astro';
+import { sanityClient } from '../lib/sanity';
+
+// Fetch alle FAQ's, gegroepeerd op categorie en sortOrder
+const faqs = await sanityClient.fetch(`
+  *[_type == "faq"] | order(category asc, sortOrder desc) {
+    _id,
+    question,
+    answer,
+    category,
+    sortOrder
+  }
+`);
+
+// Categorie-volgorde (wedge eerst, dan de andere drie pillars)
+const CATEGORIES = [
+  { slug: 'vastgoed-ondernemers', title: 'Vastgoed × Ondernemers', pillarLink: '/praktijkgebieden/vastgoed-en-ondernemers' },
+  { slug: 'vastgoedrecht',        title: 'Vastgoedrecht',           pillarLink: '/praktijkgebieden/vastgoedrecht' },
+  { slug: 'ondernemingsrecht',    title: 'Ondernemingsrecht',       pillarLink: '/praktijkgebieden/ondernemingsrecht' },
+  { slug: 'insolventie',          title: 'Insolventie & herstructurering', pillarLink: '/praktijkgebieden/insolventie-en-herstructurering' },
+];
+
+// Groepeer FAQ's per categorie
+const grouped = CATEGORIES.map(cat => ({
+  ...cat,
+  items: faqs.filter((f: any) => f.category === cat.slug),
+}));
+
+// Helper: portable text → plain text (voor JSON-LD answer)
+function portableTextToPlain(blocks: any[]): string {
+  if (!Array.isArray(blocks)) return '';
+  return blocks.map(block => {
+    if (!block.children) return '';
+    return block.children.map((child: any) => child.text || '').join('');
+  }).join(' ').trim();
+}
+
+// Helper: portable text → HTML met strong + link annotaties
+function portableTextToHtml(blocks: any[]): string {
+  if (!Array.isArray(blocks)) return '';
+  return blocks.map(block => {
+    if (!block.children) return '';
+    const markDefMap: Record<string, any> = {};
+    (block.markDefs || []).forEach((m: any) => { markDefMap[m._key] = m; });
+    const inner = block.children.map((child: any) => {
+      let text = (child.text || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+      const marks = child.marks || [];
+      marks.forEach((mark: string) => {
+        if (mark === 'strong') {
+          text = `<strong>${text}</strong>`;
+        } else if (mark === 'em') {
+          text = `<em>${text}</em>`;
+        } else if (markDefMap[mark]?._type === 'link') {
+          const href = markDefMap[mark].href;
+          text = `<a href="${href}" class="text-brand-primary underline hover:no-underline">${text}</a>`;
+        }
+      });
+      return text;
+    }).join('');
+    return `<p class="mb-3 last:mb-0">${inner}</p>`;
+  }).join('');
+}
+
+// JSON-LD FAQPage markup
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f: any) => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: portableTextToPlain(f.answer),
+    },
+  })),
+};
+
+const pageTitle = 'Veelgestelde vragen';
+const pageDescription = "24 veelgestelde vragen over vastgoedrecht, ondernemingsrecht, insolventie, en de kruising tussen vastgoed en ondernemen. Beknopte antwoorden met doorkliks naar diepere analyses.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <article>
+    {/* === HERO === */}
+    <section class="bg-bg-tinted">
+      <div class="max-w-content mx-auto px-4 md:px-8 py-12 md:py-16">
+        <p class="text-tiny text-text-muted uppercase tracking-wider mb-4">
+          Veelgestelde vragen
+        </p>
+        <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
+          Veelgestelde vragen
+        </h1>
+        <p class="text-h3 text-text-secondary font-display font-semibold mb-6 italic">
+          Beknopte antwoorden op de vragen die ondernemers, DGA's, en vastgoedbeleggers ons regelmatig stellen.
+        </p>
+        <p class="text-body text-text-secondary max-w-prose">
+          24 vragen, gegroepeerd per onderwerp. Elke vraag heeft een kort antwoord; bij de meeste vragen vindt u een doorklik naar onze diepere analyse op de relevante cluster-pagina.
+        </p>
+      </div>
+    </section>
+
+    <div class="max-w-content mx-auto px-4 md:px-8 py-16">
+      {grouped.map(group => (
+        group.items.length > 0 && (
+          <section class="mb-16 last:mb-0" id={group.slug}>
+            <div class="flex items-baseline justify-between mb-6 flex-wrap gap-2">
+              <h2 class="text-h2 font-bold text-text">
+                {group.title}
+              </h2>
+              <a href={group.pillarLink} class="text-small text-brand-primary hover:underline">
+                Bekijk pijler →
+              </a>
+            </div>
+
+            <div class="space-y-3">
+              {group.items.map((faq: any) => (
+                <details class="bg-bg-elevated border border-border rounded-lg group">
+                  <summary class="cursor-pointer p-5 font-semibold text-text list-none flex items-start justify-between gap-4 hover:bg-bg-tinted transition">
+                    <span>{faq.question}</span>
+                    <span class="text-brand-primary flex-shrink-0 group-open:rotate-45 transition-transform text-h3 leading-none mt-[-2px]">+</span>
+                  </summary>
+                  <div class="px-5 pb-5 text-body text-text-secondary" set:html={portableTextToHtml(faq.answer)} />
+                </details>
+              ))}
+            </div>
+          </section>
+        )
+      ))}
+    </div>
+
+    <CTABand
+      heading="Staat uw vraag er niet bij?"
+      description="Plan een eerste gesprek. 30 minuten, vrijblijvend. U weet daarna of wij elkaar verder kunnen helpen, en zo ja in welke vorm."
+    />
+  </article>
+</BaseLayout>

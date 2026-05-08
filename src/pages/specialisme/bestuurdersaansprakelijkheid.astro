@@ -1,0 +1,182 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTABand from '../../components/CTABand.astro';
+
+const pageTitle = 'Bestuurdersaansprakelijkheid — voorkomen en verweren';
+const pageDescription = "Juridische bijstand bij bestuurdersaansprakelijkheid voor DGA's, bestuurders, en commissarissen. Verweer tegen claims van curator (2:248 BW) en aandeelhouders (2:9 BW), preventieve analyse, en herstructurering bij dreigende insolventie.";
+
+const voorWie = [
+  {
+    titel: "DGA's bij dreigende insolventie",
+    omschrijving: 'Directeur-grootaandeelhouders die financiele problemen zien aankomen en hun persoonlijke positie willen beschermen voordat het te laat is. Vroeg juridisch advies maakt vaak het verschil tussen een werkbare uitkomst en persoonlijke aansprakelijkheid.',
+  },
+  {
+    titel: 'Bestuurders met een curator-claim',
+    omschrijving: 'Bestuurders die zijn aangeschreven door de curator op grond van artikel 2:248 BW (kennelijk onbehoorlijk bestuur). Snelle, onderbouwde reactie en een sterk verweerdossier zijn essentieel voor de uitkomst.',
+  },
+  {
+    titel: 'Commissarissen onder vuur',
+    omschrijving: 'Leden van een raad van commissarissen of toezichthoudend orgaan die worden aangesproken op hun toezichtstaak. De verweerlijn vraagt om een ander accent dan voor bestuurders zelf.',
+  },
+  {
+    titel: 'Bestuurders bij overdracht of herstructurering',
+    omschrijving: 'Bestuurders die hun positie willen vastleggen bij verkoop van een onderneming, generatiewisseling, of een herstructurering: decharge, vrijwaringen, en risicobeheersing voor de periode na vertrek.',
+  },
+];
+
+const watWeDoen = [
+  'Preventieve analyse — beoordeling van uw aansprakelijkheidspositie voordat een crisis ontstaat',
+  'Verweer tegen 2:248 BW-claim — onderbouwd weerwoord op kennelijk onbehoorlijk bestuur',
+  'Verweer tegen 2:9 BW-claim — interne aansprakelijkheid tegenover de vennootschap of aandeelhouders',
+  'Herstructurering of WHOA-traject voordat insolventie onafwendbaar wordt',
+  'Decharge-strategie en vrijwaringen bij vertrek, verkoop, of generatiewisseling',
+];
+
+const aanpak = [
+  {
+    nummer: '01',
+    titel: 'Positie-analyse',
+    omschrijving: 'Eerst beoordelen wij uw juridische positie: welke handelingen worden u verweten, welke termijnen lopen, welke bewijslast geldt, en welke verweerlijnen zijn beschikbaar. Een feiten-overzicht en chronologie vormen de basis.',
+  },
+  {
+    nummer: '02',
+    titel: 'Vroege actie of verweer',
+    omschrijving: 'In de meeste gevallen is de eerste reactie cruciaal. Wij stellen een onderbouwd verweerdossier op, voeren waar mogelijk eerst onderhandelingen, en nemen de juiste preventieve maatregelen om uw positie te versterken voordat een procedure start.',
+  },
+  {
+    nummer: '03',
+    titel: 'Procedure waar nodig',
+    omschrijving: 'Wanneer een procedure onafwendbaar is, voeren wij die met focus op de feiten en het juridisch kader. Voor procedures bij de civiele rechter, de Ondernemingskamer, of bij arbitrage. Met een sterke voorbereiding van het bewijs en een heldere strategie.',
+  },
+];
+
+const onderscheid = [
+  {
+    titel: 'Vroeg-betrokken, niet alleen reactief',
+    omschrijving: 'Veel bestuurdersaansprakelijkheids-zaken zijn te voorkomen of te verzachten door vroege juridische analyse. Wij werken liever vooraf dan achteraf, en helpen DGA s om persoonlijke risico s te identificeren voordat een crisis ontstaat.',
+  },
+  {
+    titel: 'Ondernemingsrecht en insolventierecht in één hand',
+    omschrijving: 'Bestuurdersaansprakelijkheid raakt vrijwel altijd aan zowel ondernemingsrecht (statuten, decharge, aandeelhoudersovereenkomst) als insolventierecht (curator-claim, pauliana, WHOA). Die combinatie is bij ons in één kantoor gedekt.',
+  },
+  {
+    titel: 'Persoonlijke betrokkenheid bij gevoelige dossiers',
+    omschrijving: 'Bestuurdersaansprakelijkheid raakt uw vermogen, uw reputatie, en vaak uw familie. U heeft direct contact met de behandelend advocaat. Voor omvangrijke procedures werken wij samen met mr. V.C. van der Velde van Alpha Advocaten, zodat capaciteit nooit een beperking vormt.',
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <article>
+    {/* === HERO === */}
+    <section class="bg-bg-tinted">
+      <div class="max-w-content mx-auto px-4 md:px-8 py-12 md:py-16">
+        <p class="text-tiny text-text-muted uppercase tracking-wider mb-4">
+          Specialisme
+        </p>
+        <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
+          Bestuurdersaansprakelijkheid
+        </h1>
+        <p class="text-h3 text-text-secondary font-display font-semibold mb-6 italic">
+          Voorkomen, beoordelen, en verweren bij claims op grond van artikel 2:9 of 2:248 BW.
+        </p>
+        <p class="text-body text-text-secondary max-w-prose mb-8">
+          Voor DGA's, bestuurders, en commissarissen die hun persoonlijke positie willen beschermen voordat een crisis ontstaat, en die effectief willen handelen wanneer een claim al op tafel ligt. Wij combineren ondernemingsrechtelijke kennis met insolventiepraktijk en procedure-ervaring.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/contact" class="inline-block bg-brand-primary text-white font-semibold px-6 py-3 rounded-lg no-underline hover:opacity-90 transition">
+            Plan een eerste gesprek
+          </a>
+          <a href="/clusters/bestuurdersaansprakelijkheid-faillissement" class="inline-block border border-border text-text font-semibold px-6 py-3 rounded-lg no-underline hover:border-brand-primary transition">
+            Lees onze diepgaande analyse
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-content mx-auto px-4 md:px-8 py-16">
+
+      {/* === VOOR WIE === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Voor wie</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Bestuurdersaansprakelijkheid raakt verschillende rollen en stadia. Wij staan vier doelgroepen bij.
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+          {voorWie.map(item => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{item.titel}</h3>
+              <p class="text-small text-text-secondary">{item.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === WAARBIJ WIJ ONDERSTEUNEN === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Waarbij wij ondersteunen</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Vijf typische trajecten waarvoor cliënten ons inschakelen.
+        </p>
+        <ul class="space-y-3">
+          {watWeDoen.map(item => (
+            <li class="flex gap-3 items-start p-4 bg-bg-elevated border border-border rounded-lg">
+              <span class="text-brand-primary font-bold flex-shrink-0">→</span>
+              <span class="text-body text-text">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* === ONZE AANPAK === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Onze aanpak</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Drie stappen, in deze volgorde. Wij beginnen met een grondige feitenanalyse en sturen op de meest werkbare uitkomst.
+        </p>
+        <div class="grid md:grid-cols-3 gap-4">
+          {aanpak.map(stap => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <div class="text-tiny text-brand-primary font-bold mb-2 tracking-wider">{stap.nummer}</div>
+              <h3 class="text-h4 font-bold text-text mb-2">{stap.titel}</h3>
+              <p class="text-small text-text-secondary">{stap.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === WAT ONS ONDERSCHEIDT === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Wat ons onderscheidt</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Drie specifieke kenmerken van onze bestuurdersaansprakelijkheids-praktijk.
+        </p>
+        <div class="space-y-4">
+          {onderscheid.map(item => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{item.titel}</h3>
+              <p class="text-body text-text-secondary">{item.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === VERDIEPING === */}
+      <section class="mb-16 p-6 bg-bg-tinted border border-border rounded-lg">
+        <h2 class="text-h3 font-bold text-text mb-2">Wilt u meer lezen?</h2>
+        <p class="text-body text-text-secondary mb-4">
+          Onze diepgaande analyse over bestuurdersaansprakelijkheid behandelt de twee hoofdregimes (artikel 2:9 BW en artikel 2:248 BW), de wettelijke vermoedens, de bewijslast bij faillissement, de drie typische verwijten van de curator, en de praktische verweerlijnen.
+        </p>
+        <a href="/clusters/bestuurdersaansprakelijkheid-faillissement" class="inline-block text-brand-primary font-semibold no-underline hover:underline">
+          Bestuurdersaansprakelijkheid bij faillissement: artikel 2:248 BW in de praktijk →
+        </a>
+      </section>
+
+    </div>
+
+    <CTABand
+      heading="Heeft u een claim ontvangen of ziet u risico s aankomen?"
+      description="Plan een eerste gesprek. 30 minuten, vrijblijvend. U weet daarna of wij elkaar verder kunnen helpen, en zo ja in welke vorm."
+    />
+  </article>
+</BaseLayout>
