@@ -71,7 +71,7 @@ const pillars = [
 <BaseLayout title="Clavix Advocaten" description={description} schemaJsonLd={schemas}>
   {/* === HERO === */}
   <section class="bg-bg-tinted">
-    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24 grid md:grid-cols-5 gap-10 items-center">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-12 md:py-20 grid md:grid-cols-5 gap-10 items-center">
       <div class="md:col-span-3">
         <h1 class="text-display font-extrabold text-text mb-4 tracking-tight">
           Het juridisch huis voor ondernemers met vastgoed.
@@ -82,7 +82,7 @@ const pillars = [
         </p>
         <div class="flex flex-col sm:flex-row gap-4 mb-8">
           <a
-            href="#contact"
+            href="/contact"
             class="bg-action text-action-fg hover:bg-action-hover px-7 py-3.5 rounded-md font-semibold no-underline transition text-center"
           >
             Plan een eerste gesprek
@@ -120,7 +120,7 @@ const pillars = [
   </section>
 
   {/* === PRAKTIJKGEBIEDEN: 1 featured + 3 in een rij === */}
-  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+  <section class="max-w-container mx-auto px-4 md:px-8 py-16">
     <div class="mb-12">
       <h2 class="text-h2 font-bold text-text mb-2">Praktijkgebieden</h2>
       <p class="text-lead text-text-secondary italic">Wat doen wij, en waar zijn wij het scherpst.</p>
@@ -182,7 +182,7 @@ const pillars = [
 
   {/* === MUKESH BIO TEASER === */}
   <section class="bg-bg-tinted">
-    <div class="max-w-container mx-auto px-4 md:px-8 py-20 grid md:grid-cols-5 gap-10 items-center">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 grid md:grid-cols-5 gap-10 items-center">
       <div class="md:col-span-2">
         {attorney?.photoSmallUrl || attorney?.photoUrl ? (
           <img
@@ -203,7 +203,7 @@ const pillars = [
       </div>
       <div class="md:col-span-3">
         <div class="text-tiny font-semibold uppercase tracking-wider text-text-accent mb-3">
-          Maak kennis met Mukesh
+          mr. Kumar
         </div>
         <blockquote class="text-h2 font-display font-semibold text-text mb-6 leading-snug">
           "{attorney?.quoteOnHomepage || 'De beste oplossing is meestal niet de luidste. En zelden de eerste die op tafel ligt.'}"
@@ -226,7 +226,7 @@ const pillars = [
 
   {/* === RECENT NOTITIES === */}
   {recentPosts && recentPosts.length > 0 && (
-    <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <section class="max-w-container mx-auto px-4 md:px-8 py-16">
       <div class="mb-12">
         <h2 class="text-h2 font-bold text-text mb-2">Notities</h2>
         <p class="text-lead text-text-secondary italic">
