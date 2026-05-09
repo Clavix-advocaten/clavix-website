@@ -7,7 +7,7 @@ import { personSchema } from '@lib/schema-markup'
 const attorney = await getAttorney().catch(() => null)
 const recentPosts = await getHomepageBlogPosts().catch(() => [])
 
-const description = 'Boutique advocatenkantoor in Amsterdam Zuidas voor ondernemers met vastgoed. NOvA-geregistreerd ondernemingsrecht en burgerlijk procesrecht.'
+const description = 'Advocatenkantoor in Amsterdam Zuidas voor ondernemers met vastgoed. NOvA-geregistreerd ondernemingsrecht en burgerlijk procesrecht.'
 
 const schemas = []
 if (attorney) schemas.push(personSchema(attorney))
@@ -78,7 +78,7 @@ const pillars = [
         </h1>
         <p class="text-lead text-text-accent italic mb-6">De sleutel tot uw oplossing.</p>
         <p class="text-lead text-text-secondary mb-8 max-w-readable">
-          Boutique-kantoor aan de Strawinskylaan in Amsterdam Zuidas. Voor DGA's, familiebedrijven en vastgoedinvesteerders. U werkt direct met mr. Kumar, niet met een wisselend team.
+          Advocatenkantoor aan de Strawinskylaan in Amsterdam Zuidas. Voor DGA's, familiebedrijven en vastgoedinvesteerders. U werkt direct met mr. Kumar, niet met een wisselend team.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 mb-8">
           <a
@@ -263,7 +263,7 @@ const pillars = [
 
   {/* === FINAL CTA === */}
   <CTABand
-    heading="Een eerste gesprek kost niets."
-    description="30 minuten, vrijblijvend. U weet daarna of wij de juiste fit zijn."
+    heading="Plan een eerste gesprek."
+    description="30 minuten verkennend. We luisteren naar uw situatie en geven aan of, en hoe, wij u kunnen bijstaan."
   />
 </BaseLayout>
