@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = 'Cookieverklaring';
+const pageDescription = 'Welke cookies clavix.nl plaatst en hoe u uw voorkeuren beheert.';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <article>
+    <section class="bg-bg-tinted">
+      <div class="max-w-content mx-auto px-4 md:px-8 py-12 md:py-16">
+        <p class="text-tiny text-text-muted uppercase tracking-wider mb-4">Juridisch</p>
+        <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Cookieverklaring</h1>
+        <p class="text-h3 text-text-secondary font-display font-semibold mb-6 italic">Versie 1.0 d.d. 9 mei 2026</p>
+        <p class="text-body text-text-secondary max-w-prose">
+          Welke cookies clavix.nl plaatst, met welk doel, en hoe u uw voorkeuren beheert. Voor een breder beeld van hoe wij met persoonsgegevens omgaan, zie onze <a href="/privacy" class="text-brand-primary no-underline hover:underline">privacyverklaring</a>.
+        </p>
+      </div>
+    </section>
+
+    <div class="max-w-content mx-auto px-4 md:px-8 py-16">
+      <div class="max-w-prose">
+
+        <h2 id="art-1" class="text-h2 font-bold text-text mt-0 mb-4">1. Inleiding</h2>
+        <p class="text-body text-text mb-4"><strong>1.1.</strong> Cookies zijn kleine tekstbestanden die uw browser opslaat wanneer u een website bezoekt. Ze maken het bezoek soepeler en stellen websites in staat goed te functioneren of bezoekersgedrag te analyseren.</p>
+        <p class="text-body text-text mb-6"><strong>1.2.</strong> Deze verklaring beschrijft welke cookies clavix.nl plaatst, met welk doel, en hoe u uw voorkeuren beheert.</p>
+
+        <h2 id="art-2" class="text-h2 font-bold text-text mt-12 mb-4">2. Welke cookies wij plaatsen</h2>
+        <p class="text-body text-text mb-4"><strong>2.1. Functionele cookies (altijd actief).</strong> Noodzakelijk voor de werking van de website. Voor functionele cookies is geen toestemming vereist; zonder zou de site niet correct werken.</p>
+        <p class="text-body text-text mb-4"><strong>2.2. Analytische cookies.</strong> Momenteel niet actief op clavix.nl. Indien Clavix in de toekomst gebruik maakt van analyse-software (zoals Plausible, Fathom, Google Analytics of vergelijkbaar), zal voorafgaand uw toestemming worden gevraagd via een cookiebanner. U kunt deze toestemming op elk moment intrekken.</p>
+        <p class="text-body text-text mb-6"><strong>2.3. Tracking- of marketingcookies.</strong> Worden door clavix.nl niet geplaatst.</p>
+
+        <h2 id="art-3" class="text-h2 font-bold text-text mt-12 mb-4">3. Bewaartermijn</h2>
+        <p class="text-body text-text mb-4"><strong>3.1.</strong> Sessiecookies worden verwijderd zodra u de browser sluit.</p>
+        <p class="text-body text-text mb-4"><strong>3.2.</strong> Persistente functionele cookies hebben een bewaartermijn van maximaal twaalf maanden.</p>
+        <p class="text-body text-text mb-6"><strong>3.3.</strong> Analytische cookies (indien in de toekomst geactiveerd) worden bewaard conform geldende AVG-richtlijnen, doorgaans niet langer dan dertien maanden.</p>
+
+        <h2 id="art-4" class="text-h2 font-bold text-text mt-12 mb-4">4. Cookies blokkeren of verwijderen</h2>
+        <p class="text-body text-text mb-4"><strong>4.1.</strong> U kunt cookies altijd via uw browserinstellingen verwijderen of blokkeren. Bij het volledig blokkeren kan het voorkomen dat onderdelen van de website niet of beperkt werken.</p>
+        <p class="text-body text-text mb-3"><strong>4.2.</strong> Instructies per browser:</p>
+        <ul class="list-disc pl-6 mb-6 space-y-1 text-body text-text">
+          <li>Google Chrome: Instellingen → Privacy en beveiliging → Cookies</li>
+          <li>Apple Safari: Voorkeuren → Privacy</li>
+          <li>Mozilla Firefox: Instellingen → Privacy en beveiliging</li>
+          <li>Microsoft Edge: Instellingen → Cookies en sitemachtigingen</li>
+        </ul>
+
+        <h2 id="art-5" class="text-h2 font-bold text-text mt-12 mb-4">5. Wijzigingen</h2>
+        <p class="text-body text-text mb-6"><strong>5.1.</strong> Deze cookieverklaring kan worden aangepast wanneer wijzigingen op clavix.nl daartoe aanleiding geven. De actuele versie staat altijd op deze pagina.</p>
+
+        <h2 id="art-6" class="text-h2 font-bold text-text mt-12 mb-4">6. Contact</h2>
+        <p class="text-body text-text mb-6"><strong>6.1.</strong> Voor vragen over deze cookieverklaring of over uw privacy in bredere zin: zie onze <a href="/privacy" class="text-brand-primary no-underline hover:underline">privacyverklaring</a> of neem contact op via <a href="mailto:info@clavix.nl" class="text-brand-primary no-underline hover:underline">info@clavix.nl</a>.</p>
+
+        <div class="mt-16 pt-8 border-t border-border">
+          <p class="text-small text-text-muted">
+            Versie 1.0, 9 mei 2026. Clavix B.V., KvK 96800747. Strawinskylaan 257, 1077 XX Amsterdam.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </article>
+</BaseLayout>

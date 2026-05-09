@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = 'Toegankelijkheidsverklaring';
+const pageDescription = 'Hoe Clavix B.V. werkt aan een toegankelijke website conform WCAG 2.1 niveau AA.';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <article>
+    <section class="bg-bg-tinted">
+      <div class="max-w-content mx-auto px-4 md:px-8 py-12 md:py-16">
+        <p class="text-tiny text-text-muted uppercase tracking-wider mb-4">Juridisch</p>
+        <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Toegankelijkheidsverklaring</h1>
+        <p class="text-h3 text-text-secondary font-display font-semibold mb-6 italic">Versie 1.0 d.d. 9 mei 2026</p>
+        <p class="text-body text-text-secondary max-w-prose">
+          Hoe Clavix werkt aan een website die voor zoveel mogelijk bezoekers toegankelijk is, conform de Web Content Accessibility Guidelines (WCAG) versie 2.1 niveau AA.
+        </p>
+      </div>
+    </section>
+
+    <div class="max-w-content mx-auto px-4 md:px-8 py-16">
+      <div class="max-w-prose">
+
+        <h2 id="art-1" class="text-h2 font-bold text-text mt-0 mb-4">1. Inleiding</h2>
+        <p class="text-body text-text mb-4"><strong>1.1.</strong> Clavix streeft ernaar dat clavix.nl voor zoveel mogelijk bezoekers toegankelijk is, ongeacht beperking of hulpmiddel. Als richtlijn hanteren wij de Web Content Accessibility Guidelines (WCAG) versie 2.1 op niveau AA, de internationaal erkende standaard voor digitale toegankelijkheid.</p>
+        <p class="text-body text-text mb-6"><strong>1.2.</strong> Deze verklaring beschrijft de huidige status, onze werkwijze en het contactpunt voor het melden van knelpunten.</p>
+
+        <h2 id="art-2" class="text-h2 font-bold text-text mt-12 mb-4">2. Status</h2>
+        <p class="text-body text-text mb-4"><strong>2.1.</strong> Clavix.nl is gebouwd op basis van moderne, semantische HTML5 en bevat geen content die toegankelijkheid actief belemmert. Een formele, onafhankelijke audit van naleving aan WCAG 2.1 AA staat gepland.</p>
+        <p class="text-body text-text mb-6"><strong>2.2.</strong> Op dit moment zijn er geen specifieke bekende issues. Wanneer een audit afwijkingen aan het licht brengt, vermelden wij die hier transparant met een planning voor herstel.</p>
+
+        <h2 id="art-3" class="text-h2 font-bold text-text mt-12 mb-4">3. Onze werkwijze</h2>
+        <p class="text-body text-text mb-3"><strong>3.1.</strong> Bij elke aanpassing aan de website toetsen wij of de wijziging consistent blijft met de WCAG-richtlijnen. Belangrijke bouwstenen die wij hanteren:</p>
+        <ul class="list-disc pl-6 mb-6 space-y-1 text-body text-text">
+          <li>semantische HTML-structuur (juiste koppen, lijsten, links);</li>
+          <li>alternatieve teksten op afbeeldingen;</li>
+          <li>voldoende kleurcontrast tussen tekst en achtergrond;</li>
+          <li>toetsenbordnavigatie zonder muis;</li>
+          <li>compatibiliteit met moderne screenreaders.</li>
+        </ul>
+
+        <h2 id="art-4" class="text-h2 font-bold text-text mt-12 mb-4">4. Compatibiliteit</h2>
+        <p class="text-body text-text mb-6"><strong>4.1.</strong> Clavix.nl is getest in de actuele versies van Chrome, Safari, Firefox en Edge, op zowel desktop als mobiele apparaten.</p>
+
+        <h2 id="art-5" class="text-h2 font-bold text-text mt-12 mb-4">5. Knelpunten melden</h2>
+        <p class="text-body text-text mb-6"><strong>5.1.</strong> Komt u een onderdeel van clavix.nl tegen dat voor u onbruikbaar of onleesbaar is? Laat het ons weten via <a href="mailto:info@clavix.nl" class="text-brand-primary no-underline hover:underline">info@clavix.nl</a>. Wij streven ernaar binnen vijf werkdagen te reageren en, waar mogelijk, het knelpunt te verhelpen of u op alternatieve wijze te helpen.</p>
+
+        <h2 id="art-6" class="text-h2 font-bold text-text mt-12 mb-4">6. Beoordelingsmethode en datum</h2>
+        <p class="text-body text-text mb-4"><strong>6.1.</strong> Deze verklaring is gebaseerd op een eigen evaluatie. Een onafhankelijke audit van WCAG 2.1 AA-conformiteit door een derde partij is voorzien.</p>
+        <p class="text-body text-text mb-6"><strong>6.2.</strong> Versie 1.0, datum: 9 mei 2026.</p>
+
+        <h2 id="art-7" class="text-h2 font-bold text-text mt-12 mb-4">7. Wijzigingen</h2>
+        <p class="text-body text-text mb-6"><strong>7.1.</strong> Deze verklaring wordt bijgewerkt bij significante wijzigingen aan de site of na een externe audit.</p>
+
+        <div class="mt-16 pt-8 border-t border-border">
+          <p class="text-small text-text-muted">
+            Versie 1.0, 9 mei 2026. Clavix B.V., KvK 96800747. Strawinskylaan 257, 1077 XX Amsterdam.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </article>
+</BaseLayout>
