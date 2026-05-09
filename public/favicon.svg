@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <rect width="64" height="64" fill="#2A2C70" rx="8"/>
-  <text x="50%" y="50%" font-family="Montserrat, sans-serif" font-size="32" font-weight="800" fill="#E3D5B9" text-anchor="middle" dominant-baseline="central">C</text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="395 257 80 86">
+  <path fill="#e2d4b8" fill-rule="evenodd" d="M403.2,280.96l26.12,41.36,34-51.73c2.35-3.65,4.39-6.74,5.81-8.87.23-.34.23-.76.03-1.1-.17-.37-.54-.59-.93-.59h-13.06c-.37,0-.71.2-.91.54l-23.74,36.21-10.71-16.97c-.2-.31-.54-.51-.93-.51h-14.73c-.42,0-.76.2-.96.57s-.17.76.03,1.1h0Z"/>
+  <path fill="#2b2e6f" fill-rule="evenodd" d="M419.43,313.97l-16.15,24.39c-.23.34-.25.74-.06,1.1s.54.57.96.57h12.92c.4,0,.74-.17.93-.51l8.61-14.11-7.22-11.45ZM431.61,325.95l8.58,13.57c.23.34.54.51.93.51h14.73c.42,0,.76-.2.96-.57.2-.34.17-.76-.03-1.1l-16.35-25.84-8.84,13.43Z"/>
 </svg>
