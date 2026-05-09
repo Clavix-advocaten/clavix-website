@@ -38,7 +38,7 @@ const navItems = [
                 {item.label}
                 <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
               </button>
-              <ul class="absolute top-full right-0 mt-2 bg-bg-elevated border border-border rounded-lg shadow-lg p-2 min-w-[280px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition">
+              <ul class="absolute top-full right-0 pt-2 -mt-1 bg-transparent min-w-[280px] opacity-0 invisible group-hover:opacity-100 group-hover:visible hover:opacity-100 hover:visible transition"><li class="bg-bg-elevated border border-border rounded-lg shadow-lg p-2 list-none">
                 {item.children.map((child) => (
                   <li>
                     <a href={child.href} class="block px-4 py-2 text-text hover:bg-bg-tinted rounded-md no-underline">
@@ -46,6 +46,7 @@ const navItems = [
                     </a>
                   </li>
                 ))}
+                </li>
               </ul>
             </>
           ) : (
