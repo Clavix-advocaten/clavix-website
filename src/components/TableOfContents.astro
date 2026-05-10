@@ -1,0 +1,90 @@
+---
+interface SectionLike {
+  heading?: string;
+  anchor?: string | { current: string };
+}
+interface Props {
+  sections: SectionLike[];
+}
+const { sections } = Astro.props;
+
+const items = (sections || [])
+  .map((s) => {
+    const slug = typeof s.anchor === 'string' ? s.anchor : s.anchor?.current;
+    return s.heading && slug ? { heading: s.heading, slug } : null;
+  })
+  .filter(Boolean) as { heading: string; slug: string }[];
+---
+
+{items.length > 0 && (
+  <nav class="pillar-toc" aria-label="Inhoudsopgave">
+    <p class="text-tiny font-mono uppercase tracking-wider text-text-secondary font-semibold mb-3">
+      Op deze pagina
+    </p>
+    <ol class="m-0 p-0 flex flex-col gap-2 list-none">
+      {items.map((item) => (
+        <li>
+          
+            href={`#${item.slug}`}
+            data-toc-link={item.slug}
+            class="toc-link block pl-3 text-text-secondary text-small leading-snug no-underline transition-colors duration-200 hover:text-text"
+          >
+            {item.heading}
+          </a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}
+
+<style>
+  .toc-link {
+    border-left: 2px solid transparent;
+  }
+  .toc-link:hover {
+    border-left-color: #E8E5DC;
+  }
+  .toc-link.is-active {
+    border-left-color: #B08D57;
+    font-weight: 500;
+    color: #0A1628;
+  }
+  @media (min-width: 1024px) {
+    .pillar-toc {
+      position: sticky;
+      top: 6rem;
+    }
+  }
+</style>
+
+<script>
+  (function initTOC() {
+    const links = document.querySelectorAll('.toc-link');
+    if (!links.length) return;
+
+    const sections = Array.from(links)
+      .map((l) => {
+        const id = (l as HTMLAnchorElement).getAttribute('href')?.slice(1);
+        return id ? document.getElementById(id) : null;
+      })
+      .filter(Boolean) as HTMLElement[];
+
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            links.forEach((l) => l.classList.remove('is-active'));
+            const active = document.querySelector(`.toc-link[data-toc-link="${id}"]`);
+            active?.classList.add('is-active');
+          }
+        });
+      },
+      { rootMargin: '-25% 0px -60% 0px', threshold: 0 }
+    );
+
+    sections.forEach((s) => observer.observe(s));
+  })();
+</script>
