@@ -88,11 +88,11 @@ const formatDate = (iso: string) => new Date(iso).toLocaleDateString('nl-NL', { 
       {/* TOC + Sections */}
       <div class="lg:flex lg:gap-12 mt-12">
         {pillar.sections && pillar.sections.length > 0 && (
-          <aside class="hidden lg:block lg:w-44 lg:flex-shrink-0">
+          <aside class="hidden lg:block lg:w-44 lg:flex-shrink-0 lg:order-2">
             <TableOfContents sections={pillar.sections} />
           </aside>
         )}
-        <div class="lg:flex-1 lg:min-w-0">
+        <div class="lg:flex-1 lg:min-w-0 lg:order-1">
           {pillar.sections && pillar.sections.map((section: any) => (
             <section id={section.anchor?.current || section.anchor} class="mt-12 first:mt-0 scroll-mt-24">
               <h2 class="text-h2 font-bold mb-4 text-text">{section.heading}</h2>
