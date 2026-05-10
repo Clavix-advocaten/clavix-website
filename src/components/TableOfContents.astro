@@ -1,11 +1,4 @@
 ---
-interface SectionLike {
-  heading?: string;
-  anchor?: string | { current: string };
-}
-interface Props {
-  sections: SectionLike[];
-}
 const { sections } = Astro.props;
 
 const items = (sections || [])
@@ -13,7 +6,7 @@ const items = (sections || [])
     const slug = typeof s.anchor === 'string' ? s.anchor : s.anchor?.current;
     return s.heading && slug ? { heading: s.heading, slug } : null;
   })
-  .filter(Boolean) as { heading: string; slug: string }[];
+  .filter(Boolean);
 ---
 
 {items.length > 0 && (
@@ -77,8 +70,8 @@ const items = (sections || [])
           if (entry.isIntersecting) {
             const id = entry.target.id;
             links.forEach((l) => l.classList.remove('is-active'));
-            const active = document.querySelector(`.toc-link[data-toc-link="${id}"]`);
-            active?.classList.add('is-active');
+            const active = document.querySelector('.toc-link[data-toc-link="' + id + '"]');
+            if (active) active.classList.add('is-active');
           }
         });
       },
