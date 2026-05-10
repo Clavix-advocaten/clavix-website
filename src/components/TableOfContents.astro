@@ -64,10 +64,10 @@ const items = (sections || [])
 
     const sections = Array.from(links)
       .map((l) => {
-        const id = (l as HTMLAnchorElement).getAttribute('href')?.slice(1);
+        const id = l.getAttribute('href')?.slice(1);
         return id ? document.getElementById(id) : null;
       })
-      .filter(Boolean) as HTMLElement[];
+      .filter(Boolean);
 
     if (!sections.length) return;
 
