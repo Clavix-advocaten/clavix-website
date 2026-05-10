@@ -2,15 +2,15 @@
 const { sections } = Astro.props;
 
 const items = (sections || [])
-  .map((s) => {
-    const slug = typeof s.anchor === 'string' ? s.anchor : s.anchor?.current;
-    return s.heading && slug ? { heading: s.heading, slug } : null;
-  })
-  .filter(Boolean);
+  .map((s) => ({
+    heading: s.heading,
+    slug: typeof s.anchor === 'string' ? s.anchor : s.anchor?.current,
+  }))
+  .filter((i) => i.heading && i.slug);
 ---
 
 {items.length > 0 && (
-  <nav class="pillar-toc" aria-label="Inhoudsopgave">
+  <nav class="lg:sticky lg:top-24" aria-label="Inhoudsopgave">
     <p class="text-tiny font-mono uppercase tracking-wider text-text-secondary font-semibold mb-3">
       Op deze pagina
     </p>
@@ -19,8 +19,7 @@ const items = (sections || [])
         <li>
           
             href={`#${item.slug}`}
-            data-toc-link={item.slug}
-            class="toc-link block pl-3 text-text-secondary text-small leading-snug no-underline transition-colors duration-200 hover:text-text"
+            class="block pl-3 border-l-2 border-transparent text-text-secondary text-small leading-snug hover:text-text hover:border-border no-underline transition-colors"
           >
             {item.heading}
           </a>
@@ -29,55 +28,3 @@ const items = (sections || [])
     </ol>
   </nav>
 )}
-
-<style>
-  .toc-link {
-    border-left: 2px solid transparent;
-  }
-  .toc-link:hover {
-    border-left-color: #E8E5DC;
-  }
-  .toc-link.is-active {
-    border-left-color: #B08D57;
-    font-weight: 500;
-    color: #0A1628;
-  }
-  @media (min-width: 1024px) {
-    .pillar-toc {
-      position: sticky;
-      top: 6rem;
-    }
-  }
-</style>
-
-<script>
-  (function initTOC() {
-    const links = document.querySelectorAll('.toc-link');
-    if (!links.length) return;
-
-    const sections = Array.from(links)
-      .map((l) => {
-        const id = l.getAttribute('href')?.slice(1);
-        return id ? document.getElementById(id) : null;
-      })
-      .filter(Boolean);
-
-    if (!sections.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            links.forEach((l) => l.classList.remove('is-active'));
-            const active = document.querySelector('.toc-link[data-toc-link="' + id + '"]');
-            if (active) active.classList.add('is-active');
-          }
-        });
-      },
-      { rootMargin: '-25% 0px -60% 0px', threshold: 0 }
-    );
-
-    sections.forEach((s) => observer.observe(s));
-  })();
-</script>
