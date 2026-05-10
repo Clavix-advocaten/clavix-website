@@ -88,7 +88,7 @@ const formatDate = (iso: string) => new Date(iso).toLocaleDateString('nl-NL', { 
       {/* TOC + Sections */}
       <div class="lg:flex lg:gap-12 mt-12">
         {pillar.sections && pillar.sections.length > 0 && (
-          <aside class="hidden lg:block lg:w-48 lg:flex-shrink-0">
+          <aside class="hidden lg:block lg:w-44 lg:flex-shrink-0">
             <TableOfContents sections={pillar.sections} />
           </aside>
         )}

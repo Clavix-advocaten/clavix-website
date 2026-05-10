@@ -14,12 +14,12 @@ const items = (sections || [])
     <p class="text-tiny font-mono uppercase tracking-wider text-text-secondary font-semibold mb-3">
       Op deze pagina
     </p>
-    <ol class="m-0 p-0 flex flex-col gap-2 list-none">
+    <ol class="m-0 p-0 flex flex-col gap-1.5 list-none">
       {items.map((item) => (
         <li>
           <a
             href={`#${item.slug}`}
-            class="block pl-3 border-l-2 border-transparent text-text-secondary text-small leading-snug hover:text-text hover:border-border no-underline transition-colors"
+            class="block pl-3 border-l-2 border-transparent text-text-secondary text-tiny leading-snug hover:text-text hover:border-border no-underline transition-colors"
           >
             {item.heading}
           </a>
