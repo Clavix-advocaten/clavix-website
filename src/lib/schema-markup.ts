@@ -25,7 +25,7 @@ export function organizationSchema() {
       addressCountry: 'NL',
     },
     telephone: '+31207471121',
-    email: 'kumar@clavix.nl',
+    email: 'info@clavix.nl',
     areaServed: { '@type': 'Country', name: 'Netherlands' },
     knowsAbout: [
       'Ondernemingsrecht',
