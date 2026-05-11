@@ -77,7 +77,9 @@ const pillarPageBySlugQuery = groq`*[_type == "pillarPage" && slug.current == $s
   },
   relatedPillars[]-> {
     _id,
+    title,
     shortTitle,
+    subtitle,
     "slug": slug.current
   },
   publishedAt,

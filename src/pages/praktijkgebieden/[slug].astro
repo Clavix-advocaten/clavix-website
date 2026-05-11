@@ -156,6 +156,24 @@ const formatDate = (iso: string) => new Date(iso).toLocaleDateString('nl-NL', { 
         </section>
       )}
 
+
+      {/* Related pillars */}
+      {pillar.relatedPillars && pillar.relatedPillars.length > 0 && (
+        <section class="mt-20">
+          <h2 class="text-h2 font-bold mb-8 text-text">Verwante praktijkgebieden</h2>
+          <ul class="grid md:grid-cols-2 gap-4">
+            {pillar.relatedPillars.map((p: any) => (
+              <li>
+                <a href={`/praktijkgebieden/${p.slug}`} class="block p-4 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary no-underline transition">
+                  <div class="font-semibold text-text">{p.shortTitle || p.title}</div>
+                  {p.subtitle && <div class="text-small text-text-secondary mt-1">{p.subtitle}</div>}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {/* Author byline */}
       {pillar.author?.name && (
         <div class="mt-20 pt-8 border-t border-border text-tiny text-text-muted italic">
