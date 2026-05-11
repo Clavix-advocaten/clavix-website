@@ -24,7 +24,7 @@ const categoryLabel = (cat: string) => {
   description="Wat ons opvalt in jurisprudentie en praktijk. Korte stukken over ondernemingsrecht, vastgoed en insolventie."
 >
   <section class="bg-bg-tinted">
-    <div class="max-w-content mx-auto px-4 md:px-8 py-16">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16">
       <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Notities</h1>
       <p class="text-lead text-text-secondary italic">
         Wat ons opvalt in jurisprudentie en praktijk. Korte stukken, geen 10-tipsjes.
@@ -32,7 +32,7 @@ const categoryLabel = (cat: string) => {
     </div>
   </section>
 
-  <section class="max-w-content mx-auto px-4 md:px-8 py-16">
+  <section class="max-w-container mx-auto px-4 md:px-8 py-16">
     {posts.length === 0 ? (
       <p class="text-text-secondary">Nog geen artikelen gepubliceerd. Voeg ze toe via Sanity Studio.</p>
     ) : (

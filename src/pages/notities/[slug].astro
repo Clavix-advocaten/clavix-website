@@ -33,7 +33,7 @@ const seoDescription = post.seo?.metaDescription || post.excerpt
 <BaseLayout title={seoTitle} description={seoDescription} schemaJsonLd={schemas}>
   <article>
     <section class="bg-bg-tinted">
-      <div class="max-w-content mx-auto px-4 md:px-8 py-12 md:py-16">
+      <div class="max-w-container mx-auto px-4 md:px-8 py-12 md:py-16">
         <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
           <a href="/" class="hover:text-text-accent">Home</a> ›{' '}
           <a href="/notities" class="hover:text-text-accent">Notities</a>
@@ -49,7 +49,7 @@ const seoDescription = post.seo?.metaDescription || post.excerpt
       </div>
     </section>
 
-    <div class="max-w-content mx-auto px-4 md:px-8 py-12">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-12">
       {post.featuredImageUrl && (
         <img src={post.featuredImageUrl} alt={post.title} class="w-full h-auto rounded-lg mb-8" />
       )}
