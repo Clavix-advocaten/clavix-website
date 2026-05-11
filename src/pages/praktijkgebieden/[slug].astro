@@ -17,6 +17,41 @@ export async function getStaticPaths() {
 const { slug } = Astro.params
 const pillar = await getPillarPage(slug as string)
 
+// Specialisme cross-link mapping
+const specialismes: Record<string, any> = {
+  'aandeelhoudersgeschillen': {
+    title: 'Aandeelhoudersgeschillen',
+    description: 'Van 50/50-patstelling tot uitkoop. Geschillenregeling, Ondernemingskamer, of onderhandeling.',
+    slug: 'aandeelhoudersgeschillen',
+  },
+  'bedrijfsoverdracht-met-vastgoed': {
+    title: 'Bedrijfsoverdracht met vastgoed',
+    description: 'M&A waar vastgoed onderdeel is van de transactie. Earn-outs, vrijwaringen, transactiestructuur.',
+    slug: 'bedrijfsoverdracht-met-vastgoed',
+  },
+  'bestuurdersaansprakelijkheid': {
+    title: 'Bestuurdersaansprakelijkheid',
+    description: "Verdediging bij curator-claims, advies voor DGA's, en preventieve risico-analyse.",
+    slug: 'bestuurdersaansprakelijkheid',
+  },
+  'bouwgeschillen': {
+    title: 'Bouwgeschillen',
+    description: 'Wanprestatie aannemers, gebreken, oplevering, en aanneming van werk.',
+    slug: 'bouwgeschillen',
+  },
+};
+
+const specialismeMapping: Record<string, string[]> = {
+  'vastgoed-en-ondernemers': ['bedrijfsoverdracht-met-vastgoed', 'aandeelhoudersgeschillen'],
+  'ondernemingsrecht': ['aandeelhoudersgeschillen', 'bestuurdersaansprakelijkheid'],
+  'vastgoedrecht': ['bouwgeschillen', 'bedrijfsoverdracht-met-vastgoed'],
+  'insolventie-en-herstructurering': ['bestuurdersaansprakelijkheid'],
+};
+
+const pillarSpecialismes = (specialismeMapping[slug as string] || [])
+  .map((s: string) => specialismes[s])
+  .filter(Boolean)
+
 if (!pillar) return Astro.redirect('/404')
 
 // Build schemas
