@@ -139,6 +139,22 @@ const formatDate = (iso: string) => new Date(iso).toLocaleDateString('nl-NL', { 
       {/* FAQ */}
       {pillar.faqs && pillar.faqs.length > 0 && <FAQAccordion faqs={pillar.faqs} />}
 
+
+      {/* Onze specialisaties */}
+      {pillarSpecialismes && pillarSpecialismes.length > 0 && (
+        <section class="mt-20">
+          <h2 class="text-h2 font-bold mb-8 text-text">Onze specialisaties op dit gebied</h2>
+          <div class="grid md:grid-cols-2 gap-4">
+            {pillarSpecialismes.map((s: any) => (
+              <a href={`/specialisme/${s.slug}`} class="block p-6 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary no-underline transition">
+                <div class="font-semibold text-h4 text-text mb-2">{s.title}</div>
+                <div class="text-small text-text-secondary">{s.description}</div>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Related clusters */}
       {pillar.relatedClusters && pillar.relatedClusters.length > 0 && (
         <section class="mt-20">

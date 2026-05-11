@@ -118,3 +118,16 @@ function extractTextFromBlocks(blocks: any): string {
     .map((block: any) => block.children?.map((child: any) => child.text).join('') || '')
     .join('\n\n')
 }
+
+export function serviceSchema(service: { name: string; description: string; url: string; serviceType?: string }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.name,
+    description: service.description,
+    url: `${SITE_URL}${service.url}`,
+    serviceType: service.serviceType || 'Juridische dienstverlening',
+    provider: { '@type': 'LegalService', name: ORG_NAME, url: SITE_URL },
+    areaServed: { '@type': 'Country', name: 'Netherlands' },
+  }
+}

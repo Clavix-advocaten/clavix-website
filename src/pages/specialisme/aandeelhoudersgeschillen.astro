@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CTABand from '../../components/CTABand.astro';
+import { organizationSchema, serviceSchema, breadcrumbSchema } from '@lib/schema-markup';
 
 const pageTitle = 'Aandeelhoudersgeschillen — van patstelling tot uitkoop';
 const pageDescription = "Juridische bijstand bij aandeelhoudersgeschillen voor DGA's, compagnons, en investeerders. 50/50-patstellingen, uittreedprocedures, geschillenregeling (2:336-2:343 BW), en procedures bij de Ondernemingskamer.";
@@ -64,9 +65,26 @@ const onderscheid = [
     omschrijving: 'Aandeelhoudersgeschillen tussen compagnons, familieleden, of langjarige zakenpartners zijn zelden alleen juridisch. Wij staan u persoonlijk bij in een dossier dat zowel juridische als relationele expertise vraagt. Voor omvangrijke procedures werken wij samen met mr. V.C. van der Velde van Alpha Advocaten.',
   },
 ];
+
+const schemas = [
+  organizationSchema(),
+  serviceSchema({
+    name: 'Aandeelhoudersgeschillen',
+    description: 'Juridische bijstand bij aandeelhoudersgeschillen. 50/50-patstellingen, geschillenregeling, Ondernemingskamer-procedures, en uitkoop-onderhandeling.',
+    url: '/specialisme/aandeelhoudersgeschillen',
+    serviceType: 'Aandeelhoudersgeschillen-advies en procedures',
+  }),
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Specialisme', url: '/' },
+    { name: 'Aandeelhoudersgeschillen', url: '/specialisme/aandeelhoudersgeschillen' },
+  ]),
+];
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout title={pageTitle} description={pageDescription}
+  schemaJsonLd={schemas}
+>
   <article>
     {/* === HERO === */}
     <section class="bg-bg-tinted">

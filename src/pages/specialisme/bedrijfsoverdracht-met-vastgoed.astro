@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CTABand from '../../components/CTABand.astro';
+import { organizationSchema, serviceSchema, breadcrumbSchema } from '@lib/schema-markup';
 
 const pageTitle = 'Bedrijfsoverdracht met vastgoed — strategie en transactie in één hand';
 const pageDescription = "Juridische bijstand bij bedrijfsoverdracht waarbij vastgoed een rol speelt. M&A-structuur, holdingherstructurering, SPA-bepalingen voor vastgoed, en lange-termijn huurarrangementen met de overnemer.";
@@ -64,9 +65,26 @@ const onderscheid = [
     omschrijving: 'De verkoop van een onderneming met bedrijfspand is voor de meeste DGA s een eenmalige ervaring met grote financiele en emotionele impact. U heeft direct contact met de behandelend advocaat. Voor omvangrijke trajecten werken wij samen met mr. V.C. van der Velde van Alpha Advocaten.',
   },
 ];
+
+const schemas = [
+  organizationSchema(),
+  serviceSchema({
+    name: 'Bedrijfsoverdracht met vastgoed',
+    description: 'M&A-transacties waar vastgoed onderdeel van is. Earn-outs, vrijwaringen, transactiestructuur, en juridische due diligence.',
+    url: '/specialisme/bedrijfsoverdracht-met-vastgoed',
+    serviceType: 'M&A-advies met vastgoed-component',
+  }),
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Specialisme', url: '/' },
+    { name: 'Bedrijfsoverdracht met vastgoed', url: '/specialisme/bedrijfsoverdracht-met-vastgoed' },
+  ]),
+];
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout title={pageTitle} description={pageDescription}
+  schemaJsonLd={schemas}
+>
   <article>
     {/* === HERO === */}
     <section class="bg-bg-tinted">

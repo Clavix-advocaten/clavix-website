@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CTABand from '../../components/CTABand.astro';
+import { organizationSchema, serviceSchema, breadcrumbSchema } from '@lib/schema-markup';
 
 const pageTitle = 'Bouwgeschillen — oplevering, verborgen gebreken, en wanprestatie';
 const pageDescription = 'Juridische bijstand bij bouwgeschillen voor opdrachtgevers, aannemers, VvE\'s en projectontwikkelaars. UAV 2012, UAV-GC 2005, en Wet kwaliteitsborging voor het bouwen.';
@@ -64,9 +65,26 @@ const onderscheid = [
     omschrijving: 'U heeft direct contact met de behandelend advocaat, niet met een team van junioren. Voor omvangrijke trajecten werken wij samen met mr. V.C. van der Velde van Alpha Advocaten, zodat capaciteit nooit een beperking vormt.',
   },
 ];
+
+const schemas = [
+  organizationSchema(),
+  serviceSchema({
+    name: 'Bouwgeschillen',
+    description: 'Geschillen tussen opdrachtgever en aannemer. Wanprestatie, gebreken, oplevering, en aanneming van werk.',
+    url: '/specialisme/bouwgeschillen',
+    serviceType: 'Bouwgeschillen-advies en procedures',
+  }),
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Specialisme', url: '/' },
+    { name: 'Bouwgeschillen', url: '/specialisme/bouwgeschillen' },
+  ]),
+];
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout title={pageTitle} description={pageDescription}
+  schemaJsonLd={schemas}
+>
   <article>
     {/* === HERO === */}
     <section class="bg-bg-tinted">
