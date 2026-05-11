@@ -135,6 +135,24 @@ const formatDate = (dateStr: string) => {
             </div>
           )}
 
+          {/* Awards / Pleitwedstrijden */}
+          {attorney.awards && attorney.awards.length > 0 && (
+            <div class="md:col-span-2">
+              <h3 class="text-tiny font-semibold uppercase tracking-wider text-text-muted mb-2">
+                Prijzen en wedstrijden
+              </h3>
+              <ul class="space-y-3">
+                {attorney.awards.map((a: any) => (
+                  <li class="text-body text-text">
+                    <strong>{a.title}</strong>
+                    {a.year && <span class="text-text-secondary"> — {a.year}</span>}
+                    {a.note && <div class="text-small text-text-secondary mt-1">{a.note}</div>}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           {/* Opleiding */}
           {attorney.education && attorney.education.length > 0 && (
             <div>

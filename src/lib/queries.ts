@@ -15,6 +15,7 @@ const attorneyQuery = groq`*[_type == "attorney"][0] {
   "slug": slug.current,
   email,
   phone,
+  mobile,
   linkedin,
   beediging,
   novaRegistrations,
@@ -26,6 +27,7 @@ const attorneyQuery = groq`*[_type == "attorney"][0] {
   bio,
   personalNote,
   substitutionInfo,
+  awards[] { title, year, note },
   sameAs,
   "photoUrl": photo.asset->url,
   "photoSmallUrl": photoSmall.asset->url
