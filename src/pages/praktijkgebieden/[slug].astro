@@ -48,7 +48,7 @@ const formatDate = (iso: string) => new Date(iso).toLocaleDateString('nl-NL', { 
   <article>
     {/* === HERO === */}
     <section class="bg-bg-tinted">
-      <div class="max-w-content mx-auto px-4 md:px-8 py-12 md:py-16">
+      <div class="max-w-container mx-auto px-4 md:px-8 py-12 md:py-16">
         <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
           <a href="/" class="hover:text-text-accent">Home</a> ›{' '}
           Praktijkgebieden ›{' '}
@@ -81,7 +81,7 @@ const formatDate = (iso: string) => new Date(iso).toLocaleDateString('nl-NL', { 
     </section>
 
     {/* === BODY === */}
-    <div class="max-w-content mx-auto px-4 md:px-8 py-12">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-12">
       {/* TL;DR */}
       {pillar.tldr?.body && <TLDR heading={pillar.tldr.heading} body={pillar.tldr.body} />}
 
