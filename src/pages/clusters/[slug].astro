@@ -98,6 +98,21 @@ const formatDate = (iso: string) => new Date(iso).toLocaleDateString('nl-NL', { 
       )}
     </div>
 
+
+      {cluster.relatedClusters && cluster.relatedClusters.length > 0 && (
+        <section class="mt-20">
+          <h2 class="text-h2 font-bold mb-8 text-text">Verwante artikelen</h2>
+          <div class="grid md:grid-cols-2 gap-4">
+            {cluster.relatedClusters.map((r: any) => (
+              <a href={`/clusters/${r.slug}`} class="block p-6 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary no-underline transition">
+                <div class="font-semibold text-text mb-2">{r.title}</div>
+                {r.subtitle && <div class="text-small text-text-secondary">{r.subtitle}</div>}
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
     <CTABand />
   </article>
 </BaseLayout>
