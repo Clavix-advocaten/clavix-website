@@ -100,7 +100,7 @@ const formatDate = (iso: string) => new Date(iso).toLocaleDateString('nl-NL', { 
 
 
       {cluster.relatedClusters && cluster.relatedClusters.length > 0 && (
-        <section class="mt-20">
+        <section class="max-w-content mx-auto px-4 md:px-8 mt-12 mb-20">
           <h2 class="text-h2 font-bold mb-8 text-text">Verwante artikelen</h2>
           <div class="grid md:grid-cols-2 gap-4">
             {cluster.relatedClusters.map((r: any) => (
