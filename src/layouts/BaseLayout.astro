@@ -28,7 +28,7 @@ const {
 } = Astro.props
 
 const siteUrl = 'https://clavix.nl' // Wordt later netlify-env-aware
-const fullTitle = title === 'Clavix Advocaten' ? title : `${title} — Clavix Advocaten`
+const fullTitle = title.includes('Clavix') ? title : `${title} — Clavix Advocaten`
 const canonicalUrl = canonical || `${siteUrl}${Astro.url.pathname}`
 
 // Bouw schema-array
