@@ -117,6 +117,10 @@ export function articleSchema(page: any, attorneyName: string = 'mr. Mukesh Kuma
     publisher: { '@type': 'LegalService', name: ORG_NAME },
     datePublished: page.publishedAt,
     dateModified: page.modifiedAt || page.publishedAt,
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['[data-speakable]'],
+    },
   }
 }
 
@@ -206,6 +210,10 @@ export function blogPostingSchema(post: any, attorneyName: string = 'mr. Mukesh 
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/notities/${post.slug?.current || post.slug}` },
     articleSection: post.category || 'Juridische analyses',
     inLanguage: 'nl-NL',
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['[data-speakable]'],
+    },
   }
 }
 
