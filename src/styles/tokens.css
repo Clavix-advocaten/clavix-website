@@ -59,7 +59,7 @@
 
   --color-text:           var(--rb-900);
   --color-text-secondary: var(--neutral-600);
-  --color-text-muted:     var(--neutral-500);
+  --color-text-muted:     var(--neutral-600);
   --color-text-accent:    var(--rb-600);
   --color-text-inverse:   var(--neutral-50);
 
