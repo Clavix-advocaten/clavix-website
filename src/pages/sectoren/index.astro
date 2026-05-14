@@ -55,20 +55,20 @@ const iconPaths: Record<string, string> = {
 ---
 
 <BaseLayout title={seoTitle} description={seoDescription} schemaJsonLd={schemas}>
-  <nav class="max-w-content mx-auto px-4 md:px-8 pt-6 text-tiny text-text-secondary" aria-label="Breadcrumb">
+  <nav class="max-w-container mx-auto px-4 md:px-8 pt-6 text-tiny text-text-secondary" aria-label="Breadcrumb">
     <a href="/" class="hover:text-text-accent no-underline">Home</a>
     <span class="mx-2">/</span>
     <span class="text-text">Sectoren</span>
   </nav>
 
-  <section class="max-w-content mx-auto px-4 md:px-8 py-12 md:py-16">
+  <section class="max-w-container mx-auto px-4 md:px-8 py-12 md:py-16">
     <h1 class="text-display font-extrabold text-text mb-4">Juridisch advies per sector</h1>
     <p class="text-lead text-text-secondary max-w-readable mb-6">
       Iedere sector heeft eigen pijnpunten. Wij specialiseren ons in industrieen waar wij de juridische context van binnen kennen, zodat advies direct relevant is voor uw situatie.
     </p>
   </section>
 
-  <section class="max-w-content mx-auto px-4 md:px-8 pb-16">
+  <section class="max-w-container mx-auto px-4 md:px-8 pb-16">
     {sectors.length > 0 ? (
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {sectors.map((s: any) => (

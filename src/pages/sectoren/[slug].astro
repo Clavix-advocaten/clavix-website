@@ -41,7 +41,7 @@ if (sector.faqs?.length) {
 
 <BaseLayout title={seoTitle} description={seoDescription} schemaJsonLd={schemas}>
   {/* Breadcrumbs */}
-  <nav class="max-w-content mx-auto px-4 md:px-8 pt-6 text-tiny text-text-secondary" aria-label="Breadcrumb">
+  <nav class="max-w-container mx-auto px-4 md:px-8 pt-6 text-tiny text-text-secondary" aria-label="Breadcrumb">
     <a href="/" class="hover:text-text-accent no-underline">Home</a>
     <span class="mx-2">/</span>
     <a href="/sectoren" class="hover:text-text-accent no-underline">Sectoren</a>
@@ -50,8 +50,8 @@ if (sector.faqs?.length) {
   </nav>
 
   {/* Hero */}
-  <section class="max-w-content mx-auto px-4 md:px-8 py-12 md:py-16">
-    <h1 class="text-display font-extrabold text-text mb-4">{sector.title}</h1>
+  <section class="max-w-container mx-auto px-4 md:px-8 py-12 md:py-16">
+    <h1 class="text-display font-extrabold text-text mb-4">{sector.shortTitle}</h1>
     {sector.subtitle && <p class="text-h3 text-text-secondary mb-6">{sector.subtitle}</p>}
     {sector.volumeStat && (
       <div class="inline-block px-3 py-1 bg-brand-secondary/30 border border-brand-secondary rounded-md text-small text-text mb-6">
@@ -65,17 +65,17 @@ if (sector.faqs?.length) {
 
   {/* TLDR */}
   {sector.tldr && (
-    <div class="max-w-content mx-auto px-4 md:px-8">
+    <div class="max-w-container mx-auto px-4 md:px-8">
       <TLDR heading={sector.tldr.heading || 'In het kort'} body={sector.tldr.body} />
     </div>
   )}
 
   {/* Pain Points */}
   {sector.painPoints && sector.painPoints.length > 0 && (
-    <section class="max-w-content mx-auto px-4 md:px-8 py-12">
+    <section class="max-w-container mx-auto px-4 md:px-8 py-12">
       <h2 class="text-h2 font-bold text-text mb-2">Sector-specifieke pijnpunten</h2>
       <p class="text-body text-text-secondary mb-8">Concrete situaties die wij vaak tegenkomen in {sector.shortTitle}.</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {sector.painPoints.map((pp: any) => (
           <article class="p-6 bg-bg-elevated border border-border rounded-lg" data-speakable>
             <h3 class="text-h4 font-semibold text-text mb-3">{pp.title}</h3>
@@ -98,7 +98,7 @@ if (sector.faqs?.length) {
   {((sector.relevantPillars && sector.relevantPillars.length > 0) ||
     (sector.relevantClusters && sector.relevantClusters.length > 0)) && (
     <section class="bg-bg-tinted py-12">
-      <div class="max-w-content mx-auto px-4 md:px-8">
+      <div class="max-w-container mx-auto px-4 md:px-8">
         <h2 class="text-h2 font-bold text-text mb-2">Onze rollen voor {sector.shortTitle}</h2>
         <p class="text-body text-text-secondary mb-8">
           Praktijkgebieden en diepere onderwerpen waar wij u in deze sector kunnen bijstaan.
@@ -143,7 +143,7 @@ if (sector.faqs?.length) {
 
   {/* Relevant Cases */}
   {sector.relevantCases && sector.relevantCases.length > 0 && (
-    <section class="max-w-content mx-auto px-4 md:px-8 py-12">
+    <section class="max-w-container mx-auto px-4 md:px-8 py-12">
       <h2 class="text-h2 font-bold text-text mb-8">Recente cases in {sector.shortTitle}</h2>
       <div class="space-y-4">
         {sector.relevantCases.map((c: any) => (
@@ -180,7 +180,7 @@ if (sector.faqs?.length) {
 
   {/* FAQ */}
   {sector.faqs && sector.faqs.length > 0 && (
-    <section class="max-w-content mx-auto px-4 md:px-8 py-12">
+    <section class="max-w-container mx-auto px-4 md:px-8 py-12">
       <h2 class="text-h2 font-bold text-text mb-8">Veelgestelde vragen over {sector.shortTitle}</h2>
       <div class="space-y-3">
         {sector.faqs.map((f: any) => (

@@ -6,7 +6,7 @@ export const sanityClient = createClient({
   dataset: import.meta.env.PUBLIC_SANITY_DATASET || 'production',
   apiVersion: '2024-12-01',
   useCdn: false, // CDN voor snelheid in productie
-  perspective: 'published', // Alleen gepubliceerde content
+  perspective: 'raw', // Filtering van drafts gebeurt in GROQ queries
 })
 
 const builder = imageUrlBuilder(sanityClient)

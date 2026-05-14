@@ -8,7 +8,7 @@ import groq from 'groq'
 
 // === ATTORNEY (Mukesh-bio singleton) ===
 
-const attorneyQuery = groq`*[_type == "attorney"][0] {
+const attorneyQuery = groq`*[_type == "attorney" && !(_id in path("drafts.**"))][0] {
   name,
   shortName,
   title,
@@ -39,7 +39,7 @@ export async function getAttorney() {
 
 // === PILLAR PAGES ===
 
-const pillarPageBySlugQuery = groq`*[_type == "pillarPage" && slug.current == $slug][0] {
+const pillarPageBySlugQuery = groq`*[_type == "pillarPage" && slug.current == $slug && !(_id in path("drafts.**"))][0] {
   title,
   shortTitle,
   subtitle,
@@ -95,7 +95,7 @@ export async function getPillarPage(slug: string) {
   return sanityClient.fetch(pillarPageBySlugQuery, { slug })
 }
 
-const allPillarSlugsQuery = groq`*[_type == "pillarPage" && defined(slug.current)] {
+const allPillarSlugsQuery = groq`*[_type == "pillarPage" && defined(slug.current) && !(_id in path("drafts.**"))] {
   "slug": slug.current,
   shortTitle
 }`
@@ -106,7 +106,7 @@ export async function getAllPillarSlugs() {
 
 // === CLUSTER PAGES ===
 
-const clusterPageBySlugQuery = groq`*[_type == "clusterPage" && slug.current == $slug][0] {
+const clusterPageBySlugQuery = groq`*[_type == "clusterPage" && slug.current == $slug && !(_id in path("drafts.**"))][0] {
   title,
   subtitle,
   "slug": slug.current,
@@ -155,7 +155,7 @@ export async function getClusterPage(slug: string) {
   return sanityClient.fetch(clusterPageBySlugQuery, { slug })
 }
 
-const allClusterSlugsQuery = groq`*[_type == "clusterPage" && defined(slug.current)] {
+const allClusterSlugsQuery = groq`*[_type == "clusterPage" && defined(slug.current) && !(_id in path("drafts.**"))] {
   "slug": slug.current,
   title
 }`
@@ -166,7 +166,7 @@ export async function getAllClusterSlugs() {
 
 // === BLOG POSTS (Notities) ===
 
-const blogPostBySlugQuery = groq`*[_type == "blogPost" && slug.current == $slug][0] {
+const blogPostBySlugQuery = groq`*[_type == "blogPost" && slug.current == $slug && !(_id in path("drafts.**"))][0] {
   title,
   "slug": slug.current,
   category,
@@ -197,7 +197,7 @@ export async function getBlogPost(slug: string) {
   return sanityClient.fetch(blogPostBySlugQuery, { slug })
 }
 
-const allBlogPostsQuery = groq`*[_type == "blogPost"] | order(publishedAt desc) {
+const allBlogPostsQuery = groq`*[_type == "blogPost" && !(_id in path("drafts.**"))] | order(publishedAt desc) {
   _id,
   title,
   "slug": slug.current,
@@ -214,7 +214,7 @@ export async function getAllBlogPosts() {
   return sanityClient.fetch(allBlogPostsQuery)
 }
 
-const allBlogSlugsQuery = groq`*[_type == "blogPost" && defined(slug.current)] {
+const allBlogSlugsQuery = groq`*[_type == "blogPost" && defined(slug.current) && !(_id in path("drafts.**"))] {
   "slug": slug.current
 }`
 
@@ -222,7 +222,7 @@ export async function getAllBlogSlugs() {
   return sanityClient.fetch(allBlogSlugsQuery)
 }
 
-const homepageBlogPostsQuery = groq`*[_type == "blogPost" && showOnHomepage == true] | order(publishedAt desc) [0...3] {
+const homepageBlogPostsQuery = groq`*[_type == "blogPost" && showOnHomepage == true && !(_id in path("drafts.**"))] | order(publishedAt desc) [0...3] {
   _id,
   title,
   "slug": slug.current,
@@ -238,7 +238,7 @@ export async function getHomepageBlogPosts() {
 
 // === CASES ===
 
-const homepageCasesQuery = groq`*[_type == "case" && showOnHomepage == true] | order(sortOrder desc) [0...8] {
+const homepageCasesQuery = groq`*[_type == "case" && showOnHomepage == true && !(_id in path("drafts.**"))] | order(sortOrder desc) [0...8] {
   _id,
   title,
   "slug": slug.current,
@@ -258,7 +258,7 @@ export async function getHomepageCases() {
 // === SITE NAVIGATION DATA ===
 // Voor menu's: alle pillar-pages
 
-const allPillarsForNavQuery = groq`*[_type == "pillarPage"] | order(shortTitle asc) {
+const allPillarsForNavQuery = groq`*[_type == "pillarPage" && !(_id in path("drafts.**"))] | order(shortTitle asc) {
   shortTitle,
   "slug": slug.current
 }`
@@ -270,7 +270,7 @@ export async function getAllPillarsForNav() {
 // === SECTORS ===
 // Sectorpaginas voor industrieën (healthcare, horeca, tech, bouw, retail)
 
-const sectorBySlugQuery = groq`*[_type == "sectorPage" && slug.current == $slug][0] {
+const sectorBySlugQuery = groq`*[_type == "sectorPage" && slug.current == $slug && !(_id in path("drafts.**"))][0] {
   _id,
   title,
   shortTitle,
@@ -312,7 +312,7 @@ export async function getSector(slug: string) {
   return sanityClient.fetch(sectorBySlugQuery, { slug })
 }
 
-const allSectorsQuery = groq`*[_type == "sectorPage"] | order(order asc) {
+const allSectorsQuery = groq`*[_type == "sectorPage" && !(_id in path("drafts.**"))] | order(order asc) {
   _id,
   shortTitle,
   "slug": slug.current,
@@ -327,11 +327,13 @@ export async function getAllSectors() {
   return sanityClient.fetch(allSectorsQuery)
 }
 
-const allSectorSlugsQuery = groq`*[_type == "sectorPage" && defined(slug.current)] {
+const allSectorSlugsQuery = groq`*[_type == "sectorPage" && defined(slug.current) && !(_id in path("drafts.**"))] {
   "slug": slug.current
 }`
 
 export async function getAllSectorSlugs() {
-  return sanityClient.fetch(allSectorSlugsQuery)
+  const result = await sanityClient.fetch(allSectorSlugsQuery)
+  console.log('[DEBUG getAllSectorSlugs]', JSON.stringify(result))
+  return result
 }
 
