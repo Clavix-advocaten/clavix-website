@@ -29,7 +29,7 @@ const attorneyQuery = groq`*[_type == "attorney"][0] {
   substitutionInfo,
   awards[] { title, year, note },
   sameAs,
-  "photoUrl": photo.asset->url,
+  "photoUrl": photo.asset->url + "?w=860&fm=webp&q=80&fit=max",
   "photoSmallUrl": photoSmall.asset->url
 }`
 
@@ -179,7 +179,7 @@ const blogPostBySlugQuery = groq`*[_type == "blogPost" && slug.current == $slug]
   author-> {
     name,
     "slug": slug.current,
-    "photoUrl": photo.asset->url
+    "photoUrl": photo.asset->url + "?w=860&fm=webp&q=80&fit=max"
   },
   relatedPosts[]-> {
     _id,

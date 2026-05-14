@@ -105,7 +105,7 @@ const pillars = [
             src={attorney.photoUrl}
             alt={`Portretfoto van ${attorney.name}`}
             class="rounded-lg shadow-lg w-full h-auto aspect-[4/5] object-cover"
-            loading="eager"
+            fetchpriority="high" loading="eager"
           />
         ) : (
           <div class="rounded-lg overflow-hidden aspect-[4/5] flex items-center justify-center" style="background: linear-gradient(135deg, var(--rb-600), var(--rb-700));">
