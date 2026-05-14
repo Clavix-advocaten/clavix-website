@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABand from '../components/CTABand.astro';
+import { organizationSchema, breadcrumbSchema } from '@lib/schema-markup';
+
+const pageTitle = 'Juridische woordenlijst';
+const pageDescription = 'Begrippenlijst met juridische termen uit ondernemingsrecht, vastgoedrecht en insolventierecht — kort en helder uitgelegd voor ondernemers.';
+
+interface Term {
+  term: string;
+  def: string;
+  link?: string;
+}
+
+const terms: Term[] = [
+  { term: 'Aandeelhoudersgeschil', def: 'Conflict tussen aandeelhouders binnen een BV over koers, uitkering, bestuur of exit. Vaak opgelost via mediation, geschillenregeling (2:336-343 BW), of de Ondernemingskamer.', link: '/clusters/50-50-aandeelhoudersgeschil-oplossen' },
+  { term: 'Aandeelhoudersovereenkomst', def: 'Contract tussen aandeelhouders dat zaken regelt die niet in de statuten staan, zoals exit-mechanismen, drag-along, tag-along en geschillenregeling.', link: '/clusters/aandeelhoudersovereenkomst-minimaal' },
+  { term: 'Activatransactie', def: 'Verkoop van bedrijfsactiva (machines, voorraad, IP) afzonderlijk in plaats van een verkoop van de aandelen. Veel gebruikt bij doorstart uit faillissement.', link: '/clusters/activatransactie-faillissement' },
+  { term: 'AVA', def: 'Algemene Vergadering van Aandeelhouders: het besluitvormingsorgaan van een BV. Neemt onder meer besluiten over statutenwijziging, dividend, en decharge van bestuurders.' },
+  { term: 'Beslag op aandelen', def: 'Conservatoire of executoriale maatregel waarmee een schuldeiser zekerheid neemt op aandelen in een vennootschap. Vereist verlof van de voorzieningenrechter (artikel 700 Rv).', link: '/clusters/beslag-op-aandelen' },
+  { term: 'Bestuurdersaansprakelijkheid', def: 'Persoonlijke aansprakelijkheid van een bestuurder voor schade aan de vennootschap, aandeelhouders, of derden. Bij faillissement geldt artikel 2:248 BW (kennelijk onbehoorlijk bestuur).', link: '/clusters/bestuurdersaansprakelijkheid-faillissement' },
+  { term: 'BOR', def: 'Bedrijfsopvolgingsregeling: fiscale faciliteit waardoor een familiebedrijf bij schenking of vererving (vrijwel) zonder schenk- of erfbelasting kan worden overgedragen.', link: '/clusters/familiebedrijf-vastgoed-opvolging' },
+  { term: 'Bouwgeschil', def: 'Conflict tussen opdrachtgever en aannemer over uitvoering, oplevering, meerwerk, gebreken of UAV-voorwaarden bij een bouwproject.', link: '/clusters/bouwgeschil-aannemer-wanprestatie' },
+  { term: 'BV', def: 'Besloten Vennootschap: rechtspersoon met aandelen die niet vrij overdraagbaar zijn. De meest gebruikte ondernemingsvorm in Nederland.' },
+  { term: 'BW', def: 'Burgerlijk Wetboek: het Nederlandse civiele wetboek, opgedeeld in Boeken 1 t/m 10 en aanvullende boeken (zoals Boek 7 voor bijzondere overeenkomsten).' },
+  { term: 'Canon', def: 'De jaarlijkse vergoeding die een erfpachter betaalt aan de eigenaar van de grond (vaak de gemeente). Kan periodiek worden herzien.', link: '/clusters/erfpacht-amsterdam-herziening' },
+  { term: 'Concurrentiebeding', def: 'Contractuele beperking die een ex-aandeelhouder, ex-werknemer of ex-vennoot belet om concurrerende activiteiten te ontplooien gedurende een bepaalde periode en gebied.', link: '/clusters/concurrentiebeding-ex-aandeelhouders' },
+  { term: 'Decharge', def: 'Het AVA-besluit dat een bestuurder ontheft van interne aansprakelijkheid voor zijn beleid in een bepaalde periode. Werkt alleen tegenover de aandeelhouders en alleen voor wat hen bekend was.', link: '/clusters/decharge-bestuurder' },
+  { term: 'DGA', def: 'Directeur-Grootaandeelhouder: ondernemer die zowel bestuurder is als (vrijwel) alle aandelen bezit van zijn vennootschap. Vaak via een holdingstructuur.' },
+  { term: 'Doorstart', def: 'Voortzetting van bedrijfsactiviteiten na faillissement, doorgaans via een activatransactie waarbij een (nieuwe) entiteit de levensvatbare delen overneemt.', link: '/clusters/pre-pack-doorstart' },
+  { term: 'Drag-along', def: 'Clausule in een aandeelhoudersovereenkomst die meerderheidsaandeelhouders het recht geeft minderheidsaandeelhouders te dwingen mee te verkopen bij een exit.', link: '/clusters/aandeelhoudersovereenkomst-minimaal' },
+  { term: 'ECLI', def: 'European Case Law Identifier: unieke identifier voor rechtspraak in Europa. Voorbeeld: ECLI:NL:HR:2024:1234 voor een uitspraak van de Hoge Raad.' },
+  { term: 'Enquêteprocedure', def: 'Verzoek aan de Ondernemingskamer om wanbeleid binnen een vennootschap te onderzoeken. Kan leiden tot bijzondere voorzieningen zoals schorsing bestuurder of overdracht aandelen.' },
+  { term: 'Erfpacht', def: 'Zakelijk recht waarbij iemand het volledige gebruik en genot heeft van andermans grond, tegen betaling van canon. In Amsterdam belangrijk voor commerciële vastgoedbeleggers.', link: '/clusters/erfpacht-amsterdam-herziening' },
+  { term: 'Faillissement', def: 'Gerechtelijke procedure waarbij een onderneming wegens betalingsonmacht onder beheer van een curator wordt gesteld om vermogen te verdelen onder schuldeisers.', link: '/praktijkgebieden/insolventie-en-herstructurering' },
+  { term: 'Geschillenregeling', def: 'Procedure (artikel 2:336-343 BW) waarmee aandeelhouders elkaar kunnen dwingen tot overdracht of overname van aandelen bij een geschil. Verloopt bij de Ondernemingskamer.', link: '/clusters/50-50-aandeelhoudersgeschil-oplossen' },
+  { term: 'Holding', def: 'BV die aandelen bezit in een of meer werkmaatschappijen. Wordt vaak gebruikt om risico, vastgoed en winst te scheiden van operationele activiteiten.', link: '/clusters/vastgoed-bv-oprichten-holding-structuur' },
+  { term: 'Indeplaatsstelling', def: 'Procedure waarbij een huurder van 290-bedrijfsruimte zijn huurrechten overdraagt aan een opvolger bij bedrijfsoverdracht (artikel 7:307 BW).', link: '/clusters/indeplaatsstelling-huurder' },
+  { term: 'KvK', def: 'Kamer van Koophandel: het Nederlandse handelsregister. Verplichte inschrijving voor alle BV\'s, met openbare gegevens over bestuurders, aandeelhouders en statuten.' },
+  { term: 'M&A', def: 'Mergers & Acquisitions: fusies en overnames. Omvat aandelentransacties, activatransacties, joint ventures en management buy-outs.', link: '/clusters/verkoop-bedrijfspand-mna' },
+  { term: 'NOvA', def: 'Nederlandse Orde van Advocaten: de beroepsorganisatie van Nederlandse advocaten. Beheert de Verordening op de Advocatuur en de beroepsregels.' },
+  { term: 'Ondernemingskamer', def: 'Bijzondere kamer van het Gerechtshof Amsterdam die zich richt op vennootschapsrechtelijke geschillen, enquêteprocedures en geschillenregeling.' },
+  { term: 'Pauliana', def: 'Vernietigingsactie waarmee een curator (of schuldeiser) rechtshandelingen kan terugdraaien die de schuldeisers onverplicht hebben benadeeld vlak voor faillissement (artikel 42-47 Fw).', link: '/clusters/pauliana-actie-curator' },
+  { term: 'Pre-pack', def: 'Voorbereide doorstart waarbij een onderneming, met behulp van een beoogd curator, de overdracht van bedrijfsactiviteiten al voor het faillissement vormgeeft.', link: '/clusters/pre-pack-doorstart' },
+  { term: 'ROZ', def: 'Raad voor Onroerende Zaken: opstelt modellen voor huurovereenkomsten (ROZ-modellen) die in de praktijk veel worden gebruikt bij commercieel vastgoed.' },
+  { term: 'Statuten', def: 'De juridische basisinrichting van een BV: kapitaal, aandelensoorten, bestuursstructuur, doelomschrijving en blokkeringsregeling. Openbaar via de KvK.', link: '/clusters/statuten-bv-wijzigen' },
+  { term: 'Statutenwijziging', def: 'Wijziging van de statuten van een BV via een AVA-besluit, notariële akte en KvK-inschrijving. Vereist voor wezenlijke veranderingen in de vennootschapsstructuur.', link: '/clusters/statuten-bv-wijzigen' },
+  { term: 'Tag-along', def: 'Clausule in een aandeelhoudersovereenkomst die minderheidsaandeelhouders het recht geeft mee te verkopen onder dezelfde voorwaarden als de meerderheid (de mee-verkooprecht).', link: '/clusters/aandeelhoudersovereenkomst-minimaal' },
+  { term: 'UAV-2012', def: 'Uniforme Administratieve Voorwaarden voor de uitvoering van werken (versie 2012): standaardvoorwaarden voor traditionele bouwcontracten.', link: '/clusters/bouwgeschil-aannemer-wanprestatie' },
+  { term: 'Vastgoed-BV', def: 'Aparte BV die uitsluitend onroerend goed bezit, vaak onder een holding. Scheidt het vastgoed van de operationele werkmaatschappij.', link: '/clusters/vastgoed-bv-oprichten-holding-structuur' },
+  { term: 'Verzet', def: 'Rechtsmiddel waarmee een failliet verklaarde partij binnen 14 dagen verzet kan instellen tegen het faillissementsvonnis (artikel 8 Fw).', link: '/clusters/verzet-tegen-faillissement' },
+  { term: 'Wanprestatie', def: 'Tekortkoming in de nakoming van een verplichting uit een overeenkomst. Geeft de wederpartij recht op nakoming, schadevergoeding of ontbinding.', link: '/clusters/bouwgeschil-aannemer-wanprestatie' },
+  { term: 'WHOA', def: 'Wet Homologatie Onderhands Akkoord: sinds 2021 in werking. Maakt het mogelijk voor ondernemingen om buiten faillissement een dwangakkoord met schuldeisers af te dwingen.', link: '/clusters/whoa-traject-ondernemer-kosten-kansen' },
+  { term: '7:230a BW', def: 'Huurregime voor niet-publieksgerichte bedrijfsruimte (kantoren, magazijnen, bedrijfshallen). Geen huurprijsbescherming, beperkte ontruimingsbescherming.', link: '/clusters/bedrijfsruimte-290-of-230a-bw' },
+  { term: '7:290 BW', def: 'Huurregime voor publieksgerichte bedrijfsruimte (winkels, horeca, ambacht). Streng wettelijk beschermingsregime voor de huurder qua contractduur en huurprijs.', link: '/clusters/bedrijfsruimte-290-of-230a-bw' },
+];
+
+// Sort by term, group by first letter
+terms.sort((a, b) => a.term.localeCompare(b.term, 'nl'));
+const grouped: Record<string, Term[]> = {};
+for (const t of terms) {
+  const letter = t.term[0].toUpperCase().match(/[A-Z]/) ? t.term[0].toUpperCase() : '#';
+  if (!grouped[letter]) grouped[letter] = [];
+  grouped[letter].push(t);
+}
+const letters = Object.keys(grouped).sort();
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Woordenlijst', url: '/woordenlijst' },
+];
+
+const glossarySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'DefinedTermSet',
+  name: pageTitle,
+  description: pageDescription,
+  hasDefinedTerm: terms.map((t) => ({
+    '@type': 'DefinedTerm',
+    name: t.term,
+    description: t.def,
+    inDefinedTermSet: 'https://clavix.nl/woordenlijst',
+    ...(t.link ? { url: `https://clavix.nl${t.link}` } : {}),
+  })),
+};
+
+const schemas = [organizationSchema, breadcrumbSchema(breadcrumbs), glossarySchema];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} schemaJsonLd={schemas}>
+  <article>
+    {/* === HERO === */}
+    <section class="bg-bg-tinted">
+      <div class="max-w-content mx-auto px-4 md:px-8 py-12 md:py-16">
+        <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
+          <a href="/" class="hover:text-text-accent">Home</a> ›{' '}
+          <span class="text-text">Woordenlijst</span>
+        </p>
+        <h1 class="text-display font-extrabold text-text mb-4 tracking-tight">{pageTitle}</h1>
+        <p class="text-lead text-text-secondary max-w-prose">
+          Begrippenlijst met de juridische termen die u in onze artikelen tegenkomt — kort en helder uitgelegd voor ondernemers. {terms.length} termen uit ondernemingsrecht, vastgoedrecht en insolventierecht.
+        </p>
+      </div>
+    </section>
+
+    {/* === ALPHABET NAV === */}
+    <nav class="sticky top-0 bg-bg z-10 border-b border-border shadow-sm" aria-label="Alfabet-navigatie">
+      <div class="max-w-content mx-auto px-4 md:px-8 py-3 flex flex-wrap gap-x-4 gap-y-2">
+        {letters.map((letter) => (
+          <a
+            href={`#${letter.toLowerCase()}`}
+            class="text-h3 font-bold text-text-accent hover:underline"
+            aria-label={`Spring naar letter ${letter}`}
+          >
+            {letter}
+          </a>
+        ))}
+      </div>
+    </nav>
+
+    {/* === TERMS === */}
+    <section>
+      <div class="max-w-content mx-auto px-4 md:px-8 py-12">
+        {letters.map((letter) => (
+          <div class="mb-12">
+            <h2
+              id={letter.toLowerCase()}
+              class="text-display font-bold text-text-accent mb-6 pb-2 border-b-2 border-border scroll-mt-20"
+            >
+              {letter}
+            </h2>
+            <dl class="space-y-6">
+              {grouped[letter].map((t) => (
+                <div>
+                  <dt class="text-h3 font-bold text-text mb-2">
+                    {t.link ? (
+                      <a href={t.link} class="hover:text-text-accent">{t.term}</a>
+                    ) : (
+                      t.term
+                    )}
+                  </dt>
+                  <dd class="text-body text-text-secondary max-w-prose">{t.def}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <CTABand />
+  </article>
+</BaseLayout>
