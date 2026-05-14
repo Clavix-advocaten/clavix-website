@@ -65,9 +65,45 @@ export function personSchema(attorney: any) {
     image: attorney.photoUrl,
     email: attorney.email,
     telephone: attorney.phone,
-    worksFor: { '@type': 'LegalService', name: ORG_NAME },
-    knowsLanguage: attorney.languages || [],
+    url: `${SITE_URL}/mukesh`,
+    nationality: { '@type': 'Country', name: 'Netherlands' },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Strawinskylaan 257',
+      addressLocality: 'Amsterdam',
+      postalCode: '1077 XX',
+      addressCountry: 'NL',
+    },
+    worksFor: {
+      '@type': 'LegalService',
+      name: ORG_NAME,
+      url: SITE_URL,
+    },
+    memberOf: {
+      '@type': 'Organization',
+      name: 'Nederlandse Orde van Advocaten',
+      url: 'https://www.advocatenorde.nl',
+    },
+    hasOccupation: {
+      '@type': 'Occupation',
+      name: 'Advocaat',
+      occupationLocation: { '@type': 'City', name: 'Amsterdam' },
+      skills: 'Ondernemingsrecht, vastgoedrecht, insolventierecht, bestuurdersaansprakelijkheid, aandeelhoudersgeschillen',
+    },
+    knowsAbout: [
+      'Ondernemingsrecht',
+      'Vastgoedrecht',
+      'Insolventierecht',
+      'Bestuurdersaansprakelijkheid',
+      'Aandeelhoudersgeschillen',
+      'Faillissementsrecht',
+      'Burgerlijk procesrecht',
+      'WHOA',
+      'Pre-pack doorstart',
+    ],
+    knowsLanguage: attorney.languages || ['nl', 'en'],
     sameAs: attorney.sameAs || [],
+    award: (attorney.awards || []).map((a: any) => a.title),
   }
 }
 
