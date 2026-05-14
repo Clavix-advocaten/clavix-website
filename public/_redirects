@@ -1,1 +1,117 @@
-/faq /veelgestelde-vragen 301
+# === STATISCHE WIX → CLAVIX MAPPINGS ===
+/advocaat-mukesh-kumar             /mukesh                                                   301
+/advocaat-amsterdam-zuidas         /mukesh                                                   301
+/blog                              /notities                                                 301
+/expertise                         /praktijkgebieden/ondernemingsrecht                       301
+/en-corporate-lawyer-amsterdam     /                                                         301
+/faq                               /veelgestelde-vragen                                      301
+
+# === BLOG CATEGORIES → PILLAR/CLUSTER ===
+/blog/categories/huurrecht                          /praktijkgebieden/vastgoedrecht          301
+/blog/categories/beslag-en-executierecht            /clusters/beslag-op-aandelen             301
+/blog/categories/aanneming-van-werk-bouwgeschillen  /clusters/bouwgeschil-aannemer-wanprestatie  301
+/blog/categories/*                                  /notities                                301
+
+# === BLOG POSTS → SPECIFIEKE CLUSTERS ===
+# Bouwgeschillen
+/post/wat-is-een-redelijke-hersteltermijn-bij-bouwgebreken         /clusters/bouwgeschil-aannemer-wanprestatie  301
+/post/mag-ik-een-andere-aannemer-inschakelen-voor-herstel          /clusters/bouwgeschil-aannemer-wanprestatie  301
+/post/wat-kan-ik-doen-als-de-aannemer-niet-reageert                /clusters/bouwgeschil-aannemer-wanprestatie  301
+/post/hoe-stel-ik-een-aannemer-rechtsgeldig-in-gebreke             /clusters/bouwgeschil-aannemer-wanprestatie  301
+/post/wanneer-mag-ik-betaling-aan-een-aannemer-opschorten          /clusters/bouwgeschil-aannemer-wanprestatie  301
+/post/kan-ik-de-aannemingsovereenkomst-ontbinden-bij-gebreken      /clusters/bouwgeschil-aannemer-wanprestatie  301
+/post/wat-gebeurt-er-als-ik-ten-onrechte-betaling-opschort         /clusters/bouwgeschil-aannemer-wanprestatie  301
+
+# Huurrecht / 290-230a-bedrijfsruimte
+/post/290-bedrijfsruimte-of-230a-ruimte-dit-is-het-verschil-bij-huur-van-bedrijfsruimte                  /clusters/bedrijfsruimte-290-of-230a-bw  301
+/post/huurbescherming-bij-winkels-en-horeca-hoe-werkt-het-5-5-systeem                                    /clusters/bedrijfsruimte-290-of-230a-bw  301
+/post/ontruimingsbescherming-bij-230a-ruimte-wat-mag-de-verhuurder-en-wat-kan-de-huurder-doen            /clusters/bedrijfsruimte-290-of-230a-bw  301
+/post/huurprijsherziening-bij-winkels-en-horeca-hoe-werkt-artikel-7-303-bw                               /clusters/huurprijswijziging-7-303-roz   301
+
+# Beslag
+/post/conservatoir-beslag-zonder-waarschuwing                      /clusters/beslag-op-aandelen             301
+/post/wanneer-mag-conservatoir-beslag-worden-gelegd                /clusters/beslag-op-aandelen             301
+
+# Overige huurrecht (geen specifieke cluster)
+/post/woonfraude-wat-mag-een-huurder-wel-en-niet-doen                             /praktijkgebieden/vastgoedrecht  301
+/post/post-huurprijs-huurachterstand-huurverhoging                                /praktijkgebieden/vastgoedrecht  301
+/post/urgente-opzeggronden-voor-verhuurders-eigen-gebruik-en-renovatie            /praktijkgebieden/vastgoedrecht  301
+/post/overlast-door-de-huurder-wat-zijn-de-grenzen-en-wat-kunt-u-doen-als-verhuurder  /praktijkgebieden/vastgoedrecht  301
+/post/tijdelijke-huurcontracten-wat-mag-er-maximaal-2-jaar-en-wat-niet            /praktijkgebieden/vastgoedrecht  301
+/post/onderhuur-en-inwoning-wat-mag-wel-en-wat-mag-niet-als-huurder               /praktijkgebieden/vastgoedrecht  301
+/post/gebreken-aan-het-gehuurde-wat-zijn-je-rechten-als-huurder                   /praktijkgebieden/vastgoedrecht  301
+/post/verplichtingen-van-huurder-en-verhuurder-wie-moet-wat-doen                  /praktijkgebieden/vastgoedrecht  301
+/post/beeindiging-van-de-huurovereenkomst-hoe-werkt-dat                           /praktijkgebieden/vastgoedrecht  301
+/post/huurprijsbescherming-wat-mag-een-verhuurder-vragen-en-wat-kan-een-huurder-doen  /praktijkgebieden/vastgoedrecht  301
+
+# Catch-all blog posts
+/post/*                                              /notities                                301
+
+# === EXPERTISE DYNAMIC → PILLARS/CLUSTERS ===
+/expertise/advocaat-faillissement              /praktijkgebieden/insolventie-en-herstructurering  301
+/expertise/advocaat-vastgoedrecht              /praktijkgebieden/vastgoedrecht                    301
+/expertise/advocaat-ondernemingsrecht          /praktijkgebieden/ondernemingsrecht                301
+/expertise/advocaat-aansprakelijkheidsrecht    /clusters/bestuurdersaansprakelijkheid-faillissement  301
+/expertise/advocaat-beslag-en-executierecht    /clusters/beslag-op-aandelen                       301
+/expertise/advocaat-civiel-procesrecht         /praktijkgebieden/ondernemingsrecht                301
+/expertise/advocaat-contractenrecht            /praktijkgebieden/ondernemingsrecht                301
+/expertise/advocaat-incasso-verhaalsrecht      /praktijkgebieden/ondernemingsrecht                301
+/expertise/advoaat-zuidas                      /mukesh                                            301
+/expertise/*                                   /praktijkgebieden/ondernemingsrecht                301
+
+# === ADVOCAAT/[CATEGORY]/* — SPECIFIEKE MAPPINGS ===
+
+# Faillissementsrecht
+/advocaat/faillissementsrecht/bestuurdersaansprakelijkheid-faillissement  /clusters/bestuurdersaansprakelijkheid-faillissement  301
+/advocaat/faillissementsrecht/doorstart-na-faillissement                  /clusters/pre-pack-doorstart                           301
+/advocaat/faillissementsrecht/pauliana                                    /clusters/pauliana-actie-curator                       301
+/advocaat/faillissementsrecht/*                                           /praktijkgebieden/insolventie-en-herstructurering      301
+
+# Bestuurdersaansprakelijkheid (typo: bestuudersaansprakelijkheid)
+/advocaat/bestuudersaansprakelijkheid/*    /clusters/bestuurdersaansprakelijkheid-faillissement  301
+
+# Beslag (varianten met dubbele streep + triple)
+/advocaat/beslag-en-executierecht/*                          /clusters/beslag-op-aandelen  301
+/advocaat/beslag--en-executierecht/*                         /clusters/beslag-op-aandelen  301
+/advocaat/beslag--en-executierecht--en-executierecht/*       /clusters/beslag-op-aandelen  301
+
+# Aanneming van werk / Bouwgeschillen (varianten)
+/advocaat/aanneming-van-werk-en-bouwgeschillen/*    /clusters/bouwgeschil-aannemer-wanprestatie  301
+/advocaat/aanneming-van-werk-bouwgeschillen/*       /clusters/bouwgeschil-aannemer-wanprestatie  301
+/advocaat/aanneming-van-werk--bouwgeschillen/*      /clusters/bouwgeschil-aannemer-wanprestatie  301
+
+# Civiel procesrecht / Aansprakelijkheid / Incasso (vallen onder ondernemingsrecht voor onze structuur)
+/advocaat/civiel-procesrecht/*           /praktijkgebieden/ondernemingsrecht  301
+/advocaat/aansprakelijkheidsrecht/*      /clusters/bestuurdersaansprakelijkheid-faillissement  301
+/advocaat/incasso-en-verhaalsrecht/*     /praktijkgebieden/ondernemingsrecht  301
+
+# Contractenrecht
+/advocaat/contractenrecht/wanprestatie                 /clusters/bouwgeschil-aannemer-wanprestatie  301
+/advocaat/contractenrecht/leveringsgeschillen-vastgoed /praktijkgebieden/vastgoedrecht              301
+/advocaat/contractenrecht/*                            /praktijkgebieden/ondernemingsrecht          301
+
+# Vastgoedrecht — specifieke mappings
+/advocaat/vastgoedrecht/non-conformiteit-vastgoed                 /clusters/bouwgeschil-aannemer-wanprestatie  301
+/advocaat/vastgoedrecht/verborgen-gebreken                        /clusters/bouwgeschil-aannemer-wanprestatie  301
+/advocaat/vastgoedrecht/aanneming-van-werk-%2F-bouwgeschillen     /clusters/bouwgeschil-aannemer-wanprestatie  301
+/advocaat/vastgoedrecht/huurgeschillen-zakelijk                   /clusters/bedrijfsruimte-290-of-230a-bw      301
+/advocaat/vastgoedrecht/vastgoedtransacties                       /clusters/verkoop-bedrijfspand-mna           301
+/advocaat/vastgoedrecht/koopgeschillen-vastgoed                   /clusters/verkoop-bedrijfspand-mna           301
+/advocaat/vastgoedrecht/ontbinding-koopovereenkomst-vastgoed      /clusters/verkoop-bedrijfspand-mna           301
+/advocaat/vastgoedrecht/*                                         /praktijkgebieden/vastgoedrecht              301
+
+# Ondernemingsrecht — specifieke mappings
+/advocaat/ondernemingsrecht/aandeelhoudersovereenkomst-geschil  /clusters/aandeelhoudersovereenkomst-minimaal             301
+/advocaat/ondernemingsrecht/aandeelhoudersgeschillen            /clusters/50-50-aandeelhoudersgeschil-oplossen            301
+/advocaat/ondernemingsrecht/50%2F50-impasse-binnen-de-bv        /clusters/50-50-aandeelhoudersgeschil-oplossen            301
+/advocaat/ondernemingsrecht/uittreding-aandeelhouder            /clusters/50-50-aandeelhoudersgeschil-oplossen            301
+/advocaat/ondernemingsrecht/uitkoopregeling-aandeelhouder       /clusters/50-50-aandeelhoudersgeschil-oplossen            301
+/advocaat/ondernemingsrecht/enqueteprocedure                    /clusters/50-50-aandeelhoudersgeschil-oplossen            301
+/advocaat/ondernemingsrecht/bestuurdersaansprakelijkheid        /clusters/bestuurdersaansprakelijkheid-faillissement      301
+/advocaat/ondernemingsrecht/schorsing-bestuurder                /clusters/bestuurdersaansprakelijkheid-faillissement      301
+/advocaat/ondernemingsrecht/wanbeleid-bv                        /clusters/bestuurdersaansprakelijkheid-faillissement      301
+/advocaat/ondernemingsrecht/turboliquidatie-en-vereffening      /praktijkgebieden/insolventie-en-herstructurering         301
+/advocaat/ondernemingsrecht/*                                   /praktijkgebieden/ondernemingsrecht                       301
+
+# Generic /advocaat/* fallback
+/advocaat/*                       /praktijkgebieden/ondernemingsrecht  301
