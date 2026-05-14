@@ -36,6 +36,75 @@ if (cluster.faqs && cluster.faqs.length > 0) {
   if (fp) schemas.push(fp)
 }
 
+// === HowTo schema voor procedurele clusters ===
+const HOWTO_STEPS: Record<string, string[]> = {
+  '50-50-aandeelhoudersgeschil-oplossen': [
+    'Beoordeel of mediation een werkbare uitweg biedt',
+    'Onderzoek de shotgun-clausule in de aandeelhoudersovereenkomst',
+    'Overweeg een geschillenregeling-procedure (2:336-343 BW)',
+    'Bereid in laatste instantie een uitkoopprocedure voor',
+  ],
+  'activatransactie-faillissement': [
+    'Verken haalbaarheid van een doorstart met het management',
+    'Stel een onderhandelingsmemo op voor de curator',
+    'Onderhandel over koopprijs, activa en personeel-overname',
+    'Houd rekening met het Smallsteps-arrest bij personele overgang',
+    'Sluit de notariele activatransactie-overeenkomst',
+  ],
+  'beslag-op-aandelen': [
+    'Toets of er een gegrond vorderingsrecht aanwezig is',
+    'Vraag verlof bij de voorzieningenrechter (artikel 700 Rv)',
+    'Laat beslag formeel betekenen aan vennootschap en aandeelhouder',
+    'Procedeer over de hoofdvordering ter validatie',
+  ],
+  'pre-pack-doorstart': [
+    'Beoordeel financiele positie en doorstart-kansen',
+    'Identificeer een serieuze overnemende partij',
+    'Dien beoogd-curator-verzoek in bij de rechtbank',
+    'Onderhandel concept-activatransactie in vertrouwen',
+    'Vraag formeel faillissement aan',
+    'Sluit de doorstart binnen 24-48 uur',
+  ],
+  'statuten-bv-wijzigen': [
+    'Bepaal welke wijzigingen u wilt doorvoeren',
+    'Roep een algemene vergadering van aandeelhouders bijeen',
+    'Neem het wijzigingsbesluit met vereiste meerderheid',
+    'Laat een notaris de akte van statutenwijziging opmaken',
+    'Schrijf de gewijzigde statuten in bij de KvK',
+  ],
+  'verzet-tegen-faillissement': [
+    'Beoordeel binnen 14 dagen of verzet kansrijk is',
+    'Stel verzetschrift op bij de rechtbank',
+    'Bereid verweer voor: pluraliteit, opeisbaarheid, betalingsonmacht',
+    'Voer behandeling ter zitting',
+    'Vraag vernietiging van het faillissementsvonnis',
+  ],
+  'whoa-traject-ondernemer-kosten-kansen': [
+    'Verken financiele haalbaarheid van een WHOA-akkoord',
+    'Stel het herstructureringsplan op met klassen-indeling',
+    'Vraag afkoelingsperiode aan bij de rechtbank',
+    'Bied het akkoord aan crediteurenklassen aan',
+    'Vraag homologatie aan bij de rechtbank',
+  ],
+}
+
+const clusterSlug = cluster.slug?.current || cluster.slug
+const howToStepsForCluster = clusterSlug ? HOWTO_STEPS[clusterSlug] : undefined
+if (howToStepsForCluster) {
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: cluster.title,
+    description: cluster.seo?.metaDescription || cluster.subtitle || '',
+    step: howToStepsForCluster.map((text, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: text,
+    })),
+  })
+}
+
+
 const seoTitle = cluster.seo?.metaTitle || cluster.title
 const seoDescription = cluster.seo?.metaDescription || cluster.tldr?.body?.slice(0, 160) || cluster.subtitle
 
