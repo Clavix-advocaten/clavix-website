@@ -115,3 +115,4 @@
 
 # Generic /advocaat/* fallback
 /advocaat/*                       /praktijkgebieden/ondernemingsrecht  301
+/cookiebeleid                      /cookies                                                  301
