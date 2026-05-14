@@ -32,7 +32,6 @@ const navItems: any[] = [
   { label: 'Werkwijze', href: '/werkwijze' },
   { label: 'mr. Kumar', href: '/mukesh' },
   { label: 'Notities', href: '/notities' },
-  { label: 'Zoeken', href: '/zoeken' },
   { label: 'Veelgestelde vragen', href: '/veelgestelde-vragen' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -88,6 +87,18 @@ const navItems: any[] = [
       ))}
     </ul>
 
+    {/* Search button */}
+    <button
+      data-search-open
+      class="hidden md:flex items-center justify-center w-10 h-10 text-text hover:text-text-accent transition"
+      aria-label="Zoeken openen (Cmd+K)"
+      title="Zoeken (Cmd+K)"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+      </svg>
+    </button>
+
     {/* CTA */}
     <a
       href="/contact"
@@ -95,6 +106,17 @@ const navItems: any[] = [
     >
       Plan een gesprek
     </a>
+
+    {/* Mobile search button */}
+    <button
+      data-search-open
+      class="md:hidden p-2 text-text"
+      aria-label="Zoeken openen"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+      </svg>
+    </button>
 
     {/* Mobile menu button */}
     <button
@@ -107,6 +129,104 @@ const navItems: any[] = [
       </svg>
     </button>
   </nav>
+
+{/* Search modal — Cmd+K, ESC, / */}
+<div
+  id="search-modal"
+  class="fixed inset-0 z-50 hidden items-start justify-center pt-20 px-4"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="search-modal-title"
+>
+  <div data-search-backdrop class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+  <div class="relative bg-bg-elevated border border-border rounded-lg shadow-2xl w-full max-w-2xl max-h-[80vh] overflow-hidden flex flex-col">
+    <div class="flex items-center justify-between p-4 border-b border-border">
+      <h2 id="search-modal-title" class="text-h4 font-semibold text-text">Zoeken in Clavix</h2>
+      <button data-search-close class="text-text-secondary hover:text-text transition p-1" aria-label="Sluiten">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+    <div class="p-4 overflow-y-auto">
+      <div id="search-modal-input"></div>
+    </div>
+    <div class="px-4 py-2 border-t border-border bg-bg-tinted text-tiny text-text-muted flex flex-wrap gap-3">
+      <span>Tip:</span>
+      <span><kbd class="px-1.5 py-0.5 bg-bg-elevated border border-border rounded font-mono">Cmd K</kbd> openen</span>
+      <span><kbd class="px-1.5 py-0.5 bg-bg-elevated border border-border rounded font-mono">/</kbd> snelzoeken</span>
+      <span><kbd class="px-1.5 py-0.5 bg-bg-elevated border border-border rounded font-mono">Esc</kbd> sluiten</span>
+    </div>
+  </div>
+</div>
+
+<script src="/pagefind/pagefind-ui.js" is:inline></script>
+<script is:inline>
+  (function() {
+    const modal = document.getElementById('search-modal');
+    if (!modal) return;
+    const openBtns = document.querySelectorAll('[data-search-open]');
+    const closeBtns = modal.querySelectorAll('[data-search-close]');
+    const backdrop = modal.querySelector('[data-search-backdrop]');
+    let pagefindInited = false;
+
+    function openModal() {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      if (!pagefindInited && typeof PagefindUI !== 'undefined') {
+        new PagefindUI({
+          element: '#search-modal-input',
+          showSubResults: true,
+          showImages: false,
+          resetStyles: false,
+          translations: {
+            placeholder: 'Zoek in artikelen, woorden, vragen...',
+            clear_search: 'Wissen',
+            load_more: 'Meer resultaten',
+            search_label: 'Zoeken bij Clavix',
+            zero_results: 'Geen resultaten voor [SEARCH_TERM]',
+            many_results: '[COUNT] resultaten voor [SEARCH_TERM]',
+            one_result: '1 resultaat voor [SEARCH_TERM]',
+            alt_search: 'Geen resultaten voor [SEARCH_TERM]. Resultaten voor [DIFFERENT_TERM]:',
+            search_suggestion: 'Geen resultaten. Probeer: [DIFFERENT_TERM]',
+            searching: 'Zoeken...'
+          }
+        });
+        pagefindInited = true;
+      }
+      setTimeout(() => {
+        const input = modal.querySelector('input[type="text"]');
+        if (input) input.focus();
+      }, 60);
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    openBtns.forEach(b => b.addEventListener('click', openModal));
+    closeBtns.forEach(b => b.addEventListener('click', closeModal));
+    backdrop && backdrop.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      const isInput = ['INPUT','TEXTAREA'].includes(document.activeElement?.tagName);
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        openModal();
+      } else if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      } else if (e.key === '/' && !isInput && modal.classList.contains('hidden')) {
+        e.preventDefault();
+        openModal();
+      }
+    });
+  })();
+</script>
+
 
   {/* Mobile menu */}
   <div id="mobile-menu" class="hidden md:hidden bg-bg-elevated border-t border-border">
