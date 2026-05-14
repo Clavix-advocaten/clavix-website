@@ -21,7 +21,7 @@ interface Props {
 const {
   title,
   description = 'Clavix Advocaten — boutique advocatenkantoor in Amsterdam Zuidas voor ondernemers met vastgoed.',
-  ogImage = '/og-default.png',
+  ogImage = 'https://cdn.sanity.io/images/74qey4fk/production/d692d2c9a732c5010a38270d4a3afc220e84c7a9-4350x6490.jpg?w=1200&h=630&fit=crop&crop=top&fm=jpg&q=85',
   canonical,
   noindex = false,
   schemaJsonLd,
@@ -58,7 +58,7 @@ if (schemaJsonLd) {
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+    <meta property="og:image" content={ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`} />
     <meta property="og:locale" content="nl_NL" />
     <meta property="og:site_name" content="Clavix Advocaten" />
 
@@ -66,6 +66,7 @@ if (schemaJsonLd) {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`} />
 
     {/* Montserrat — preconnect + load */}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
