@@ -15,13 +15,20 @@ import BaseLayout from '@layouts/BaseLayout.astro'
         Klinkt mysterieuzer dan het is. De URL klopt niet, de pagina is verplaatst, of we hebben iets mis-gelinkt. Hier zijn drie routes terug:
       </p>
 
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         <a
           href="/praktijkgebieden/ondernemingsrecht"
           class="block p-4 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary no-underline"
         >
           <div class="font-semibold text-text mb-1">Ondernemingsrecht</div>
           <div class="text-small text-text-secondary">Aandeelhouders, M&A, bestuurdersaansprakelijkheid</div>
+        </a>
+        
+          href="/praktijkgebieden/vastgoedrecht"
+          class="block p-4 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary no-underline"
+        >
+          <div class="font-semibold text-text mb-1">Vastgoedrecht</div>
+          <div class="text-small text-text-secondary">Huur, koop, bouw, ROZ-contracten</div>
         </a>
         <a
           href="/praktijkgebieden/vastgoed-en-ondernemers"
@@ -37,6 +44,14 @@ import BaseLayout from '@layouts/BaseLayout.astro'
           <div class="font-semibold text-text mb-1">Insolventie</div>
           <div class="text-small text-text-secondary">Verzet, WHOA, doorstart, beslag</div>
         </a>
+      </div>
+
+      <div class="text-small text-text-secondary mb-3">Of zoek het op:</div>
+      <div class="flex flex-wrap justify-center gap-2 mb-8">
+        <a href="/notities" class="px-4 py-2 bg-bg-tinted border border-border rounded-md hover:border-brand-primary no-underline text-small text-text">Recente notities</a>
+        <a href="/woordenlijst" class="px-4 py-2 bg-bg-tinted border border-border rounded-md hover:border-brand-primary no-underline text-small text-text">Juridische woordenlijst</a>
+        <a href="/veelgestelde-vragen" class="px-4 py-2 bg-bg-tinted border border-border rounded-md hover:border-brand-primary no-underline text-small text-text">Veelgestelde vragen</a>
+        <a href="/contact" class="px-4 py-2 bg-bg-tinted border border-border rounded-md hover:border-brand-primary no-underline text-small text-text">Contact</a>
       </div>
 
       <p class="text-text-secondary">
