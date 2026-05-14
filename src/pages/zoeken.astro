@@ -1,0 +1,44 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+  title="Zoeken in Clavix"
+  description="Doorzoek alle praktijkgebieden, clusters, notities en woordenlijst van Clavix Advocaten."
+>
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+
+  <section class="max-w-content mx-auto px-4 md:px-8 py-12">
+    <h1 class="text-h1 font-bold text-text mb-4">Zoeken</h1>
+    <p class="text-lead text-text-secondary mb-8">
+      Vind direct het juiste artikel, antwoord of definitie binnen Clavix Advocaten.
+    </p>
+
+    <div id="search"></div>
+  </section>
+
+  <script src="/pagefind/pagefind-ui.js" is:inline></script>
+  <script is:inline define:vars={{}}>
+    window.addEventListener('DOMContentLoaded', () => {
+      new PagefindUI({
+        element: '#search',
+        showSubResults: true,
+        showImages: false,
+        resetStyles: false,
+        translations: {
+          placeholder: 'Zoek in artikelen, woorden, vragen...',
+          clear_search: 'Wissen',
+          load_more: 'Meer resultaten',
+          search_label: 'Zoeken bij Clavix',
+          filters_label: 'Filters',
+          zero_results: 'Geen resultaten voor [SEARCH_TERM]',
+          many_results: '[COUNT] resultaten voor [SEARCH_TERM]',
+          one_result: '1 resultaat voor [SEARCH_TERM]',
+          alt_search: 'Geen resultaten voor [SEARCH_TERM]. Resultaten voor [DIFFERENT_TERM]:',
+          search_suggestion: 'Geen resultaten. Probeer: [DIFFERENT_TERM]',
+          searching: 'Zoeken naar [SEARCH_TERM]...'
+        }
+      })
+    })
+  </script>
+</BaseLayout>
