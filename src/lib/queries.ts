@@ -266,3 +266,72 @@ const allPillarsForNavQuery = groq`*[_type == "pillarPage"] | order(shortTitle a
 export async function getAllPillarsForNav() {
   return sanityClient.fetch(allPillarsForNavQuery)
 }
+
+// === SECTORS ===
+// Sectorpaginas voor industrieën (healthcare, horeca, tech, bouw, retail)
+
+const sectorBySlugQuery = groq`*[_type == "sectorPage" && slug.current == $slug][0] {
+  _id,
+  title,
+  shortTitle,
+  subtitle,
+  "slug": slug.current,
+  iconKey,
+  volumeStat,
+  "heroImageUrl": heroImage.asset->url + "?w=1600&fm=webp&q=80&fit=max",
+  leadParagraph,
+  tldr,
+  painPoints[] {
+    title,
+    description,
+    "relevantCluster": relevantCluster->{ "slug": slug.current, shortTitle, subtitle }
+  },
+  "relevantPillars": relevantPillars[]->{ shortTitle, "slug": slug.current, subtitle },
+  "relevantClusters": relevantClusters[]->{ shortTitle, "slug": slug.current, subtitle },
+  "relevantCases": relevantCases[]->{
+    title,
+    "slug": slug.current,
+    ecli,
+    court,
+    caseYear,
+    summary,
+    tags,
+    isConfidential,
+    externalLink
+  },
+  "faqs": faqs[]->{ question, answer },
+  ctaHeading,
+  ctaBody,
+  ctaButtonText,
+  publishedAt,
+  modifiedAt,
+  seo
+}`
+
+export async function getSector(slug: string) {
+  return sanityClient.fetch(sectorBySlugQuery, { slug })
+}
+
+const allSectorsQuery = groq`*[_type == "sectorPage"] | order(order asc) {
+  _id,
+  shortTitle,
+  "slug": slug.current,
+  subtitle,
+  iconKey,
+  volumeStat,
+  order,
+  leadParagraph
+}`
+
+export async function getAllSectors() {
+  return sanityClient.fetch(allSectorsQuery)
+}
+
+const allSectorSlugsQuery = groq`*[_type == "sectorPage" && defined(slug.current)] {
+  "slug": slug.current
+}`
+
+export async function getAllSectorSlugs() {
+  return sanityClient.fetch(allSectorSlugsQuery)
+}
+
