@@ -35,7 +35,23 @@ export function organizationSchema() {
       'Bestuurdersaansprakelijkheid',
       'Aandeelhoudersgeschillen',
     ],
-    sameAs: ['https://www.linkedin.com/company/106861158/'],
+    openingHoursSpecification: [{
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '18:00',
+    }],
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 52.3393,
+      longitude: 4.8730,
+    },
+    priceRange: '€€€',
+    sameAs: [
+      'https://www.linkedin.com/company/106861158/',
+      'https://www.instagram.com/clavix_nl/',
+      'https://www.facebook.com/clavixnl/',
+    ],
   }
 }
 
