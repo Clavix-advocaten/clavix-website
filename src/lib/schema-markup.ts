@@ -14,7 +14,6 @@ export function organizationSchema() {
     name: ORG_NAME,
     legalName: ORG_LEGAL,
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.svg`,
     description:
       'Boutique advocatenkantoor in Amsterdam Zuidas voor ondernemers met vastgoed. Ondernemingsrecht, vastgoedrecht en insolventie.',
     address: {

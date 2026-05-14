@@ -1,0 +1,201 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import TLDR from '@components/TLDR.astro'
+import CTABand from '@components/CTABand.astro'
+import { getSector, getAllSectorSlugs } from '@lib/queries'
+import { articleSchema, breadcrumbSchema, faqPageSchema, serviceSchema } from '@lib/schema-markup'
+
+export async function getStaticPaths() {
+  const slugs = await getAllSectorSlugs()
+  return slugs.map((s: any) => ({ params: { slug: s.slug } }))
+}
+
+const { slug } = Astro.params
+const sector = await getSector(slug as string)
+
+if (!sector) {
+  return new Response('Sector niet gevonden', { status: 404 })
+}
+
+const seoTitle = sector.seo?.metaTitle || sector.title
+const seoDescription =
+  sector.seo?.metaDescription || sector.subtitle || sector.tldr?.body || sector.leadParagraph
+
+const breadcrumbs = breadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Sectoren', url: '/sectoren' },
+  { name: sector.shortTitle, url: `/sectoren/${sector.slug}` },
+])
+
+const service = serviceSchema(sector)
+
+const schemas: any[] = [
+  articleSchema(sector, 'mr. Mukesh Kumar'),
+  breadcrumbs,
+]
+if (service) schemas.push(service)
+if (sector.faqs?.length) {
+  schemas.push(faqPageSchema(sector.faqs))
+}
+---
+
+<BaseLayout title={seoTitle} description={seoDescription} schemaJsonLd={schemas}>
+  {/* Breadcrumbs */}
+  <nav class="max-w-content mx-auto px-4 md:px-8 pt-6 text-tiny text-text-secondary" aria-label="Breadcrumb">
+    <a href="/" class="hover:text-text-accent no-underline">Home</a>
+    <span class="mx-2">/</span>
+    <a href="/sectoren" class="hover:text-text-accent no-underline">Sectoren</a>
+    <span class="mx-2">/</span>
+    <span class="text-text">{sector.shortTitle}</span>
+  </nav>
+
+  {/* Hero */}
+  <section class="max-w-content mx-auto px-4 md:px-8 py-12 md:py-16">
+    <h1 class="text-display font-extrabold text-text mb-4">{sector.title}</h1>
+    {sector.subtitle && <p class="text-h3 text-text-secondary mb-6">{sector.subtitle}</p>}
+    {sector.volumeStat && (
+      <div class="inline-block px-3 py-1 bg-brand-secondary/30 border border-brand-secondary rounded-md text-small text-text mb-6">
+        {sector.volumeStat}
+      </div>
+    )}
+    {sector.leadParagraph && (
+      <p class="text-lead text-text mt-4 max-w-readable whitespace-pre-line">{sector.leadParagraph}</p>
+    )}
+  </section>
+
+  {/* TLDR */}
+  {sector.tldr && (
+    <div class="max-w-content mx-auto px-4 md:px-8">
+      <TLDR heading={sector.tldr.heading || 'In het kort'} body={sector.tldr.body} />
+    </div>
+  )}
+
+  {/* Pain Points */}
+  {sector.painPoints && sector.painPoints.length > 0 && (
+    <section class="max-w-content mx-auto px-4 md:px-8 py-12">
+      <h2 class="text-h2 font-bold text-text mb-2">Sector-specifieke pijnpunten</h2>
+      <p class="text-body text-text-secondary mb-8">Concrete situaties die wij vaak tegenkomen in {sector.shortTitle}.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {sector.painPoints.map((pp: any) => (
+          <article class="p-6 bg-bg-elevated border border-border rounded-lg" data-speakable>
+            <h3 class="text-h4 font-semibold text-text mb-3">{pp.title}</h3>
+            <p class="text-body text-text-secondary mb-4 whitespace-pre-line">{pp.description}</p>
+            {pp.relevantCluster && (
+                <a
+                href={'/clusters/' + pp.relevantCluster.slug}
+                class="text-text-accent font-semibold no-underline hover:underline"
+              >
+                Meer over {pp.relevantCluster.shortTitle} &rarr;
+              </a>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {/* Onze rollen — pillars + clusters */}
+  {((sector.relevantPillars && sector.relevantPillars.length > 0) ||
+    (sector.relevantClusters && sector.relevantClusters.length > 0)) && (
+    <section class="bg-bg-tinted py-12">
+      <div class="max-w-content mx-auto px-4 md:px-8">
+        <h2 class="text-h2 font-bold text-text mb-2">Onze rollen voor {sector.shortTitle}</h2>
+        <p class="text-body text-text-secondary mb-8">
+          Praktijkgebieden en diepere onderwerpen waar wij u in deze sector kunnen bijstaan.
+        </p>
+
+        {sector.relevantPillars && sector.relevantPillars.length > 0 && (
+          <div class="mb-8">
+            <h3 class="text-h4 font-semibold text-text mb-4">Praktijkgebieden</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {sector.relevantPillars.map((p: any) => (
+                  <a
+                  href={'/praktijkgebieden/' + p.slug}
+                  class="block p-4 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary no-underline transition"
+                >
+                  <div class="font-semibold text-text mb-1">{p.shortTitle}</div>
+                  {p.subtitle && <div class="text-small text-text-secondary">{p.subtitle}</div>}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {sector.relevantClusters && sector.relevantClusters.length > 0 && (
+          <div>
+            <h3 class="text-h4 font-semibold text-text mb-4">Diepere onderwerpen</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {sector.relevantClusters.map((c: any) => (
+                  <a
+                  href={'/clusters/' + c.slug}
+                  class="block p-3 bg-bg-elevated border border-border rounded-md hover:border-brand-primary no-underline transition"
+                >
+                  <div class="font-medium text-text">{c.shortTitle}</div>
+                  {c.subtitle && <div class="text-tiny text-text-secondary">{c.subtitle}</div>}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+
+  {/* Relevant Cases */}
+  {sector.relevantCases && sector.relevantCases.length > 0 && (
+    <section class="max-w-content mx-auto px-4 md:px-8 py-12">
+      <h2 class="text-h2 font-bold text-text mb-8">Recente cases in {sector.shortTitle}</h2>
+      <div class="space-y-4">
+        {sector.relevantCases.map((c: any) => (
+          <article class="p-6 bg-bg-elevated border border-border rounded-lg">
+            <h3 class="text-h4 font-semibold text-text mb-2">{c.title}</h3>
+            <p class="text-body text-text-secondary mb-3">{c.summary}</p>
+            <div class="flex flex-wrap gap-2 text-tiny text-text-muted">
+              {c.court && <span>{c.court}</span>}
+              {c.caseYear && <span>&middot; {c.caseYear}</span>}
+              {!c.isConfidential && c.ecli && <span>&middot; {c.ecli}</span>}
+              {c.externalLink && (
+                  <a
+                  href={c.externalLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-text-accent no-underline hover:underline"
+                >
+                  &middot; rechtspraak.nl
+                </a>
+              )}
+            </div>
+            {c.tags && c.tags.length > 0 && (
+              <div class="mt-3 flex flex-wrap gap-2">
+                {c.tags.map((t: string) => (
+                  <span class="px-2 py-1 bg-bg-tinted text-tiny text-text-secondary rounded">{t}</span>
+                ))}
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {/* FAQ */}
+  {sector.faqs && sector.faqs.length > 0 && (
+    <section class="max-w-content mx-auto px-4 md:px-8 py-12">
+      <h2 class="text-h2 font-bold text-text mb-8">Veelgestelde vragen over {sector.shortTitle}</h2>
+      <div class="space-y-3">
+        {sector.faqs.map((f: any) => (
+          <details class="p-6 bg-bg-elevated border border-border rounded-lg">
+            <summary class="font-semibold text-text cursor-pointer">{f.question}</summary>
+            <p class="text-body text-text-secondary mt-3 whitespace-pre-line">{f.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {/* CTA */}
+  <CTABand
+    heading={sector.ctaHeading || `Klaar voor juridisch advies in ${sector.shortTitle}?`}
+    description={sector.ctaBody || 'Wij kennen uw sector. Bel direct voor een vrijblijvend kennismakingsgesprek.'}
+  />
+</BaseLayout>
