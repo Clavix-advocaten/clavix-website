@@ -3,7 +3,7 @@ import BaseLayout from '@layouts/BaseLayout.astro'
 import CTABand from '@components/CTABand.astro'
 import { getBlogPost, getAllBlogSlugs } from '@lib/queries'
 import { renderPortableText } from '@lib/portable-text'
-import { articleSchema, breadcrumbSchema } from '@lib/schema-markup'
+import { blogPostingSchema, breadcrumbSchema } from '@lib/schema-markup'
 
 export async function getStaticPaths() {
   const slugs = await getAllBlogSlugs().catch(() => [])
@@ -16,7 +16,7 @@ const post = await getBlogPost(slug as string)
 if (!post) return Astro.redirect('/404')
 
 const schemas = [
-  articleSchema(post, post.author?.name || 'mr. Mukesh Kumar'),
+  blogPostingSchema(post, post.author?.name || 'mr. Mukesh Kumar'),
   breadcrumbSchema([
     { name: 'Home', url: '/' },
     { name: 'Notities', url: '/notities' },

@@ -183,3 +183,29 @@ export function serviceSchema(service: { name: string; description: string; url:
     areaServed: { '@type': 'Country', name: 'Netherlands' },
   }
 }
+
+export function blogPostingSchema(post: any, attorneyName: string = 'mr. Mukesh Kumar') {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.tldr?.body || post.subtitle || post.excerpt,
+    image: post.coverImage?.url || post.imageUrl,
+    author: {
+      '@type': 'Person',
+      name: attorneyName,
+      url: `${SITE_URL}/mukesh`,
+    },
+    publisher: {
+      '@type': 'LegalService',
+      name: ORG_NAME,
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/clavix-logo.svg` },
+    },
+    datePublished: post.publishedAt,
+    dateModified: post.modifiedAt || post.publishedAt,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/notities/${post.slug?.current || post.slug}` },
+    articleSection: post.category || 'Juridische analyses',
+    inLanguage: 'nl-NL',
+  }
+}
+
