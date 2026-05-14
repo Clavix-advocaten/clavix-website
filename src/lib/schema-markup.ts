@@ -209,3 +209,24 @@ export function blogPostingSchema(post: any, attorneyName: string = 'mr. Mukesh 
   }
 }
 
+export function siteNavigationSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Hoofdmenu Clavix Advocaten',
+    itemListElement: [
+      { '@type': 'SiteNavigationElement', position: 1, name: 'Home', url: SITE_URL },
+      { '@type': 'SiteNavigationElement', position: 2, name: 'Vastgoed x Ondernemers', url: `${SITE_URL}/praktijkgebieden/vastgoed-en-ondernemers` },
+      { '@type': 'SiteNavigationElement', position: 3, name: 'Ondernemingsrecht', url: `${SITE_URL}/praktijkgebieden/ondernemingsrecht` },
+      { '@type': 'SiteNavigationElement', position: 4, name: 'Vastgoedrecht', url: `${SITE_URL}/praktijkgebieden/vastgoedrecht` },
+      { '@type': 'SiteNavigationElement', position: 5, name: 'Insolventie & herstructurering', url: `${SITE_URL}/praktijkgebieden/insolventie-en-herstructurering` },
+      { '@type': 'SiteNavigationElement', position: 6, name: 'Over mr. Kumar', url: `${SITE_URL}/mukesh` },
+      { '@type': 'SiteNavigationElement', position: 7, name: 'Werkwijze', url: `${SITE_URL}/werkwijze` },
+      { '@type': 'SiteNavigationElement', position: 8, name: 'Notities', url: `${SITE_URL}/notities` },
+      { '@type': 'SiteNavigationElement', position: 9, name: 'Veelgestelde vragen', url: `${SITE_URL}/veelgestelde-vragen` },
+      { '@type': 'SiteNavigationElement', position: 10, name: 'Woordenlijst', url: `${SITE_URL}/woordenlijst` },
+      { '@type': 'SiteNavigationElement', position: 11, name: 'Contact', url: `${SITE_URL}/contact` },
+    ],
+  }
+}
+
