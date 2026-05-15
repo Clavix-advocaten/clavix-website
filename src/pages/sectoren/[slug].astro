@@ -78,7 +78,13 @@ if (sector.faqs?.length) {
       </div>
     )}
     {sector.leadParagraph && (
-      <p class="text-lead text-text mt-4 max-w-readable whitespace-pre-line">{sector.leadParagraph}</p>
+      <div class="mt-4 max-w-readable space-y-4">
+        {sector.leadParagraph.split('\n\n').map((para: string, i: number) => (
+          i === 0
+            ? <p class="text-lead text-text">{para}</p>
+            : <p class="text-body text-text-secondary">{para}</p>
+        ))}
+      </div>
     )}
   </section>
 
