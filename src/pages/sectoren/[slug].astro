@@ -72,11 +72,7 @@ if (sector.faqs?.length) {
       )}
     </div>
     {sector.subtitle && <p class="text-h3 text-text-secondary mb-6">{sector.subtitle}</p>}
-    {sector.volumeStat && (
-      <div class="inline-block px-3 py-1 bg-brand-secondary/30 border border-brand-secondary rounded-md text-small text-text mb-6">
-        {sector.volumeStat}
-      </div>
-    )}
+
     {sector.leadParagraph && (
       <div class="mt-4 max-w-readable space-y-4">
         {sector.leadParagraph.split('\n\n').map((para: string, i: number) => (

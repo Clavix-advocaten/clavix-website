@@ -82,11 +82,7 @@ const iconPaths: Record<string, string> = {
             )}
             <h2 class="text-h3 font-bold text-text mb-2 group-hover:text-text-accent transition">{s.shortTitle}</h2>
             {s.subtitle && <p class="text-body text-text-secondary mb-3">{s.subtitle}</p>}
-            {s.volumeStat && (
-              <div class="inline-block px-2 py-1 bg-bg-tinted text-tiny text-text-muted rounded mb-3">
-                {s.volumeStat}
-              </div>
-            )}
+            
             {s.excerpt && <p class="text-small text-text-secondary">{s.excerpt}</p>}
             <div class="mt-4 text-small font-semibold text-text-accent">
               Meer over {s.shortTitle} &rarr;
