@@ -21,6 +21,14 @@ const seoTitle = sector.seo?.metaTitle || sector.title
 const seoDescription =
   sector.seo?.metaDescription || sector.subtitle || sector.tldr?.body || sector.leadParagraph
 
+
+function formatDateNL(iso: string | undefined): string {
+  if (!iso) return ''
+  const d = new Date(iso)
+  const months = ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december']
+  return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear()
+}
+
 const breadcrumbs = breadcrumbSchema([
   { name: 'Home', url: '/' },
   { name: 'Sectoren', url: '/sectoren' },
@@ -51,7 +59,18 @@ if (sector.faqs?.length) {
 
   {/* Hero */}
   <section class="max-w-container mx-auto px-4 md:px-8 py-12 md:py-16">
-    <h1 class="text-display font-extrabold text-text mb-4">{sector.shortTitle}</h1>
+    <h1 class="text-display font-extrabold text-text mb-2">{sector.shortTitle}</h1>
+    <div class="text-small text-text-secondary mb-4 flex flex-wrap items-center gap-x-2 gap-y-1">
+      <span>Door <strong class="text-text font-semibold">mr. M. Kumar</strong></span>
+      <span aria-hidden="true">&middot;</span>
+      <span>NOvA-geregistreerd advocaat</span>
+      {sector._updatedAt && (
+        <>
+          <span aria-hidden="true">&middot;</span>
+          <span>Bijgewerkt <time datetime={sector._updatedAt}>{formatDateNL(sector._updatedAt)}</time></span>
+        </>
+      )}
+    </div>
     {sector.subtitle && <p class="text-h3 text-text-secondary mb-6">{sector.subtitle}</p>}
     {sector.volumeStat && (
       <div class="inline-block px-3 py-1 bg-brand-secondary/30 border border-brand-secondary rounded-md text-small text-text mb-6">

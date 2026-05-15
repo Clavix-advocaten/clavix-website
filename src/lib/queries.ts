@@ -272,6 +272,7 @@ export async function getAllPillarsForNav() {
 
 const sectorBySlugQuery = groq`*[_type == "sectorPage" && slug.current == $slug && !(_id in path("drafts.**"))][0] {
   _id,
+  _updatedAt,
   title,
   shortTitle,
   subtitle,
