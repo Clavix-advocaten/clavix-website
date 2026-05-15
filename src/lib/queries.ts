@@ -88,7 +88,13 @@ const pillarPageBySlugQuery = groq`*[_type == "pillarPage" && slug.current == $s
   author-> {
     name,
     "slug": slug.current
-  }
+  },
+  "relatedSectors": *[_type == "sectorPage" && references(^._id)]{
+    shortTitle,
+    "slug": slug.current,
+    subtitle,
+    iconKey
+  } | order(order asc)
 }`
 
 export async function getPillarPage(slug: string) {
