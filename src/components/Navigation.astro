@@ -27,9 +27,19 @@ const navItems: any[] = [
           { label: 'Bouwgeschillen', href: '/specialisme/bouwgeschillen', sub: 'Wanprestatie en gebreken' },
         ],
       },
+      {
+        heading: 'Sectoren',
+        items: [
+          { label: 'Healthcare', href: '/sectoren/healthcare', sub: 'Zorginstellingen en zorgvastgoed' },
+          { label: 'Tech & SaaS', href: '/sectoren/tech', sub: 'Founders, DGAs, investeerders' },
+          { label: 'Horeca', href: '/sectoren/horeca', sub: 'Huur, WHOA, familieoverdracht' },
+          { label: 'Bouw', href: '/sectoren/bouw', sub: 'Aannemers, opdrachtgevers, gebreken' },
+          { label: 'Retail', href: '/sectoren/retail', sub: 'Winkelhuur, franchise, doorstart' },
+          { label: 'Vastgoed & Projecten', href: '/sectoren/vastgoed-projecten', sub: 'Bouwfailures, VVE, doorstart' },
+        ],
+      },
     ],
   },
-  { label: 'Sectoren', href: '/sectoren' },
   { label: 'Werkwijze', href: '/werkwijze' },
   { label: 'mr. Kumar', href: '/mukesh' },
   { label: 'Notities', href: '/notities' },
@@ -59,7 +69,7 @@ const navItems: any[] = [
                 {item.label}
                 <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
               </button>
-              <div data-dropdown class="absolute top-full left-0 mt-2 bg-bg-elevated border border-border rounded-lg shadow-lg p-6 min-w-[640px] grid grid-cols-2 gap-6 opacity-0 invisible transition pointer-events-none">
+              <div data-dropdown class="absolute top-full left-0 mt-2 bg-bg-elevated border border-border rounded-lg shadow-lg p-6 min-w-[900px] grid grid-cols-3 gap-6 opacity-0 invisible transition pointer-events-none">
                 {item.columns.map((col: any) => (
                   <div>
                     <div class="text-tiny font-mono uppercase tracking-wider text-text-muted mb-3 pb-2 border-b border-border">
