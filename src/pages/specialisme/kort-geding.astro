@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTABand from '../../components/CTABand.astro';
+import { organizationSchema, serviceSchema, breadcrumbSchema } from '@lib/schema-markup';
+
+const pageTitle = "Kort geding";
+const pageDescription = "Bijstand bij kort gedingen voor ondernemers, bestuurders en vastgoedinvesteerders. Voorlopige voorzieningen, beslag, executiegeschillen. Wij beoordelen binnen 24 uur of een procedure bij de voorzieningenrechter kansrijk is.";
+
+const voorWie = [
+  {
+    titel: "DGA's en bestuurders met een spoedeisend conflict",
+    omschrijving: 'Bestuurders en aandeelhouders die op korte termijn een uitspraak nodig hebben over een schending van een aandeelhoudersovereenkomst, een onrechtmatig besluit, of een dreigende benadeling van de vennootschap. Een bodemprocedure is te traag voor de beslissing die nu moet worden genomen.',
+  },
+  {
+    titel: 'Werkgevers bij overtreding van een concurrentie- of relatiebeding',
+    omschrijving: "Werkgevers wiens (ex-)werknemer een non-concurrentie-, relatie- of geheimhoudingsbeding overtreedt. Een verbod op de overtreding, versterkt met een dwangsom, is uitsluitend via een kort geding op korte termijn realiseerbaar.",
+  },
+  {
+    titel: 'Crediteuren en partijen rond beslag of executie',
+    omschrijving: 'Schuldeisers die een conservatoir beslag willen leggen, of partijen die een onterecht beslag willen opheffen (artikel 705 Rv). Ook executiegeschillen, wanneer een tegenpartij een vonnis tenuitvoer wil leggen waartegen gemotiveerd verweer bestaat.',
+  },
+  {
+    titel: 'Vastgoedinvesteerders, huurders en verhuurders',
+    omschrijving: 'Partijen bij vastgoedgeschillen waarbij snelle duidelijkheid nodig is over ontruiming, ingebrekestelling met dwangsom, of een voorlopige voorziening rond een transactie. Termijnen zijn hier vaak hard en gekoppeld aan financierings- of huurdeadlines.',
+  },
+];
+
+const watWeDoen = [
+  'Voorlopige voorzieningen bij de voorzieningenrechter (artikel 254 Rv en verder), zowel rond bestaande als nieuwe geschillen',
+  'Conservatoir beslag via beslagrekest en de opheffings-procedure (artikel 705 Rv) wanneer een beslag onterecht is gelegd',
+  'Executiegeschillen wanneer een tegenpartij een vonnis tenuitvoer wil leggen waartegen verweer mogelijk is',
+  'Handhaving van concurrentie- en relatiebedingen met verbod, dwangsom, en eventueel inzage in administratie',
+  'Spoedvoorzieningen in aandeelhoudersconflicten, zoals schorsing van een besluit of beperking van het stemrecht hangende een bodemprocedure',
+];
+
+const aanpak = [
+  {
+    nummer: '01',
+    titel: 'Kansenoordeel binnen 24 uur',
+    omschrijving: 'Eerst beoordelen wij of een kort geding kansrijk is. Drie factoren wegen mee: voldoende spoedeisend belang, een vordering die zich leent voor een voorlopig oordeel, en bewijs dat op de zitting summier aannemelijk te maken is. Wanneer een van die drie ontbreekt, zoeken wij een andere route en vermijden wij een procedure die op formele gronden strandt.',
+  },
+  {
+    nummer: '02',
+    titel: 'Dagvaarding en bewijsbundel',
+    omschrijving: 'Bij groen licht stellen wij de dagvaarding op, dienen die in bij de voorzieningenrechter, en bouwen de bewijsbundel die op de zitting de doorslag geeft. Een kort geding wint of verliest u op de zitting, dus de productie die u dan ter hand heeft, bepaalt de uitkomst. Tijdspad doorgaans enkele dagen tot een week tot indiening, afhankelijk van de urgentie.',
+  },
+  {
+    nummer: '03',
+    titel: 'Zitting en verhouding tot bodemprocedure',
+    omschrijving: 'Op de zitting voeren wij de zaak met focus op feiten, juridisch kader, en de gevraagde voorziening. Vonnis volgt doorgaans binnen twee weken, vaak uitvoerbaar bij voorraad (artikel 257 Rv). Wij denken vooraf mee over de verhouding tot een mogelijke bodemprocedure, omdat een kort-gedingsvonnis voorlopig is en de definitieve uitspraak in de bodemzaak thuishoort.',
+  },
+];
+
+const onderscheid = [
+  {
+    titel: 'Snelle besluitvorming over haalbaarheid',
+    omschrijving: 'Een kort geding heeft alleen zin als spoedeisend belang, vordering en bewijs op orde zijn. Wij geven binnen 24 uur na het eerste gesprek een gemotiveerd oordeel, zodat u niet onnodig kosten maakt voor een procedure die op formele gronden zou stranden.',
+  },
+  {
+    titel: 'Kort geding vanuit ondernemings- en vastgoedrecht',
+    omschrijving: 'De meeste van onze kort gedingen raken aan een onderliggend ondernemings- of vastgoeddossier. Wij voeren de procedure vanuit die context en niet als losstaande proces-handeling, wat de samenhang met een eventuele bodemprocedure of buitengerechtelijke oplossing ten goede komt.',
+  },
+  {
+    titel: 'Realistische kans-inschatting vooraf',
+    omschrijving: 'Wij sturen niet op een procedure die niet kansrijk is, ook niet wanneer u die zelf wenst. Een kort geding dat wordt afgewezen verzwakt uw positie in een eventuele bodemprocedure. Een eerlijke inschatting vooraf is daarom essentieel.',
+  },
+];
+
+const schemas = [
+  organizationSchema(),
+  serviceSchema({
+    name: 'Kort geding',
+    description: 'Juridische bijstand bij spoedeisende geschillen. Voorlopige voorzieningen, conservatoir beslag, opheffings-procedures, executiegeschillen, en handhaving van concurrentiebedingen via de voorzieningenrechter.',
+    url: '/specialisme/kort-geding',
+    serviceType: 'Kort-geding-advies en procedures',
+  }),
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Specialisme', url: '/' },
+    { name: 'Kort geding', url: '/specialisme/kort-geding' },
+  ]),
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}
+  schemaJsonLd={schemas}
+>
+  <article>
+    {/* === HERO === */}
+    <section class="bg-bg-tinted">
+      <div class="max-w-container mx-auto px-4 md:px-8 py-12 md:py-16">
+        <p class="text-tiny text-text-muted uppercase tracking-wider mb-4">
+          Specialisme
+        </p>
+        <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
+          Kort geding
+        </h1>
+        <p class="text-h3 text-text-secondary font-display font-semibold mb-6 italic">
+          Een vonnis binnen weken, niet jaren.
+        </p>
+        <p class="text-body text-text-secondary max-w-prose mb-8">
+          Voor ondernemers, bestuurders en vastgoedinvesteerders die op korte termijn een uitspraak nodig hebben over een spoedeisend geschil. Wij beoordelen of een procedure bij de voorzieningenrechter kansrijk is, stellen de dagvaarding op met een bewijsbundel die op de zitting overtuigt, en houden rekening met de verhouding tot een eventuele bodemprocedure.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/contact" class="inline-block bg-brand-primary text-white font-semibold px-6 py-3 rounded-lg no-underline hover:opacity-90 transition">
+            Plan een eerste gesprek
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16">
+
+      {/* === VOOR WIE === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Voor wie</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Een kort geding past bij verschillende posities. Vier doelgroepen die wij regelmatig bijstaan.
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+          {voorWie.map(item => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{item.titel}</h3>
+              <p class="text-small text-text-secondary">{item.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === WAARBIJ WIJ ONDERSTEUNEN === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Waarbij wij ondersteunen</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Vijf typische trajecten waarvoor cliënten ons inschakelen.
+        </p>
+        <ul class="space-y-3">
+          {watWeDoen.map(item => (
+            <li class="flex gap-3 items-start p-4 bg-bg-elevated border border-border rounded-lg">
+              <span class="text-brand-primary font-bold flex-shrink-0">→</span>
+              <span class="text-body text-text">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* === ONZE AANPAK === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Onze aanpak</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Drie stappen, in deze volgorde. Eerst beoordelen of een kort geding past, dan pas indienen.
+        </p>
+        <div class="grid md:grid-cols-3 gap-4">
+          {aanpak.map(stap => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <div class="text-tiny text-brand-primary font-bold mb-2 tracking-wider">{stap.nummer}</div>
+              <h3 class="text-h4 font-bold text-text mb-2">{stap.titel}</h3>
+              <p class="text-small text-text-secondary">{stap.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === WAT ONS ONDERSCHEIDT === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Wat ons onderscheidt</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Drie specifieke kenmerken van onze kort-gedingpraktijk.
+        </p>
+        <div class="space-y-4">
+          {onderscheid.map(item => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{item.titel}</h3>
+              <p class="text-body text-text-secondary">{item.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === VERDIEPING (placeholder) ===
+        Wanneer cluster-pagina's beschikbaar zijn over bijvoorbeeld
+        concurrentiebeding-kort-geding, conservatoir beslag, of
+        executiegeschillen, voeg hier een verdieping-sectie toe
+        in dezelfde stijl als /specialisme/aandeelhoudersgeschillen.
+      */}
+
+    </div>
+
+    <CTABand
+      heading="Heeft u op korte termijn een vonnis nodig?"
+      description="Plan een eerste gesprek. Wij beoordelen of een kort geding voor uw situatie kansrijk is en welke route het beste past."
+    />
+  </article>
+</BaseLayout>
