@@ -1,0 +1,225 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTABand from '../../components/CTABand.astro';
+import { organizationSchema, serviceSchema, breadcrumbSchema } from '@lib/schema-markup';
+
+const pageTitle = "Contractgeschillen";
+const pageDescription = "Bijstand bij contractgeschillen voor ondernemers, DGA's en vastgoedinvesteerders. Wanprestatie, ontbinding, uitleg (Haviltex), dwaling en schadevergoeding. Realistische uitkomstinschatting vooraf.";
+
+const voorWie = [
+  {
+    titel: 'Ondernemers bij commerciële wanprestatie',
+    omschrijving: "Ondernemers wiens leverancier, afnemer of dienstverlener verplichtingen uit een overeenkomst niet nakomt. Software die niet werkt zoals beloofd, leveringen die uitblijven of niet voldoen aan specificaties, facturen die ondanks levering onbetaald blijven. Voor uw cashflow en commerciële continuïteit telt elke week.",
+  },
+  {
+    titel: 'Aandeelhouders en bestuurders bij overeenkomst-disputen',
+    omschrijving: 'Aandeelhouders bij onenigheid over de uitleg of nakoming van een aandeelhoudersovereenkomst, joint-venture-agreement, of een latere addendum. Vaak speelt dit rond besluitvorming, dividend, of exitclausules. Hier raakt contractrecht aan ondernemingsrecht en moet de juridische analyse beide kanten dekken.',
+  },
+  {
+    titel: 'Vastgoedinvesteerders bij koop-, huur- en aanneemcontracten',
+    omschrijving: 'Investeerders, ontwikkelaars en eigenaren bij geschillen over koopovereenkomsten (financierings- of bouwkundige voorbehouden), huurcontracten (huurprijswijziging, gebreken), en aannemingsovereenkomsten met aannemers of architecten. Termijnen, opleveringscriteria en boetebedingen vragen contractuele en bouwrechtelijke expertise.',
+  },
+  {
+    titel: "M&A-partijen rond garanties, vrijwaringen en earn-outs",
+    omschrijving: 'Verkopers en kopers van ondernemingen bij geschillen over breach of warranty, vrijwaringen, prijsmechanismen of earn-out-claims. Veelal komen deze geschillen pas na de closing aan het licht en spelen termijnen uit de SPA een doorslaggevende rol.',
+  },
+];
+
+const watWeDoen = [
+  'Wanprestatie-analyse, sommatie met ingebrekestelling, en onderhandeling over nakoming of schadevergoeding (artikel 6:74 BW en verder)',
+  'Ontbinding van overeenkomsten (artikel 6:265 BW), opzegging op contractuele of wettelijke gronden, en afwikkeling van de gevolgen',
+  'Uitleg-disputen volgens de Haviltex-norm wanneer partijen oneens zijn over wat zij contractueel hebben afgesproken',
+  'Vernietigbaarheid op grond van dwaling (artikel 6:228 BW), bedrog (artikel 3:44 BW), of misbruik van omstandigheden',
+  'Procesvoering wanneer onderhandeling vastloopt: bodemprocedure voor nakoming of schadevergoeding, kort geding voor spoedeisende voorzieningen',
+];
+
+const aanpak = [
+  {
+    nummer: '01',
+    titel: 'Contractanalyse en feitenchronologie',
+    omschrijving: 'Eerst lezen wij de overeenkomst en relevante correspondentie zorgvuldig. Wat is precies afgesproken, welke gedragingen van partijen suggereren een gewijzigde uitleg, en op welke contractuele of wettelijke gronden kan worden gestuurd. Een chronologie van de uitvoering vormt de basis voor elke vervolgstap.',
+  },
+  {
+    nummer: '02',
+    titel: 'Onderhandelingsspoor of sommatie',
+    omschrijving: 'Bij voorkeur lossen wij contractgeschillen op zonder procedure. Een goed onderbouwde sommatie met ingebrekestelling en een concrete deadline brengt veel zaken tot een schikking. Wij stellen brieven op die juridisch nauwkeurig zijn en tegelijkertijd ruimte laten voor een werkbare uitkomst.',
+  },
+  {
+    nummer: '03',
+    titel: 'Procedure waar nodig',
+    omschrijving: 'Wanneer onderhandeling vastloopt of acute maatregelen nodig zijn, voeren wij de procedure: bodemprocedure voor nakoming, ontbinding of schadevergoeding, of kort geding wanneer spoedeisend belang aanwezig is. Met focus op bewijs, juridisch kader, en realistische uitkomstbandbreedte.',
+  },
+];
+
+const onderscheid = [
+  {
+    titel: 'Contractrecht vanuit ondernemings- en vastgoedrecht',
+    omschrijving: 'De meeste van onze contractgeschillen raken aan een onderliggend ondernemings-, M&A-, of vastgoeddossier. Wij voeren ze vanuit die context en niet als losstaande contractuele kwesties. Dat is relevant omdat de uitleg van een commercieel contract niet zelden hangt op het bredere zakelijke kader.',
+  },
+  {
+    titel: 'Realistische uitkomstinschatting vooraf',
+    omschrijving: 'Voordat een sommatie of dagvaarding de deur uit gaat, geven wij u een gemotiveerde inschatting van uw juridische positie, een waarschijnlijkheid op succes, en een bandbreedte voor de uitkomst, zowel financieel als qua tijdsbeslag. Geen verrassingen tijdens het traject.',
+  },
+  {
+    titel: 'Voorkomen waar mogelijk, doorzetten waar nodig',
+    omschrijving: "Het beste contractgeschil is het geschil dat voorkomen werd. Waar mogelijk werken wij vroeg in een dossier mee aan contractuele helderheid (review, herziening, addendum) zodat een geschil niet hoeft te ontstaan. Wanneer een geschil al loopt, gaan wij doortastend te werk met focus op snelle resolutie.",
+  },
+];
+
+const verwanteSpecialismen = [
+  {
+    titel: 'Aandeelhoudersgeschillen',
+    omschrijving: 'Specifiek bij geschillen over een aandeelhoudersovereenkomst of joint-venture-agreement.',
+    url: '/specialisme/aandeelhoudersgeschillen',
+  },
+  {
+    titel: 'Bouwgeschillen',
+    omschrijving: 'Voor disputen rond aanneemovereenkomsten, oplevering en gebreken.',
+    url: '/specialisme/bouwgeschillen',
+  },
+  {
+    titel: 'Bedrijfsoverdracht met vastgoed',
+    omschrijving: 'Bij geschillen rond garanties, vrijwaringen of earn-outs na een M&A-transactie.',
+    url: '/specialisme/bedrijfsoverdracht-met-vastgoed',
+  },
+  {
+    titel: 'Kort geding',
+    omschrijving: 'Wanneer spoed vraagt om voorlopige voorziening of nakomingsvonnis binnen weken.',
+    url: '/specialisme/kort-geding',
+  },
+];
+
+const schemas = [
+  organizationSchema(),
+  serviceSchema({
+    name: 'Contractgeschillen',
+    description: "Juridische bijstand bij contractgeschillen voor ondernemers, DGA's en vastgoedinvesteerders. Wanprestatie, ontbinding, uitleg-disputen, dwaling, en procesvoering.",
+    url: '/specialisme/contractgeschillen',
+    serviceType: 'Contractgeschillen-advies en procedures',
+  }),
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Specialisme', url: '/' },
+    { name: 'Contractgeschillen', url: '/specialisme/contractgeschillen' },
+  ]),
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}
+  schemaJsonLd={schemas}
+>
+  <article>
+    {/* === HERO === */}
+    <section class="bg-bg-tinted">
+      <div class="max-w-container mx-auto px-4 md:px-8 py-12 md:py-16">
+        <p class="text-tiny text-text-muted uppercase tracking-wider mb-4">
+          Specialisme
+        </p>
+        <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
+          Contractgeschillen
+        </h1>
+        <p class="text-h3 text-text-secondary font-display font-semibold mb-6 italic">
+          Van wanprestatie tot ontbinding, van uitleg tot vergoeding.
+        </p>
+        <p class="text-body text-text-secondary max-w-prose mb-8">
+          Voor ondernemers, DGA's en vastgoedinvesteerders bij geschillen over de uitleg of nakoming van een overeenkomst. Wij beoordelen uw juridische positie, voeren onderhandelingen waar dat tot resultaat leidt, en procederen waar dat de juiste route is. Met focus op realistische uitkomst-inschatting en op behoud van werkbare zakelijke relaties waar mogelijk.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/contact" class="inline-block bg-brand-primary text-white font-semibold px-6 py-3 rounded-lg no-underline hover:opacity-90 transition">
+            Plan een eerste gesprek
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16">
+
+      {/* === VOOR WIE === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Voor wie</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Contractgeschillen treffen verschillende posities. Vier doelgroepen die wij regelmatig bijstaan.
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+          {voorWie.map(item => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{item.titel}</h3>
+              <p class="text-small text-text-secondary">{item.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === WAARBIJ WIJ ONDERSTEUNEN === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Waarbij wij ondersteunen</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Vijf typische trajecten waarvoor cliënten ons inschakelen.
+        </p>
+        <ul class="space-y-3">
+          {watWeDoen.map(item => (
+            <li class="flex gap-3 items-start p-4 bg-bg-elevated border border-border rounded-lg">
+              <span class="text-brand-primary font-bold flex-shrink-0">→</span>
+              <span class="text-body text-text">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* === ONZE AANPAK === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Onze aanpak</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Drie stappen, in deze volgorde. Eerst lezen, dan onderhandelen, dan procederen waar nodig.
+        </p>
+        <div class="grid md:grid-cols-3 gap-4">
+          {aanpak.map(stap => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <div class="text-tiny text-brand-primary font-bold mb-2 tracking-wider">{stap.nummer}</div>
+              <h3 class="text-h4 font-bold text-text mb-2">{stap.titel}</h3>
+              <p class="text-small text-text-secondary">{stap.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === WAT ONS ONDERSCHEIDT === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Wat ons onderscheidt</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Drie specifieke kenmerken van onze contractgeschillen-praktijk.
+        </p>
+        <div class="space-y-4">
+          {onderscheid.map(item => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{item.titel}</h3>
+              <p class="text-body text-text-secondary">{item.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === VERWANTE SPECIALISMEN === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Verwante specialismen</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Contractgeschillen raken regelmatig aan andere specialisaties binnen ons kantoor.
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+          {verwanteSpecialismen.map(item => (
+            <a href={item.url} class="block p-5 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary no-underline transition">
+              <h3 class="text-h4 font-bold text-text mb-2">{item.titel}</h3>
+              <p class="text-small text-text-secondary">{item.omschrijving}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+
+    </div>
+
+    <CTABand
+      heading="Speelt een contractgeschil of voorziet u er een?"
+      description="Plan een eerste gesprek. Wij beoordelen of, en hoe, wij u kunnen bijstaan."
+    />
+  </article>
+</BaseLayout>

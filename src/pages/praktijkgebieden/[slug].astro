@@ -44,11 +44,16 @@ const specialismes: Record<string, any> = {
     description: 'Spoedeisende geschillen via de voorzieningenrechter. Voorlopige voorzieningen, beslag, executiegeschillen.',
     slug: 'kort-geding',
   },
+  'contractgeschillen': {
+    title: 'Contractgeschillen',
+    description: 'Wanprestatie, ontbinding, uitleg-disputen (Haviltex), dwaling en vernietigbaarheid.',
+    slug: 'contractgeschillen',
+  },
 };
 
 const specialismeMapping: Record<string, string[]> = {
   'vastgoed-en-ondernemers': ['bedrijfsoverdracht-met-vastgoed', 'aandeelhoudersgeschillen'],
-  'ondernemingsrecht': ['aandeelhoudersgeschillen', 'bestuurdersaansprakelijkheid'],
+  'ondernemingsrecht': ['aandeelhoudersgeschillen', 'bestuurdersaansprakelijkheid', 'contractgeschillen'],
   'vastgoedrecht': ['bouwgeschillen', 'bedrijfsoverdracht-met-vastgoed'],
   'insolventie-en-herstructurering': ['bestuurdersaansprakelijkheid'],
   'burgerlijk-procesrecht': ['kort-geding'],
