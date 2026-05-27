@@ -39,6 +39,11 @@ const specialismes: Record<string, any> = {
     description: 'Wanprestatie aannemers, gebreken, oplevering, en aanneming van werk.',
     slug: 'bouwgeschillen',
   },
+  'kort-geding': {
+    title: 'Kort geding',
+    description: 'Spoedeisende geschillen via de voorzieningenrechter. Voorlopige voorzieningen, beslag, executiegeschillen.',
+    slug: 'kort-geding',
+  },
 };
 
 const specialismeMapping: Record<string, string[]> = {
@@ -46,6 +51,7 @@ const specialismeMapping: Record<string, string[]> = {
   'ondernemingsrecht': ['aandeelhoudersgeschillen', 'bestuurdersaansprakelijkheid'],
   'vastgoedrecht': ['bouwgeschillen', 'bedrijfsoverdracht-met-vastgoed'],
   'insolventie-en-herstructurering': ['bestuurdersaansprakelijkheid'],
+  'burgerlijk-procesrecht': ['kort-geding'],
 };
 
 const pillarSpecialismes = (specialismeMapping[slug as string] || [])
