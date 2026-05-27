@@ -49,14 +49,19 @@ const specialismes: Record<string, any> = {
     description: 'Wanprestatie, ontbinding, uitleg-disputen (Haviltex), dwaling en vernietigbaarheid.',
     slug: 'contractgeschillen',
   },
+  'incasso-en-executie': {
+    title: 'Incasso en executie',
+    description: 'Buitengerechtelijke incasso, conservatoir en executoriaal beslag, opheffings-procedures, en executiegeschillen.',
+    slug: 'incasso-en-executie',
+  },
 };
 
 const specialismeMapping: Record<string, string[]> = {
   'vastgoed-en-ondernemers': ['bedrijfsoverdracht-met-vastgoed', 'aandeelhoudersgeschillen'],
   'ondernemingsrecht': ['aandeelhoudersgeschillen', 'bestuurdersaansprakelijkheid', 'contractgeschillen'],
   'vastgoedrecht': ['bouwgeschillen', 'bedrijfsoverdracht-met-vastgoed'],
-  'insolventie-en-herstructurering': ['bestuurdersaansprakelijkheid'],
-  'burgerlijk-procesrecht': ['kort-geding'],
+  'insolventie-en-herstructurering': ['bestuurdersaansprakelijkheid', 'incasso-en-executie'],
+  'burgerlijk-procesrecht': ['kort-geding', 'incasso-en-executie'],
 };
 
 const pillarSpecialismes = (specialismeMapping[slug as string] || [])
