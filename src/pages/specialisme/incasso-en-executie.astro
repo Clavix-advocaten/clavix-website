@@ -1,0 +1,225 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTABand from '../../components/CTABand.astro';
+import { organizationSchema, serviceSchema, breadcrumbSchema } from '@lib/schema-markup';
+
+const pageTitle = "Incasso en executie";
+const pageDescription = "Incasso- en executieadvies voor ondernemers, crediteuren en vastgoedinvesteerders. Buitengerechtelijke incasso (WIK), conservatoir beslag (700 Rv), opheffings-kort-geding (705 Rv), executiegeschillen (438 Rv), en verhaalsstrategie vóór dreigende insolventie.";
+
+const voorWie = [
+  {
+    titel: 'Ondernemers met onbetaalde facturen of onvervulde aanspraken',
+    omschrijving: 'Ondernemers die geleverd hebben maar nog niet zijn betaald, of die vooruit hebben betaald en nu geen levering ontvangen. Cashflow is een echte beperking voor zakelijke continuïteit, en hoe langer u wacht met juridisch sturen, hoe groter het risico dat de wederpartij in financiële problemen komt en verhaal vrijwel onmogelijk wordt.',
+  },
+  {
+    titel: 'Crediteuren bij dreigende insolventie van de debiteur',
+    omschrijving: 'Crediteuren die signalen oppikken dat hun debiteur in financiële moeilijkheden verkeert. Snelheid bepaalt hier de verhaalskans: hoe eerder conservatoir beslag, hoe groter de zekerheid dat u na vonnis nog daadwerkelijk verhaal krijgt. Vaak in combinatie met een faillissementsaanvraag als drukmiddel.',
+  },
+  {
+    titel: 'Partijen tegen wie onterecht beslag is gelegd',
+    omschrijving: 'Ondernemers en bestuurders bij wie de bankrekening, het bedrijfspand, of de inventaris in beslag is genomen op een vordering die niet bestaat, te hoog is begroot, of vexatoir is. Een opheffings-kort-geding (artikel 705 Rv) kan binnen weken de blokkade opheffen, mits de juridische gronden goed zijn onderbouwd.',
+  },
+  {
+    titel: 'Partijen bij executiegeschillen en executieveilingen',
+    omschrijving: 'Schuldenaren tegen wie een vonnis tenuitvoer wordt gelegd waartegen verweer bestaat, of crediteuren wier executie wordt geblokkeerd door een executiegeschil (artikel 438 Rv). Ook vastgoedinvesteerders bij gedwongen veilingen en hypotheekexecuties.',
+  },
+];
+
+const watWeDoen = [
+  'Buitengerechtelijke incasso: sommatie, ingebrekestelling, en aanspraak op WIK-vergoeding (artikel 6:96 BW lid 2 sub c) plus wettelijke handelsrente (artikel 6:119a BW)',
+  'Conservatoir beslag (artikel 700 Rv) op bankrekeningen, onroerend goed, voorraden, aandelen, of vorderingen onder derden ter verzekering van verhaal vóór vonnis',
+  'Bodemprocedure of kort geding voor de onderliggende vordering wanneer buitengerechtelijke incasso niet tot betaling leidt',
+  'Executie van vonnis via deurwaarder: executoriaal beslag, openbare verkoop, en executieveiling van vastgoed bij hypotheekrechten',
+  'Verweer tegen onterecht of vexatoir beslag via een opheffings-kort-geding (artikel 705 Rv), en tegen executie via een executiegeschil (artikel 438 Rv)',
+];
+
+const aanpak = [
+  {
+    nummer: '01',
+    titel: 'Verhaalspositie-analyse',
+    omschrijving: 'Eerst beoordelen wij of er voldoende verhaal te halen is bij de debiteur. Geen procedure heeft zin tegen een lege boedel. Wij raadplegen openbare bronnen (KvK, Kadaster, jaarrekening waar beschikbaar), wegen signalen van financiële problemen mee, en bepalen op welke vermogensbestanddelen beslag het meest effectief is. Pas wanneer verhaal realistisch is, gaan we door naar de volgende stap.',
+  },
+  {
+    nummer: '02',
+    titel: 'Snelheid in beslag, gedegen in onderbouwing',
+    omschrijving: 'Wanneer urgentie het rechtvaardigt, gaat het beslagrekest binnen 24 tot 48 uur naar de voorzieningenrechter. Tegelijk moet de onderliggende vordering juridisch goed zijn onderbouwd, omdat een onterecht beslag tot opheffing en aansprakelijkheid voor schade kan leiden. Wij combineren snelheid met juridische precisie.',
+  },
+  {
+    nummer: '03',
+    titel: 'Executie tot betaling',
+    omschrijving: 'Een vonnis is geen geld op de rekening. Wij begeleiden het hele traject van executie via de deurwaarder, executoriaal beslag op concrete vermogensbestanddelen, en waar nodig een executieveiling. Voor crediteuren tegenover een insolvente debiteur stappen we waar passend over naar het faillissementsspoor.',
+  },
+];
+
+const onderscheid = [
+  {
+    titel: 'Snelheid bij beslag, met oog op insolventie-risico',
+    omschrijving: 'Verhaal verdwijnt zodra de debiteur failliet gaat. Wij werken met spoed wanneer financiële signalen ongunstig zijn, en weten dat een week vertraging het verschil kan maken tussen volledige voldoening en een dividenduitkering van vijf cent op de euro.',
+  },
+  {
+    titel: 'Verhaalsstrategie boven louter procederen',
+    omschrijving: 'Wij beoordelen vooraf of de tegenpartij verhaal biedt. Wanneer dat onvoldoende is, zoeken wij andere routes: bestuurdersaansprakelijkheid, claim op een holding-structuur, of een faillissementsaanvraag als drukmiddel. Een vonnis is alleen waardevol als het uitvoerbaar is.',
+  },
+  {
+    titel: 'Combinatie van incasso- en insolventierecht',
+    omschrijving: 'Wanneer een crediteur in zicht heeft dat zijn debiteur insolvent dreigt te worden, ligt de oplossing zelden in louter incasso. Wij combineren onze incasso-praktijk met expertise op insolventie en herstructurering, zodat we vanuit beide kanten de juiste route kiezen voor uw situatie.',
+  },
+];
+
+const verwanteSpecialismen = [
+  {
+    titel: 'Kort geding',
+    omschrijving: 'Voor beslagrekesten (700 Rv), opheffings-kort-gedingen (705 Rv), en executiegeschillen (438 Rv).',
+    url: '/specialisme/kort-geding',
+  },
+  {
+    titel: 'Contractgeschillen',
+    omschrijving: 'Wanneer de onbetaalde vordering voortvloeit uit een contractgeschil over levering of dienstverlening.',
+    url: '/specialisme/contractgeschillen',
+  },
+  {
+    titel: 'Bestuurdersaansprakelijkheid',
+    omschrijving: 'Wanneer een bestuurder persoonlijk aansprakelijk is voor onbetaalde verplichtingen van de vennootschap.',
+    url: '/specialisme/bestuurdersaansprakelijkheid',
+  },
+  {
+    titel: 'Aandeelhoudersgeschillen',
+    omschrijving: 'Bij geschillen over uitkoop of dividendaanspraken waar uitvoering achterwege blijft.',
+    url: '/specialisme/aandeelhoudersgeschillen',
+  },
+];
+
+const schemas = [
+  organizationSchema(),
+  serviceSchema({
+    name: 'Incasso en executie',
+    description: 'Juridische bijstand bij incasso, conservatoir en executoriaal beslag, opheffings-procedures, executiegeschillen en verhaalsstrategie voor ondernemers en crediteuren.',
+    url: '/specialisme/incasso-en-executie',
+    serviceType: 'Incasso-, beslag- en executierechtadvies en procedures',
+  }),
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Specialisme', url: '/' },
+    { name: 'Incasso en executie', url: '/specialisme/incasso-en-executie' },
+  ]),
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}
+  schemaJsonLd={schemas}
+>
+  <article>
+    {/* === HERO === */}
+    <section class="bg-bg-tinted">
+      <div class="max-w-container mx-auto px-4 md:px-8 py-12 md:py-16">
+        <p class="text-tiny text-text-muted uppercase tracking-wider mb-4">
+          Specialisme
+        </p>
+        <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
+          Incasso en executie
+        </h1>
+        <p class="text-h3 text-text-secondary font-display font-semibold mb-6 italic">
+          Van sommatie tot vonnis, van beslag tot executie.
+        </p>
+        <p class="text-body text-text-secondary max-w-prose mb-8">
+          Voor crediteuren en ondernemers bij vorderingen die niet worden voldaan, en voor partijen tegen wie beslag wordt gelegd of executie loopt. Wij combineren snelheid in beslag, gedegen onderbouwing van de vordering, en het hele traject tot betaling. Bijzondere aandacht voor situaties waar uw debiteur in financiële problemen verkeert en verhaal mogelijk verdwijnt.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/contact" class="inline-block bg-brand-primary text-white font-semibold px-6 py-3 rounded-lg no-underline hover:opacity-90 transition">
+            Plan een eerste gesprek
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16">
+
+      {/* === VOOR WIE === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Voor wie</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Incasso- en executiezaken treffen verschillende posities. Vier doelgroepen die wij regelmatig bijstaan.
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+          {voorWie.map(item => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{item.titel}</h3>
+              <p class="text-small text-text-secondary">{item.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === WAARBIJ WIJ ONDERSTEUNEN === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Waarbij wij ondersteunen</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Vijf typische trajecten waarvoor cliënten ons inschakelen.
+        </p>
+        <ul class="space-y-3">
+          {watWeDoen.map(item => (
+            <li class="flex gap-3 items-start p-4 bg-bg-elevated border border-border rounded-lg">
+              <span class="text-brand-primary font-bold flex-shrink-0">→</span>
+              <span class="text-body text-text">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* === ONZE AANPAK === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Onze aanpak</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Drie stappen, in deze volgorde. Verhaalspositie eerst, beslag tweedeel, executie als sluitstuk.
+        </p>
+        <div class="grid md:grid-cols-3 gap-4">
+          {aanpak.map(stap => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <div class="text-tiny text-brand-primary font-bold mb-2 tracking-wider">{stap.nummer}</div>
+              <h3 class="text-h4 font-bold text-text mb-2">{stap.titel}</h3>
+              <p class="text-small text-text-secondary">{stap.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === WAT ONS ONDERSCHEIDT === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Wat ons onderscheidt</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Drie specifieke kenmerken van onze incasso- en executiepraktijk.
+        </p>
+        <div class="space-y-4">
+          {onderscheid.map(item => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{item.titel}</h3>
+              <p class="text-body text-text-secondary">{item.omschrijving}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === VERWANTE SPECIALISMEN === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Verwante specialismen</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Incasso- en executievraagstukken raken regelmatig aan andere specialisaties binnen ons kantoor.
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+          {verwanteSpecialismen.map(item => (
+            <a href={item.url} class="block p-5 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary no-underline transition">
+              <h3 class="text-h4 font-bold text-text mb-2">{item.titel}</h3>
+              <p class="text-small text-text-secondary">{item.omschrijving}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+
+    </div>
+
+    <CTABand
+      heading="Heeft u een vordering die niet wordt voldaan, of is beslag tegen u gelegd?"
+      description="Plan een eerste gesprek. Wij beoordelen verhaalspositie, onderbouwing, en de juiste route naar betaling of opheffing."
+    />
+  </article>
+</BaseLayout>
