@@ -53,9 +53,9 @@
 /expertise/advocaat-ondernemingsrecht          /praktijkgebieden/ondernemingsrecht                301
 /expertise/advocaat-aansprakelijkheidsrecht    /clusters/bestuurdersaansprakelijkheid-faillissement  301
 /expertise/advocaat-beslag-en-executierecht    /clusters/beslag-op-aandelen                       301
-/expertise/advocaat-civiel-procesrecht         /praktijkgebieden/ondernemingsrecht                301
-/expertise/advocaat-contractenrecht            /praktijkgebieden/ondernemingsrecht                301
-/expertise/advocaat-incasso-verhaalsrecht      /praktijkgebieden/ondernemingsrecht                301
+/expertise/advocaat-civiel-procesrecht         /praktijkgebieden/burgerlijk-procesrecht           301
+/expertise/advocaat-contractenrecht            /specialisme/contractgeschillen                    301
+/expertise/advocaat-incasso-verhaalsrecht      /specialisme/incasso-en-executie                   301
 /expertise/advoaat-zuidas                      /mukesh                                            301
 /expertise/*                                   /praktijkgebieden/ondernemingsrecht                301
 
@@ -81,7 +81,8 @@
 /advocaat/aanneming-van-werk--bouwgeschillen/*      /clusters/bouwgeschil-aannemer-wanprestatie  301
 
 # Civiel procesrecht / Aansprakelijkheid / Incasso (vallen onder ondernemingsrecht voor onze structuur)
-/advocaat/civiel-procesrecht/*           /praktijkgebieden/ondernemingsrecht  301
+/advocaat/civiel-procesrecht/kort-geding /specialisme/kort-geding                  301
+/advocaat/civiel-procesrecht/*           /praktijkgebieden/burgerlijk-procesrecht  301
 /advocaat/aansprakelijkheidsrecht/*      /clusters/bestuurdersaansprakelijkheid-faillissement  301
 /advocaat/incasso-en-verhaalsrecht/*     /praktijkgebieden/ondernemingsrecht  301
 
