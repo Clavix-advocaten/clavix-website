@@ -1,4 +1,5 @@
 ---
+import '@fontsource-variable/montserrat';
 /**
  * Base layout — gebruikt op alle pagina's.
  * Bevat: HTML doctype, head met meta + Montserrat font + schema markup, base structure.
@@ -68,13 +69,6 @@ if (schemaJsonLd) {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`} />
 
-    {/* Montserrat — preconnect + load */}
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
 
     {/* Schema.org JSON-LD */}
     {schemas.map((schema) => (
