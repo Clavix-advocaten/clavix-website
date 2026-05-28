@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CTABand from '../../components/CTABand.astro';
-import { organizationSchema, serviceSchema, breadcrumbSchema } from '@lib/schema-markup';
+import { serviceSchema, breadcrumbSchema } from '@lib/schema-markup';
 
 const pageTitle = "Contractgeschillen";
 const pageDescription = "Bijstand bij contractgeschillen voor ondernemers, DGA's en vastgoedinvesteerders. Wanprestatie, ontbinding, uitleg (Haviltex), dwaling en schadevergoeding. Realistische uitkomstinschatting vooraf.";
@@ -90,7 +90,6 @@ const verwanteSpecialismen = [
 ];
 
 const schemas = [
-  organizationSchema(),
   serviceSchema({
     name: 'Contractgeschillen',
     description: "Juridische bijstand bij contractgeschillen voor ondernemers, DGA's en vastgoedinvesteerders. Wanprestatie, ontbinding, uitleg-disputen, dwaling, en procesvoering.",

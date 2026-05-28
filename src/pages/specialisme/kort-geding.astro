@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CTABand from '../../components/CTABand.astro';
-import { organizationSchema, serviceSchema, breadcrumbSchema } from '@lib/schema-markup';
+import { serviceSchema, breadcrumbSchema } from '@lib/schema-markup';
 
 const pageTitle = "Kort geding";
 const pageDescription = "Bijstand bij kort gedingen voor ondernemers, bestuurders en vastgoedinvesteerders. Voorlopige voorzieningen, beslag, executiegeschillen. Wij beoordelen binnen 24 uur of een procedure bij de voorzieningenrechter kansrijk is.";
@@ -90,7 +90,6 @@ const verwanteSpecialismen = [
 ];
 
 const schemas = [
-  organizationSchema(),
   serviceSchema({
     name: 'Kort geding',
     description: 'Juridische bijstand bij spoedeisende geschillen. Voorlopige voorzieningen, conservatoir beslag, opheffings-procedures, executiegeschillen, en handhaving van concurrentiebedingen via de voorzieningenrechter.',

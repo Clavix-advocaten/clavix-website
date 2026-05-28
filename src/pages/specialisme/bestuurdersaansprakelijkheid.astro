@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CTABand from '../../components/CTABand.astro';
-import { organizationSchema, serviceSchema, breadcrumbSchema } from '@lib/schema-markup';
+import { serviceSchema, breadcrumbSchema } from '@lib/schema-markup';
 
 const pageTitle = "Bestuurdersaansprakelijkheid";
 const pageDescription = "Verdediging tegen curator-claims en preventief risico-advies voor DGA's. Bestuurdersaansprakelijkheid bij faillissement (2:248 BW).";
@@ -67,7 +67,6 @@ const onderscheid = [
 ];
 
 const schemas = [
-  organizationSchema(),
   serviceSchema({
     name: 'Bestuurdersaansprakelijkheid',
     description: 'Verdediging bij curator-claims, preventief risico-advies voor DGA\'s, en bestuurdersaansprakelijkheid bij faillissement.',

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CTABand from '../../components/CTABand.astro';
-import { organizationSchema, serviceSchema, breadcrumbSchema } from '@lib/schema-markup';
+import { serviceSchema, breadcrumbSchema } from '@lib/schema-markup';
 
 const pageTitle = "Incasso en executie";
 const pageDescription = "Incasso- en executieadvies voor ondernemers, crediteuren en vastgoedinvesteerders. Buitengerechtelijke incasso (WIK), conservatoir beslag (700 Rv), opheffings-kort-geding (705 Rv), executiegeschillen (438 Rv), en verhaalsstrategie vóór dreigende insolventie.";
@@ -90,7 +90,6 @@ const verwanteSpecialismen = [
 ];
 
 const schemas = [
-  organizationSchema(),
   serviceSchema({
     name: 'Incasso en executie',
     description: 'Juridische bijstand bij incasso, conservatoir en executoriaal beslag, opheffings-procedures, executiegeschillen en verhaalsstrategie voor ondernemers en crediteuren.',

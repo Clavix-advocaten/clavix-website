@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CTABand from '../../components/CTABand.astro';
-import { organizationSchema, serviceSchema, breadcrumbSchema } from '@lib/schema-markup';
+import { serviceSchema, breadcrumbSchema } from '@lib/schema-markup';
 
 const pageTitle = "Bedrijfsoverdracht met vastgoed";
 const pageDescription = "M&A-transacties waar vastgoed onderdeel uitmaakt. Earn-outs, vrijwaringen, due diligence, transactiestructuur en juridische ondersteuning.";
@@ -67,7 +67,6 @@ const onderscheid = [
 ];
 
 const schemas = [
-  organizationSchema(),
   serviceSchema({
     name: 'Bedrijfsoverdracht met vastgoed',
     description: 'M&A-transacties waar vastgoed onderdeel van is. Earn-outs, vrijwaringen, transactiestructuur, en juridische due diligence.',

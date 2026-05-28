@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CTABand from '../../components/CTABand.astro';
-import { organizationSchema, serviceSchema, breadcrumbSchema } from '@lib/schema-markup';
+import { serviceSchema, breadcrumbSchema } from '@lib/schema-markup';
 
 const pageTitle = "Bouwgeschillen";
 const pageDescription = "Bouwgeschillen tussen opdrachtgever en aannemer. Wanprestatie, gebreken, oplevering, en aanneming van werk (UAV-2012).";
@@ -67,7 +67,6 @@ const onderscheid = [
 ];
 
 const schemas = [
-  organizationSchema(),
   serviceSchema({
     name: 'Bouwgeschillen',
     description: 'Geschillen tussen opdrachtgever en aannemer. Wanprestatie, gebreken, oplevering, en aanneming van werk.',
