@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { breadcrumbSchema } from '@lib/schema-markup';
 
 const pageTitle = 'Plan een eerste gesprek';
 const pageDescription = "Plan een eerste gesprek met mr. Kumar. We luisteren, beoordelen uw situatie en geven aan of wij u kunnen bijstaan. Reactie binnen 24 uur op werkdagen.";
@@ -22,9 +23,16 @@ const watWeBeloven = [
     omschrijving: 'Wanneer een advocaat niet nodig is, zeggen wij dat. Wanneer een ander kantoor beter past, vertellen wij dat ook. Uw belang gaat voor het onze.',
   },
 ];
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: 'https://clavix.nl' },
+    { name: 'Contact', url: 'https://clavix.nl/contact' },
+  ]),
+];
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout title={pageTitle} description={pageDescription} schemaJsonLd={schemas}>
   <article>
     <section class="bg-bg-tinted">
       <div class="max-w-container mx-auto px-4 md:px-8 py-12 md:py-16">
