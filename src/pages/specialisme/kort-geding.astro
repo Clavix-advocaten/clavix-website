@@ -66,6 +66,29 @@ const onderscheid = [
   },
 ];
 
+const verwanteSpecialismen = [
+  {
+    titel: 'Incasso en executie',
+    omschrijving: 'Voor de onderliggende vordering, conservatoir beslag (700 Rv), en het volledige executietraject.',
+    url: '/specialisme/incasso-en-executie',
+  },
+  {
+    titel: 'Aandeelhoudersgeschillen',
+    omschrijving: 'Wanneer de spoedvoorziening voortvloeit uit een conflict tussen aandeelhouders of compagnons.',
+    url: '/specialisme/aandeelhoudersgeschillen',
+  },
+  {
+    titel: 'Contractgeschillen',
+    omschrijving: 'Bij nakomings-, verbods- of dwangsomvorderingen uit een onderliggend contract.',
+    url: '/specialisme/contractgeschillen',
+  },
+  {
+    titel: 'Bestuurdersaansprakelijkheid',
+    omschrijving: 'Voor acute maatregelen rond bestuurders, zoals schorsing of een verbod op specifieke handelingen.',
+    url: '/specialisme/bestuurdersaansprakelijkheid',
+  },
+];
+
 const schemas = [
   organizationSchema(),
   serviceSchema({
@@ -176,12 +199,21 @@ const schemas = [
         </div>
       </section>
 
-      {/* === VERDIEPING (placeholder) ===
-        Wanneer cluster-pagina's beschikbaar zijn over bijvoorbeeld
-        concurrentiebeding-kort-geding, conservatoir beslag, of
-        executiegeschillen, voeg hier een verdieping-sectie toe
-        in dezelfde stijl als /specialisme/aandeelhoudersgeschillen.
-      */}
+      {/* === VERWANTE SPECIALISMEN === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Verwante specialismen</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Kort-gedingprocedures raken regelmatig aan andere specialisaties binnen ons kantoor.
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+          {verwanteSpecialismen.map(item => (
+            <a href={item.url} class="block p-5 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary no-underline transition">
+              <h3 class="text-h4 font-bold text-text mb-2">{item.titel}</h3>
+              <p class="text-small text-text-secondary">{item.omschrijving}</p>
+            </a>
+          ))}
+        </div>
+      </section>
 
     </div>
 
