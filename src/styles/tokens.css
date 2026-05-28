@@ -121,7 +121,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
-  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Montserrat Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: var(--color-text);
