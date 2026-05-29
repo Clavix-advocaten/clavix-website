@@ -90,7 +90,7 @@ const pageDescription = "Veelgestelde vragen over ondernemingsrecht, vastgoed, i
   <article>
     {/* === HERO === */}
     <section class="bg-bg-tinted">
-      <div class="max-w-content mx-auto px-4 md:px-8 py-12 md:py-16">
+      <div class="max-w-container mx-auto px-4 md:px-8 py-12 md:py-16">
         <p class="text-tiny text-text-muted uppercase tracking-wider mb-4">
           Veelgestelde vragen
         </p>
@@ -106,7 +106,7 @@ const pageDescription = "Veelgestelde vragen over ondernemingsrecht, vastgoed, i
       </div>
     </section>
 
-    <div class="max-w-content mx-auto px-4 md:px-8 py-16">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16">
       {grouped.map(group => (
         group.items.length > 0 && (
           <section class="mb-16 last:mb-0" id={group.slug}>
