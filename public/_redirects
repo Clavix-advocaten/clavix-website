@@ -84,11 +84,13 @@
 /advocaat/civiel-procesrecht/kort-geding /specialisme/kort-geding                  301
 /advocaat/civiel-procesrecht/*           /praktijkgebieden/burgerlijk-procesrecht  301
 /advocaat/aansprakelijkheidsrecht/*      /clusters/bestuurdersaansprakelijkheid-faillissement  301
+/advocaat/incasso-en-verhaalsrecht/betalingsgeschillen  /specialisme/incasso-en-executie  301
 /advocaat/incasso-en-verhaalsrecht/*     /praktijkgebieden/ondernemingsrecht  301
 
 # Contractenrecht
 /advocaat/contractenrecht/wanprestatie                 /clusters/bouwgeschil-aannemer-wanprestatie  301
 /advocaat/contractenrecht/leveringsgeschillen-vastgoed /praktijkgebieden/vastgoedrecht              301
+/advocaat/contractenrecht/onvoorziene-omstandigheden   /specialisme/contractgeschillen              301
 /advocaat/contractenrecht/*                            /praktijkgebieden/ondernemingsrecht          301
 
 # Vastgoedrecht — specifieke mappings
@@ -99,6 +101,7 @@
 /advocaat/vastgoedrecht/vastgoedtransacties                       /clusters/verkoop-bedrijfspand-mna           301
 /advocaat/vastgoedrecht/koopgeschillen-vastgoed                   /clusters/verkoop-bedrijfspand-mna           301
 /advocaat/vastgoedrecht/ontbinding-koopovereenkomst-vastgoed      /clusters/verkoop-bedrijfspand-mna           301
+/advocaat/vastgoedrecht/opleveringsgeschillen                     /specialisme/bouwgeschillen                  301
 /advocaat/vastgoedrecht/*                                         /praktijkgebieden/vastgoedrecht              301
 
 # Ondernemingsrecht — specifieke mappings
