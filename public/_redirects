@@ -116,4 +116,23 @@
 
 # Generic /advocaat/* fallback
 /advocaat/*                       /praktijkgebieden/ondernemingsrecht  301
+# === RECHTSGEBIED VARIANTEN (Wix legacy URLs - fix 404s 2 juni) ===
+/rechtsgebied/advocaat-faillissement           /praktijkgebieden/insolventie-en-herstructurering  301
+/rechtsgebied/advocaat-bouwrecht               /specialisme/bouwgeschillen                        301
+/rechtsgebied/advocaat-vastgoed                /praktijkgebieden/vastgoedrecht                    301
+/rechtsgebied/advocaat-huurrecht               /praktijkgebieden/vastgoedrecht                    301
+/rechtsgebied/advocaat-burenrecht              /praktijkgebieden/vastgoedrecht                    301
+/rechtsgebied/advocaat-civiel-recht            /praktijkgebieden/burgerlijk-procesrecht           301
+/rechtsgebied/advocaat-contractenrecht         /specialisme/contractgeschillen                    301
+/rechtsgebied/bouwrecht                        /specialisme/bouwgeschillen                        301
+/rechtsgebied/beslag-en-executierecht          /specialisme/incasso-en-executie                   301
+/rechtsgebied                                  /praktijkgebieden/ondernemingsrecht                301
+/rechtsgebied/*                                /praktijkgebieden/ondernemingsrecht                301
+
+# === BESLAG-EN-EXECUTIERECHT (Wix legacy + Wix duplicate -1 suffix) ===
+/beslag-en-executierecht                       /specialisme/incasso-en-executie                   301
+/beslag-en-executierecht-1                     /specialisme/incasso-en-executie                   301
+/beslag-en-executierecht/*                     /specialisme/incasso-en-executie                   301
+/beslag-en-executierecht-1/*                   /specialisme/incasso-en-executie                   301
+
 /cookiebeleid                      /cookies                                                  301
