@@ -81,6 +81,15 @@ if (schemaJsonLd) {
       window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
       plausible.init()
     </script>
+
+    <script is:inline>
+      document.addEventListener("click", function (e) {
+        var t = e.target.closest && e.target.closest('a[href^="tel:"]');
+        if (t) { window.plausible && window.plausible("Telefoonklik"); return; }
+        var m = e.target.closest && e.target.closest('a[href^="mailto:"]');
+        if (m) { window.plausible && window.plausible("Mailklik"); }
+      });
+    </script>
   </head>
   <body class="bg-bg text-text font-body antialiased">
     <a href="#main" class="skip-link">Direct naar inhoud</a>
