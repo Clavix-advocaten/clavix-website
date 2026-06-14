@@ -66,7 +66,7 @@ export function personSchema(attorney: any) {
     image: attorney.photoUrl,
     email: attorney.email,
     telephone: attorney.phone,
-    url: `${SITE_URL}/mukesh`,
+    url: `${SITE_URL}/kumar`,
     nationality: { '@type': 'Country', name: 'Netherlands' },
     address: {
       '@type': 'PostalAddress',
@@ -115,7 +115,7 @@ export function articleSchema(page: any, attorneyName: string = 'mr. Mukesh Kuma
     headline: page.title,
     description: page.tldr?.body || page.subtitle,
     image: page.imageUrl || page.coverImage?.url || 'https://cdn.sanity.io/images/74qey4fk/production/d692d2c9a732c5010a38270d4a3afc220e84c7a9-4350x6490.jpg?w=1200&h=630&fit=crop&crop=top&fm=jpg&q=85',
-    author: { '@type': 'Person', name: attorneyName, url: `${SITE_URL}/mukesh` },
+    author: { '@type': 'Person', name: attorneyName, url: `${SITE_URL}/kumar` },
     publisher: {
       '@type': 'LegalService',
       name: ORG_NAME,
@@ -214,7 +214,7 @@ export function blogPostingSchema(post: any, attorneyName: string = 'mr. Mukesh 
     author: {
       '@type': 'Person',
       name: attorneyName,
-      url: `${SITE_URL}/mukesh`,
+      url: `${SITE_URL}/kumar`,
     },
     publisher: {
       '@type': 'LegalService',
@@ -254,7 +254,7 @@ export function siteNavigationSchema() {
       { '@type': 'SiteNavigationElement', position: 3, name: 'Ondernemingsrecht', url: `${SITE_URL}/praktijkgebieden/ondernemingsrecht` },
       { '@type': 'SiteNavigationElement', position: 4, name: 'Vastgoedrecht', url: `${SITE_URL}/praktijkgebieden/vastgoedrecht` },
       { '@type': 'SiteNavigationElement', position: 5, name: 'Insolventie & herstructurering', url: `${SITE_URL}/praktijkgebieden/insolventie-en-herstructurering` },
-      { '@type': 'SiteNavigationElement', position: 6, name: 'Over mr. Kumar', url: `${SITE_URL}/mukesh` },
+      { '@type': 'SiteNavigationElement', position: 6, name: 'Over mr. Kumar', url: `${SITE_URL}/kumar` },
       { '@type': 'SiteNavigationElement', position: 7, name: 'Werkwijze', url: `${SITE_URL}/werkwijze` },
       { '@type': 'SiteNavigationElement', position: 8, name: 'Notities', url: `${SITE_URL}/notities` },
       { '@type': 'SiteNavigationElement', position: 9, name: 'Veelgestelde vragen', url: `${SITE_URL}/veelgestelde-vragen` },
