@@ -75,30 +75,44 @@ if (schemaJsonLd) {
       <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     ))}
     <script type="application/ld+json" set:html={JSON.stringify(siteNavigationSchema())} />
-      <!-- Google Ads conversietracking. Inert zolang id leeg is. -->
+      <!-- Google Ads click-id opvang. Geen cookies, sessiegebonden. -->
     <script is:inline>
-      window.clavixAds = {
-        id: '',
-        contact: '',
-        telefoon: '',
-        mail: ''
-      };
       (function () {
-        if (!window.clavixAds.id) return;
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.clavixAds.id;
-        document.head.appendChild(s);
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = function () { window.dataLayer.push(arguments); };
-        window.gtag('js', new Date());
-        window.gtag('config', window.clavixAds.id);
+        if (typeof window === 'undefined') return;
+        var KEYS = ['gclid', 'wbraid', 'gbraid'];
+        var params = new URLSearchParams(window.location.search);
+
+        // Vang de click-id op zodra iemand vanuit een advertentie binnenkomt
+        for (var i = 0; i < KEYS.length; i++) {
+          var v = params.get(KEYS[i]);
+          if (v) {
+            try {
+              sessionStorage.setItem('clavix_click_id', KEYS[i] + ':' + v);
+              sessionStorage.setItem('clavix_click_ts', new Date().toISOString());
+            } catch (e) {}
+            break;
+          }
+        }
+
+        // Vul verborgen formuliervelden zodra de pagina geladen is
+        function vul() {
+          var id = '', ts = '';
+          try {
+            id = sessionStorage.getItem('clavix_click_id') || '';
+            ts = sessionStorage.getItem('clavix_click_ts') || '';
+          } catch (e) { return; }
+          if (!id) return;
+          var a = document.querySelectorAll('input[name="click_id"]');
+          for (var i = 0; i < a.length; i++) a[i].value = id;
+          var b = document.querySelectorAll('input[name="click_ts"]');
+          for (var j = 0; j < b.length; j++) b[j].value = ts;
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', vul);
+        } else {
+          vul();
+        }
       })();
-      window.clavixConv = function (naam) {
-        var label = window.clavixAds[naam];
-        if (!label || !window.gtag) return;
-        window.gtag('event', 'conversion', { send_to: label });
-      };
     </script>
 
       <!-- Privacy-friendly analytics by Plausible -->
@@ -111,9 +125,9 @@ if (schemaJsonLd) {
     <script is:inline>
       document.addEventListener("click", function (e) {
         var t = e.target.closest && e.target.closest('a[href^="tel:"]');
-        if (t) { window.plausible && window.plausible("Telefoonklik"); window.clavixConv && window.clavixConv("telefoon"); return; }
+        if (t) { window.plausible && window.plausible("Telefoonklik"); return; }
         var m = e.target.closest && e.target.closest('a[href^="mailto:"]');
-        if (m) { window.plausible && window.plausible("Mailklik"); window.clavixConv && window.clavixConv("mail"); }
+        if (m) { window.plausible && window.plausible("Mailklik"); }
       });
     </script>
   </head>

@@ -74,6 +74,8 @@ const schemas = [
 
           <form name="contact" method="POST" action="/contact?success=true" data-netlify="true" netlify-honeypot="bot-field" class="space-y-5 p-6 bg-bg-elevated border border-border rounded-lg">
             <input type="hidden" name="form-name" value="contact" />
+            <input type="hidden" name="click_id" value="" />
+            <input type="hidden" name="click_ts" value="" />
             <p class="hidden"><label>Niet invullen: <input name="bot-field" /></label></p>
 
             <div>
@@ -167,7 +169,6 @@ const schemas = [
     var params = new URLSearchParams(window.location.search);
     if (params.get('success') === 'true') {
       window.plausible && window.plausible('Contact verzonden');
-      window.clavixConv && window.clavixConv('contact');
       var el = document.getElementById('success-message');
       if (el) {
         el.style.display = 'block';
