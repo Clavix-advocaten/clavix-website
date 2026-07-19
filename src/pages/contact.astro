@@ -167,6 +167,7 @@ const schemas = [
     var params = new URLSearchParams(window.location.search);
     if (params.get('success') === 'true') {
       window.plausible && window.plausible('Contact verzonden');
+      window.clavixConv && window.clavixConv('contact');
       var el = document.getElementById('success-message');
       if (el) {
         el.style.display = 'block';

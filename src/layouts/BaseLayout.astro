@@ -75,6 +75,32 @@ if (schemaJsonLd) {
       <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     ))}
     <script type="application/ld+json" set:html={JSON.stringify(siteNavigationSchema())} />
+      <!-- Google Ads conversietracking. Inert zolang id leeg is. -->
+    <script is:inline>
+      window.clavixAds = {
+        id: '',
+        contact: '',
+        telefoon: '',
+        mail: ''
+      };
+      (function () {
+        if (!window.clavixAds.id) return;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.clavixAds.id;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { window.dataLayer.push(arguments); };
+        window.gtag('js', new Date());
+        window.gtag('config', window.clavixAds.id);
+      })();
+      window.clavixConv = function (naam) {
+        var label = window.clavixAds[naam];
+        if (!label || !window.gtag) return;
+        window.gtag('event', 'conversion', { send_to: label });
+      };
+    </script>
+
       <!-- Privacy-friendly analytics by Plausible -->
     <script async src="https://plausible.io/js/pa-5d6wDb3LHYrroGyV8RKfM.js"></script>
     <script>
@@ -85,9 +111,9 @@ if (schemaJsonLd) {
     <script is:inline>
       document.addEventListener("click", function (e) {
         var t = e.target.closest && e.target.closest('a[href^="tel:"]');
-        if (t) { window.plausible && window.plausible("Telefoonklik"); return; }
+        if (t) { window.plausible && window.plausible("Telefoonklik"); window.clavixConv && window.clavixConv("telefoon"); return; }
         var m = e.target.closest && e.target.closest('a[href^="mailto:"]');
-        if (m) { window.plausible && window.plausible("Mailklik"); }
+        if (m) { window.plausible && window.plausible("Mailklik"); window.clavixConv && window.clavixConv("mail"); }
       });
     </script>
   </head>
