@@ -130,6 +130,7 @@
 /rechtsgebied/bouwrecht                        /specialisme/bouwgeschillen                        301
 /rechtsgebied/beslag-en-executierecht          /specialisme/incasso-en-executie                   301
 /rechtsgebied                                  /praktijkgebieden/ondernemingsrecht                301
+/praktijkgebieden                              /praktijkgebieden/ondernemingsrecht                301
 /rechtsgebied/*                                /praktijkgebieden/ondernemingsrecht                301
 
 # === BESLAG-EN-EXECUTIERECHT (Wix legacy + Wix duplicate -1 suffix) ===
