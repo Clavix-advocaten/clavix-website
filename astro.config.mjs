@@ -6,7 +6,9 @@ export default defineConfig({
   site: 'https://clavix.nl',
   integrations: [
     tailwind(),
-    sitemap(),
+    sitemap({
+      filter: (page) => !page.includes('/zoeken'),
+    }),
   ],
   build: {
     inlineStylesheets: 'auto',
