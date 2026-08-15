@@ -24,11 +24,38 @@ const watWeBeloven = [
   },
 ];
 
+const praktischeVragen = [
+  {
+    vraag: 'Wat kost een eerste gesprek?',
+    antwoord:
+      'Het eerste gesprek van 30 minuten is een verkennende kennismaking, geen adviesgesprek: u licht uw situatie toe, wij geven aan of en hoe wij u kunnen bijstaan. Daar staat geen rekening tegenover en u zit nergens aan vast. Gaan wij voor u aan de slag, dan ontvangt u vooraf een heldere prijsafspraak.',
+  },
+  {
+    vraag: 'In welke talen kunt u mij bijstaan?',
+    antwoord:
+      'Wij werken in het Nederlands en het Engels.',
+  },
+  {
+    vraag: 'Waar kan ik parkeren?',
+    antwoord:
+      'U kunt parkeren in de parkeergarage van het WTC Amsterdam, direct bij het kantoor aan de Strawinskylaan. Reist u met het openbaar vervoer: station Amsterdam Zuid ligt op enkele minuten lopen.',
+  },
+];
+
 const schemas = [
   breadcrumbSchema([
     { name: 'Home', url: 'https://clavix.nl' },
     { name: 'Contact', url: 'https://clavix.nl/contact' },
   ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: praktischeVragen.map((f) => ({
+      '@type': 'Question',
+      name: f.vraag,
+      acceptedAnswer: { '@type': 'Answer', text: f.antwoord },
+    })),
+  },
 ];
 ---
 
@@ -157,6 +184,18 @@ const schemas = [
       <section class="p-6 bg-bg-tinted border border-border rounded-lg">
         <h2 class="text-h3 font-bold text-text mb-2">Wat gebeurt er na uw bericht</h2>
         <p class="text-body text-text-secondary mb-4">U ontvangt op werkdagen binnen 24 uur antwoord. Bij urgente situaties typisch sneller. Wanneer u een gesprek wilt inplannen, sturen wij twee of drie tijdstipopties die voor u kunnen werken. Het eerste gesprek vindt plaats op kantoor, telefonisch, of via videoverbinding, naar uw voorkeur.</p>
+      </section>
+
+      <section class="mt-8">
+        <h2 class="text-h3 font-bold text-text mb-4">Praktische informatie</h2>
+        <div class="space-y-4">
+          {praktischeVragen.map((f) => (
+            <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{f.vraag}</h3>
+              <p class="text-body text-text-secondary">{f.antwoord}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
     </div>
