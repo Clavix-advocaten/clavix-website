@@ -4,16 +4,61 @@
 
 ## Praktijkgebieden
 
-- [Vastgoed × Ondernemers](https://clavix.nl/praktijkgebieden/vastgoed-en-ondernemers): Het juridisch snijvlak waar ondernemingsrecht en vastgoed elkaar raken. Vastgoed-BV's, M&A met vastgoed-component, family office structuring.
-- [Ondernemingsrecht](https://clavix.nl/praktijkgebieden/ondernemingsrecht): Aandeelhoudersovereenkomsten, bestuurdersaansprakelijkheid, M&A, agentuur en distributie.
-- [Vastgoedrecht](https://clavix.nl/praktijkgebieden/vastgoedrecht): Zakelijke huur, koop en eigendom, erfpacht, bouwgeschillen.
-- [Insolventie & herstructurering](https://clavix.nl/praktijkgebieden/insolventie-en-herstructurering): Verzet tegen faillissement, WHOA-trajecten, doorstart, bestuurdersaansprakelijkheid, beslag en executie.
+- [Vastgoed × Ondernemers](https://clavix.nl/praktijkgebieden/vastgoed-en-ondernemers/): Het juridisch snijvlak waar ondernemingsrecht en vastgoed elkaar raken. Vastgoed-BV's, M&A met vastgoed-component, family office structuring.
+- [Ondernemingsrecht](https://clavix.nl/praktijkgebieden/ondernemingsrecht/): Aandeelhoudersovereenkomsten, bestuurdersaansprakelijkheid, M&A, agentuur en distributie.
+- [Vastgoedrecht](https://clavix.nl/praktijkgebieden/vastgoedrecht/): Zakelijke huur, koop en eigendom, erfpacht, bouwgeschillen.
+- [Burgerlijk procesrecht](https://clavix.nl/praktijkgebieden/burgerlijk-procesrecht/): Kort geding, bodemprocedure, beslag en executie.
+- [Insolventie & herstructurering](https://clavix.nl/praktijkgebieden/insolventie-en-herstructurering/): Verzet tegen faillissement, WHOA-trajecten, doorstart, bestuurdersaansprakelijkheid, beslag en executie.
+
+## Specialismen
+
+- [Aandeelhoudersgeschillen](https://clavix.nl/specialisme/aandeelhoudersgeschillen/): Van 50/50-patstelling tot uitkoop en geschillenregeling (2:336a BW).
+- [Bedrijfsoverdracht met vastgoed](https://clavix.nl/specialisme/bedrijfsoverdracht-met-vastgoed/): M&A waarbij onroerend goed onderdeel van de transactie is.
+- [Bestuurdersaansprakelijkheid](https://clavix.nl/specialisme/bestuurdersaansprakelijkheid/): Voorkomen, beoordelen en verweren bij claims op grond van 2:9 of 2:248 BW.
+- [Bouwgeschillen](https://clavix.nl/specialisme/bouwgeschillen/): UAV-2012, oplevering, meerwerk, bouwfouten en gebreken bij aanneming.
+- [Contractgeschillen](https://clavix.nl/specialisme/contractgeschillen/): Wanprestatie, ontbinding, exoneratie en nakoming in zakelijke contracten.
+- [Incasso & executie](https://clavix.nl/specialisme/incasso-en-executie/): Beslag, verhaal, executiegeschillen en zakelijke incasso.
+- [Kort geding](https://clavix.nl/specialisme/kort-geding/): Spoedprocedures en voorlopige voorzieningen bij de voorzieningenrechter.
+
+## Kennisbank (clusters)
+
+- [50/50-aandeelhoudersgeschil oplossen](https://clavix.nl/clusters/50-50-aandeelhoudersgeschil-oplossen/): Vier routes uit een patstelling: mediation, shotgun, geschillenregeling, uitkoop.
+- [Aandeelhoudersgeschil over een bedrijfspand](https://clavix.nl/clusters/aandeelhoudersgeschil-bedrijfspand/): Conflict over een bedrijfspand binnen een gedeelde BV, op het snijvlak van ondernemings- en vastgoedrecht.
+- [Aandeelhoudersovereenkomst: minimale clausules](https://clavix.nl/clusters/aandeelhoudersovereenkomst-minimaal/): Exit, drag-along, geschillenregeling en andere clausules die er minimaal in horen.
+- [Activatransactie bij faillissement](https://clavix.nl/clusters/activatransactie-faillissement/): Doorstart via de curator: prijsbepaling en risico's.
+- [290- of 230a-bedrijfsruimte](https://clavix.nl/clusters/bedrijfsruimte-290-of-230a-bw/): Welk huurregime geldt en wat dat betekent voor opzegging en huurtermijnen.
+- [Bedrijfsruimte verhuren tussen BV's](https://clavix.nl/clusters/bedrijfsruimte-huur-bvs-onderling/): Zakelijke voorwaarden en valkuilen bij huur tussen verbonden vennootschappen.
+- [Beslag op aandelen](https://clavix.nl/clusters/beslag-op-aandelen/): Conservatoir beslag op BV-aandelen: toetsing en gevolgen.
+- [Bestuurdersaansprakelijkheid bij faillissement](https://clavix.nl/clusters/bestuurdersaansprakelijkheid-faillissement/): Verweer tegen 2:248 BW-claims van de curator.
+- [Bouwgeschil met de aannemer](https://clavix.nl/clusters/bouwgeschil-aannemer-wanprestatie/): Oplevering, gebreken, herstelrecht en wanprestatie.
+- [Concurrentiebeding ex-aandeelhouders](https://clavix.nl/clusters/concurrentiebeding-ex-aandeelhouders/): Geldigheid en handhaving na aandelenverkoop.
+- [Conservatoir beslag](https://clavix.nl/clusters/conservatoir-beslag/): Verlof, gevolgen, termijn hoofdzaak en opheffing.
+- [Decharge van een bestuurder](https://clavix.nl/clusters/decharge-bestuurder/): Wat decharge wel en niet dekt.
+- [Erfpacht Amsterdam: canonherziening](https://clavix.nl/clusters/erfpacht-amsterdam-herziening/): Voortdurend versus eeuwigdurend stelsel en de gevolgen voor vastgoed.
+- [Familiebedrijf met vastgoed: opvolging](https://clavix.nl/clusters/familiebedrijf-vastgoed-opvolging/): Structuurkeuzes en afspraken bij overdracht binnen de familie.
+- [Huurachterstand bedrijfsruimte: ontbinding](https://clavix.nl/clusters/huurachterstand-bedrijfsruimte-ontbinding/): Wanneer ontbinding wordt toegewezen; terme de grâce en kort geding.
+- [Huurprijs bedrijfsruimte aanpassen (7:303 BW)](https://clavix.nl/clusters/huurprijswijziging-7-303-roz/): De huurprijsherzieningsprocedure: termijnen en deskundigenadvies.
+- [Huurrecht advocaat bedrijfsruimte](https://clavix.nl/clusters/huurrecht-advocaat-bedrijfsruimte/): Voor verhuurders en zakelijke huurders: kwalificatie, huurprijs, opzegging.
+- [Indeplaatsstelling huurder](https://clavix.nl/clusters/indeplaatsstelling-huurder/): Voorwaarden en weigeringsgronden bij bedrijfsoverdracht (7:307 BW).
+- [Opzegging huurovereenkomst bedrijfsruimte](https://clavix.nl/clusters/opzegging-huurovereenkomst-bedrijfsruimte/): Gronden en termijnen bij 290- en 230a-ruimte.
+- [Pauliana-actie van de curator](https://clavix.nl/clusters/pauliana-actie-curator/): Voorwaarden, bewijslast en verweer.
+- [Pre-pack doorstart](https://clavix.nl/clusters/pre-pack-doorstart/): Voorbereiding, stille curator en randvoorwaarden.
+- [Splitsing eigendom bedrijfspand](https://clavix.nl/clusters/splitsing-eigendom-bedrijfspand/): Appartementsrechten, VvE-structuur en gevolgen bij verkoop.
+- [Statuten BV wijzigen](https://clavix.nl/clusters/statuten-bv-wijzigen/): Stappenplan: AVA, notariële akte, KvK.
+- [Turboliquidatie van een BV](https://clavix.nl/clusters/turboliquidatie-bv/): Wanneer het mag en de verantwoordingsplicht sinds november 2023.
+- [Vastgoed-BV oprichten: holdingstructuur](https://clavix.nl/clusters/vastgoed-bv-oprichten-holding-structuur/): Structuur, aansprakelijkheidsbescherming en fiscale afwegingen.
+- [Vastgoed in BV of privé](https://clavix.nl/clusters/vastgoed-in-bv-of-prive/): Vergelijking fiscaal en juridisch, ook bij overdracht en vererving.
+- [Verkoop bedrijfspand bij M&A](https://clavix.nl/clusters/verkoop-bedrijfspand-mna/): Structuur, due diligence en transactiedocumentatie.
+- [Verzet tegen faillissement](https://clavix.nl/clusters/verzet-tegen-faillissement/): De verzetsprocedure van artikel 8 Fw: termijn, gronden, kansen.
+- [WHOA-traject: kosten en kansen](https://clavix.nl/clusters/whoa-traject-ondernemer-kosten-kansen/): Voorwaarden, doorlooptijd en slaagkans van een WHOA-akkoord.
 
 ## Het kantoor
 
-- [mr. Mukesh Kumar](https://clavix.nl/mukesh): Advocaat-ondernemer in Amsterdam Zuidas. Beëdigd 2022. NOvA-geregistreerd voor ondernemingsrecht en burgerlijk procesrecht.
-- [Werkwijze](https://clavix.nl/werkwijze): Hoe wij werken — van eerste gesprek tot afsluiting.
-- [Notities](https://clavix.nl/notities): Wat ons opvalt in jurisprudentie en praktijk.
+- [mr. Mukesh Kumar](https://clavix.nl/kumar/): Advocaat-ondernemer in Amsterdam Zuidas. Beëdigd 2022. NOvA-geregistreerd voor ondernemingsrecht en burgerlijk procesrecht.
+- [Werkwijze](https://clavix.nl/werkwijze/): Hoe wij werken — van eerste gesprek tot afsluiting, met een heldere prijsafspraak vooraf.
+- [Notities](https://clavix.nl/notities/): Wat ons opvalt in jurisprudentie en praktijk.
+- [Veelgestelde vragen](https://clavix.nl/veelgestelde-vragen/): 24 vragen per rechtsgebied, met korte antwoorden en doorkliks.
+- [Contact](https://clavix.nl/contact/): Eerste gesprek van 30 minuten is een verkennende kennismaking. Talen: Nederlands en Engels. Parkeren: WTC-parkeergarage; station Amsterdam Zuid op loopafstand.
 
 ## Contact
 
