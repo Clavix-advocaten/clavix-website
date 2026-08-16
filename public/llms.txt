@@ -46,6 +46,7 @@
 - [Huurrecht advocaat bedrijfsruimte](https://clavix.nl/clusters/huurrecht-advocaat-bedrijfsruimte/): Voor verhuurders en zakelijke huurders: kwalificatie, huurprijs, opzegging.
 - [Indeplaatsstelling huurder](https://clavix.nl/clusters/indeplaatsstelling-huurder/): Voorwaarden en weigeringsgronden bij bedrijfsoverdracht (7:307 BW).
 - [Ontruiming van bedrijfsruimte](https://clavix.nl/clusters/ontruiming-bedrijfsruimte/): Kort geding of bodemprocedure, de drie-maanden-vuistregel, de terme de grâce en de uitvoering.
+- [Ontslag statutair bestuurder](https://clavix.nl/clusters/ontslag-statutair-bestuurder/): De dubbele rechtsbetrekking: AVA-besluit, hoorrecht, opzegverboden en de vergoedingen.
 - [Opzegging huurovereenkomst bedrijfsruimte](https://clavix.nl/clusters/opzegging-huurovereenkomst-bedrijfsruimte/): Gronden en termijnen bij 290- en 230a-ruimte.
 - [Pauliana-actie van de curator](https://clavix.nl/clusters/pauliana-actie-curator/): Voorwaarden, bewijslast en verweer.
 - [Pre-pack doorstart](https://clavix.nl/clusters/pre-pack-doorstart/): Voorbereiding, stille curator en randvoorwaarden.
@@ -54,6 +55,7 @@
 - [Turboliquidatie van een BV](https://clavix.nl/clusters/turboliquidatie-bv/): Wanneer het mag en de verantwoordingsplicht sinds november 2023.
 - [Vastgoed-BV oprichten: holdingstructuur](https://clavix.nl/clusters/vastgoed-bv-oprichten-holding-structuur/): Structuur, aansprakelijkheidsbescherming en fiscale afwegingen.
 - [Vastgoed in BV of privé](https://clavix.nl/clusters/vastgoed-in-bv-of-prive/): Vergelijking fiscaal en juridisch, ook bij overdracht en vererving.
+- [Verborgen gebreken bedrijfspand](https://clavix.nl/clusters/verborgen-gebreken-bedrijfspand/): Conformiteit, mededelings- en onderzoeksplicht, klachtplicht en de opties van herstel tot ontbinding.
 - [Verkoop bedrijfspand bij M&A](https://clavix.nl/clusters/verkoop-bedrijfspand-mna/): Structuur, due diligence en transactiedocumentatie.
 - [Verzet tegen faillissement](https://clavix.nl/clusters/verzet-tegen-faillissement/): De verzetsprocedure van artikel 8 Fw: termijn, gronden, kansen.
 - [Vordering indienen bij de curator](https://clavix.nl/clusters/vordering-indienen-curator/): Verificatie, rangorde, eigendomsvoorbehoud, de bankgarantie bij een failliete huurder en de routes naar de bestuurder.
