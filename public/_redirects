@@ -1,3 +1,6 @@
+# === KORTE LINKS ===
+/review    https://g.page/r/Ca8VWOSEwDZtEBM/review    302
+
 # === STATISCHE WIX → CLAVIX MAPPINGS ===
 /advocaat-mukesh-kumar             /kumar/                                                  301
 /advocaat-amsterdam-zuidas         /advocaat-zuidas/                                        301
@@ -98,13 +101,13 @@
 /advocaat/contractenrecht/*                            /praktijkgebieden/ondernemingsrecht/         301
 
 # Vastgoedrecht — specifieke mappings
-/advocaat/vastgoedrecht/non-conformiteit-vastgoed                 /clusters/bouwgeschil-aannemer-wanprestatie/  301
-/advocaat/vastgoedrecht/verborgen-gebreken                        /clusters/bouwgeschil-aannemer-wanprestatie/  301
+/advocaat/vastgoedrecht/non-conformiteit-vastgoed                 /clusters/verborgen-gebreken-bedrijfspand/    301
+/advocaat/vastgoedrecht/verborgen-gebreken                        /clusters/verborgen-gebreken-bedrijfspand/    301
 /advocaat/vastgoedrecht/aanneming-van-werk-%2F-bouwgeschillen     /clusters/bouwgeschil-aannemer-wanprestatie/  301
 /advocaat/vastgoedrecht/huurgeschillen-zakelijk                   /clusters/huurrecht-advocaat-bedrijfsruimte/  301
 /advocaat/vastgoedrecht/vastgoedtransacties                       /clusters/verkoop-bedrijfspand-mna/           301
-/advocaat/vastgoedrecht/koopgeschillen-vastgoed                   /clusters/verkoop-bedrijfspand-mna/           301
-/advocaat/vastgoedrecht/ontbinding-koopovereenkomst-vastgoed      /clusters/verkoop-bedrijfspand-mna/           301
+/advocaat/vastgoedrecht/koopgeschillen-vastgoed                   /clusters/verborgen-gebreken-bedrijfspand/    301
+/advocaat/vastgoedrecht/ontbinding-koopovereenkomst-vastgoed      /clusters/verborgen-gebreken-bedrijfspand/    301
 /advocaat/vastgoedrecht/opleveringsgeschillen                     /specialisme/bouwgeschillen/                  301
 /advocaat/vastgoedrecht/*                                         /praktijkgebieden/vastgoedrecht/              301
 
@@ -116,7 +119,7 @@
 /advocaat/ondernemingsrecht/uitkoopregeling-aandeelhouder       /clusters/50-50-aandeelhoudersgeschil-oplossen/            301
 /advocaat/ondernemingsrecht/enqueteprocedure                    /clusters/50-50-aandeelhoudersgeschil-oplossen/            301
 /advocaat/ondernemingsrecht/bestuurdersaansprakelijkheid        /clusters/bestuurdersaansprakelijkheid-faillissement/      301
-/advocaat/ondernemingsrecht/schorsing-bestuurder                /clusters/bestuurdersaansprakelijkheid-faillissement/      301
+/advocaat/ondernemingsrecht/schorsing-bestuurder                /clusters/ontslag-statutair-bestuurder/                    301
 /advocaat/ondernemingsrecht/wanbeleid-bv                        /clusters/bestuurdersaansprakelijkheid-faillissement/      301
 /advocaat/ondernemingsrecht/turboliquidatie-en-vereffening      /clusters/turboliquidatie-bv/                              301
 /advocaat/ondernemingsrecht/*                                   /praktijkgebieden/ondernemingsrecht/                       301
