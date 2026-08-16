@@ -47,7 +47,6 @@ const navItems: any[] = [
   { label: 'Werkwijze', href: '/werkwijze' },
   { label: 'mr. Kumar', href: '/kumar' },
   { label: 'Notities', href: '/notities' },
-  { label: 'Veelgestelde vragen', href: '/veelgestelde-vragen' },
   { label: 'Contact', href: '/contact' },
 ]
 ---
@@ -91,6 +90,9 @@ const navItems: any[] = [
                     </ul>
                   </div>
                 ))}
+                <div class="col-span-3 border-t border-border pt-3 mt-1">
+                  <a href="/veelgestelde-vragen" class="block px-2 py-1 text-small text-text-secondary hover:text-text-accent no-underline">Veelgestelde vragen →</a>
+                </div>
               </div>
             </>
           ) : (
@@ -297,6 +299,9 @@ const navItems: any[] = [
           )}
         </li>
       ))}
+      <li>
+        <a href="/veelgestelde-vragen" class="block py-2 text-text no-underline">Veelgestelde vragen</a>
+      </li>
       <li>
         <a
           href="/contact"
