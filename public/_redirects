@@ -1,6 +1,6 @@
 # === STATISCHE WIX → CLAVIX MAPPINGS ===
 /advocaat-mukesh-kumar             /kumar/                                                  301
-/advocaat-amsterdam-zuidas         /                                                        301
+/advocaat-amsterdam-zuidas         /advocaat-zuidas/                                        301
 /blog                              /notities/                                               301
 /expertise                         /praktijkgebieden/ondernemingsrecht/                     301
 /en-corporate-lawyer-amsterdam     /                                                        301
@@ -56,7 +56,7 @@
 /expertise/advocaat-civiel-procesrecht         /praktijkgebieden/burgerlijk-procesrecht/           301
 /expertise/advocaat-contractenrecht            /specialisme/contractgeschillen/                    301
 /expertise/advocaat-incasso-verhaalsrecht      /specialisme/incasso-en-executie/                   301
-/expertise/advoaat-zuidas                      /                                                   301
+/expertise/advoaat-zuidas                      /advocaat-zuidas/                                   301
 /expertise/*                                   /praktijkgebieden/ondernemingsrecht/                301
 
 # === ADVOCAAT/[CATEGORY]/* — SPECIFIEKE MAPPINGS ===

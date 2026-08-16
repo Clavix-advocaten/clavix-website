@@ -1,0 +1,147 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABand from '@components/CTABand.astro'
+import { breadcrumbSchema } from '@lib/schema-markup'
+
+const faqs = [
+  {
+    q: 'Is Clavix een advocatenkantoor op de Zuidas?',
+    a: 'Ja. Het kantoor is gevestigd aan de Strawinskylaan 257 in Amsterdam, in het World Trade Center-gebied, op enkele minuten lopen van station Amsterdam Zuid en de rechtbank Amsterdam aan de Parnassusweg.',
+  },
+  {
+    q: 'Wat kost een advocaat op de Zuidas?',
+    a: 'Tarieven verschillen per kantoor en per zaak. Wij werken waar mogelijk met een vaste prijsafspraak die vóór de opdrachtbevestiging vastligt, zodat u vooraf weet waar u aan toe bent. Het eerste gesprek van 30 minuten is een verkennende kennismaking, geen adviesgesprek.',
+  },
+  {
+    q: 'Voor wie werkt Clavix?',
+    a: 'Voor ondernemers, familiebedrijven en vastgoedinvesteerders, in het bijzonder waar ondernemingsrecht en vastgoed elkaar raken: aandeelhoudersgeschillen, zakelijke huur, bouwgeschillen, beslag en insolventie. Wij behandelen geen consumentenzaken, familierecht of strafrecht.',
+  },
+  {
+    q: 'Hoe snel kan ik terecht?',
+    a: 'Op werkdagen reageren wij binnen 24 uur. Bij urgente zaken, zoals een curator-sommatie, een gelegd beslag of een aankomende termijn, bellen wij doorgaans dezelfde dag.',
+  },
+]
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Advocaat Zuidas', url: '/advocaat-zuidas' },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+]
+
+const praktijk = [
+  { label: 'Ondernemingsrecht', href: '/praktijkgebieden/ondernemingsrecht', sub: 'Aandeelhoudersgeschillen, bestuurdersaansprakelijkheid, M&A' },
+  { label: 'Vastgoedrecht', href: '/praktijkgebieden/vastgoedrecht', sub: 'Zakelijke huur, koop en eigendom, erfpacht, bouwgeschillen' },
+  { label: 'Insolventie & herstructurering', href: '/praktijkgebieden/insolventie-en-herstructurering', sub: 'Verzet tegen faillissement, WHOA, doorstart, beslag' },
+  { label: 'Burgerlijk procesrecht', href: '/praktijkgebieden/burgerlijk-procesrecht', sub: 'Kort geding, bodemprocedure, executie' },
+]
+---
+
+<BaseLayout
+  title="Advocatenkantoor op de Zuidas — Clavix Advocaten"
+  description="Advocatenkantoor aan de Strawinskylaan op de Zuidas in Amsterdam. Ondernemingsrecht, vastgoedrecht en procesrecht voor ondernemers met vastgoed. Direct met de advocaat."
+  schemaJsonLd={schemas}
+>
+  {/* === HERO === */}
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">
+      <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
+        Home › Advocaat Zuidas
+      </p>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
+        Advocatenkantoor op de Zuidas
+      </h1>
+      <p class="text-h3 text-text-secondary font-display font-semibold mb-6 italic">
+        Strawinskylaan 257, Amsterdam. Direct met de advocaat, met een prijsafspraak vooraf.
+      </p>
+      <p class="text-lead text-text-secondary mb-8 max-w-readable">
+        Clavix Advocaten is een boutique-kantoor voor ondernemers, familiebedrijven en vastgoedinvesteerders, gevestigd in het World Trade Center-gebied op de Zuidas — op loopafstand van station Amsterdam Zuid en de rechtbank Amsterdam.
+      </p>
+      <a
+        href="/contact"
+        class="bg-action text-action-fg hover:bg-action-hover px-7 py-3.5 rounded-md font-semibold no-underline transition inline-block"
+      >
+        Plan een eerste gesprek
+      </a>
+    </div>
+  </section>
+
+  {/* === OP DE ZUIDAS === */}
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <h2 class="text-h2 font-bold mb-6 text-text">Een kantoor óp de Zuidas</h2>
+    <div class="max-w-readable space-y-4">
+      <p class="text-body text-text">
+        De Zuidas is het zakelijke hart van Amsterdam, en sinds de rechtbank Amsterdam aan de Parnassusweg zit, ook het juridische. Ons kantoor aan de Strawinskylaan 257 ligt daar middenin: enkele minuten lopen van station Amsterdam Zuid, met de rechtbank om de hoek. Voor spoedzaken — een beslagrekest, een kort geding, een verzetstermijn — betekent dat korte, letterlijke lijnen.
+      </p>
+      <p class="text-body text-text">
+        Anders dan de grote kantoren om ons heen werkt u bij Clavix direct met de advocaat die uw zaak behandelt, van het eerste gesprek tot de afronding. Geen wisselende teams, geen doorschuiven naar een junior. En waar mogelijk met een vaste prijs die vóór de opdrachtbevestiging vastligt.
+      </p>
+      <p class="text-body text-text">
+        Wij zijn NOvA-geregistreerd voor ondernemingsrecht en burgerlijk procesrecht, en werken in het Nederlands en het Engels.
+      </p>
+    </div>
+  </section>
+
+  {/* === WAARVOOR === */}
+  <section class="bg-bg-tinted py-20">
+    <div class="max-w-container mx-auto px-4 md:px-8">
+      <h2 class="text-h2 font-bold mb-2 text-text">Waarvoor u bij ons terechtkunt</h2>
+      <p class="text-body text-text-secondary mb-10 max-w-readable">
+        Ons werkterrein is het snijvlak van ondernemen en vastgoed. Vier praktijkgebieden, één advocaat die het geheel overziet.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {praktijk.map((p) => (
+          <a href={p.href} class="block p-6 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">{p.label}</h3>
+            <p class="text-small text-text-secondary">{p.sub}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* === PRAKTISCH === */}
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <h2 class="text-h2 font-bold mb-6 text-text">Praktisch</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+        <h3 class="text-h4 font-bold text-text mb-2">Bezoekadres</h3>
+        <p class="text-body text-text-secondary">Strawinskylaan 257<br />1077 XX Amsterdam<br />World Trade Center-gebied</p>
+      </div>
+      <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+        <h3 class="text-h4 font-bold text-text mb-2">Bereikbaarheid</h3>
+        <p class="text-body text-text-secondary">Parkeren in de WTC-parkeergarage. Station Amsterdam Zuid (trein en metro) op enkele minuten lopen.</p>
+      </div>
+      <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+        <h3 class="text-h4 font-bold text-text mb-2">Direct contact</h3>
+        <p class="text-body text-text-secondary"><a href="tel:+31207471121" class="text-brand-primary no-underline hover:underline">+31 20 747 1121</a><br /><a href="mailto:info@clavix.nl" class="text-brand-primary no-underline hover:underline">info@clavix.nl</a><br />Reactie binnen 24 uur op werkdagen</p>
+      </div>
+    </div>
+  </section>
+
+  {/* === FAQ === */}
+  <section class="bg-bg-tinted py-20">
+    <div class="max-w-container mx-auto px-4 md:px-8">
+      <h2 class="text-h2 font-bold mb-8 text-text">Veelgestelde vragen</h2>
+      <div class="space-y-4 max-w-readable">
+        {faqs.map((f) => (
+          <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+            <h3 class="text-h4 font-bold text-text mb-2">{f.q}</h3>
+            <p class="text-body text-text-secondary">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABand />
+</BaseLayout>
