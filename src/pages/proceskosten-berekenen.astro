@@ -1,0 +1,463 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABand from '@components/CTABand.astro'
+import { breadcrumbSchema } from '@lib/schema-markup'
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Kosten', url: '/kosten' },
+    { name: 'Proceskosten berekenen', url: '/proceskosten-berekenen' },
+  ]),
+]
+
+const tools = [
+  { id: 'griffierecht', label: 'Griffierecht' },
+  { id: 'incassokosten', label: 'Incassokosten' },
+  { id: 'rente', label: 'Rente' },
+  { id: 'kostenveroordeling', label: 'Kostenveroordeling' },
+  { id: 'deurwaarderskosten', label: 'Deurwaarderskosten' },
+]
+---
+
+<BaseLayout
+  title="Proceskosten berekenen: griffierecht, rente en incassokosten"
+  description="Bereken direct het griffierecht 2026, de buitengerechtelijke incassokosten (WIK-staffel), de wettelijke of handelsrente en een indicatie van de proceskostenveroordeling."
+  schemaJsonLd={schemas}
+>
+  {/* === HERO === */}
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-20">
+      <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
+        Home › <a href="/kosten" class="no-underline hover:underline text-text-secondary">Kosten</a> › Rekentools
+      </p>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
+        Proceskosten berekenen
+      </h1>
+      <p class="text-lead text-text-secondary mb-6 max-w-readable">
+        Rekentools op basis van de officiële tarieven 2026: het griffierecht, de buitengerechtelijke incassokosten, de wettelijke, handels- en contractuele rente, een indicatie van de proceskostenveroordeling en de deurwaarderstarieven. Alles rekent direct in uw browser; er wordt niets opgeslagen of verstuurd.
+      </p>
+      <nav class="flex flex-wrap gap-3">
+        {tools.map((t) => (
+          <a href={`#${t.id}`} class="px-4 py-2 bg-bg-elevated border border-border rounded-md text-small font-semibold text-text no-underline hover:border-brand-primary transition">{t.label}</a>
+        ))}
+      </nav>
+    </div>
+  </section>
+
+  <div class="max-w-container mx-auto px-4 md:px-8 py-16 space-y-16">
+
+    {/* === 1. GRIFFIERECHT === */}
+    <section id="griffierecht" class="scroll-mt-24">
+      <h2 class="text-h2 font-bold mb-2 text-text">Griffierecht berekenen (2026)</h2>
+      <p class="text-body text-text-secondary mb-6 max-w-readable">
+        Het griffierecht dat de partij die de zaak start aan de rechtspraak betaalt. Vuistregel voor de instantie: geldvorderingen tot en met € 25.000 en huurzaken horen bij de kantonrechter; daarboven bij de civiele rechter (rechtbank). Bij de rechtbank betaalt ook de verwerende partij griffierecht.
+      </p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="p-6 bg-bg-elevated border border-border rounded-lg space-y-4">
+          <div>
+            <label for="gr-instantie" class="block text-small font-semibold text-text mb-1">Instantie</label>
+            <select id="gr-instantie" class="w-full p-3 border border-border rounded-md bg-bg text-text">
+              <option value="kanton">Kantonrechter</option>
+              <option value="rechtbank">Rechtbank (civiel)</option>
+              <option value="hof">Gerechtshof (hoger beroep)</option>
+            </select>
+          </div>
+          <div>
+            <label for="gr-partij" class="block text-small font-semibold text-text mb-1">U procedeert als</label>
+            <select id="gr-partij" class="w-full p-3 border border-border rounded-md bg-bg text-text">
+              <option value="rp">Rechtspersoon (BV, NV, vof, cv, stichting)</option>
+              <option value="np">Natuurlijk persoon of eenmanszaak</option>
+            </select>
+          </div>
+          <div>
+            <label for="gr-waarde" class="block text-small font-semibold text-text mb-1">Waarde van de vordering (€)</label>
+            <input id="gr-waarde" type="number" min="0" step="100" placeholder="bijv. 15000" class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+          </div>
+          <label class="flex items-center gap-2 text-small text-text">
+            <input id="gr-onbepaald" type="checkbox" class="w-4 h-4" />
+            Onbepaalde waarde (o.a. beslagrekest, verklaring voor recht, WHOA-verzoek)
+          </label>
+        </div>
+        <div class="p-6 bg-bg-tinted border border-border rounded-lg">
+          <p class="text-small font-semibold uppercase tracking-wider text-text-secondary mb-2">Griffierecht</p>
+          <p id="gr-uitkomst" class="text-h1 font-extrabold text-text mb-3">—</p>
+          <p id="gr-toelichting" class="text-small text-text-secondary">Vul de waarde van de vordering in of vink "onbepaalde waarde" aan.</p>
+        </div>
+      </div>
+    </section>
+
+    {/* === 2. INCASSOKOSTEN === */}
+    <section id="incassokosten" class="scroll-mt-24 border-t border-border pt-16">
+      <h2 class="text-h2 font-bold mb-2 text-text">Buitengerechtelijke incassokosten (WIK-staffel)</h2>
+      <p class="text-body text-text-secondary mb-6 max-w-readable">
+        De wettelijke vergoeding voor incassokosten volgens het Besluit vergoeding voor buitengerechtelijke incassokosten: minimaal € 40, maximaal € 6.775. Bij een consument-schuldenaar is deze staffel dwingend en is eerst een kosteloze aanmaning met een termijn van veertien dagen vereist; tussen bedrijven mag bij overeenkomst worden afgeweken.
+      </p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="p-6 bg-bg-elevated border border-border rounded-lg space-y-4">
+          <div>
+            <label for="ik-hoofdsom" class="block text-small font-semibold text-text mb-1">Hoofdsom (€)</label>
+            <input id="ik-hoofdsom" type="number" min="0" step="100" placeholder="bijv. 8500" class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+          </div>
+          <label class="flex items-start gap-2 text-small text-text">
+            <input id="ik-btw" type="checkbox" class="w-4 h-4 mt-0.5" />
+            <span>Verhoog met 21% btw — alleen toegestaan als u als schuldeiser de btw niet kunt verrekenen (bijvoorbeeld bij vrijgestelde prestaties)</span>
+          </label>
+        </div>
+        <div class="p-6 bg-bg-tinted border border-border rounded-lg">
+          <p class="text-small font-semibold uppercase tracking-wider text-text-secondary mb-2">Incassokosten</p>
+          <p id="ik-uitkomst" class="text-h1 font-extrabold text-text mb-3">—</p>
+          <p id="ik-toelichting" class="text-small text-text-secondary">Vul de hoofdsom in.</p>
+        </div>
+      </div>
+    </section>
+
+    {/* === 3. RENTE === */}
+    <section id="rente" class="scroll-mt-24 border-t border-border pt-16">
+      <h2 class="text-h2 font-bold mb-2 text-text">Wettelijke rente, handelsrente en contractuele rente</h2>
+      <p class="text-body text-text-secondary mb-6 max-w-readable">
+        Samengestelde rente volgens artikel 6:119 BW (niet-handelstransacties) of 6:119a BW (handelstransacties tussen bedrijven): na elk verstreken jaar wordt de opgebouwde rente bij de hoofdsom opgeteld. De percentages per periode komen uit de officiële vaststellingen; de handelsrente is sinds 1 juli 2026 10,4%, de gewone wettelijke rente sinds 1 januari 2026 4%. Is in het contract een eigen rentepercentage afgesproken, kies dan "contractuele rente" en vul het percentage in.
+      </p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="p-6 bg-bg-elevated border border-border rounded-lg space-y-4">
+          <div>
+            <label for="rt-type" class="block text-small font-semibold text-text mb-1">Soort rente</label>
+            <select id="rt-type" class="w-full p-3 border border-border rounded-md bg-bg text-text">
+              <option value="handel">Handelsrente (6:119a BW — tussen bedrijven)</option>
+              <option value="wettelijk">Wettelijke rente (6:119 BW — overig)</option>
+              <option value="contractueel">Contractuele rente (zelf afgesproken percentage)</option>
+            </select>
+          </div>
+          <div id="rt-contract" class="hidden grid grid-cols-2 gap-4">
+            <div>
+              <label for="rt-pct" class="block text-small font-semibold text-text mb-1">Rente per jaar (%)</label>
+              <input id="rt-pct" type="number" min="0" max="99" step="0.1" placeholder="bijv. 8" class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+            </div>
+            <div>
+              <label for="rt-methode" class="block text-small font-semibold text-text mb-1">Methode</label>
+              <select id="rt-methode" class="w-full p-3 border border-border rounded-md bg-bg text-text">
+                <option value="samengesteld">Samengesteld (per jaar)</option>
+                <option value="enkelvoudig">Enkelvoudig</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="rt-hoofdsom" class="block text-small font-semibold text-text mb-1">Hoofdsom (€)</label>
+            <input id="rt-hoofdsom" type="number" min="0" step="100" placeholder="bijv. 25000" class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="rt-start" class="block text-small font-semibold text-text mb-1">Rente vanaf</label>
+              <input id="rt-start" type="date" min="2015-01-01" class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+            </div>
+            <div>
+              <label for="rt-eind" class="block text-small font-semibold text-text mb-1">Tot en met</label>
+              <input id="rt-eind" type="date" class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+            </div>
+          </div>
+        </div>
+        <div class="p-6 bg-bg-tinted border border-border rounded-lg">
+          <p class="text-small font-semibold uppercase tracking-wider text-text-secondary mb-2">Opgebouwde rente</p>
+          <p id="rt-uitkomst" class="text-h1 font-extrabold text-text mb-1">—</p>
+          <p id="rt-totaal" class="text-body font-semibold text-text mb-3"></p>
+          <p id="rt-toelichting" class="text-small text-text-secondary">Vul hoofdsom en begindatum in. De begindatum is meestal de dag waarop het verzuim intreedt (bijvoorbeeld de dag na de vervaldatum van de factuur).</p>
+        </div>
+      </div>
+    </section>
+
+    {/* === 4. KOSTENVEROORDELING === */}
+    <section id="kostenveroordeling" class="scroll-mt-24 border-t border-border pt-16">
+      <h2 class="text-h2 font-bold mb-2 text-text">Proceskostenveroordeling (indicatie)</h2>
+      <p class="text-body text-text-secondary mb-6 max-w-readable">
+        Wat de verliezende partij bij een bodemprocedure doorgaans aan de winnende partij vergoedt: het griffierecht plus een salaris volgens het liquidatietarief (per 1 februari 2026). Het aantal punten hangt af van de proceshandelingen; een standaardzaak met dagvaarding en één zitting telt twee punten. Het liquidatietarief is een forfait — de werkelijke advocaatkosten liggen doorgaans hoger.
+      </p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="p-6 bg-bg-elevated border border-border rounded-lg space-y-4">
+          <div>
+            <label for="pk-instantie" class="block text-small font-semibold text-text mb-1">Instantie</label>
+            <select id="pk-instantie" class="w-full p-3 border border-border rounded-md bg-bg text-text">
+              <option value="kanton">Kantonrechter</option>
+              <option value="rechtbank">Rechtbank (civiel)</option>
+            </select>
+          </div>
+          <div>
+            <label for="pk-partij" class="block text-small font-semibold text-text mb-1">Winnende partij is</label>
+            <select id="pk-partij" class="w-full p-3 border border-border rounded-md bg-bg text-text">
+              <option value="rp">Rechtspersoon (BV, NV, vof, cv, stichting)</option>
+              <option value="np">Natuurlijk persoon of eenmanszaak</option>
+            </select>
+          </div>
+          <div>
+            <label for="pk-waarde" class="block text-small font-semibold text-text mb-1">Toegewezen vordering (€)</label>
+            <input id="pk-waarde" type="number" min="0" step="100" placeholder="bijv. 35000" class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+          </div>
+          <div>
+            <label for="pk-punten" class="block text-small font-semibold text-text mb-1">Aantal proceshandelingen (punten)</label>
+            <select id="pk-punten" class="w-full p-3 border border-border rounded-md bg-bg text-text">
+              <option value="2">2 — dagvaarding + mondelinge behandeling (standaard)</option>
+              <option value="1">1 — alleen dagvaarding (verstek)</option>
+              <option value="3">3 — extra conclusie of akte</option>
+              <option value="4">4 — uitgebreid debat of getuigenverhoor</option>
+            </select>
+          </div>
+          <label class="flex items-center gap-2 text-small text-text">
+            <input id="pk-exploot" type="checkbox" checked class="w-4 h-4" />
+            Dagvaardingskosten meerekenen (€ 125,57, Btag 2026)
+          </label>
+        </div>
+        <div class="p-6 bg-bg-tinted border border-border rounded-lg">
+          <p class="text-small font-semibold uppercase tracking-wider text-text-secondary mb-2">Indicatie kostenveroordeling</p>
+          <p id="pk-uitkomst" class="text-h1 font-extrabold text-text mb-3">—</p>
+          <div id="pk-specificatie" class="text-small text-text-secondary space-y-1"></div>
+        </div>
+      </div>
+    </section>
+
+    {/* === 5. DEURWAARDERSKOSTEN === */}
+    <section id="deurwaarderskosten" class="scroll-mt-24 border-t border-border pt-16">
+      <h2 class="text-h2 font-bold mb-2 text-text">Deurwaarderskosten (Btag 2026)</h2>
+      <p class="text-body text-text-secondary mb-6 max-w-readable">
+        De wettelijke schuldenaarstarieven per ambtshandeling uit het Besluit tarieven ambtshandelingen gerechtsdeurwaarders, geldend per 1 januari 2026. Dit zijn de bedragen die op de schuldenaar verhaald kunnen worden; exclusief btw en verschotten (zoals informatiekosten en slotenmaker).
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full max-w-2xl text-body text-text border-collapse">
+          <thead>
+            <tr class="border-b-2 border-border text-left">
+              <th class="py-3 pr-6 font-semibold">Ambtshandeling</th>
+              <th class="py-3 font-semibold">Tarief 2026</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-border"><td class="py-3 pr-6">Dagvaarding of oproeping die het geding inleidt</td><td class="py-3">€ 125,57</td></tr>
+            <tr class="border-b border-border"><td class="py-3 pr-6">Betekening van een titel (bijv. vonnis)</td><td class="py-3">€ 136,71</td></tr>
+            <tr class="border-b border-border"><td class="py-3 pr-6">Beslag op roerende zaken</td><td class="py-3">€ 164,86</td></tr>
+            <tr class="border-b border-border"><td class="py-3 pr-6">Derdenbeslag, anders dan op periodieke betalingen (o.a. bankbeslag)</td><td class="py-3">€ 260,68</td></tr>
+            <tr class="border-b border-border"><td class="py-3 pr-6">Beslag op onroerende zaken</td><td class="py-3">€ 226,28</td></tr>
+            <tr class="border-b border-border"><td class="py-3 pr-6">Gedwongen ontruiming van onroerende zaken</td><td class="py-3">€ 322,59</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-small text-text-secondary mt-4 max-w-readable">
+        Bij conservatoir beslag gelden de overeenkomstige tarieven per gelegd beslag; elk beslagobject is een afzonderlijke ambtshandeling. Hoe beslag in de praktijk verloopt, leest u in de kennisbank: <a href="/clusters/conservatoir-beslag/" class="text-brand-primary no-underline hover:underline">conservatoir beslag</a>, <a href="/clusters/beslag-op-bankrekening/" class="text-brand-primary no-underline hover:underline">bankbeslag</a> en <a href="/clusters/ontruiming-bedrijfsruimte/" class="text-brand-primary no-underline hover:underline">ontruiming</a>.
+      </p>
+    </section>
+
+    {/* === BRONNEN / DISCLAIMER === */}
+    <section class="border-t border-border pt-10">
+      <p class="text-small text-text-secondary max-w-readable">
+        <strong class="text-text">Bronnen en peildatum.</strong> Griffierechten 2026 en liquidatietarieven per 1 februari 2026: rechtspraak.nl (Stcrt. 2025, 39855). Incassostaffel: Besluit vergoeding voor buitengerechtelijke incassokosten. Rentepercentages: officiële halfjaarlijkse vaststellingen tot en met 1 juli 2026 (rijksoverheid.nl). Deurwaarderstarieven: Besluit tarieven ambtshandelingen gerechtsdeurwaarders, geldend per 1 januari 2026. Peildatum: augustus 2026. Deze tools geven een feitelijke indicatie op basis van openbare tarieven; de uitkomst is geen juridisch advies en aan de berekening kunnen geen rechten worden ontleend. Hoe de bedragen in een concrete zaak uitpakken, hangt af van de omstandigheden — <a href="/contact" class="text-brand-primary no-underline hover:underline">neem gerust contact op</a> voor een verkennende kennismaking.
+      </p>
+    </section>
+  </div>
+
+  <CTABand />
+
+  <script>
+    const eur = new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' })
+    const eur0 = new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 })
+    const $ = (id: string) => document.getElementById(id) as any
+
+    // ---- 1. Griffierecht (tarieven 2026, rechtspraak.nl) ----
+    const GRIFFIE = {
+      kanton: {
+        // [bovengrens, rp, np] — onbepaald valt in de eerste trede
+        treden: [
+          [500, 139, 93],
+          [1500, 350, 233],
+          [2500, 397, 265],
+          [5000, 529, 265],
+          [12500, 559, 265],
+          [Infinity, 1504, 753],
+        ],
+        onbepaald: [139, 93],
+      },
+      rechtbank: {
+        treden: [
+          [100000, 3083, 1414],
+          [1000000, 7062, 2803],
+          [Infinity, 10487, 2803],
+        ],
+        onbepaald: [735, 341],
+      },
+      hof: {
+        treden: [
+          [12500, 851, 373],
+          [100000, 2321, 851],
+          [1000000, 7003, 2192],
+          [Infinity, 14007, 2192],
+        ],
+        onbepaald: [851, 373],
+      },
+    }
+
+    function rekenGriffierecht() {
+      const keuze = $('gr-instantie').value as 'kanton' | 'rechtbank' | 'hof'
+      const inst = GRIFFIE[keuze]
+      const idx = $('gr-partij').value === 'rp' ? 0 : 1
+      const onbepaald = $('gr-onbepaald').checked
+      const waarde = parseFloat($('gr-waarde').value)
+      $('gr-waarde').disabled = onbepaald
+      let bedrag: number | null = null
+      let note = ''
+      if (onbepaald) {
+        bedrag = inst.onbepaald[idx]
+        note = 'Tarief voor zaken van onbepaalde waarde. Bij de rechtbank valt ook het verzoekschrift voor conservatoir beslag en een WHOA-verzoek in deze categorie.'
+      } else if (!isNaN(waarde) && waarde >= 0) {
+        const trede = inst.treden.find((t) => waarde <= t[0])!
+        bedrag = trede[idx + 1]
+        if (keuze === 'kanton') {
+          note = 'Bij de kantonrechter betaalt alleen de eisende of verzoekende partij griffierecht.'
+          if (waarde > 25000) note += ' Let op: een geldvordering boven € 25.000 hoort in beginsel bij de rechtbank (behalve o.a. huurzaken).'
+        } else if (keuze === 'rechtbank') {
+          note = 'Bij de rechtbank betaalt ook de verwerende partij griffierecht (zelfde staffel). Bij een natuurlijke persoon als partij geldt boven € 1 miljoen de categorie tot € 1 miljoen.'
+          if (waarde <= 25000) note += ' Let op: een geldvordering tot en met € 25.000 hoort in beginsel bij de kantonrechter.'
+        } else {
+          note = 'Bij het gerechtshof betalen zowel de appellerende als de verwerende partij (die een verweerschrift indient) griffierecht.'
+        }
+      }
+      $('gr-uitkomst').textContent = bedrag === null ? '—' : eur0.format(bedrag)
+      $('gr-toelichting').textContent = note || 'Vul de waarde van de vordering in of vink "onbepaalde waarde" aan.'
+    }
+    ;['gr-instantie', 'gr-partij', 'gr-waarde', 'gr-onbepaald'].forEach((id) => $(id).addEventListener('input', rekenGriffierecht))
+
+    // ---- 2. Incassokosten (Besluit BIK) ----
+    function rekenIncasso() {
+      const h = parseFloat($('ik-hoofdsom').value)
+      if (isNaN(h) || h <= 0) {
+        $('ik-uitkomst').textContent = '—'
+        $('ik-toelichting').textContent = 'Vul de hoofdsom in.'
+        return
+      }
+      let k = 0.15 * Math.min(h, 2500)
+      if (h > 2500) k += 0.10 * (Math.min(h, 5000) - 2500)
+      if (h > 5000) k += 0.05 * (Math.min(h, 10000) - 5000)
+      if (h > 10000) k += 0.01 * (Math.min(h, 200000) - 10000)
+      if (h > 200000) k += 0.005 * (h - 200000)
+      k = Math.min(Math.max(k, 40), 6775)
+      const metBtw = $('ik-btw').checked
+      const bedrag = metBtw ? k * 1.21 : k
+      $('ik-uitkomst').textContent = eur.format(bedrag)
+      $('ik-toelichting').textContent = (metBtw ? `Staffelbedrag ${eur.format(k)} verhoogd met 21% btw. ` : '') +
+        'Minimaal € 40, maximaal € 6.775. Bij een consument-schuldenaar is eerst een kosteloze veertiendagenbrief vereist.'
+    }
+    ;['ik-hoofdsom', 'ik-btw'].forEach((id) => $(id).addEventListener('input', rekenIncasso))
+
+    // ---- 3. Rente (samengesteld, art. 6:119/6:119a BW) ----
+    const RENTES: Record<string, [string, number][]> = {
+      wettelijk: [
+        ['2015-01-01', 2], ['2023-01-01', 4], ['2023-07-01', 6],
+        ['2024-01-01', 7], ['2025-01-01', 6], ['2026-01-01', 4],
+      ],
+      handel: [
+        ['2015-01-01', 8.05], ['2016-07-01', 8], ['2023-01-01', 10.5],
+        ['2023-07-01', 12], ['2024-01-01', 12.5], ['2024-07-01', 12.25],
+        ['2025-01-01', 11.15], ['2025-07-01', 10.15], ['2026-07-01', 10.4],
+      ],
+    }
+    const DAY = 86400000
+    const addYear = (d: Date) => { const n = new Date(d); n.setFullYear(n.getFullYear() + 1); return n }
+
+    function rekenRente() {
+      const type = $('rt-type').value
+      const contractueel = type === 'contractueel'
+      $('rt-contract').classList.toggle('hidden', !contractueel)
+      $('rt-start').min = contractueel ? '' : '2015-01-01'
+      const P = parseFloat($('rt-hoofdsom').value)
+      const start = $('rt-start').value ? new Date($('rt-start').value + 'T00:00:00Z') : null
+      const eind = $('rt-eind').value ? new Date($('rt-eind').value + 'T00:00:00Z') : null
+      const pct = parseFloat($('rt-pct').value)
+      $('rt-totaal').textContent = ''
+      if (isNaN(P) || P <= 0 || !start || !eind || (contractueel && (isNaN(pct) || pct < 0))) {
+        $('rt-uitkomst').textContent = '—'
+        $('rt-toelichting').textContent = contractueel
+          ? 'Vul hoofdsom, rentepercentage en begindatum in.'
+          : 'Vul hoofdsom en begindatum in. De begindatum is meestal de dag waarop het verzuim intreedt (bijvoorbeeld de dag na de vervaldatum van de factuur).'
+        return
+      }
+      if (!contractueel && start < new Date('2015-01-01T00:00:00Z')) {
+        $('rt-uitkomst').textContent = '—'
+        $('rt-toelichting').textContent = 'Deze tool rekent voor de wettelijke tarieven vanaf 1 januari 2015. Neem voor oudere vorderingen contact op.'
+        return
+      }
+      if (eind <= start) {
+        $('rt-uitkomst').textContent = '—'
+        $('rt-toelichting').textContent = 'De einddatum moet na de begindatum liggen.'
+        return
+      }
+      const dagenTotaal = Math.round((+eind - +start) / DAY)
+      let totaal = 0
+      let slotNote = ''
+      if (contractueel && $('rt-methode').value === 'enkelvoudig') {
+        totaal = P * (pct / 100) * (dagenTotaal / 365)
+        slotNote = `Over ${dagenTotaal} dagen, enkelvoudig tegen ${pct.toLocaleString('nl-NL')}% per jaar.`
+      } else {
+        const tabel = contractueel ? [['1900-01-01', pct] as [string, number]] : RENTES[type]
+        const wissels = tabel.map(([d]) => new Date(d + 'T00:00:00Z'))
+        const rateAt = (d: Date) => { let r = tabel[0][1]; for (let i = 0; i < tabel.length; i++) { if (wissels[i] <= d) r = tabel[i][1] }; return r }
+        let base = P, jaarAcc = 0
+        let cur = new Date(start), anniv = addYear(start)
+        let guard = 0
+        while (cur < eind && guard++ < 3000) {
+          const volgendeWissel = wissels.find((w) => w > cur)
+          const segEind = new Date(Math.min(+eind, +anniv, volgendeWissel ? +volgendeWissel : Infinity))
+          const dagen = Math.round((+segEind - +cur) / DAY)
+          jaarAcc += base * (rateAt(cur) / 100) * (dagen / 365)
+          cur = segEind
+          if (+cur === +anniv) { base += jaarAcc; totaal += jaarAcc; jaarAcc = 0; anniv = addYear(anniv) }
+        }
+        totaal += jaarAcc
+        slotNote = contractueel
+          ? `Over ${dagenTotaal} dagen, samengesteld per verstreken jaar tegen ${pct.toLocaleString('nl-NL')}% per jaar.`
+          : `Over ${dagenTotaal} dagen, samengesteld per verstreken jaar (huidig tarief ${rateAt(eind).toLocaleString('nl-NL')}%).`
+      }
+      $('rt-uitkomst').textContent = eur.format(totaal)
+      $('rt-totaal').textContent = `Hoofdsom + rente: ${eur.format(P + totaal)}`
+      $('rt-toelichting').textContent = slotNote + ' Kleine afrondingsverschillen met andere rekenmethodes zijn mogelijk.'
+    }
+    const vandaag = new Date().toISOString().slice(0, 10)
+    $('rt-eind').value = vandaag
+    $('rt-eind').max = vandaag
+    ;['rt-type', 'rt-hoofdsom', 'rt-start', 'rt-eind', 'rt-pct', 'rt-methode'].forEach((id) => $(id).addEventListener('input', rekenRente))
+
+    // ---- 4. Kostenveroordeling (liquidatietarief per 1-2-2026) ----
+    // Kanton: [bovengrens hoofdsom, salaris per punt, max punten]
+    const KANTON_SALARIS: [number, number, number][] = [
+      [250, 43, 3], [500, 87, 4], [1250, 144, 5], [2500, 217, 5], [3750, 253, 5],
+      [5000, 288, 6], [10000, 360, 6], [20000, 432, 7], [40000, 577, 10],
+      [100000, 866, 10], [200000, 1010, 99], [400000, 1155, 99], [1000000, 1441, 99], [Infinity, 1731, 99],
+    ]
+    // Rechtbank: [bovengrens, tarief per punt, max punten]
+    const RECHTBANK_TARIEF: [number, number, number][] = [
+      [10000, 554, 5], [20000, 653, 6], [40000, 836, 7], [98000, 1290, 10],
+      [195000, 2051, 99], [390000, 2885, 99], [1000000, 3723, 99], [Infinity, 4631, 99],
+    ]
+
+    function rekenProceskosten() {
+      const inst = $('pk-instantie').value
+      const idx = $('pk-partij').value === 'rp' ? 0 : 1
+      const waarde = parseFloat($('pk-waarde').value)
+      const puntenGevraagd = parseInt($('pk-punten').value)
+      if (isNaN(waarde) || waarde <= 0) {
+        $('pk-uitkomst').textContent = '—'
+        $('pk-specificatie').innerHTML = '<p>Vul de toegewezen vordering in.</p>'
+        return
+      }
+      const staffel = inst === 'kanton' ? KANTON_SALARIS : RECHTBANK_TARIEF
+      const trede = staffel.find((t) => waarde <= t[0])!
+      const punten = Math.min(puntenGevraagd, trede[2])
+      const salaris = punten * trede[1]
+      const g = GRIFFIE[inst as 'kanton' | 'rechtbank']
+      const griffie = g.treden.find((t) => waarde <= t[0])![idx + 1]
+      const exploot = $('pk-exploot').checked ? 125.57 : 0
+      const totaal = griffie + salaris + exploot
+      $('pk-uitkomst').textContent = eur.format(totaal)
+      $('pk-specificatie').innerHTML =
+        `<p>Griffierecht: ${eur0.format(griffie)}</p>` +
+        `<p>Salaris ${inst === 'kanton' ? 'gemachtigde' : 'advocaat'}: ${punten} ${punten === 1 ? 'punt' : 'punten'} × ${eur0.format(trede[1])} = ${eur0.format(salaris)}</p>` +
+        (exploot ? `<p>Dagvaardingskosten (Btag 2026): ${eur.format(exploot)}</p>` : '') +
+        (punten < puntenGevraagd ? `<p>Het maximum voor deze zaakswaarde is ${trede[2]} punten.</p>` : '') +
+        `<p class="pt-2">Daarnaast worden doorgaans nakosten toegewezen (kanton maximaal € 144; rechtbank € 189, plus € 98 bij betekening). Het liquidatietarief is niet bindend en dekt de werkelijke advocaatkosten meestal niet.</p>`
+    }
+    ;['pk-instantie', 'pk-partij', 'pk-waarde', 'pk-punten', 'pk-exploot'].forEach((id) => $(id).addEventListener('input', rekenProceskosten))
+  </script>
+</BaseLayout>
