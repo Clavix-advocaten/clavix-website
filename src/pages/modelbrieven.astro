@@ -1,0 +1,111 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABand from '@components/CTABand.astro'
+import { breadcrumbSchema } from '@lib/schema-markup'
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Modelbrieven', url: '/modelbrieven' },
+  ]),
+]
+---
+
+<BaseLayout
+  title="Modelbrief ingebrekestelling en veertiendagenbrief (gratis)"
+  description="Download een juridisch doordachte modelbrief: de ingebrekestelling voor zakelijke debiteuren en de veertiendagenbrief voor consumenten, opgesteld door Clavix Advocaten."
+  schemaJsonLd={schemas}
+>
+  {/* === HERO === */}
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-20">
+      <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
+        Home › Modelbrieven
+      </p>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
+        Modelbrieven voor onbetaalde facturen
+      </h1>
+      <p class="text-lead text-text-secondary mb-4 max-w-readable">
+        Een goede eerste brief bepaalt de rest van het incassotraject. Download onze modelbrieven — juridisch doordacht, direct bruikbaar in Word:
+      </p>
+      <ul class="text-body text-text space-y-2 max-w-readable list-disc pl-5">
+        <li><strong>Ingebrekestelling (zakelijke debiteur)</strong> — de formele sommatie die het verzuim en de aanspraak op handelsrente en incassokosten vastlegt.</li>
+        <li><strong>Veertiendagenbrief (consument-debiteur)</strong> — de wettelijk verplichte laatste aanmaning, met de exacte termijnformulering die de rechtspraak vereist.</li>
+      </ul>
+    </div>
+  </section>
+
+  {/* === FORM + DOWNLOADS === */}
+  <section class="max-w-container mx-auto px-4 md:px-8 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div>
+        <h2 class="text-h2 font-bold mb-4 text-text">Download de modelbrieven</h2>
+        <p class="text-body text-text-secondary mb-6 max-w-readable">
+          Laat uw e-mailadres achter en download beide brieven direct. Wij gebruiken uw adres alleen om u eenmalig te kunnen benaderen over de modelbrieven — geen nieuwsbrief, geen verplichtingen.
+        </p>
+        <div id="mb-form-wrap">
+          <form name="modelbrieven" method="POST" action="/modelbrieven?download=true" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4 p-6 bg-bg-elevated border border-border rounded-lg max-w-md">
+            <p class="hidden"><label>Niet invullen: <input name="bot-field" /></label></p>
+            <input type="hidden" name="form-name" value="modelbrieven" />
+            <div>
+              <label for="mb-naam" class="block text-small font-semibold text-text mb-1">Naam</label>
+              <input id="mb-naam" name="naam" type="text" class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+            </div>
+            <div>
+              <label for="mb-email" class="block text-small font-semibold text-text mb-1">E-mailadres *</label>
+              <input id="mb-email" name="email" type="email" required class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+            </div>
+            <button type="submit" class="w-full bg-brand-primary text-white font-semibold px-8 py-3 rounded-lg hover:opacity-90 transition cursor-pointer">Naar de downloads</button>
+          </form>
+        </div>
+        <div id="mb-downloads" style="display: none;" class="p-6 bg-bg-elevated border-2 border-brand-primary rounded-lg max-w-md space-y-4">
+          <p class="text-body font-semibold text-text">Dank u — hier zijn de brieven:</p>
+          <a href="/downloads/modelbrief-ingebrekestelling.docx" class="block bg-brand-primary text-white font-semibold px-6 py-3 rounded-lg no-underline hover:opacity-90 transition text-center" download>⬇ Ingebrekestelling (zakelijk) — Word</a>
+          <a href="/downloads/modelbrief-veertiendagenbrief.docx" class="block bg-brand-primary text-white font-semibold px-6 py-3 rounded-lg no-underline hover:opacity-90 transition text-center" download>⬇ Veertiendagenbrief (consument) — Word</a>
+          <p class="text-small text-text-secondary">Vul de teksten tussen [haken] in en verwijder wat niet van toepassing is. Verstuur de brief aangetekend of op een wijze waarvan u de ontvangst kunt aantonen.</p>
+        </div>
+      </div>
+      <div class="space-y-6">
+        <div class="p-6 bg-bg-tinted border border-border rounded-lg">
+          <h3 class="text-h4 font-bold text-text mb-2">Welke brief gebruikt u wanneer?</h3>
+          <p class="text-body text-text-secondary mb-3">
+            Is uw debiteur een <strong class="text-text">bedrijf</strong>, dan volstaat de ingebrekestelling: die legt het verzuim vast en kondigt rente en kosten aan. Bij handelstransacties loopt de wettelijke handelsrente overigens vaak al vanaf het verstrijken van de betaaltermijn.
+          </p>
+          <p class="text-body text-text-secondary">
+            Is uw debiteur een <strong class="text-text">consument</strong>, dan is de veertiendagenbrief wettelijk verplicht vóórdat u incassokosten in rekening mag brengen — met strikte eisen aan termijn en inhoud. Eén verkeerde formulering en de kosten zijn niet verschuldigd.
+          </p>
+        </div>
+        <div class="p-6 bg-bg-tinted border border-border rounded-lg">
+          <h3 class="text-h4 font-bold text-text mb-2">Bereken direct de bijbehorende bedragen</h3>
+          <p class="text-body text-text-secondary">
+            De incassokosten volgens de wettelijke staffel en de (handels)rente rekent u uit met onze <a href="/proceskosten-berekenen/" class="text-brand-primary no-underline hover:underline">gratis rekentools</a> — dan zet u in de brief meteen het juiste bedrag.
+          </p>
+        </div>
+        <div class="p-6 bg-bg-tinted border border-border rounded-lg">
+          <h3 class="text-h4 font-bold text-text mb-2">Betaalt de debiteur daarna nog niet?</h3>
+          <p class="text-body text-text-secondary">
+            Dan liggen de vervolgstappen klaar: <a href="/clusters/conservatoir-beslag/" class="text-brand-primary no-underline hover:underline">conservatoir beslag</a>, een procedure of bij meerdere schuldeisers de <a href="/clusters/faillissement-aanvragen-schuldeiser/" class="text-brand-primary no-underline hover:underline">faillissementsaanvraag als drukmiddel</a>. Wij werken met een prijsafspraak vooraf.
+          </p>
+        </div>
+      </div>
+    </div>
+    <p class="text-small text-text-secondary mt-10 max-w-readable">
+      De modelbrieven zijn algemene voorbeelden en geen juridisch advies; aan het gebruik kunnen geen rechten worden ontleend. Voor vorderingen met een groot belang, een betwiste factuur of een debiteur die op omvallen staat: <a href="/contact" class="text-brand-primary no-underline hover:underline">neem eerst contact op</a> — een verkennende kennismaking kost u niets.
+    </p>
+  </section>
+
+  <CTABand />
+
+  <script is:inline>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('download') === 'true') {
+        window.plausible && window.plausible('Modelbrief aanvraag');
+        var f = document.getElementById('mb-form-wrap');
+        var d = document.getElementById('mb-downloads');
+        if (f) f.style.display = 'none';
+        if (d) { d.style.display = 'block'; d.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+      }
+    })();
+  </script>
+</BaseLayout>
