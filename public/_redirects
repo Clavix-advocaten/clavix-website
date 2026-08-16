@@ -1,6 +1,9 @@
 # === KORTE LINKS ===
 /review    https://g.page/r/Ca8VWOSEwDZtEBM/review    302
 
+# === SECTORHERNOEMING ===
+/sectoren/healthcare    /sectoren/zorg/    301
+
 # === STATISCHE WIX → CLAVIX MAPPINGS ===
 /advocaat-mukesh-kumar             /kumar/                                                  301
 /advocaat-amsterdam-zuidas         /advocaat-zuidas/                                        301

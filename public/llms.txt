@@ -62,6 +62,15 @@
 - [Vordering indienen bij de curator](https://clavix.nl/clusters/vordering-indienen-curator/): Verificatie, rangorde, eigendomsvoorbehoud, de bankgarantie bij een failliete huurder en de routes naar de bestuurder.
 - [WHOA-traject: kosten en kansen](https://clavix.nl/clusters/whoa-traject-ondernemer-kosten-kansen/): Voorwaarden, doorlooptijd en slaagkans van een WHOA-akkoord.
 
+## Sectoren
+
+- [Zorg](https://clavix.nl/sectoren/zorg/): Advocaat voor de zorgsector: overnames (WTZa), governance en zorgvastgoed — het ondernemingsrecht van zorgaanbieders.
+- [Bouw](https://clavix.nl/sectoren/bouw/): Advocaat bouwrecht: oplevergeschillen, aannemersaansprakelijkheid en betalingsconflicten.
+- [Horeca](https://clavix.nl/sectoren/horeca/): Advocaat voor horeca-ondernemers: huurgeschillen (7:303 BW), WHOA en familieoverdracht.
+- [Retail](https://clavix.nl/sectoren/retail/): Advocaat voor retail en franchise: winkelhuur, franchisegeschillen en doorstart.
+- [Tech & SaaS](https://clavix.nl/sectoren/tech/): Advocaat voor tech- en SaaS-ondernemingen: aandeelhoudersgeschillen, exits en governance.
+- [Vastgoed & Projecten](https://clavix.nl/sectoren/vastgoed-projecten/): Advocaat voor vastgoedontwikkelaars: bouwfailures, contracten en VvE-conflicten.
+
 ## Het kantoor
 
 - [mr. Mukesh Kumar](https://clavix.nl/kumar/): Advocaat-ondernemer in Amsterdam Zuidas. Beëdigd 2022. NOvA-geregistreerd voor ondernemingsrecht en burgerlijk procesrecht.
