@@ -29,6 +29,8 @@
 - [290- of 230a-bedrijfsruimte](https://clavix.nl/clusters/bedrijfsruimte-290-of-230a-bw/): Welk huurregime geldt en wat dat betekent voor opzegging en huurtermijnen.
 - [Bedrijfsruimte verhuren tussen BV's](https://clavix.nl/clusters/bedrijfsruimte-huur-bvs-onderling/): Zakelijke voorwaarden en valkuilen bij huur tussen verbonden vennootschappen.
 - [Beslag op aandelen](https://clavix.nl/clusters/beslag-op-aandelen/): Conservatoir beslag op BV-aandelen: toetsing en gevolgen.
+- [Beslag opheffen](https://clavix.nl/clusters/beslag-opheffen/): Het opheffingskortgeding van artikel 705 Rv: gronden, zekerheid via bankgarantie en de belangenafweging.
+- [Conservatoir beslag op onroerend goed](https://clavix.nl/clusters/beslag-op-onroerend-goed/): Wat beslag op een pand blokkeert, het verlof, de rangorde naast de hypotheek en het notarisdepot.
 - [Bestuurdersaansprakelijkheid bij faillissement](https://clavix.nl/clusters/bestuurdersaansprakelijkheid-faillissement/): Verweer tegen 2:248 BW-claims van de curator.
 - [Bouwgeschil met de aannemer](https://clavix.nl/clusters/bouwgeschil-aannemer-wanprestatie/): Oplevering, gebreken, herstelrecht en wanprestatie.
 - [Concurrentiebeding ex-aandeelhouders](https://clavix.nl/clusters/concurrentiebeding-ex-aandeelhouders/): Geldigheid en handhaving na aandelenverkoop.
