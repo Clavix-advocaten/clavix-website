@@ -45,6 +45,7 @@
 - [Huurprijs bedrijfsruimte aanpassen (7:303 BW)](https://clavix.nl/clusters/huurprijswijziging-7-303-roz/): De huurprijsherzieningsprocedure: termijnen en deskundigenadvies.
 - [Huurrecht advocaat bedrijfsruimte](https://clavix.nl/clusters/huurrecht-advocaat-bedrijfsruimte/): Voor verhuurders en zakelijke huurders: kwalificatie, huurprijs, opzegging.
 - [Indeplaatsstelling huurder](https://clavix.nl/clusters/indeplaatsstelling-huurder/): Voorwaarden en weigeringsgronden bij bedrijfsoverdracht (7:307 BW).
+- [Ontruiming van bedrijfsruimte](https://clavix.nl/clusters/ontruiming-bedrijfsruimte/): Kort geding of bodemprocedure, de drie-maanden-vuistregel, de terme de grâce en de uitvoering.
 - [Opzegging huurovereenkomst bedrijfsruimte](https://clavix.nl/clusters/opzegging-huurovereenkomst-bedrijfsruimte/): Gronden en termijnen bij 290- en 230a-ruimte.
 - [Pauliana-actie van de curator](https://clavix.nl/clusters/pauliana-actie-curator/): Voorwaarden, bewijslast en verweer.
 - [Pre-pack doorstart](https://clavix.nl/clusters/pre-pack-doorstart/): Voorbereiding, stille curator en randvoorwaarden.
@@ -55,6 +56,7 @@
 - [Vastgoed in BV of privé](https://clavix.nl/clusters/vastgoed-in-bv-of-prive/): Vergelijking fiscaal en juridisch, ook bij overdracht en vererving.
 - [Verkoop bedrijfspand bij M&A](https://clavix.nl/clusters/verkoop-bedrijfspand-mna/): Structuur, due diligence en transactiedocumentatie.
 - [Verzet tegen faillissement](https://clavix.nl/clusters/verzet-tegen-faillissement/): De verzetsprocedure van artikel 8 Fw: termijn, gronden, kansen.
+- [Vordering indienen bij de curator](https://clavix.nl/clusters/vordering-indienen-curator/): Verificatie, rangorde, eigendomsvoorbehoud, de bankgarantie bij een failliete huurder en de routes naar de bestuurder.
 - [WHOA-traject: kosten en kansen](https://clavix.nl/clusters/whoa-traject-ondernemer-kosten-kansen/): Voorwaarden, doorlooptijd en slaagkans van een WHOA-akkoord.
 
 ## Het kantoor
