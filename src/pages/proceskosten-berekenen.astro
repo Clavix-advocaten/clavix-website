@@ -256,6 +256,8 @@ const tools = [
     const eur = new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' })
     const eur0 = new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 })
     const $ = (id: string) => document.getElementById(id) as any
+    const gemeld: Record<string, boolean> = {}
+    const meld = (tool: string) => { if (!gemeld[tool]) { gemeld[tool] = true; (window as any).plausible && (window as any).plausible('Rekentool', { props: { tool } }) } }
 
     // ---- 1. Griffierecht (tarieven 2026, rechtspraak.nl) ----
     const GRIFFIE = {
@@ -317,6 +319,7 @@ const tools = [
       }
       $('gr-uitkomst').textContent = bedrag === null ? '—' : eur0.format(bedrag)
       $('gr-toelichting').textContent = note || 'Vul de waarde van de vordering in of vink "onbepaalde waarde" aan.'
+      if (bedrag !== null) meld('griffierecht')
     }
     ;['gr-instantie', 'gr-partij', 'gr-waarde', 'gr-onbepaald'].forEach((id) => $(id).addEventListener('input', rekenGriffierecht))
 
@@ -339,6 +342,7 @@ const tools = [
       $('ik-uitkomst').textContent = eur.format(bedrag)
       $('ik-toelichting').textContent = (metBtw ? `Staffelbedrag ${eur.format(k)} verhoogd met 21% btw. ` : '') +
         'Minimaal € 40, maximaal € 6.775. Bij een consument-schuldenaar is eerst een kosteloze veertiendagenbrief vereist.'
+      meld('incassokosten')
     }
     ;['ik-hoofdsom', 'ik-btw'].forEach((id) => $(id).addEventListener('input', rekenIncasso))
 
@@ -413,6 +417,7 @@ const tools = [
       $('rt-uitkomst').textContent = eur.format(totaal)
       $('rt-totaal').textContent = `Hoofdsom + rente: ${eur.format(P + totaal)}`
       $('rt-toelichting').textContent = slotNote + ' Kleine afrondingsverschillen met andere rekenmethodes zijn mogelijk.'
+      meld('rente')
     }
     const vandaag = new Date().toISOString().slice(0, 10)
     $('rt-eind').value = vandaag
@@ -457,6 +462,7 @@ const tools = [
         (exploot ? `<p>Dagvaardingskosten (Btag 2026): ${eur.format(exploot)}</p>` : '') +
         (punten < puntenGevraagd ? `<p>Het maximum voor deze zaakswaarde is ${trede[2]} punten.</p>` : '') +
         `<p class="pt-2">Daarnaast worden doorgaans nakosten toegewezen (kanton maximaal € 144; rechtbank € 189, plus € 98 bij betekening). Het liquidatietarief is niet bindend en dekt de werkelijke advocaatkosten meestal niet.</p>`
+      meld('kostenveroordeling')
     }
     ;['pk-instantie', 'pk-partij', 'pk-waarde', 'pk-punten', 'pk-exploot'].forEach((id) => $(id).addEventListener('input', rekenProceskosten))
   </script>
