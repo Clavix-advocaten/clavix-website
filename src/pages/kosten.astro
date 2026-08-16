@@ -1,0 +1,164 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABand from '@components/CTABand.astro'
+import { breadcrumbSchema } from '@lib/schema-markup'
+
+const faqs = [
+  {
+    q: 'Wat kost een eerste gesprek?',
+    a: 'Het eerste gesprek van 30 minuten is een verkennende kennismaking, geen adviesgesprek: u licht uw situatie toe, wij geven aan of en hoe wij u kunnen bijstaan. Daar staat geen rekening tegenover en u zit nergens aan vast.',
+  },
+  {
+    q: 'Werkt Clavix met een vaste prijs of een uurtarief?',
+    a: 'Waar de scope vooraf goed is in te schatten, werken wij met een vaste prijs: u weet vooraf wat het kost en wij dragen het scope-risico. Is de scope onzeker, dan geldt een uurtarief met maandelijkse declaratie en urenspecificatie. De keuze maken wij samen, vóór de opdrachtbevestiging.',
+  },
+  {
+    q: 'Betaalt de tegenpartij mijn advocaatkosten als ik win?',
+    a: 'Deels. De rechter kan de verliezende partij veroordelen in de proceskosten, waaronder het griffierecht en een tegemoetkoming in de advocaatkosten volgens vaste tarieven (het liquidatietarief). Die tegemoetkoming dekt de werkelijke advocaatkosten meestal niet volledig; alleen in uitzonderlijke gevallen wordt een volledige vergoeding toegewezen.',
+  },
+  {
+    q: 'Wat is griffierecht en wie betaalt het?',
+    a: 'Griffierecht is de bijdrage die de rechtspraak per zaak in rekening brengt aan de partij die de procedure start (en aan de verweerder bij de rechtbank). De hoogte hangt af van de instantie en het financiële belang, wordt jaarlijks geïndexeerd, en valt bij winst doorgaans onder de proceskostenveroordeling.',
+  },
+]
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Kosten', url: '/kosten' },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+]
+
+const trajecten = [
+  { label: 'Conservatoir beslag leggen', href: '/clusters/conservatoir-beslag/#wat-kost-het', sub: 'Griffierecht € 735 (rechtspersoon) / € 341, deurwaarderskosten per beslag, prijsafspraak vooraf' },
+  { label: 'Beslag laten opheffen', href: '/clusters/beslag-opheffen/#kosten', sub: 'Kort geding: griffierecht € 735 / € 341, verhaal bij onterecht beslag' },
+  { label: 'Huurprijsherziening (7:303)', href: '/clusters/huurprijswijziging-7-303-roz/#wat-kost-het', sub: 'Kanton € 139 / € 93, deskundigenadvies, afweging tegen het jaarbelang' },
+  { label: 'Ontruiming bedrijfsruimte', href: '/clusters/ontruiming-bedrijfsruimte/#kosten', sub: 'Kanton vanaf € 139, deurwaarderskosten, verhaal op de huurder' },
+  { label: 'Faillissement aanvragen', href: '/clusters/faillissement-aanvragen-schuldeiser/#kosten', sub: 'Griffierecht € 735 / € 341, advocaat verplicht, intrekking bij betaling' },
+  { label: 'WHOA-traject', href: '/clusters/whoa-traject-ondernemer-kosten-kansen/#wat-het-kost', sub: 'Kosten en kansen van een onderhands akkoord bij dreigend faillissement' },
+]
+---
+
+<BaseLayout
+  title="Wat kost een advocaat? Heldere afspraken vooraf — Clavix Advocaten"
+  description="De kosten van een advocaat bij Clavix: vaste prijs waar mogelijk, de griffierechten 2026 per instantie, kosten per traject en wat de tegenpartij bij winst vergoedt."
+  schemaJsonLd={schemas}
+>
+  {/* === HERO === */}
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">
+      <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
+        Home › Kosten
+      </p>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
+        Wat kost een advocaat?
+      </h1>
+      <p class="text-h3 text-text-secondary font-display font-semibold mb-6 italic">
+        Heldere afspraken vóór het werk begint. Geen verrassingen achteraf.
+      </p>
+      <p class="text-lead text-text-secondary mb-8 max-w-readable">
+        De kostenvraag is de meest gestelde vraag aan een advocaat — en de minst beantwoorde. Op deze pagina vindt u hoe onze prijsafspraken werken, de wettelijke tarieven per instantie en de kosten per veelvoorkomend traject.
+      </p>
+      <a
+        href="/contact"
+        class="bg-action text-action-fg hover:bg-action-hover px-7 py-3.5 rounded-md font-semibold no-underline transition inline-block"
+      >
+        Plan een eerste gesprek
+      </a>
+    </div>
+  </section>
+
+  {/* === PRIJSMODEL === */}
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <h2 class="text-h2 font-bold mb-6 text-text">Vaste prijs als uitgangspunt</h2>
+    <div class="max-w-readable space-y-4">
+      <p class="text-body text-text">
+        Voor zowel buitengerechtelijke trajecten als procedures werken wij waar mogelijk met een vaste prijs. U weet vooraf wat het kost en wij dragen het scope-risico, niet u. Bij trajecten met meerdere fasen — bijvoorbeeld eerst een analyse, daarna pas een procedure — spreken wij de prijs per fase af, zodat u per stap beslist of doorzetten loont.
+      </p>
+      <p class="text-body text-text">
+        Is de scope vooraf moeilijk in te schatten, dan hanteren wij een uurtarief met maandelijkse declaratie, urenoverzicht en een korte werkomschrijving per regel. Welke vorm past, bespreken wij in het eerste gesprek; de definitieve afspraak staat in de opdrachtbevestiging, vóórdat het werk begint.
+      </p>
+      <p class="text-body text-text">
+        Naast het honorarium zijn er kosten van derden: griffierecht, deurwaarderskosten en soms een deskundige. Die benoemen wij vooraf per traject, zodat de totale kosten geen verrassing zijn.
+      </p>
+    </div>
+  </section>
+
+  {/* === GRIFFIERECHTEN === */}
+  <section class="bg-bg-tinted py-20">
+    <div class="max-w-container mx-auto px-4 md:px-8">
+      <h2 class="text-h2 font-bold mb-2 text-text">Griffierechten 2026</h2>
+      <p class="text-body text-text-secondary mb-8 max-w-readable">
+        Het griffierecht betaalt u aan de rechtspraak per zaak. De belangrijkste tarieven voor zakelijke zaken van onbepaalde waarde (bron: rechtspraak.nl; jaarlijks geïndexeerd):
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full max-w-2xl text-body text-text border-collapse">
+          <thead>
+            <tr class="border-b-2 border-border text-left">
+              <th class="py-3 pr-6 font-semibold">Instantie</th>
+              <th class="py-3 pr-6 font-semibold">Rechtspersoon</th>
+              <th class="py-3 font-semibold">Natuurlijk persoon</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-border">
+              <td class="py-3 pr-6">Kantonrechter (o.a. huurzaken)</td>
+              <td class="py-3 pr-6">€ 139</td>
+              <td class="py-3">€ 93</td>
+            </tr>
+            <tr class="border-b border-border">
+              <td class="py-3 pr-6">Rechtbank civiel (o.a. beslagrekest, kort geding, faillissementsaanvraag)</td>
+              <td class="py-3 pr-6">€ 735</td>
+              <td class="py-3">€ 341</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-small text-text-secondary mt-4 max-w-readable">
+        Bij vorderingen met een geldelijk belang gelden hogere staffels, bij de kantonrechter oplopend tot € 1.504 en bij de rechtbank tot € 10.487 voor de grootste zaken. Griffierecht is vrijgesteld van btw.
+      </p>
+    </div>
+  </section>
+
+  {/* === PER TRAJECT === */}
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <h2 class="text-h2 font-bold mb-2 text-text">Kosten per traject</h2>
+    <p class="text-body text-text-secondary mb-10 max-w-readable">
+      Voor veelvoorkomende trajecten hebben wij de kostenopbouw per stap uitgewerkt in de kennisbank:
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {trajecten.map((t) => (
+        <a href={t.href} class="block p-6 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+          <h3 class="text-h4 font-bold text-text mb-1">{t.label}</h3>
+          <p class="text-small text-text-secondary">{t.sub}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  {/* === FAQ === */}
+  <section class="bg-bg-tinted py-20">
+    <div class="max-w-container mx-auto px-4 md:px-8">
+      <h2 class="text-h2 font-bold mb-8 text-text">Veelgestelde vragen over kosten</h2>
+      <div class="space-y-4 max-w-readable">
+        {faqs.map((f) => (
+          <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+            <h3 class="text-h4 font-bold text-text mb-2">{f.q}</h3>
+            <p class="text-body text-text-secondary">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABand />
+</BaseLayout>
