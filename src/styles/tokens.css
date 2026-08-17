@@ -204,3 +204,18 @@ a {
 .skip-link:focus {
   left: 0;
 }
+
+/* Lange juridische samenstellingen (vastgoedinvesteerders, bestuurdersaansprakelijkheid)
+   mogen in koppen afbreken — voorkomt horizontale overflow op smalle schermen */
+h1,
+h2,
+h3 {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Vangnet: nooit horizontale scroll door een uitstekend element */
+html,
+body {
+  overflow-x: clip;
+}
