@@ -39,28 +39,36 @@ const schemas = [
 
 const waarde = [
   {
+    titel: 'Uw vaste advocaat, onder de sneltoets',
+    tekst: 'Eén nummer, één advocaat die uw onderneming, uw structuur en uw contracten kent. Twijfelt u over een brief, een clausule of een lastig gesprek dat eraan komt? U belt, wij kijken mee — dat tweede paar ogen op het juiste moment is precies het verschil tussen een detail en een dossier.',
+  },
+  {
     titel: 'Problemen voorkomen in plaats van oplossen',
-    tekst: 'Het contract wordt gecheckt vóór u tekent. De structuur wordt doorgelicht vóór de fiscus of een curator dat doet. De huurder wordt aangeschreven vóór de achterstand drie maanden is. De meeste geschillen die wij in de rechtszaal uitvechten, waren in dit stadium een telefoontje geweest — leden plegen dat telefoontje.',
+    tekst: 'Wij zien dagelijks waar het bij ondernemers misgaat: het contract dat te snel getekend is, de structuur die bij groei gaat knellen, de huurder die te lang krediet kreeg. Leden profiteren van die praktijkkennis vóórdat het geld kost — de meeste geschillen die wij uitvechten, waren in dit stadium een telefoontje geweest.',
   },
   {
-    titel: 'Direct uw advocaat, geen servicedesk',
-    tekst: 'Eén nummer, één advocaat die uw onderneming, uw structuur en uw contracten kent. Kort overleg wanneer u het nodig heeft, documentreviews vóór u tekent, en een sommatie op advocatenbriefpapier als een debiteur moet voelen dat het menens is.',
+    titel: 'De beste contracten, niet de snelste',
+    tekst: 'Uw overeenkomsten, algemene voorwaarden en huurcontracten worden opgebouwd en onderhouden door iemand die weet waar ze scheuren als het spannend wordt. Wie op stevige contracten staat, onderhandelt anders: met zekerheid in plaats van hoop.',
   },
   {
-    titel: 'Als eerste op de hoogte van wat ú raakt',
-    tekst: 'Wetgeving, rechtspraak en tarieven veranderen doorlopend — de Wet franchise, de huurprijsherzieningen, de incassoregels, de griffierechten. Leden horen niet wát er verandert, maar wat het voor hún onderneming betekent, vaak voordat het in het nieuws is. Inclusief een seintje wanneer een ontwikkeling uw specifieke situatie raakt.',
+    titel: 'Sparringpartner bij twijfel en groei',
+    tekst: 'Een overname overwegen, een compagnon uitkopen, een tweede vestiging, een lastige medewerker? Voor leden is de advocaat geen brandweer maar een sparringpartner: periodieke strategiegesprekken en een jaarlijkse doorlichting van onderneming, structuur en contracten. Waar wilt u over drie jaar staan — en wat moet daarvoor nú geregeld zijn?',
   },
   {
-    titel: 'Een netwerk dat deuren opent',
-    tekst: 'Besloten rondetafels op de Zuidas met mede-ondernemers, investeerders en specialisten. Introducties binnen ons netwerk van accountants, notarissen, fiscalisten en makelaars — de juiste specialist is voor leden één telefoontje ver. En de samenwerkingen die aan zo\'n tafel ontstaan, zijn vaak meer waard dan het lidmaatschap zelf.',
+    titel: 'Een voorsprong op wet- en regelgeving',
+    tekst: 'Regels, tarieven en rechtspraak veranderen doorlopend. Leden horen niet wát er verandert, maar wat het voor hún onderneming betekent — vaak voordat het in het nieuws is, met een persoonlijk seintje als iets uw situatie raakt. Terwijl anderen nog uitzoeken wat de nieuwe regels betekenen, heeft u al geschakeld.',
   },
   {
-    titel: 'Strategie, niet alleen juridisch onderhoud',
-    tekst: 'Een jaarlijkse doorlichting van uw onderneming, structuur en contracten — en voor wie dat wil periodiek een strategiegesprek: waar wilt u over drie jaar staan, en wat moet er juridisch geregeld zijn om daar te komen? Uw advocaat als sparringpartner, niet als brandweer.',
+    titel: 'Gelijkgestemden binnen én buiten uw branche',
+    tekst: 'Aan tafel met ondernemers uit uw eigen branche hoort u wat werkt en wat niet — van huurstrategie tot personeelsaanpak. En het netwerk buiten uw branche brengt wat elk bedrijf nodig heeft: klanten, leveranciers en samenwerkingen. Leden gunnen elkaar het werk; ondernemers helpen ondernemers.',
   },
   {
-    titel: 'Het volledige instrumentarium',
-    tekst: 'De complete bibliotheek van modelbrieven en contracten, de rekentools voor proceskosten en rente, en voorrang bij alles wat wij nieuw ontwikkelen. Wat de markt los verkoopt, hebben leden standaard binnen handbereik.',
+    titel: 'Evenementen die wat opleveren',
+    tekst: 'Besloten rondetafels op de Zuidas, borrels waar de gesprekken nergens anders gevoerd worden, en netwerkreizen met een klein gezelschap. Plus introducties in ons netwerk van accountants, notarissen, fiscalisten en makelaars — de juiste specialist is voor leden één telefoontje ver.',
+  },
+  {
+    titel: 'Ledenvoordelen die optellen',
+    tekst: 'Een vast voorrangstarief bij Clavix zodra iets een dossier wordt. Onderlinge ledenvoordelen bij de ondernemers in het netwerk. En als eerste toegang tot alles wat wij nieuw bouwen — van modelcontracten tot rekentools. Het lidmaatschap verdient zichzelf op meer manieren dan één terug.',
   },
 ]
 ---
@@ -96,7 +104,7 @@ const waarde = [
   <section id="waarde" class="max-w-container mx-auto px-4 md:px-8 py-20 scroll-mt-24">
     <h2 class="text-h2 font-bold mb-2 text-text">Wat het Clavix-netwerk u brengt</h2>
     <p class="text-body text-text-secondary mb-10 max-w-readable">
-      Geen strippenkaart en geen verzekering, maar een vaste plek aan tafel: juridisch, strategisch en zakelijk.
+      Geen strippenkaart en geen verzekering, maar een vaste plek aan tafel: juridisch, strategisch en zakelijk. Leden ondernemen met meer zekerheid — en wie zeker van zijn zaak is, beslist sneller.
     </p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {waarde.map((w) => (
