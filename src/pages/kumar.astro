@@ -19,6 +19,14 @@ const formatDate = (dateStr: string) => {
   const d = new Date(dateStr)
   return d.toLocaleDateString('nl-NL', { month: 'long', year: 'numeric' })
 }
+
+// Verplichte vermelding rechtsgebiedenregister (art. 35b Regeling op de advocatuur),
+// opgebouwd uit dezelfde Sanity-registraties als de lijst hierboven
+const regAreas: string[] = (attorney?.novaRegistrations ?? []).map((r: any) => String(r.area).toLowerCase())
+const regOpsomming =
+  regAreas.length > 1
+    ? regAreas.slice(0, -1).join(', ') + ' en ' + regAreas[regAreas.length - 1]
+    : regAreas[0] ?? ''
 ---
 
 <BaseLayout
@@ -118,6 +126,15 @@ const formatDate = (dateStr: string) => {
                   </li>
                 ))}
               </ul>
+              {regOpsomming && (
+                <p class="text-small text-text-secondary mt-4 max-w-readable">
+                  Mr. M. Kumar heeft in het rechtsgebiedenregister van de Nederlandse orde van
+                  advocaten de volgende hoofdrechtsgebieden geregistreerd: {regOpsomming}. Op grond
+                  van deze registratie geldt de verplichting om elk kalenderjaar volgens de normen
+                  van de Nederlandse orde van advocaten tien opleidingspunten te behalen op ieder
+                  geregistreerd hoofdrechtsgebied.
+                </p>
+              )}
             </div>
           )}
 
