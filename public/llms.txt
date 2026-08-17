@@ -83,6 +83,7 @@
 - [Modelbrieven](https://clavix.nl/modelbrieven/): Gratis Word-modellen: ingebrekestelling (zakelijke debiteur) en veertiendagenbrief (consument, met de door de rechtspraak aanbevolen termijnformulering).
 - [Notities](https://clavix.nl/notities/): Wat ons opvalt in jurisprudentie en praktijk.
 - [Veelgestelde vragen](https://clavix.nl/veelgestelde-vragen/): 24 vragen per rechtsgebied, met korte antwoorden en doorkliks.
+- [Juridische woordenlijst](https://clavix.nl/woordenlijst/): 105 begrippen uit ondernemingsrecht, vastgoedrecht, procesrecht en insolventierecht, elk met eigen anchor (bijv. /woordenlijst/#terme-de-grace) en link naar de verdiepende kennisbankpagina.
 - [Contact](https://clavix.nl/contact/): Eerste gesprek van 30 minuten is een verkennende kennismaking. Talen: Nederlands en Engels. Parkeren: WTC-parkeergarage; station Amsterdam Zuid op loopafstand.
 
 ## Contact
