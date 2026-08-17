@@ -43,6 +43,7 @@
 - [Factuur niet betaald](https://clavix.nl/clusters/factuur-niet-betaald/): De aanmaanroute, de veertiendagenbrief, incassokosten en handelsrente, en de dwangmiddelen van beslag tot faillissementsaanvraag.
 - [Faillissement aanvragen als schuldeiser](https://clavix.nl/clusters/faillissement-aanvragen-schuldeiser/): Pluraliteit, de steunvordering, de procedure en de grens tussen drukmiddel en misbruik.
 - [Familiebedrijf met vastgoed: opvolging](https://clavix.nl/clusters/familiebedrijf-vastgoed-opvolging/): Structuurkeuzes en afspraken bij overdracht binnen de familie.
+- [Franchisegeschillen en de Wet franchise](https://clavix.nl/clusters/franchise-geschillen/): Prognoses en dwaling, instemmingsrecht bij formulewijzigingen, non-concurrentie (nietig indien te ruim) en goodwill bij het einde.
 - [Huurachterstand bedrijfsruimte: ontbinding](https://clavix.nl/clusters/huurachterstand-bedrijfsruimte-ontbinding/): Wanneer ontbinding wordt toegewezen; terme de grâce en kort geding.
 - [Huurprijs bedrijfsruimte aanpassen (7:303 BW)](https://clavix.nl/clusters/huurprijswijziging-7-303-roz/): De huurprijsherzieningsprocedure: termijnen en deskundigenadvies.
 - [Huurrecht advocaat bedrijfsruimte](https://clavix.nl/clusters/huurrecht-advocaat-bedrijfsruimte/): Voor verhuurders en zakelijke huurders: kwalificatie, huurprijs, opzegging.
