@@ -4,6 +4,22 @@ const currentYear = new Date().getFullYear()
 
 <footer class="bg-bg-inverse" style="color: var(--ns-50);">
   <div class="max-w-container mx-auto px-4 md:px-8 py-16">
+    {/* Nieuwsbrief-aanmelding */}
+    <div class="mb-12 pb-12" style="border-bottom: 1px solid var(--ns-700);">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div>
+          <h2 class="text-h3 font-bold mb-1" style="color: var(--neutral-0);">Maandelijks juridisch bij in vijf minuten</h2>
+          <p class="text-small" style="color: var(--ns-200);">Wetgeving, uitspraken en tarieven die ondernemers met vastgoed raken. <a href="/nieuwsbrief" class="underline" style="color: var(--neutral-0);">Meer over de nieuwsbrief</a></p>
+        </div>
+        <form name="nieuwsbrief" method="POST" action="/nieuwsbrief?aangemeld=true" data-netlify="true" netlify-honeypot="bot-field" class="flex flex-col sm:flex-row gap-3">
+          <p class="hidden"><label>Niet invullen: <input name="bot-field" /></label></p>
+          <input type="hidden" name="form-name" value="nieuwsbrief" />
+          <label for="footer-nb-email" class="sr-only">E-mailadres</label>
+          <input id="footer-nb-email" name="email" type="email" required placeholder="uw@email.nl" class="flex-1 p-3 rounded-md border border-border bg-bg text-text" />
+          <button type="submit" class="bg-brand-primary text-white font-semibold px-6 py-3 rounded-md hover:opacity-90 transition cursor-pointer whitespace-nowrap">Aanmelden</button>
+        </form>
+      </div>
+    </div>
     <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
       {/* Kolom 1: Clavix branding */}
       <div>

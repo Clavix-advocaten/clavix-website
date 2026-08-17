@@ -1,0 +1,81 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import { breadcrumbSchema } from '@lib/schema-markup'
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Nieuwsbrief', url: '/nieuwsbrief' },
+  ]),
+]
+---
+
+<BaseLayout
+  title="Nieuwsbrief voor ondernemers met vastgoed — Clavix Advocaten"
+  description="Maandelijks de juridische ontwikkelingen die ondernemers en vastgoedinvesteerders raken: nieuwe wetgeving, uitspraken en de praktische gevolgen. In vijf minuten bij."
+  schemaJsonLd={schemas}
+>
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-20">
+      <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
+        Home › Nieuwsbrief
+      </p>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
+        De juridische stand van zaken, elke maand in vijf minuten
+      </h1>
+      <p class="text-lead text-text-secondary mb-4 max-w-readable">
+        Wetgeving verandert, tarieven indexeren en de Hoge Raad wijst arresten die uw contracten, huurprijzen en incasso's direct raken. Wij volgen het dagelijks — u leest maandelijks wat ertoe doet.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-container mx-auto px-4 md:px-8 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div>
+        <h2 class="text-h2 font-bold mb-4 text-text">Wat u ontvangt</h2>
+        <ul class="space-y-4 text-body text-text">
+          <li><strong>Ontwikkelingen die u raken</strong> — nieuwe wetgeving en rechtspraak over huur, bouw, incasso, franchise en vennootschapsrecht, vertaald naar wat het voor uw onderneming betekent.</li>
+          <li><strong>Tarieven en termijnen</strong> — wijzigingen in griffierechten, rentepercentages en incassostaffels, direct verwerkt in onze <a href="/proceskosten-berekenen/" class="text-brand-primary no-underline hover:underline">rekentools</a>.</li>
+          <li><strong>Nieuwe modelbrieven en kennisbankpagina's</strong> — als eerste toegang tot nieuwe <a href="/modelbrieven/" class="text-brand-primary no-underline hover:underline">modellen</a> en verdiepende artikelen.</li>
+          <li><strong>Geen ruis</strong> — maandelijks, vijf minuten leestijd, geen acquisitiemails. Afmelden kan altijd.</li>
+        </ul>
+      </div>
+      <div>
+        <div id="nb-form-wrap" class="p-6 bg-bg-elevated border border-border rounded-lg">
+          <h2 class="text-h3 font-bold mb-4 text-text">Aanmelden</h2>
+          <form name="nieuwsbrief" method="POST" action="/nieuwsbrief?aangemeld=true" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4">
+            <p class="hidden"><label>Niet invullen: <input name="bot-field" /></label></p>
+            <input type="hidden" name="form-name" value="nieuwsbrief" />
+            <div>
+              <label for="nb-naam" class="block text-small font-semibold text-text mb-1">Naam</label>
+              <input id="nb-naam" name="naam" type="text" class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+            </div>
+            <div>
+              <label for="nb-email" class="block text-small font-semibold text-text mb-1">E-mailadres *</label>
+              <input id="nb-email" name="email" type="email" required class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+            </div>
+            <button type="submit" class="w-full bg-brand-primary text-white font-semibold px-8 py-3 rounded-lg hover:opacity-90 transition cursor-pointer">Aanmelden</button>
+            <p class="text-small text-text-secondary">Wij gebruiken uw adres uitsluitend voor de nieuwsbrief.</p>
+          </form>
+        </div>
+        <div id="nb-succes" style="display: none;" class="p-6 bg-bg-elevated border-2 border-brand-primary rounded-lg">
+          <h2 class="text-h3 font-bold mb-2 text-text">U staat op de lijst</h2>
+          <p class="text-body text-text-secondary">Dank voor uw aanmelding — de eerstvolgende editie ontvangt u in uw inbox. Tot die tijd: de <a href="/notities/" class="text-brand-primary no-underline hover:underline">notities</a> en de <a href="/clusters/conservatoir-beslag/" class="text-brand-primary no-underline hover:underline">kennisbank</a> staan voor u klaar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('aangemeld') === 'true') {
+        window.plausible && window.plausible('Nieuwsbrief aanmelding');
+        var f = document.getElementById('nb-form-wrap');
+        var s = document.getElementById('nb-succes');
+        if (f) f.style.display = 'none';
+        if (s) { s.style.display = 'block'; s.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+      }
+    })();
+  </script>
+</BaseLayout>
