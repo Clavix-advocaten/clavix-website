@@ -30,6 +30,8 @@
 - [290- of 230a-bedrijfsruimte](https://clavix.nl/clusters/bedrijfsruimte-290-of-230a-bw/): Welk huurregime geldt en wat dat betekent voor opzegging en huurtermijnen.
 - [Bedrijfsruimte verhuren tussen BV's](https://clavix.nl/clusters/bedrijfsruimte-huur-bvs-onderling/): Zakelijke voorwaarden en valkuilen bij huur tussen verbonden vennootschappen.
 - [Beslag op een bankrekening](https://clavix.nl/clusters/beslag-op-bankrekening/): Derdenbeslag onder de bank: wat het bevriest en wat niet, de verklaringsplicht en de continuïteitsafweging.
+- [Bodemprocedure](https://clavix.nl/clusters/bodemprocedure/): De civiele rechtszaak ten gronde: verloop van dagvaarding tot vonnis, kanton of rechtbank, bewijs, doorlooptijd en kosten.
+- [Hoger beroep in civiele zaken](https://clavix.nl/clusters/hoger-beroep-civiel/): De herkansing bij het gerechtshof: fatale termijnen, het grievenstelsel, executie tijdens appel en de afweging vooraf.
 - [Beslag op aandelen](https://clavix.nl/clusters/beslag-op-aandelen/): Conservatoir beslag op BV-aandelen: toetsing en gevolgen.
 - [Beslag opheffen](https://clavix.nl/clusters/beslag-opheffen/): Het opheffingskortgeding van artikel 705 Rv: gronden, zekerheid via bankgarantie en de belangenafweging.
 - [Conservatoir beslag op onroerend goed](https://clavix.nl/clusters/beslag-op-onroerend-goed/): Wat beslag op een pand blokkeert, het verlof, de rangorde naast de hypotheek en het notarisdepot.
