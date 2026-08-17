@@ -1,0 +1,282 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import { breadcrumbSchema } from '@lib/schema-markup'
+
+const faqs = [
+  {
+    q: 'Wat kost het abonnement en waar zit ik aan vast?',
+    a: 'Toegang kost € 79 per maand, Counsel € 225 per maand; beide zijn na het eerste kwartaal maandelijks opzegbaar. Boardroom is een jaarlidmaatschap van € 5.400. Dit zijn de tarieven voor de eerste lichting (exclusief btw). Aanmelden verplicht tot niets: u betaalt pas nadat wij uw aanmelding hebben geaccepteerd en u de voorwaarden heeft ontvangen en akkoord bevonden.',
+  },
+  {
+    q: 'Wat valt er buiten het abonnement?',
+    a: 'Procedures, transacties en andere dossiers vallen buiten het abonnement; daarvoor maken wij vooraf een prijsafspraak, waarbij leden een voorrangstarief krijgen. Het abonnement dekt het doorlopende werk: overleg, reviews van stukken, de jaarlijkse doorlichting en de vraag "kan dit, en hoe dan?" vóórdat iets een dossier wordt.',
+  },
+  {
+    q: 'Wat betekent "fair use" bij onbeperkt overleg?',
+    a: 'Kort overleg is een gesprek of mailwisseling over een concrete vraag, doorgaans binnen een half uur af te handelen. Vergt een vraag uitzoekwerk of uitgebreide analyse, dan zeggen wij dat eerlijk en maken wij er een afspraak over. Zo blijft de lijn snel voor alle leden.',
+  },
+  {
+    q: 'Waarom is er een selectie?',
+    a: 'Om twee redenen. U werkt direct met de advocaat — niet met een servicedesk — en dat werkt alleen met een begrensd aantal leden per trede. En de vraagstukken moeten passen bij waar wij goed in zijn: ondernemingsrecht, vastgoed, contracten en procederen. Past uw vraag beter bij een ander specialisme, dan zeggen wij dat en verwijzen wij u graag door.',
+  },
+  {
+    q: 'Wanneer start het abonnement?',
+    a: 'De eerste lichting start in het najaar van 2026. Aanmeldingen behandelen wij op volgorde van binnenkomst; u ontvangt binnen vijf werkdagen bericht over de vervolgstap.',
+  },
+]
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Juridisch abonnement', url: '/juridisch-abonnement' },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+]
+
+const treden = [
+  {
+    naam: 'Toegang',
+    prijs: '€ 79',
+    periode: 'per maand',
+    voor: 'Voor de ondernemer die een advocaat achter de hand wil, zonder drempel om te bellen.',
+    punten: [
+      'Eén adviesmoment per maand: 30 minuten bellen of uitgebreid mailen',
+      'De volledige modelbrieven- en templatebibliotheek',
+      'Ledeneditie van de nieuwsbrief: wat verandert er en wat moet ú daarmee',
+      '10% voorrangstarief zodra iets een dossier wordt',
+    ],
+    voetnoot: 'Na het eerste kwartaal maandelijks opzegbaar.',
+    uitgelicht: false,
+  },
+  {
+    naam: 'Counsel',
+    prijs: '€ 225',
+    periode: 'per maand',
+    voor: 'De huisadvocaat-ervaring: iemand die uw onderneming kent en meekijkt vóórdat u tekent.',
+    punten: [
+      'Onbeperkt kort overleg (fair use) — reactie binnen één werkdag',
+      'Twee documentreviews per maand: contract, brief of voorwaarden tot 10 pagina\'s',
+      'Twee sommatiebrieven per jaar op ons briefpapier',
+      'Jaarlijkse juridische doorlichting van uw onderneming en contracten',
+      'Alles uit Toegang',
+    ],
+    voetnoot: 'Na het eerste kwartaal maandelijks opzegbaar.',
+    uitgelicht: true,
+  },
+  {
+    naam: 'Boardroom',
+    prijs: '€ 5.400',
+    periode: 'per jaar — maximaal 15 leden',
+    voor: 'Voor ondernemers en investeerders die naast juridische rugdekking ook strategie en netwerk zoeken.',
+    punten: [
+      'Alles uit Counsel, met dubbele reviewruimte',
+      'Elk kwartaal een strategiegesprek: structuur, risico\'s, plannen',
+      'Besloten rondetafels op de Zuidas, drie à vier keer per jaar',
+      'Introducties binnen ons leden- en verwijzersnetwerk',
+      'Voorrang bij spoed',
+    ],
+    voetnoot: 'Jaarlidmaatschap. Vol is vol.',
+    uitgelicht: false,
+  },
+]
+---
+
+<BaseLayout
+  title="Juridisch abonnement: uw huisadvocaat op de Zuidas | Clavix"
+  description="Het juridisch abonnement voor ondernemers met vastgoed: direct uw advocaat aan de lijn, documentreviews en een jaarlijkse doorlichting. Aanmelden kan; wij selecteren op passendheid en capaciteit."
+  schemaJsonLd={schemas}
+>
+  {/* === HERO === */}
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">
+      <p class="text-tiny font-semibold uppercase tracking-wider text-brand-primary mb-3">
+        Aanmelding geopend · beperkte plaatsen per trede
+      </p>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight max-w-4xl">
+        Een huisadvocaat, zonder een jurist op de loonlijst
+      </h1>
+      <p class="text-h3 text-text-secondary font-display font-semibold mb-6 italic">
+        Het juridisch abonnement voor ondernemers met vastgoed.
+      </p>
+      <p class="text-lead text-text-secondary mb-8 max-w-readable">
+        De duurste juridische vraag is de vraag die te laat wordt gesteld: het contract dat al getekend is, de huurder die al maanden niet betaalt, de aandeelhouder die al een advocaat heeft. Leden bellen vóór ze tekenen — en wij kennen hun onderneming al als het erop aankomt.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="#aanmelden" class="bg-action text-action-fg hover:bg-action-hover px-7 py-3.5 rounded-md font-semibold no-underline transition inline-block">Meld uw onderneming aan</a>
+        <a href="#treden" class="border border-border bg-bg-elevated text-text px-7 py-3.5 rounded-md font-semibold no-underline transition inline-block hover:border-brand-primary">Bekijk de drie treden</a>
+      </div>
+    </div>
+  </section>
+
+  {/* === WAAROM === */}
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <h2 class="text-h2 font-bold mb-2 text-text">Waarom een abonnement, en niet gewoon bellen als het misgaat?</h2>
+    <p class="text-body text-text-secondary mb-10 max-w-readable">Omdat "bellen als het misgaat" precies het duurste moment is. Drie verschillen met losse dossiers:</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+        <h3 class="text-h4 font-bold text-text mb-2">U belt eerder</h3>
+        <p class="text-body text-text-secondary">Zonder uurtje-factuurtje-drempel stelt u de vraag wanneer die opkomt — bij het concept, niet bij het conflict. De meeste geschillen in onze praktijk waren in dat stadium een telefoontje geweest.</p>
+      </div>
+      <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+        <h3 class="text-h4 font-bold text-text mb-2">Wij kennen uw onderneming al</h3>
+        <p class="text-body text-text-secondary">Uw structuur, uw contracten, uw huurders en uw plannen zijn bekend terrein. Komt er iets op u af, dan begint de bijstand op dag één — niet na een week inlezen.</p>
+      </div>
+      <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+        <h3 class="text-h4 font-bold text-text mb-2">Vaste kosten, geen verrassingen</h3>
+        <p class="text-body text-text-secondary">Eén vast bedrag per maand voor het doorlopende werk. Wordt iets een dossier, dan hoort u dat vooraf — met een prijsafspraak en uw ledenvoorrangstarief.</p>
+      </div>
+    </div>
+  </section>
+
+  {/* === TREDEN === */}
+  <section id="treden" class="bg-bg-tinted py-20 scroll-mt-24">
+    <div class="max-w-container mx-auto px-4 md:px-8">
+      <h2 class="text-h2 font-bold mb-2 text-text">Drie treden, één advocaat</h2>
+      <p class="text-body text-text-secondary mb-10 max-w-readable">Tarieven voor de eerste lichting, exclusief btw. U werkt in elke trede rechtstreeks met mr. Kumar — er zit geen servicedesk tussen.</p>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {treden.map((t) => (
+          <div class={`p-7 bg-bg-elevated border rounded-lg flex flex-col ${t.uitgelicht ? 'border-brand-primary border-2' : 'border-border'}`}>
+            {t.uitgelicht && <p class="text-tiny font-semibold uppercase tracking-wider text-brand-primary mb-2">Meest gekozen opzet</p>}
+            <h3 class="text-h3 font-bold text-text mb-1">{t.naam}</h3>
+            <p class="text-h2 font-extrabold text-text mb-0">{t.prijs} <span class="text-small font-normal text-text-secondary">{t.periode}</span></p>
+            <p class="text-small text-text-secondary mt-3 mb-4">{t.voor}</p>
+            <ul class="space-y-2 text-body text-text flex-1 list-disc pl-5">
+              {t.punten.map((p) => <li>{p}</li>)}
+            </ul>
+            <p class="text-tiny text-text-secondary mt-5 pt-4 border-t border-border">{t.voetnoot}</p>
+          </div>
+        ))}
+      </div>
+      <p class="text-small text-text-secondary mt-8 max-w-readable">
+        Procedures, transacties en andere dossiers vallen buiten het abonnement en worden vooraf apart geprijsd. Reken de bijbehorende proceskosten desgewenst zelf door met onze <a href="/proceskosten-berekenen/" class="text-brand-primary no-underline hover:underline">rekentools</a>.
+      </p>
+    </div>
+  </section>
+
+  {/* === SELECTIE === */}
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <h2 class="text-h2 font-bold mb-2 text-text">Iedere ondernemer kan zich aanmelden — daarna selecteren wij</h2>
+    <p class="text-body text-text-secondary mb-8 max-w-readable">
+      Dit abonnement werkt omdat het klein blijft. Daarom staat de aanmelding voor iedereen open, maar nemen wij alleen ondernemingen aan waarvoor wij het verschil kunnen maken. Wij toetsen elke aanmelding op vier punten:
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+      <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+        <h3 class="text-h4 font-bold text-text mb-2">1. Ondernemer of DGA</h3>
+        <p class="text-body text-text-secondary">Het abonnement is er voor ondernemingen — van eenmanszaak tot holding — niet voor particuliere kwesties.</p>
+      </div>
+      <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+        <h3 class="text-h4 font-bold text-text mb-2">2. Passende vraagstukken</h3>
+        <p class="text-body text-text-secondary">Uw juridische vragen liggen op ons terrein: ondernemingsrecht, vastgoed en huur, contracten, incasso en procederen. Ligt uw zwaartepunt elders, dan verwijzen wij u eerlijk door.</p>
+      </div>
+      <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+        <h3 class="text-h4 font-bold text-text mb-2">3. Geen tegenstrijdige belangen</h3>
+        <p class="text-body text-text-secondary">Als advocaat toetsen wij elke aanmelding op conflicten met bestaande cliënten en leden. Staat u tegenover een van hen, dan kunnen wij u niet aannemen.</p>
+      </div>
+      <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+        <h3 class="text-h4 font-bold text-text mb-2">4. Capaciteit in uw trede</h3>
+        <p class="text-body text-text-secondary">Elke trede heeft een maximum aantal leden, zodat de reactietermijnen houdbaar blijven. Is uw trede vol, dan komt u — als u dat wilt — op de wachtlijst.</p>
+      </div>
+    </div>
+  </section>
+
+  {/* === AANMELDEN === */}
+  <section id="aanmelden" class="bg-bg-tinted py-20 scroll-mt-24">
+    <div class="max-w-container mx-auto px-4 md:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div>
+          <h2 class="text-h2 font-bold mb-4 text-text">Meld uw onderneming aan</h2>
+          <p class="text-body text-text-secondary mb-4 max-w-readable">
+            Aanmelden verplicht tot niets en kost niets: wij beoordelen uw aanmelding, u hoort binnen vijf werkdagen van ons, en pas na wederzijds akkoord start het lidmaatschap.
+          </p>
+          <p class="text-body text-text-secondary max-w-readable">
+            Liever eerst kennismaken? Een <a href="/contact" class="text-brand-primary no-underline hover:underline">verkennend gesprek</a> kan altijd.
+          </p>
+        </div>
+        <div>
+          <div id="ab-form-wrap" class="p-6 bg-bg-elevated border border-border rounded-lg">
+            <form name="abonnement-aanmelding" method="POST" action="/juridisch-abonnement?aangemeld=true" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4">
+              <p class="hidden"><label>Niet invullen: <input name="bot-field" /></label></p>
+              <input type="hidden" name="form-name" value="abonnement-aanmelding" />
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="ab-naam" class="block text-small font-semibold text-text mb-1">Uw naam *</label>
+                  <input id="ab-naam" name="naam" type="text" required class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+                </div>
+                <div>
+                  <label for="ab-bedrijf" class="block text-small font-semibold text-text mb-1">Onderneming *</label>
+                  <input id="ab-bedrijf" name="bedrijf" type="text" required class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="ab-email" class="block text-small font-semibold text-text mb-1">E-mailadres *</label>
+                  <input id="ab-email" name="email" type="email" required class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+                </div>
+                <div>
+                  <label for="ab-telefoon" class="block text-small font-semibold text-text mb-1">Telefoon</label>
+                  <input id="ab-telefoon" name="telefoon" type="tel" class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+                </div>
+              </div>
+              <div>
+                <label for="ab-trede" class="block text-small font-semibold text-text mb-1">Voorkeurstrede</label>
+                <select id="ab-trede" name="trede" class="w-full p-3 border border-border rounded-md bg-bg text-text">
+                  <option value="counsel">Counsel — € 225 per maand</option>
+                  <option value="toegang">Toegang — € 79 per maand</option>
+                  <option value="boardroom">Boardroom — € 5.400 per jaar</option>
+                  <option value="weet-niet">Weet ik nog niet — adviseer mij</option>
+                </select>
+              </div>
+              <div>
+                <label for="ab-toelichting" class="block text-small font-semibold text-text mb-1">Uw onderneming en juridische vragen *</label>
+                <textarea id="ab-toelichting" name="toelichting" rows="4" required placeholder="Bijv.: verhuur van drie bedrijfspanden, terugkerende contract- en incassovragen, één lopend huurgeschil." class="w-full p-3 border border-border rounded-md bg-bg text-text"></textarea>
+              </div>
+              <button type="submit" class="w-full bg-brand-primary text-white font-semibold px-8 py-3 rounded-lg hover:opacity-90 transition cursor-pointer">Aanmelding versturen</button>
+              <p class="text-tiny text-text-secondary">Wij gebruiken uw gegevens uitsluitend voor de beoordeling van uw aanmelding.</p>
+            </form>
+          </div>
+          <div id="ab-succes" style="display: none;" class="p-6 bg-bg-elevated border-2 border-brand-primary rounded-lg">
+            <h3 class="text-h3 font-bold mb-2 text-text">Aanmelding ontvangen</h3>
+            <p class="text-body text-text-secondary">Dank voor uw aanmelding. Wij toetsen deze op passendheid, belangenconflicten en capaciteit, en u hoort binnen vijf werkdagen van ons. Tot die tijd staan de <a href="/proceskosten-berekenen/" class="text-brand-primary no-underline hover:underline">rekentools</a> en <a href="/modelbrieven/" class="text-brand-primary no-underline hover:underline">modelbrieven</a> al voor u klaar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* === FAQ === */}
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <h2 class="text-h2 font-bold mb-8 text-text">Veelgestelde vragen</h2>
+    <div class="space-y-4 max-w-readable">
+      {faqs.map((f) => (
+        <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+          <h3 class="text-h4 font-bold text-text mb-2">{f.q}</h3>
+          <p class="text-body text-text-secondary">{f.a}</p>
+        </div>
+      ))}
+    </div>
+    <p class="text-small text-text-secondary mt-10 max-w-readable">
+      Clavix Advocaten is NOvA-geregistreerd voor ondernemingsrecht en burgerlijk procesrecht. Het abonnement geeft toegang tot juridisch advies binnen de omschreven grenzen; over de uitkomst van individuele kwesties kunnen vooraf geen toezeggingen worden gedaan.
+    </p>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('aangemeld') === 'true') {
+        window.plausible && window.plausible('Abonnement aanmelding');
+        var f = document.getElementById('ab-form-wrap');
+        var s = document.getElementById('ab-succes');
+        if (f) f.style.display = 'none';
+        if (s) { s.style.display = 'block'; s.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+      }
+    })();
+  </script>
+</BaseLayout>
