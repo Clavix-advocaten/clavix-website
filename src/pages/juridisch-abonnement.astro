@@ -4,24 +4,20 @@ import { breadcrumbSchema } from '@lib/schema-markup'
 
 const faqs = [
   {
-    q: 'Wat kost het abonnement en waar zit ik aan vast?',
-    a: 'Toegang kost € 79 per maand, Counsel € 225 per maand; beide zijn na het eerste kwartaal maandelijks opzegbaar. Boardroom is een jaarlidmaatschap van € 5.400. Dit zijn de tarieven voor de eerste lichting (exclusief btw). Aanmelden verplicht tot niets: u betaalt pas nadat wij uw aanmelding hebben geaccepteerd en u de voorwaarden heeft ontvangen en akkoord bevonden.',
+    q: 'Voor wie is het Clavix-netwerk?',
+    a: 'Voor ondernemers, DGA\'s en investeerders die willen dat juridische zaken geregeld zijn vóórdat ze gaan spelen — in het bijzonder waar ondernemen en vastgoed elkaar raken. Van de verhuurder met drie panden tot de holding met meerdere werkmaatschappijen.',
   },
   {
-    q: 'Wat valt er buiten het abonnement?',
-    a: 'Procedures, transacties en andere dossiers vallen buiten het abonnement; daarvoor maken wij vooraf een prijsafspraak, waarbij leden een voorrangstarief krijgen. Het abonnement dekt het doorlopende werk: overleg, reviews van stukken, de jaarlijkse doorlichting en de vraag "kan dit, en hoe dan?" vóórdat iets een dossier wordt.',
+    q: 'Wat kost deelname?',
+    a: 'De bijdrage hangt af van de vorm die bij uw onderneming past: van een vaste lijn met uw advocaat tot volledige begeleiding met strategie en netwerk. Dat bespreken wij in het kennismakingsgesprek, en u weet het dus vóórdat u ergens aan vastzit — vaste bedragen, geen verrassingen.',
   },
   {
-    q: 'Wat betekent "fair use" bij onbeperkt overleg?',
-    a: 'Kort overleg is een gesprek of mailwisseling over een concrete vraag, doorgaans binnen een half uur af te handelen. Vergt een vraag uitzoekwerk of uitgebreide analyse, dan zeggen wij dat eerlijk en maken wij er een afspraak over. Zo blijft de lijn snel voor alle leden.',
+    q: 'Hoe word ik lid?',
+    a: 'U laat uw gegevens achter, wij nemen binnen enkele werkdagen contact op, en dan volgt een kennismakingsgesprek. Daarin kijken we samen of uw onderneming en het netwerk bij elkaar passen. Is dat wederzijds het geval, dan sluit u aan.',
   },
   {
-    q: 'Waarom is er een selectie?',
-    a: 'Om twee redenen. U werkt direct met de advocaat — niet met een servicedesk — en dat werkt alleen met een begrensd aantal leden per trede. En de vraagstukken moeten passen bij waar wij goed in zijn: ondernemingsrecht, vastgoed, contracten en procederen. Past uw vraag beter bij een ander specialisme, dan zeggen wij dat en verwijzen wij u graag door.',
-  },
-  {
-    q: 'Wanneer start het abonnement?',
-    a: 'De eerste lichting start in het najaar van 2026. Aanmeldingen behandelen wij op volgorde van binnenkomst; u ontvangt binnen vijf werkdagen bericht over de vervolgstap.',
+    q: 'Wat gebeurt er als een vraag een dossier wordt?',
+    a: 'Dan hoort u dat direct, met een prijsafspraak vooraf en voorrang in de agenda. Het grote verschil met een los dossier: wij kennen uw onderneming dan al — de bijstand begint op dag één, niet na een week inlezen.',
   },
 ]
 
@@ -41,148 +37,119 @@ const schemas = [
   },
 ]
 
-const treden = [
+const waarde = [
   {
-    naam: 'Toegang',
-    prijs: '€ 79',
-    periode: 'per maand',
-    voor: 'Voor de ondernemer die een advocaat achter de hand wil, zonder drempel om te bellen.',
-    punten: [
-      'Eén adviesmoment per maand: 30 minuten bellen of uitgebreid mailen',
-      'De volledige modelbrieven- en templatebibliotheek',
-      'Ledeneditie van de nieuwsbrief: wat verandert er en wat moet ú daarmee',
-      '10% voorrangstarief zodra iets een dossier wordt',
-    ],
-    voetnoot: 'Na het eerste kwartaal maandelijks opzegbaar.',
-    uitgelicht: false,
+    titel: 'Problemen voorkomen in plaats van oplossen',
+    tekst: 'Het contract wordt gecheckt vóór u tekent. De structuur wordt doorgelicht vóór de fiscus of een curator dat doet. De huurder wordt aangeschreven vóór de achterstand drie maanden is. De meeste geschillen die wij in de rechtszaal uitvechten, waren in dit stadium een telefoontje geweest — leden plegen dat telefoontje.',
   },
   {
-    naam: 'Counsel',
-    prijs: '€ 225',
-    periode: 'per maand',
-    voor: 'De huisadvocaat-ervaring: iemand die uw onderneming kent en meekijkt vóórdat u tekent.',
-    punten: [
-      'Onbeperkt kort overleg (fair use) — reactie binnen één werkdag',
-      'Twee documentreviews per maand: contract, brief of voorwaarden tot 10 pagina\'s',
-      'Twee sommatiebrieven per jaar op ons briefpapier',
-      'Jaarlijkse juridische doorlichting van uw onderneming en contracten',
-      'Alles uit Toegang',
-    ],
-    voetnoot: 'Na het eerste kwartaal maandelijks opzegbaar.',
-    uitgelicht: true,
+    titel: 'Direct uw advocaat, geen servicedesk',
+    tekst: 'Eén nummer, één advocaat die uw onderneming, uw structuur en uw contracten kent. Kort overleg wanneer u het nodig heeft, documentreviews vóór u tekent, en een sommatie op advocatenbriefpapier als een debiteur moet voelen dat het menens is.',
   },
   {
-    naam: 'Boardroom',
-    prijs: '€ 5.400',
-    periode: 'per jaar — maximaal 15 leden',
-    voor: 'Voor ondernemers en investeerders die naast juridische rugdekking ook strategie en netwerk zoeken.',
-    punten: [
-      'Alles uit Counsel, met dubbele reviewruimte',
-      'Elk kwartaal een strategiegesprek: structuur, risico\'s, plannen',
-      'Besloten rondetafels op de Zuidas, drie à vier keer per jaar',
-      'Introducties binnen ons leden- en verwijzersnetwerk',
-      'Voorrang bij spoed',
-    ],
-    voetnoot: 'Jaarlidmaatschap. Vol is vol.',
-    uitgelicht: false,
+    titel: 'Als eerste op de hoogte van wat ú raakt',
+    tekst: 'Wetgeving, rechtspraak en tarieven veranderen doorlopend — de Wet franchise, de huurprijsherzieningen, de incassoregels, de griffierechten. Leden horen niet wát er verandert, maar wat het voor hún onderneming betekent, vaak voordat het in het nieuws is. Inclusief een seintje wanneer een ontwikkeling uw specifieke situatie raakt.',
+  },
+  {
+    titel: 'Een netwerk dat deuren opent',
+    tekst: 'Besloten rondetafels op de Zuidas met mede-ondernemers, investeerders en specialisten. Introducties binnen ons netwerk van accountants, notarissen, fiscalisten en makelaars — de juiste specialist is voor leden één telefoontje ver. En de samenwerkingen die aan zo\'n tafel ontstaan, zijn vaak meer waard dan het lidmaatschap zelf.',
+  },
+  {
+    titel: 'Strategie, niet alleen juridisch onderhoud',
+    tekst: 'Een jaarlijkse doorlichting van uw onderneming, structuur en contracten — en voor wie dat wil periodiek een strategiegesprek: waar wilt u over drie jaar staan, en wat moet er juridisch geregeld zijn om daar te komen? Uw advocaat als sparringpartner, niet als brandweer.',
+  },
+  {
+    titel: 'Het volledige instrumentarium',
+    tekst: 'De complete bibliotheek van modelbrieven en contracten, de rekentools voor proceskosten en rente, en voorrang bij alles wat wij nieuw ontwikkelen. Wat de markt los verkoopt, hebben leden standaard binnen handbereik.',
   },
 ]
 ---
 
 <BaseLayout
   title="Juridisch abonnement: uw huisadvocaat op de Zuidas | Clavix"
-  description="Het juridisch abonnement voor ondernemers met vastgoed: direct uw advocaat aan de lijn, documentreviews en een jaarlijkse doorlichting. Aanmelden kan; wij selecteren op passendheid en capaciteit."
+  description="Het Clavix-netwerk: een huisadvocaat die problemen voorkomt, een netwerk dat deuren opent en als eerste weten wat uw onderneming raakt. Voor ondernemers die bij Clavix passen."
   schemaJsonLd={schemas}
 >
   {/* === HERO === */}
   <section class="bg-bg-tinted">
     <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">
       <p class="text-tiny font-semibold uppercase tracking-wider text-brand-primary mb-3">
-        Aanmelding geopend · beperkte plaatsen per trede
+        Het Clavix-netwerk · exclusief voor ondernemers die bij ons passen
       </p>
       <h1 class="text-display font-extrabold text-text mb-3 tracking-tight max-w-4xl">
-        Een huisadvocaat, zonder een jurist op de loonlijst
+        Een huisadvocaat, een netwerk en een voorsprong
       </h1>
       <p class="text-h3 text-text-secondary font-display font-semibold mb-6 italic">
-        Het juridisch abonnement voor ondernemers met vastgoed.
+        Voor ondernemers die problemen vóór willen zijn in plaats van ze op te lossen.
       </p>
       <p class="text-lead text-text-secondary mb-8 max-w-readable">
-        De duurste juridische vraag is de vraag die te laat wordt gesteld: het contract dat al getekend is, de huurder die al maanden niet betaalt, de aandeelhouder die al een advocaat heeft. Leden bellen vóór ze tekenen — en wij kennen hun onderneming al als het erop aankomt.
+        De duurste juridische vraag is de vraag die te laat wordt gesteld: het contract dat al getekend is, de huurder die al maanden niet betaalt, de aandeelhouder die al een advocaat heeft. Leden van het Clavix-netwerk bellen vóór ze tekenen, weten eerder wat er verandert, en zitten aan tafel met ondernemers en specialisten die hen verder brengen.
       </p>
       <div class="flex flex-wrap gap-4">
-        <a href="#aanmelden" class="bg-action text-action-fg hover:bg-action-hover px-7 py-3.5 rounded-md font-semibold no-underline transition inline-block">Meld uw onderneming aan</a>
-        <a href="#treden" class="border border-border bg-bg-elevated text-text px-7 py-3.5 rounded-md font-semibold no-underline transition inline-block hover:border-brand-primary">Bekijk de drie treden</a>
+        <a href="#aanmelden" class="bg-action text-action-fg hover:bg-action-hover px-7 py-3.5 rounded-md font-semibold no-underline transition inline-block">Laat uw gegevens achter</a>
+        <a href="#waarde" class="border border-border bg-bg-elevated text-text px-7 py-3.5 rounded-md font-semibold no-underline transition inline-block hover:border-brand-primary">Wat het netwerk u brengt</a>
       </div>
     </div>
   </section>
 
-  {/* === WAAROM === */}
-  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
-    <h2 class="text-h2 font-bold mb-2 text-text">Waarom een abonnement, en niet gewoon bellen als het misgaat?</h2>
-    <p class="text-body text-text-secondary mb-10 max-w-readable">Omdat "bellen als het misgaat" precies het duurste moment is. Drie verschillen met losse dossiers:</p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="p-6 bg-bg-elevated border border-border rounded-lg">
-        <h3 class="text-h4 font-bold text-text mb-2">U belt eerder</h3>
-        <p class="text-body text-text-secondary">Zonder uurtje-factuurtje-drempel stelt u de vraag wanneer die opkomt — bij het concept, niet bij het conflict. De meeste geschillen in onze praktijk waren in dat stadium een telefoontje geweest.</p>
-      </div>
-      <div class="p-6 bg-bg-elevated border border-border rounded-lg">
-        <h3 class="text-h4 font-bold text-text mb-2">Wij kennen uw onderneming al</h3>
-        <p class="text-body text-text-secondary">Uw structuur, uw contracten, uw huurders en uw plannen zijn bekend terrein. Komt er iets op u af, dan begint de bijstand op dag één — niet na een week inlezen.</p>
-      </div>
-      <div class="p-6 bg-bg-elevated border border-border rounded-lg">
-        <h3 class="text-h4 font-bold text-text mb-2">Vaste kosten, geen verrassingen</h3>
-        <p class="text-body text-text-secondary">Eén vast bedrag per maand voor het doorlopende werk. Wordt iets een dossier, dan hoort u dat vooraf — met een prijsafspraak en uw ledenvoorrangstarief.</p>
-      </div>
-    </div>
-  </section>
-
-  {/* === TREDEN === */}
-  <section id="treden" class="bg-bg-tinted py-20 scroll-mt-24">
-    <div class="max-w-container mx-auto px-4 md:px-8">
-      <h2 class="text-h2 font-bold mb-2 text-text">Drie treden, één advocaat</h2>
-      <p class="text-body text-text-secondary mb-10 max-w-readable">Tarieven voor de eerste lichting, exclusief btw. U werkt in elke trede rechtstreeks met mr. Kumar — er zit geen servicedesk tussen.</p>
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {treden.map((t) => (
-          <div class={`p-7 bg-bg-elevated border rounded-lg flex flex-col ${t.uitgelicht ? 'border-brand-primary border-2' : 'border-border'}`}>
-            {t.uitgelicht && <p class="text-tiny font-semibold uppercase tracking-wider text-brand-primary mb-2">Meest gekozen opzet</p>}
-            <h3 class="text-h3 font-bold text-text mb-1">{t.naam}</h3>
-            <p class="text-h2 font-extrabold text-text mb-0">{t.prijs} <span class="text-small font-normal text-text-secondary">{t.periode}</span></p>
-            <p class="text-small text-text-secondary mt-3 mb-4">{t.voor}</p>
-            <ul class="space-y-2 text-body text-text flex-1 list-disc pl-5">
-              {t.punten.map((p) => <li>{p}</li>)}
-            </ul>
-            <p class="text-tiny text-text-secondary mt-5 pt-4 border-t border-border">{t.voetnoot}</p>
-          </div>
-        ))}
-      </div>
-      <p class="text-small text-text-secondary mt-8 max-w-readable">
-        Procedures, transacties en andere dossiers vallen buiten het abonnement en worden vooraf apart geprijsd. Reken de bijbehorende proceskosten desgewenst zelf door met onze <a href="/proceskosten-berekenen/" class="text-brand-primary no-underline hover:underline">rekentools</a>.
-      </p>
-    </div>
-  </section>
-
-  {/* === SELECTIE === */}
-  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
-    <h2 class="text-h2 font-bold mb-2 text-text">Iedere ondernemer kan zich aanmelden — daarna selecteren wij</h2>
-    <p class="text-body text-text-secondary mb-8 max-w-readable">
-      Dit abonnement werkt omdat het klein blijft. Daarom staat de aanmelding voor iedereen open, maar nemen wij alleen ondernemingen aan waarvoor wij het verschil kunnen maken. Wij toetsen elke aanmelding op vier punten:
+  {/* === WAARDE === */}
+  <section id="waarde" class="max-w-container mx-auto px-4 md:px-8 py-20 scroll-mt-24">
+    <h2 class="text-h2 font-bold mb-2 text-text">Wat het Clavix-netwerk u brengt</h2>
+    <p class="text-body text-text-secondary mb-10 max-w-readable">
+      Geen strippenkaart en geen verzekering, maar een vaste plek aan tafel: juridisch, strategisch en zakelijk.
     </p>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {waarde.map((w) => (
+        <div class="p-7 bg-bg-elevated border border-border rounded-lg">
+          <h3 class="text-h4 font-bold text-text mb-2">{w.titel}</h3>
+          <p class="text-body text-text-secondary">{w.tekst}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {/* === VOOR WIE === */}
+  <section class="bg-bg-tinted py-20">
+    <div class="max-w-container mx-auto px-4 md:px-8">
+      <h2 class="text-h2 font-bold mb-2 text-text">Exclusief — omdat het moet passen</h2>
+      <p class="text-body text-text-secondary mb-8 max-w-readable">
+        Iedere ondernemer kan zich aanmelden, maar niet iedere onderneming sluit aan. Niet omdat wij het klein willen houden, maar omdat het netwerk werkt bij de gratie van wie eraan deelneemt. Wij kijken in het kennismakingsgesprek naar drie dingen:
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+          <h3 class="text-h4 font-bold text-text mb-2">U onderneemt</h3>
+          <p class="text-body text-text-secondary">Het netwerk is er voor ondernemers, DGA's en investeerders — mensen die beslissingen nemen waar juridische gevolgen aan hangen, en die dat liever vooraf dan achteraf geregeld zien.</p>
+        </div>
+        <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+          <h3 class="text-h4 font-bold text-text mb-2">Uw vraagstukken passen bij ons</h3>
+          <p class="text-body text-text-secondary">Ondernemingsrecht, vastgoed en huur, contracten, incasso en procederen — het snijvlak waar wij dagelijks op werken. Ligt uw zwaartepunt elders, dan zeggen wij dat eerlijk en verwijzen wij u goed door.</p>
+        </div>
+        <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+          <h3 class="text-h4 font-bold text-text mb-2">Het klikt van twee kanten</h3>
+          <p class="text-body text-text-secondary">U werkt direct met de advocaat en zit aan tafel met andere leden. Vertrouwen en een goede verstandhouding zijn dus geen bijzaak maar een toelatingseis — en dat toetsen we in een gesprek, niet met een formulier.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* === ZO WERKT HET === */}
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <h2 class="text-h2 font-bold mb-8 text-text">Zo werkt aansluiten</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl">
       <div class="p-6 bg-bg-elevated border border-border rounded-lg">
-        <h3 class="text-h4 font-bold text-text mb-2">1. Ondernemer of DGA</h3>
-        <p class="text-body text-text-secondary">Het abonnement is er voor ondernemingen — van eenmanszaak tot holding — niet voor particuliere kwesties.</p>
+        <p class="text-h2 font-extrabold text-brand-primary mb-2">1</p>
+        <h3 class="text-h4 font-bold text-text mb-2">U laat uw gegevens achter</h3>
+        <p class="text-body text-text-secondary">Twee minuten werk: wie u bent, wat u onderneemt en waar uw juridische vragen zitten. Het verplicht u tot niets.</p>
       </div>
       <div class="p-6 bg-bg-elevated border border-border rounded-lg">
-        <h3 class="text-h4 font-bold text-text mb-2">2. Passende vraagstukken</h3>
-        <p class="text-body text-text-secondary">Uw juridische vragen liggen op ons terrein: ondernemingsrecht, vastgoed en huur, contracten, incasso en procederen. Ligt uw zwaartepunt elders, dan verwijzen wij u eerlijk door.</p>
+        <p class="text-h2 font-extrabold text-brand-primary mb-2">2</p>
+        <h3 class="text-h4 font-bold text-text mb-2">Wij nemen contact op</h3>
+        <p class="text-body text-text-secondary">Binnen enkele werkdagen belt mr. Kumar u persoonlijk voor een eerste verkenning en het inplannen van de kennismaking.</p>
       </div>
       <div class="p-6 bg-bg-elevated border border-border rounded-lg">
-        <h3 class="text-h4 font-bold text-text mb-2">3. Geen tegenstrijdige belangen</h3>
-        <p class="text-body text-text-secondary">Als advocaat toetsen wij elke aanmelding op conflicten met bestaande cliënten en leden. Staat u tegenover een van hen, dan kunnen wij u niet aannemen.</p>
-      </div>
-      <div class="p-6 bg-bg-elevated border border-border rounded-lg">
-        <h3 class="text-h4 font-bold text-text mb-2">4. Capaciteit in uw trede</h3>
-        <p class="text-body text-text-secondary">Elke trede heeft een maximum aantal leden, zodat de reactietermijnen houdbaar blijven. Is uw trede vol, dan komt u — als u dat wilt — op de wachtlijst.</p>
+        <p class="text-h2 font-extrabold text-brand-primary mb-2">3</p>
+        <h3 class="text-h4 font-bold text-text mb-2">Kennismaking op de Zuidas</h3>
+        <p class="text-body text-text-secondary">In een goed gesprek kijken we of uw onderneming en het netwerk elkaar versterken — en welke vorm van deelname bij u past. Klikt het van twee kanten, dan sluit u aan.</p>
       </div>
     </div>
   </section>
@@ -192,12 +159,12 @@ const treden = [
     <div class="max-w-container mx-auto px-4 md:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
         <div>
-          <h2 class="text-h2 font-bold mb-4 text-text">Meld uw onderneming aan</h2>
+          <h2 class="text-h2 font-bold mb-4 text-text">Laat uw gegevens achter</h2>
           <p class="text-body text-text-secondary mb-4 max-w-readable">
-            Aanmelden verplicht tot niets en kost niets: wij beoordelen uw aanmelding, u hoort binnen vijf werkdagen van ons, en pas na wederzijds akkoord start het lidmaatschap.
+            Vertel kort wie u bent en wat u onderneemt. Wij nemen persoonlijk contact met u op voor een kennismakingsgesprek — daarin bespreken we ook de vormen van deelname en wat daarbij hoort.
           </p>
           <p class="text-body text-text-secondary max-w-readable">
-            Liever eerst kennismaken? Een <a href="/contact" class="text-brand-primary no-underline hover:underline">verkennend gesprek</a> kan altijd.
+            Liever eerst een concrete juridische vraag voorleggen? Dat kan altijd via een <a href="/contact" class="text-brand-primary no-underline hover:underline">verkennend gesprek</a>.
           </p>
         </div>
         <div>
@@ -226,25 +193,16 @@ const treden = [
                 </div>
               </div>
               <div>
-                <label for="ab-trede" class="block text-small font-semibold text-text mb-1">Voorkeurstrede</label>
-                <select id="ab-trede" name="trede" class="w-full p-3 border border-border rounded-md bg-bg text-text">
-                  <option value="counsel">Counsel — € 225 per maand</option>
-                  <option value="toegang">Toegang — € 79 per maand</option>
-                  <option value="boardroom">Boardroom — € 5.400 per jaar</option>
-                  <option value="weet-niet">Weet ik nog niet — adviseer mij</option>
-                </select>
-              </div>
-              <div>
                 <label for="ab-toelichting" class="block text-small font-semibold text-text mb-1">Uw onderneming en juridische vragen *</label>
-                <textarea id="ab-toelichting" name="toelichting" rows="4" required placeholder="Bijv.: verhuur van drie bedrijfspanden, terugkerende contract- en incassovragen, één lopend huurgeschil." class="w-full p-3 border border-border rounded-md bg-bg text-text"></textarea>
+                <textarea id="ab-toelichting" name="toelichting" rows="4" required placeholder="Bijv.: verhuur van drie bedrijfspanden, terugkerende contract- en incassovragen, plannen voor een overname." class="w-full p-3 border border-border rounded-md bg-bg text-text"></textarea>
               </div>
-              <button type="submit" class="w-full bg-brand-primary text-white font-semibold px-8 py-3 rounded-lg hover:opacity-90 transition cursor-pointer">Aanmelding versturen</button>
-              <p class="text-tiny text-text-secondary">Wij gebruiken uw gegevens uitsluitend voor de beoordeling van uw aanmelding.</p>
+              <button type="submit" class="w-full bg-brand-primary text-white font-semibold px-8 py-3 rounded-lg hover:opacity-90 transition cursor-pointer">Verstuur en word teruggebeld</button>
+              <p class="text-tiny text-text-secondary">Wij gebruiken uw gegevens uitsluitend om contact met u op te nemen.</p>
             </form>
           </div>
           <div id="ab-succes" style="display: none;" class="p-6 bg-bg-elevated border-2 border-brand-primary rounded-lg">
-            <h3 class="text-h3 font-bold mb-2 text-text">Aanmelding ontvangen</h3>
-            <p class="text-body text-text-secondary">Dank voor uw aanmelding. Wij toetsen deze op passendheid, belangenconflicten en capaciteit, en u hoort binnen vijf werkdagen van ons. Tot die tijd staan de <a href="/proceskosten-berekenen/" class="text-brand-primary no-underline hover:underline">rekentools</a> en <a href="/modelbrieven/" class="text-brand-primary no-underline hover:underline">modelbrieven</a> al voor u klaar.</p>
+            <h3 class="text-h3 font-bold mb-2 text-text">Uw gegevens zijn ontvangen</h3>
+            <p class="text-body text-text-secondary">Dank — mr. Kumar neemt binnen enkele werkdagen persoonlijk contact met u op voor de kennismaking. Tot die tijd staan de <a href="/proceskosten-berekenen/" class="text-brand-primary no-underline hover:underline">rekentools</a> en <a href="/modelbrieven/" class="text-brand-primary no-underline hover:underline">modelbrieven</a> al voor u klaar.</p>
           </div>
         </div>
       </div>
@@ -262,9 +220,6 @@ const treden = [
         </div>
       ))}
     </div>
-    <p class="text-small text-text-secondary mt-10 max-w-readable">
-      Clavix Advocaten is NOvA-geregistreerd voor ondernemingsrecht en burgerlijk procesrecht. Het abonnement geeft toegang tot juridisch advies binnen de omschreven grenzen; over de uitkomst van individuele kwesties kunnen vooraf geen toezeggingen worden gedaan.
-    </p>
   </section>
 
   <script is:inline>
