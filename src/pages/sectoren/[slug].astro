@@ -37,6 +37,47 @@ const breadcrumbs = breadcrumbSchema([
 
 const service = serviceSchema(sector)
 
+// Kennisbank-links per sector (aanvullend op de painPoint-clusters)
+const kennisbank: Record<string, { label: string; href: string }[]> = {
+  bouw: [
+    { label: 'Bouwgeschil met de aannemer', href: '/clusters/bouwgeschil-aannemer-wanprestatie/' },
+    { label: 'Aannemer failliet tijdens de bouw', href: '/clusters/aannemer-failliet-tijdens-bouw/' },
+    { label: 'Factuur niet betaald: incasso', href: '/clusters/factuur-niet-betaald/' },
+    { label: 'Proceskosten berekenen', href: '/proceskosten-berekenen/' },
+  ],
+  horeca: [
+    { label: 'Huurprijs bedrijfsruimte aanpassen (7:303 BW)', href: '/clusters/huurprijswijziging-7-303-roz/' },
+    { label: '290- of 230a-bedrijfsruimte', href: '/clusters/bedrijfsruimte-290-of-230a-bw/' },
+    { label: 'Indeplaatsstelling bij bedrijfsoverdracht', href: '/clusters/indeplaatsstelling-huurder/' },
+    { label: 'WHOA-traject: kosten en kansen', href: '/clusters/whoa-traject-ondernemer-kosten-kansen/' },
+  ],
+  retail: [
+    { label: 'Huurprijs bedrijfsruimte aanpassen (7:303 BW)', href: '/clusters/huurprijswijziging-7-303-roz/' },
+    { label: 'Opzegging huurovereenkomst bedrijfsruimte', href: '/clusters/opzegging-huurovereenkomst-bedrijfsruimte/' },
+    { label: '290- of 230a-bedrijfsruimte', href: '/clusters/bedrijfsruimte-290-of-230a-bw/' },
+    { label: 'WHOA-traject: kosten en kansen', href: '/clusters/whoa-traject-ondernemer-kosten-kansen/' },
+  ],
+  zorg: [
+    { label: 'Aandeelhoudersovereenkomst: minimale clausules', href: '/clusters/aandeelhoudersovereenkomst-minimaal/' },
+    { label: 'Bestuurdersaansprakelijkheid bij faillissement', href: '/clusters/bestuurdersaansprakelijkheid-faillissement/' },
+    { label: 'Vastgoed-BV en holdingstructuur', href: '/clusters/vastgoed-bv-oprichten-holding-structuur/' },
+    { label: 'Verkoop bedrijfspand bij M&A', href: '/clusters/verkoop-bedrijfspand-mna/' },
+  ],
+  tech: [
+    { label: '50/50-aandeelhoudersgeschil oplossen', href: '/clusters/50-50-aandeelhoudersgeschil-oplossen/' },
+    { label: 'Aandeelhoudersovereenkomst: minimale clausules', href: '/clusters/aandeelhoudersovereenkomst-minimaal/' },
+    { label: 'Concurrentiebeding ex-aandeelhouders', href: '/clusters/concurrentiebeding-ex-aandeelhouders/' },
+    { label: 'Decharge van een bestuurder', href: '/clusters/decharge-bestuurder/' },
+  ],
+  'vastgoed-projecten': [
+    { label: 'Aannemer failliet tijdens de bouw', href: '/clusters/aannemer-failliet-tijdens-bouw/' },
+    { label: 'Verborgen gebreken bedrijfspand', href: '/clusters/verborgen-gebreken-bedrijfspand/' },
+    { label: 'Splitsing eigendom bedrijfspand', href: '/clusters/splitsing-eigendom-bedrijfspand/' },
+    { label: 'Erfpacht Amsterdam: canonherziening', href: '/clusters/erfpacht-amsterdam-herziening/' },
+  ],
+}
+const verderLezen = kennisbank[sector.slug] || []
+
 const schemas: any[] = [
   articleSchema(sector, 'mr. Mukesh Kumar'),
   breadcrumbs,
@@ -209,6 +250,21 @@ if (sector.faqs?.length) {
             <summary class="font-semibold text-text cursor-pointer">{f.question}</summary>
             <p class="text-body text-text-secondary mt-3 whitespace-pre-line">{f.answer}</p>
           </details>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {/* Verder lezen in de kennisbank */}
+  {verderLezen.length > 0 && (
+    <section class="max-w-container mx-auto px-4 md:px-8 py-12">
+      <h2 class="text-h2 font-bold text-text mb-2">Verder lezen in de kennisbank</h2>
+      <p class="text-body text-text-secondary mb-8">Verdieping bij de vraagstukken die in deze sector het vaakst spelen.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {verderLezen.map((l) => (
+          <a href={l.href} class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <span class="text-h4 font-semibold text-text">{l.label} →</span>
+          </a>
         ))}
       </div>
     </section>
