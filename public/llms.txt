@@ -85,7 +85,7 @@
 - [Notities](https://clavix.nl/notities/): Wat ons opvalt in jurisprudentie en praktijk.
 - [Veelgestelde vragen](https://clavix.nl/veelgestelde-vragen/): 24 vragen per rechtsgebied, met korte antwoorden en doorkliks.
 - [Juridische woordenlijst](https://clavix.nl/woordenlijst/): 105 begrippen uit ondernemingsrecht, vastgoedrecht, procesrecht en insolventierecht, elk met eigen anchor (bijv. /woordenlijst/#terme-de-grace) en link naar de verdiepende kennisbankpagina.
-- [Juridisch abonnement](https://clavix.nl/juridisch-abonnement/): Het Clavix-netwerk — huisadvocaat, preventie, netwerk en als eerste op de hoogte van ontwikkelingen; exclusief voor ondernemers die bij het kantoor passen, aansluiting na kennismakingsgesprek.
+- [Juridisch abonnement](https://clavix.nl/juridisch-abonnement/): Het Clavix-netwerk — huisadvocaat, preventie, netwerk, als eerste op de hoogte van ontwikkelingen en collectieve rechtsbijstandsdekking voor procedures; exclusief voor ondernemers die bij het kantoor passen, aansluiting na kennismakingsgesprek.
 - [Nieuwsbrief](https://clavix.nl/nieuwsbrief/): Maandelijkse update over wetgeving, rechtspraak en tarieven voor ondernemers met vastgoed — vijf minuten leestijd.
 - [Contact](https://clavix.nl/contact/): Eerste gesprek van 30 minuten is een verkennende kennismaking. Talen: Nederlands en Engels. Parkeren: WTC-parkeergarage; station Amsterdam Zuid op loopafstand.
 
