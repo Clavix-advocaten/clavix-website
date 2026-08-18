@@ -55,6 +55,10 @@ const schemas = [
               <label for="mb-email" class="block text-small font-semibold text-text mb-1">E-mailadres *</label>
               <input id="mb-email" name="email" type="email" required class="w-full p-3 border border-border rounded-md bg-bg text-text" />
             </div>
+            <label class="flex items-start gap-2 text-small text-text">
+              <input type="checkbox" name="nieuwsbrief" value="ja" data-nieuwsbrief class="w-4 h-4 mt-0.5" />
+              <span>Houd mij via de nieuwsbrief op de hoogte van juridische ontwikkelingen voor ondernemers (afmelden kan altijd)</span>
+            </label>
             <button type="submit" class="w-full bg-brand-primary text-white font-semibold px-8 py-3 rounded-lg hover:opacity-90 transition cursor-pointer">Naar de downloads</button>
           </form>
         </div>
@@ -98,9 +102,15 @@ const schemas = [
 
   <script is:inline>
     (function () {
+      var form = document.querySelector('form[name="modelbrieven"]');
+      if (form) form.addEventListener('submit', function () {
+        var nb = form.querySelector('[data-nieuwsbrief]');
+        if (nb && nb.checked) form.action = '/modelbrieven?download=true&nb=1';
+      });
       var params = new URLSearchParams(window.location.search);
       if (params.get('download') === 'true') {
         window.plausible && window.plausible('Modelbrief aanvraag');
+        if (params.get('nb') === '1') window.plausible && window.plausible('Nieuwsbrief aanmelding', { props: { bron: 'modelbrieven' } });
         var f = document.getElementById('mb-form-wrap');
         var d = document.getElementById('mb-downloads');
         if (f) f.style.display = 'none';

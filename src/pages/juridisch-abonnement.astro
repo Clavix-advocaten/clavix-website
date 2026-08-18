@@ -208,8 +208,12 @@ const waarde = [
                 <label for="ab-toelichting" class="block text-small font-semibold text-text mb-1">Uw onderneming en juridische vragen *</label>
                 <textarea id="ab-toelichting" name="toelichting" rows="4" required placeholder="Bijv.: verhuur van drie bedrijfspanden, terugkerende contract- en incassovragen, plannen voor een overname." class="w-full p-3 border border-border rounded-md bg-bg text-text"></textarea>
               </div>
+              <label class="flex items-start gap-2 text-small text-text">
+                <input type="checkbox" name="nieuwsbrief" value="ja" data-nieuwsbrief class="w-4 h-4 mt-0.5" />
+                <span>Houd mij via de nieuwsbrief op de hoogte van juridische ontwikkelingen voor ondernemers (afmelden kan altijd)</span>
+              </label>
               <button type="submit" class="w-full bg-brand-primary text-white font-semibold px-8 py-3 rounded-lg hover:opacity-90 transition cursor-pointer">Verstuur en word teruggebeld</button>
-              <p class="text-tiny text-text-secondary">Wij gebruiken uw gegevens uitsluitend om contact met u op te nemen.</p>
+              <p class="text-tiny text-text-secondary">Wij gebruiken uw gegevens uitsluitend om contact met u op te nemen en, als u dat aanvinkt, voor de nieuwsbrief.</p>
             </form>
           </div>
           <div id="ab-succes" style="display: none;" class="p-6 bg-bg-elevated border-2 border-brand-primary rounded-lg">
@@ -236,9 +240,15 @@ const waarde = [
 
   <script is:inline>
     (function () {
+      var form = document.querySelector('form[name="abonnement-aanmelding"]');
+      if (form) form.addEventListener('submit', function () {
+        var nb = form.querySelector('[data-nieuwsbrief]');
+        if (nb && nb.checked) form.action = '/juridisch-abonnement?aangemeld=true&nb=1';
+      });
       var params = new URLSearchParams(window.location.search);
       if (params.get('aangemeld') === 'true') {
         window.plausible && window.plausible('Abonnement aanmelding');
+        if (params.get('nb') === '1') window.plausible && window.plausible('Nieuwsbrief aanmelding', { props: { bron: 'abonnement' } });
         var f = document.getElementById('ab-form-wrap');
         var s = document.getElementById('ab-succes');
         if (f) f.style.display = 'none';
