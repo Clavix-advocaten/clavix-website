@@ -34,6 +34,8 @@
 - [Hoger beroep in civiele zaken](https://clavix.nl/clusters/hoger-beroep-civiel/): De herkansing bij het gerechtshof: fatale termijnen, het grievenstelsel, executie tijdens appel en de afweging vooraf.
 - [Ingebrekestelling](https://clavix.nl/clusters/ingebrekestelling/): De brief waarmee het verzuim begint: vereisten van 6:82 BW, de redelijke termijn, de uitzonderingen van 6:83 BW en de veelgemaakte fouten, met gratis modelbrief.
 - [Kort geding](https://clavix.nl/clusters/kort-geding/): De spoedprocedure bij de voorzieningenrechter: spoedeisend belang, geldvorderingen, dwangsommen, het verloop en de route na het vonnis.
+- [Aanmaning](https://clavix.nl/clusters/aanmaning/): Van herinnering tot ingebrekestelling: de wettelijke betalingstermijnen (30/60 dagen, veertiendagenbrief bij consumenten), de opbouw van een goede aanmaning en de vervolgstappen.
+- [As is where is-clausule](https://clavix.nl/clusters/as-is-where-is-clausule/): Kopen in de staat waarin het zich bevindt: reikwijdte, de grens van de mededelingsplicht, onderzoeksplicht en de aanpak voor koper en verkoper.
 - [Beslag op aandelen](https://clavix.nl/clusters/beslag-op-aandelen/): Conservatoir beslag op BV-aandelen: toetsing en gevolgen.
 - [Beslag opheffen](https://clavix.nl/clusters/beslag-opheffen/): Het opheffingskortgeding van artikel 705 Rv: gronden, zekerheid via bankgarantie en de belangenafweging.
 - [Conservatoir beslag op onroerend goed](https://clavix.nl/clusters/beslag-op-onroerend-goed/): Wat beslag op een pand blokkeert, het verlof, de rangorde naast de hypotheek en het notarisdepot.
@@ -42,6 +44,7 @@
 - [Concurrentiebeding ex-aandeelhouders](https://clavix.nl/clusters/concurrentiebeding-ex-aandeelhouders/): Geldigheid en handhaving na aandelenverkoop.
 - [Conservatoir beslag](https://clavix.nl/clusters/conservatoir-beslag/): Verlof, gevolgen, termijn hoofdzaak en opheffing.
 - [Decharge van een bestuurder](https://clavix.nl/clusters/decharge-bestuurder/): Wat decharge wel en niet dekt.
+- [Dwangsom](https://clavix.nl/clusters/dwangsom/): Het drukmiddel achter veroordelingen: verbeuren na betekening, de zes-maandenverjaring van 611g Rv, opheffing bij onmogelijkheid en het executiegeschil.
 - [Erfpacht Amsterdam: canonherziening](https://clavix.nl/clusters/erfpacht-amsterdam-herziening/): Voortdurend versus eeuwigdurend stelsel en de gevolgen voor vastgoed.
 - [Exoneratiebeding in zakelijke contracten](https://clavix.nl/clusters/exoneratiebeding-zakelijke-contracten/): Wanneer een exoneratieclausule tussen bedrijven geldig is en waar de grenzen liggen.
 - [Factuur niet betaald](https://clavix.nl/clusters/factuur-niet-betaald/): De aanmaanroute, de veertiendagenbrief, incassokosten en handelsrente, en de dwangmiddelen van beslag tot faillissementsaanvraag.
@@ -57,6 +60,7 @@
 - [Opzegging huurovereenkomst bedrijfsruimte](https://clavix.nl/clusters/opzegging-huurovereenkomst-bedrijfsruimte/): Gronden en termijnen bij 290- en 230a-ruimte.
 - [Pauliana-actie van de curator](https://clavix.nl/clusters/pauliana-actie-curator/): Voorwaarden, bewijslast en verweer.
 - [Pre-pack doorstart](https://clavix.nl/clusters/pre-pack-doorstart/): Voorbereiding, stille curator en randvoorwaarden.
+- [Paulianeus handelen](https://clavix.nl/clusters/paulianeus-handelen/): Wanneer transacties vernietigbaar zijn wegens benadeling van schuldeisers: 42/43/47 Fw, 3:45 BW, het gevarenjaar en het verweer tegen de curator.
 - [Retentierecht in de bouw](https://clavix.nl/clusters/retentierecht-bouw/): Vereisten, derdenwerking, uitoefening als drukmiddel, opheffing via kort geding en de werking in faillissement (art. 60 Fw).
 - [Splitsing eigendom bedrijfspand](https://clavix.nl/clusters/splitsing-eigendom-bedrijfspand/): Appartementsrechten, VvE-structuur en gevolgen bij verkoop.
 - [Statuten BV wijzigen](https://clavix.nl/clusters/statuten-bv-wijzigen/): Stappenplan: AVA, notariële akte, KvK.
@@ -66,6 +70,7 @@
 - [Verborgen gebreken bedrijfspand](https://clavix.nl/clusters/verborgen-gebreken-bedrijfspand/): Conformiteit, mededelings- en onderzoeksplicht, klachtplicht en de opties van herstel tot ontbinding.
 - [Verjaring en stuiting](https://clavix.nl/clusters/verjaring-stuiting/): De verjaringstermijnen van 3:306 tot 3:310 BW en 7:28 BW, de eisen aan een stuitingsbrief, de nieuwe termijn na stuiting en het verjaringsverweer.
 - [Verkoop bedrijfspand bij M&A](https://clavix.nl/clusters/verkoop-bedrijfspand-mna/): Structuur, due diligence en transactiedocumentatie.
+- [Verrekening](https://clavix.nl/clusters/verrekening/): Betalen met uw tegenvordering: de vereisten van 6:127 BW, verboden in algemene voorwaarden, het passeer-risico en de ruime regeling in faillissement (53 Fw).
 - [Verzet tegen faillissement](https://clavix.nl/clusters/verzet-tegen-faillissement/): De verzetsprocedure van artikel 8 Fw: termijn, gronden, kansen.
 - [Vordering indienen bij de curator](https://clavix.nl/clusters/vordering-indienen-curator/): Verificatie, rangorde, eigendomsvoorbehoud, de bankgarantie bij een failliete huurder en de routes naar de bestuurder.
 - [WHOA-traject: kosten en kansen](https://clavix.nl/clusters/whoa-traject-ondernemer-kosten-kansen/): Voorwaarden, doorlooptijd en slaagkans van een WHOA-akkoord.
