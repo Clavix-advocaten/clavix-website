@@ -11,6 +11,7 @@ export function organizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'LegalService',
+    '@id': `${SITE_URL}/#organization`,
     name: ORG_NAME,
     legalName: ORG_LEGAL,
     url: SITE_URL,
@@ -61,6 +62,7 @@ export function personSchema(attorney: any) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': `${SITE_URL}/kumar#person`,
     name: attorney.name,
     jobTitle: attorney.title,
     image: attorney.photoUrl,
@@ -77,6 +79,7 @@ export function personSchema(attorney: any) {
     },
     worksFor: {
       '@type': 'LegalService',
+      '@id': `${SITE_URL}/#organization`,
       name: ORG_NAME,
       url: SITE_URL,
     },
@@ -199,7 +202,7 @@ export function serviceSchema(service: { name: string; description: string; url:
     description: service.description,
     url: `${SITE_URL}${service.url}`,
     serviceType: service.serviceType || 'Juridische dienstverlening',
-    provider: { '@type': 'LegalService', name: ORG_NAME, url: SITE_URL },
+    provider: { '@type': 'LegalService', '@id': `${SITE_URL}/#organization`, name: ORG_NAME, url: SITE_URL },
     areaServed: { '@type': 'Country', name: 'Netherlands' },
   }
 }

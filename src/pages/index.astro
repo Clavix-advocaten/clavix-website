@@ -2,7 +2,7 @@
 import BaseLayout from '@layouts/BaseLayout.astro'
 import CTABand from '@components/CTABand.astro'
 import { getAttorney, getHomepageBlogPosts } from '@lib/queries'
-import { personSchema } from '@lib/schema-markup'
+import { personSchema, serviceSchema } from '@lib/schema-markup'
 
 const attorney = await getAttorney().catch(() => null)
 const recentPosts = await getHomepageBlogPosts().catch(() => [])
@@ -10,7 +10,55 @@ const recentPosts = await getHomepageBlogPosts().catch(() => [])
 const pageTitle = 'Advocatenkantoor in Amsterdam Zuidas'
 const description = 'Advocatenkantoor in Amsterdam Zuidas voor ondernemers met vastgoed. NOvA-geregistreerd ondernemingsrecht en burgerlijk procesrecht.'
 
-const schemas = []
+const homeFaqs = [
+  {
+    question: 'Wat kost een advocaat bij Clavix?',
+    answer:
+      'Wij werken waar mogelijk met een vaste prijs per zaak of per fase, afgesproken vóórdat het werk begint. Is de omvang vooraf niet in te schatten, dan geldt een uurtarief met maandelijkse specificatie. Het eerste gesprek van dertig minuten is kosteloos, en met onze rekentools rekent u griffierecht, rente en incassokosten zelf vooraf door.',
+  },
+  {
+    question: 'Voor wie werkt Clavix?',
+    answer:
+      'Voor ondernemers en hun vennootschappen: van familiebedrijven en vastgoedinvesteerders tot DGA’s met een holdingstructuur. De praktijk concentreert zich op ondernemingsrecht, vastgoedrecht, burgerlijk procesrecht en insolventierecht, en juist op het snijvlak daarvan, waar een geschil zelden netjes binnen één rechtsgebied blijft.',
+  },
+  {
+    question: 'Werk ik direct met mr. Kumar?',
+    answer:
+      'Ja. Elk dossier wordt persoonlijk behandeld door mr. Kumar; u werkt niet met een wisselend team van medewerkers. Dat betekent korte lijnen, één aanspreekpunt en een advocaat die uw dossier en uw onderneming kent, van het eerste gesprek tot de afronding.',
+  },
+  {
+    question: 'Hoe snel krijg ik reactie?',
+    answer:
+      'Op werkdagen reageren wij binnen 24 uur. Bij urgente zaken, zoals een gelegd beslag, een sommatie van een curator of een termijn die dreigt te verstrijken, bellen wij doorgaans dezelfde dag terug. Vermeld de urgentie bij uw bericht, dan krijgt het voorrang.',
+  },
+  {
+    question: 'Wat gebeurt er in het eerste gesprek?',
+    answer:
+      'Het eerste gesprek duurt dertig minuten en is verkennend en kosteloos. U licht uw situatie toe, wij geven aan of en hoe wij u kunnen bijstaan en wat een realistische uitkomst is. Daarna beslist u zelf over het vervolg; u zit nergens aan vast.',
+  },
+]
+
+const specialismeServices = [
+  { name: 'Aandeelhoudersgeschillen', description: 'Conflicten in de BV: mediation, exit-regelingen en de geschillenregeling van 2:336a BW.', url: '/specialisme/aandeelhoudersgeschillen', serviceType: 'Ondernemingsrecht' },
+  { name: 'Bestuurdersaansprakelijkheid', description: 'Voorkomen, beoordelen en verweren bij claims op grond van artikel 2:9 of 2:248 BW.', url: '/specialisme/bestuurdersaansprakelijkheid', serviceType: 'Ondernemingsrecht' },
+  { name: 'Bouwgeschillen', description: 'UAV-2012, oplevering, meerwerk, bouwfouten en gebreken bij aanneming.', url: '/specialisme/bouwgeschillen', serviceType: 'Vastgoedrecht' },
+  { name: 'Bedrijfsoverdracht met vastgoed', description: 'M&A waarbij onroerend goed onderdeel van de transactie is: structurering en due diligence.', url: '/specialisme/bedrijfsoverdracht-met-vastgoed', serviceType: 'Ondernemingsrecht' },
+  { name: 'Contractgeschillen', description: 'Wanprestatie, ontbinding, exoneratie en nakoming in zakelijke contracten.', url: '/specialisme/contractgeschillen', serviceType: 'Ondernemingsrecht' },
+  { name: 'Incasso en executie', description: 'Beslag, verhaal, executiegeschillen en zakelijke incasso.', url: '/specialisme/incasso-en-executie', serviceType: 'Burgerlijk procesrecht' },
+  { name: 'Kort geding', description: 'Spoedprocedures en voorlopige voorzieningen bij de voorzieningenrechter.', url: '/specialisme/kort-geding', serviceType: 'Burgerlijk procesrecht' },
+]
+
+const homeFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: homeFaqs.map((f) => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+}
+
+const schemas: object[] = [homeFaqSchema, ...specialismeServices.map((s) => serviceSchema(s))]
 if (attorney) schemas.push(personSchema(attorney))
 
 // Featured pillar (full-width bovenaan)
@@ -75,9 +123,9 @@ const pillars = [
     <div class="max-w-container mx-auto px-4 md:px-8 py-12 md:py-20 grid md:grid-cols-5 gap-10 items-center">
       <div class="md:col-span-3">
         <h1 class="text-display font-extrabold text-text mb-4 tracking-tight">
-          Het juridisch huis voor ondernemers, familiebedrijven en vastgoedinvesteerders.
+          Advocatenkantoor in Amsterdam voor ondernemers, familiebedrijven en vastgoedinvesteerders.
         </h1>
-        <p class="text-lead text-text-accent italic mb-6">De sleutel tot uw oplossing.</p>
+        <p class="text-lead text-text-accent italic mb-6">Het juridisch huis aan de Zuidas. De sleutel tot uw oplossing.</p>
         <p class="text-lead text-text-secondary mb-8 max-w-readable">
           Advocatenkantoor aan de Strawinskylaan in Amsterdam Zuidas. U werkt direct met mr. Kumar, niet met een wisselend team. Een heldere analyse van uw positie, en wat die realistisch waard is.
         </p>
@@ -277,6 +325,69 @@ const pillars = [
       </div>
     </section>
   )}
+
+  {/* === VEELGESTELDE VRAGEN === */}
+  <section class="max-w-container mx-auto px-4 md:px-8 py-16">
+    <div class="mb-10">
+      <h2 class="text-h2 font-bold text-text mb-2">Veelgestelde vragen</h2>
+      <p class="text-lead text-text-secondary italic">Direct antwoord op wat ondernemers ons het eerst vragen.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-4">
+      {homeFaqs.map((f) => (
+        <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+          <h3 class="text-h4 font-bold text-text mb-2">{f.question}</h3>
+          <p class="text-small text-text-secondary">{f.answer}</p>
+        </div>
+      ))}
+      <div class="p-6 bg-bg-tinted border border-border rounded-lg flex flex-col justify-center">
+        <p class="text-small text-text-secondary mb-3">
+          Meer antwoorden over kosten, werkwijze en procedures vindt u bij de
+          <a href="/veelgestelde-vragen" class="text-brand-primary no-underline hover:underline"> veelgestelde vragen</a>, op de
+          <a href="/kosten" class="text-brand-primary no-underline hover:underline"> kostenpagina</a> en in de
+          <a href="/proceskosten-berekenen/" class="text-brand-primary no-underline hover:underline"> rekentools</a>.
+        </p>
+        <p class="text-small text-text-secondary">
+          Juridische begrippen zoekt u op in de <a href="/woordenlijst" class="text-brand-primary no-underline hover:underline">woordenlijst</a> met ruim honderd termen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* === PROOF / VERTROUWEN === */}
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-14">
+      <h2 class="text-h3 font-bold text-text mb-6">Waar u op kunt bouwen</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div>
+          <h3 class="text-small font-semibold text-text mb-1">NOvA-registraties</h3>
+          <p class="text-small text-text-secondary">
+            Geregistreerd in het rechtsgebiedenregister voor ondernemingsrecht en burgerlijk procesrecht, met de daarbij horende jaarlijkse opleidingsverplichting per rechtsgebied.
+            <a href="/kumar" class="text-brand-primary no-underline hover:underline"> Bekijk de registraties</a>.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-small font-semibold text-text mb-1">Kantoorklachtenregeling</h3>
+          <p class="text-small text-text-secondary">
+            Heldere afspraken vooraf, en een formele
+            <a href="/klachtenregeling" class="text-brand-primary no-underline hover:underline"> klachtenregeling</a> voor het geval u desondanks ontevreden bent.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-small font-semibold text-text mb-1">Ingeschreven en verifieerbaar</h3>
+          <p class="text-small text-text-secondary">
+            Clavix B.V., KvK 96800747, BTW NL867766839B01. Vindbaar via de Nederlandse Orde van Advocaten en het handelsregister.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-small font-semibold text-text mb-1">Kantoor op de Zuidas</h3>
+          <p class="text-small text-text-secondary">
+            Strawinskylaan 257, 1077 XX Amsterdam. Telefonisch bereikbaar op +31 20 747 1121;
+            <a href="/contact" class="text-brand-primary no-underline hover:underline"> plan een gesprek</a> op kantoor of online.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   {/* === FINAL CTA === */}
   <CTABand
