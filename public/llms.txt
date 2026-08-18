@@ -30,6 +30,7 @@
 - [290- of 230a-bedrijfsruimte](https://clavix.nl/clusters/bedrijfsruimte-290-of-230a-bw/): Welk huurregime geldt en wat dat betekent voor opzegging en huurtermijnen.
 - [Bedrijfsruimte verhuren tussen BV's](https://clavix.nl/clusters/bedrijfsruimte-huur-bvs-onderling/): Zakelijke voorwaarden en valkuilen bij huur tussen verbonden vennootschappen.
 - [Beslag op een bankrekening](https://clavix.nl/clusters/beslag-op-bankrekening/): Derdenbeslag onder de bank: wat het bevriest en wat niet, de verklaringsplicht en de continuïteitsafweging.
+- [Bestuurdersaansprakelijkheid](https://clavix.nl/clusters/bestuurdersaansprakelijkheid/): Wanneer een bestuurder persoonlijk aansprakelijk is: de ernstig verwijt-maatstaf, 2:9 BW, de Beklamel-norm, de melding betalingsonmacht (36 Iw) en wat decharge en D&O echt beschermen.
 - [Bodemprocedure](https://clavix.nl/clusters/bodemprocedure/): De civiele rechtszaak ten gronde: verloop van dagvaarding tot vonnis, kanton of rechtbank, bewijs, doorlooptijd en kosten.
 - [Hoger beroep in civiele zaken](https://clavix.nl/clusters/hoger-beroep-civiel/): De herkansing bij het gerechtshof: fatale termijnen, het grievenstelsel, executie tijdens appel en de afweging vooraf.
 - [Ingebrekestelling](https://clavix.nl/clusters/ingebrekestelling/): De brief waarmee het verzuim begint: vereisten van 6:82 BW, de redelijke termijn, de uitzonderingen van 6:83 BW en de veelgemaakte fouten, met gratis modelbrief.
@@ -50,6 +51,7 @@
 - [Factuur niet betaald](https://clavix.nl/clusters/factuur-niet-betaald/): De aanmaanroute, de veertiendagenbrief, incassokosten en handelsrente, en de dwangmiddelen van beslag tot faillissementsaanvraag.
 - [Faillissement aanvragen als schuldeiser](https://clavix.nl/clusters/faillissement-aanvragen-schuldeiser/): Pluraliteit, de steunvordering, de procedure en de grens tussen drukmiddel en misbruik.
 - [Familiebedrijf met vastgoed: opvolging](https://clavix.nl/clusters/familiebedrijf-vastgoed-opvolging/): Structuurkeuzes en afspraken bij overdracht binnen de familie.
+- [Geheimhoudingsverklaring (NDA)](https://clavix.nl/clusters/geheimhoudingsverklaring-nda/): Kernbepalingen, het boetebeding, handhaving via kort geding en bewijsbeslag, en de Wet bescherming bedrijfsgeheimen als vangnet.
 - [Franchisegeschillen en de Wet franchise](https://clavix.nl/clusters/franchise-geschillen/): Prognoses en dwaling, instemmingsrecht bij formulewijzigingen, non-concurrentie (nietig indien te ruim) en goodwill bij het einde.
 - [Huurachterstand bedrijfsruimte: ontbinding](https://clavix.nl/clusters/huurachterstand-bedrijfsruimte-ontbinding/): Wanneer ontbinding wordt toegewezen; terme de grâce en kort geding.
 - [Huurprijs bedrijfsruimte aanpassen (7:303 BW)](https://clavix.nl/clusters/huurprijswijziging-7-303-roz/): De huurprijsherzieningsprocedure: termijnen en deskundigenadvies.
@@ -67,6 +69,7 @@
 - [Turboliquidatie van een BV](https://clavix.nl/clusters/turboliquidatie-bv/): Wanneer het mag en de verantwoordingsplicht sinds november 2023.
 - [Vastgoed-BV oprichten: holdingstructuur](https://clavix.nl/clusters/vastgoed-bv-oprichten-holding-structuur/): Structuur, aansprakelijkheidsbescherming en fiscale afwegingen.
 - [Vastgoed in BV of privé](https://clavix.nl/clusters/vastgoed-in-bv-of-prive/): Vergelijking fiscaal en juridisch, ook bij overdracht en vererving.
+- [Surseance van betaling](https://clavix.nl/clusters/surseance-van-betaling/): Hoe het uitstel werkt, waarom alleen concurrente schuldeisers worden geraakt, het akkoord, de WHOA-afweging en de positie van de schuldeiser.
 - [Verborgen gebreken bedrijfspand](https://clavix.nl/clusters/verborgen-gebreken-bedrijfspand/): Conformiteit, mededelings- en onderzoeksplicht, klachtplicht en de opties van herstel tot ontbinding.
 - [Verjaring en stuiting](https://clavix.nl/clusters/verjaring-stuiting/): De verjaringstermijnen van 3:306 tot 3:310 BW en 7:28 BW, de eisen aan een stuitingsbrief, de nieuwe termijn na stuiting en het verjaringsverweer.
 - [Verkoop bedrijfspand bij M&A](https://clavix.nl/clusters/verkoop-bedrijfspand-mna/): Structuur, due diligence en transactiedocumentatie.
