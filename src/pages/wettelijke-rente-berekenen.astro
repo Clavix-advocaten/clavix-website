@@ -1,0 +1,310 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABand from '@components/CTABand.astro'
+import { breadcrumbSchema } from '@lib/schema-markup'
+
+const faqs = [
+  {
+    q: 'Hoe hoog is de wettelijke rente in 2026?',
+    a: 'De gewone wettelijke rente (artikel 6:119 BW) is sinds 1 januari 2026 4% per jaar. De wettelijke handelsrente (artikel 6:119a BW) is sinds 1 juli 2026 10,4% per jaar. De percentages worden elk half jaar opnieuw vastgesteld.',
+  },
+  {
+    q: 'Wanneer geldt de handelsrente en wanneer de gewone wettelijke rente?',
+    a: 'De handelsrente geldt voor handelsovereenkomsten tussen bedrijven onderling of tussen een bedrijf en een overheidsorganisatie, zoals een onbetaalde factuur voor geleverde goederen of diensten. In alle andere gevallen, waaronder vorderingen op consumenten en schadevergoeding, geldt de gewone wettelijke rente.',
+  },
+  {
+    q: 'Vanaf welke datum mag ik wettelijke rente rekenen?',
+    a: 'Vanaf het moment dat de schuldenaar in verzuim is. Bij een handelstransactie is dat automatisch na het verstrijken van de afgesproken of wettelijke betalingstermijn van dertig dagen. In andere gevallen is meestal eerst een ingebrekestelling met een redelijke termijn nodig, tenzij een fatale termijn is afgesproken.',
+  },
+  {
+    q: 'Is de wettelijke rente enkelvoudig of samengesteld?',
+    a: 'Samengesteld per jaar: telkens na afloop van een vol jaar wordt de opgebouwde rente bij de hoofdsom opgeteld, waarna over dat hogere bedrag verder wordt gerekend. Dat volgt uit artikel 6:119 lid 2 BW en geldt ook voor de handelsrente. De rekentool op deze pagina past dit automatisch toe.',
+  },
+  {
+    q: 'Mag ik een hogere contractuele rente vragen dan de wettelijke rente?',
+    a: 'Ja, partijen mogen een eigen rentepercentage afspreken, bijvoorbeeld in algemene voorwaarden. Die contractuele rente vervangt dan de wettelijke rente. Tegenover consumenten kan een onredelijk hoog percentage als oneerlijk beding onverbindend zijn; tussen bedrijven is de vrijheid groter.',
+  },
+]
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Kosten', url: '/kosten' },
+    { name: 'Wettelijke rente berekenen', url: '/wettelijke-rente-berekenen' },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+]
+---
+
+<BaseLayout
+  title="Wettelijke rente berekenen: actuele percentages 2026"
+  description="Bereken direct de wettelijke rente (4%), de handelsrente (10,4%) of uw contractuele rente, samengesteld per jaar volgens artikel 6:119 en 6:119a BW. Met alle percentages sinds 2015."
+  schemaJsonLd={schemas}
+>
+  {/* === HERO === */}
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-20">
+      <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
+        Home › <a href="/kosten" class="no-underline hover:underline text-text-secondary">Kosten</a> › Wettelijke rente
+      </p>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
+        Wettelijke rente berekenen
+      </h1>
+      <p class="text-lead text-text-secondary mb-6 max-w-readable">
+        Bereken de rente over een onbetaalde vordering: de gewone wettelijke rente van artikel 6:119 BW (nu 4%), de handelsrente van artikel 6:119a BW (nu 10,4%) of een zelf afgesproken contractuele rente. De tool rekent samengesteld per jaar, met de officiële percentages per periode sinds 2015, direct in uw browser.
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-container mx-auto px-4 md:px-8 py-16 space-y-16">
+
+    {/* === REKENTOOL === */}
+    <section id="rekentool" class="scroll-mt-24">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="p-6 bg-bg-elevated border border-border rounded-lg space-y-4">
+          <div>
+            <label for="rt-type" class="block text-small font-semibold text-text mb-1">Soort rente</label>
+            <select id="rt-type" class="w-full p-3 border border-border rounded-md bg-bg text-text">
+              <option value="wettelijk">Wettelijke rente (6:119 BW — o.a. consumenten en schadevergoeding)</option>
+              <option value="handel">Handelsrente (6:119a BW — tussen bedrijven)</option>
+              <option value="contractueel">Contractuele rente (zelf afgesproken percentage)</option>
+            </select>
+          </div>
+          <div id="rt-contract" class="hidden grid grid-cols-2 gap-4">
+            <div>
+              <label for="rt-pct" class="block text-small font-semibold text-text mb-1">Rente per jaar (%)</label>
+              <input id="rt-pct" type="number" min="0" max="99" step="0.1" placeholder="bijv. 8" class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+            </div>
+            <div>
+              <label for="rt-methode" class="block text-small font-semibold text-text mb-1">Methode</label>
+              <select id="rt-methode" class="w-full p-3 border border-border rounded-md bg-bg text-text">
+                <option value="samengesteld">Samengesteld (per jaar)</option>
+                <option value="enkelvoudig">Enkelvoudig</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="rt-hoofdsom" class="block text-small font-semibold text-text mb-1">Hoofdsom (€)</label>
+            <input id="rt-hoofdsom" type="number" min="0" step="100" placeholder="bijv. 25000" class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="rt-start" class="block text-small font-semibold text-text mb-1">Rente vanaf</label>
+              <input id="rt-start" type="date" min="2015-01-01" class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+            </div>
+            <div>
+              <label for="rt-eind" class="block text-small font-semibold text-text mb-1">Tot en met</label>
+              <input id="rt-eind" type="date" class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+            </div>
+          </div>
+        </div>
+        <div class="p-6 bg-bg-tinted border border-border rounded-lg">
+          <p class="text-small font-semibold uppercase tracking-wider text-text-secondary mb-2">Opgebouwde rente</p>
+          <p id="rt-uitkomst" class="text-h1 font-extrabold text-text mb-1">—</p>
+          <p id="rt-totaal" class="text-body font-semibold text-text mb-3"></p>
+          <p id="rt-toelichting" class="text-small text-text-secondary">Vul hoofdsom en begindatum in. De begindatum is meestal de dag waarop het verzuim intreedt (bijvoorbeeld de dag na de vervaldatum van de factuur).</p>
+        </div>
+      </div>
+    </section>
+
+    {/* === UITLEG === */}
+    <section class="border-t border-border pt-16">
+      <h2 class="text-h2 font-bold mb-4 text-text">Welke rente geldt voor uw vordering?</h2>
+      <div class="max-w-readable space-y-4">
+        <p class="text-body text-text">
+          Nederland kent twee wettelijke rentes. De <strong>handelsrente</strong> (artikel 6:119a BW) geldt voor handelsovereenkomsten: leveringen van goederen of diensten tussen bedrijven onderling, of tussen een bedrijf en een overheidsorganisatie. Zij is bewust hoog, als prikkel om zakelijke facturen op tijd te betalen. De <strong>gewone wettelijke rente</strong> (artikel 6:119 BW) geldt voor al het andere: vorderingen op consumenten, schadevergoeding, terugbetalingsverplichtingen na ontbinding of vernietiging, en vorderingen die niet uit een handelsovereenkomst voortvloeien.
+        </p>
+        <p class="text-body text-text">
+          De rente loopt vanaf het moment dat de schuldenaar in verzuim is. Bij een handelstransactie gebeurt dat automatisch zodra de afgesproken betalingstermijn verstrijkt, of bij gebreke daarvan na dertig dagen. In andere gevallen is doorgaans eerst een ingebrekestelling met een redelijke termijn nodig, tenzij een fatale betaaltermijn gold. Hoe u een debiteur correct in gebreke stelt, leest u bij de <a href="/modelbrieven/" class="text-brand-primary no-underline hover:underline">modelbrieven</a> en in de kennisbank over een <a href="/clusters/factuur-niet-betaald/" class="text-brand-primary no-underline hover:underline">onbetaalde factuur</a>.
+        </p>
+        <p class="text-body text-text">
+          Beide rentes zijn <strong>samengesteld per jaar</strong>: na elk verstreken jaar wordt de opgebouwde rente bij de hoofdsom opgeteld en telt zij mee voor de verdere renteberekening. Bij vorderingen die jaren openstaan maakt dat een merkbaar verschil, en het is de reden dat een handmatige enkelvoudige berekening vrijwel altijd te laag uitkomt.
+        </p>
+      </div>
+    </section>
+
+    {/* === TARIEVEN === */}
+    <section class="border-t border-border pt-16">
+      <h2 class="text-h2 font-bold mb-2 text-text">Alle percentages sinds 2015</h2>
+      <p class="text-body text-text-secondary mb-6 max-w-readable">
+        De percentages worden halfjaarlijks vastgesteld (bron: rijksoverheid.nl). De rekentool hierboven past bij een langere periode automatisch het juiste percentage per deelperiode toe.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div class="overflow-x-auto">
+          <p class="text-small font-semibold uppercase tracking-wider text-text-secondary mb-2">Wettelijke rente (6:119 BW)</p>
+          <table class="w-full text-body text-text border-collapse">
+            <thead>
+              <tr class="border-b-2 border-border text-left">
+                <th class="py-2 pr-6 font-semibold">Vanaf</th>
+                <th class="py-2 font-semibold">Percentage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-border"><td class="py-2 pr-6">1 januari 2026</td><td class="py-2 font-semibold">4%</td></tr>
+              <tr class="border-b border-border"><td class="py-2 pr-6">1 januari 2025</td><td class="py-2">6%</td></tr>
+              <tr class="border-b border-border"><td class="py-2 pr-6">1 januari 2024</td><td class="py-2">7%</td></tr>
+              <tr class="border-b border-border"><td class="py-2 pr-6">1 juli 2023</td><td class="py-2">6%</td></tr>
+              <tr class="border-b border-border"><td class="py-2 pr-6">1 januari 2023</td><td class="py-2">4%</td></tr>
+              <tr class="border-b border-border"><td class="py-2 pr-6">1 januari 2015</td><td class="py-2">2%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="overflow-x-auto">
+          <p class="text-small font-semibold uppercase tracking-wider text-text-secondary mb-2">Handelsrente (6:119a BW)</p>
+          <table class="w-full text-body text-text border-collapse">
+            <thead>
+              <tr class="border-b-2 border-border text-left">
+                <th class="py-2 pr-6 font-semibold">Vanaf</th>
+                <th class="py-2 font-semibold">Percentage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-border"><td class="py-2 pr-6">1 juli 2026</td><td class="py-2 font-semibold">10,4%</td></tr>
+              <tr class="border-b border-border"><td class="py-2 pr-6">1 juli 2025</td><td class="py-2">10,15%</td></tr>
+              <tr class="border-b border-border"><td class="py-2 pr-6">1 januari 2025</td><td class="py-2">11,15%</td></tr>
+              <tr class="border-b border-border"><td class="py-2 pr-6">1 juli 2024</td><td class="py-2">12,25%</td></tr>
+              <tr class="border-b border-border"><td class="py-2 pr-6">1 januari 2024</td><td class="py-2">12,5%</td></tr>
+              <tr class="border-b border-border"><td class="py-2 pr-6">1 juli 2023</td><td class="py-2">12%</td></tr>
+              <tr class="border-b border-border"><td class="py-2 pr-6">1 januari 2023</td><td class="py-2">10,5%</td></tr>
+              <tr class="border-b border-border"><td class="py-2 pr-6">1 juli 2016</td><td class="py-2">8%</td></tr>
+              <tr class="border-b border-border"><td class="py-2 pr-6">1 januari 2015</td><td class="py-2">8,05%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    {/* === FAQ === */}
+    <section class="border-t border-border pt-16">
+      <h2 class="text-h2 font-bold mb-8 text-text">Veelgestelde vragen over wettelijke rente</h2>
+      <div class="space-y-4 max-w-readable">
+        {faqs.map((f) => (
+          <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+            <h3 class="text-h4 font-bold text-text mb-2">{f.q}</h3>
+            <p class="text-body text-text-secondary">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* === VERDER === */}
+    <section class="border-t border-border pt-16">
+      <h2 class="text-h3 font-bold mb-4 text-text">Verder rekenen en lezen</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a href="/incassokosten-berekenen/" class="block p-6 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+          <h3 class="text-h4 font-bold text-text mb-1">Incassokosten berekenen</h3>
+          <p class="text-small text-text-secondary">De wettelijke WIK-staffel over uw hoofdsom, met btw-opslag waar toegestaan.</p>
+        </a>
+        <a href="/proceskosten-berekenen/" class="block p-6 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+          <h3 class="text-h4 font-bold text-text mb-1">Alle rekentools</h3>
+          <p class="text-small text-text-secondary">Griffierecht, kostenveroordeling en deurwaarderstarieven 2026.</p>
+        </a>
+        <a href="/clusters/factuur-niet-betaald/" class="block p-6 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+          <h3 class="text-h4 font-bold text-text mb-1">Factuur niet betaald?</h3>
+          <p class="text-small text-text-secondary">Het stappenplan van aanmaning tot dwangmiddel, met modelbrieven.</p>
+        </a>
+      </div>
+    </section>
+
+    {/* === BRONNEN === */}
+    <section class="border-t border-border pt-10">
+      <p class="text-small text-text-secondary max-w-readable">
+        <strong class="text-text">Bronnen en peildatum.</strong> Rentepercentages: officiële halfjaarlijkse vaststellingen tot en met 1 juli 2026 (rijksoverheid.nl). Rekenmethode: samengesteld per verstreken jaar conform artikel 6:119 lid 2 en 6:119a lid 3 BW. Peildatum: augustus 2026. De uitkomst is een feitelijke indicatie; aan de berekening kunnen geen rechten worden ontleend. Voor de rentevordering in een concrete zaak <a href="/contact" class="text-brand-primary no-underline hover:underline">neemt u gerust contact op</a>.
+      </p>
+    </section>
+  </div>
+
+  <CTABand />
+
+  <script>
+    const eur = new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' })
+    const $ = (id: string) => document.getElementById(id) as any
+    const gemeld: Record<string, boolean> = {}
+    const meld = (tool: string) => { if (!gemeld[tool]) { gemeld[tool] = true; (window as any).plausible && (window as any).plausible('Rekentool', { props: { tool } }) } }
+
+    const RENTES: Record<string, [string, number][]> = {
+      wettelijk: [
+        ['2015-01-01', 2], ['2023-01-01', 4], ['2023-07-01', 6],
+        ['2024-01-01', 7], ['2025-01-01', 6], ['2026-01-01', 4],
+      ],
+      handel: [
+        ['2015-01-01', 8.05], ['2016-07-01', 8], ['2023-01-01', 10.5],
+        ['2023-07-01', 12], ['2024-01-01', 12.5], ['2024-07-01', 12.25],
+        ['2025-01-01', 11.15], ['2025-07-01', 10.15], ['2026-07-01', 10.4],
+      ],
+    }
+    const DAY = 86400000
+    const addYear = (d: Date) => { const n = new Date(d); n.setFullYear(n.getFullYear() + 1); return n }
+
+    function rekenRente() {
+      const type = $('rt-type').value
+      const contractueel = type === 'contractueel'
+      $('rt-contract').classList.toggle('hidden', !contractueel)
+      $('rt-start').min = contractueel ? '' : '2015-01-01'
+      const P = parseFloat($('rt-hoofdsom').value)
+      const start = $('rt-start').value ? new Date($('rt-start').value + 'T00:00:00Z') : null
+      const eind = $('rt-eind').value ? new Date($('rt-eind').value + 'T00:00:00Z') : null
+      const pct = parseFloat($('rt-pct').value)
+      $('rt-totaal').textContent = ''
+      if (isNaN(P) || P <= 0 || !start || !eind || (contractueel && (isNaN(pct) || pct < 0))) {
+        $('rt-uitkomst').textContent = '—'
+        $('rt-toelichting').textContent = contractueel
+          ? 'Vul hoofdsom, rentepercentage en begindatum in.'
+          : 'Vul hoofdsom en begindatum in. De begindatum is meestal de dag waarop het verzuim intreedt (bijvoorbeeld de dag na de vervaldatum van de factuur).'
+        return
+      }
+      if (!contractueel && start < new Date('2015-01-01T00:00:00Z')) {
+        $('rt-uitkomst').textContent = '—'
+        $('rt-toelichting').textContent = 'Deze tool rekent voor de wettelijke tarieven vanaf 1 januari 2015. Neem voor oudere vorderingen contact op.'
+        return
+      }
+      if (eind <= start) {
+        $('rt-uitkomst').textContent = '—'
+        $('rt-toelichting').textContent = 'De einddatum moet na de begindatum liggen.'
+        return
+      }
+      const dagenTotaal = Math.round((+eind - +start) / DAY)
+      let totaal = 0
+      let slotNote = ''
+      if (contractueel && $('rt-methode').value === 'enkelvoudig') {
+        totaal = P * (pct / 100) * (dagenTotaal / 365)
+        slotNote = `Over ${dagenTotaal} dagen, enkelvoudig tegen ${pct.toLocaleString('nl-NL')}% per jaar.`
+      } else {
+        const tabel = contractueel ? [['1900-01-01', pct] as [string, number]] : RENTES[type]
+        const wissels = tabel.map(([d]) => new Date(d + 'T00:00:00Z'))
+        const rateAt = (d: Date) => { let r = tabel[0][1]; for (let i = 0; i < tabel.length; i++) { if (wissels[i] <= d) r = tabel[i][1] }; return r }
+        let base = P, jaarAcc = 0
+        let cur = new Date(start), anniv = addYear(start)
+        let guard = 0
+        while (cur < eind && guard++ < 3000) {
+          const volgendeWissel = wissels.find((w) => w > cur)
+          const segEind = new Date(Math.min(+eind, +anniv, volgendeWissel ? +volgendeWissel : Infinity))
+          const dagen = Math.round((+segEind - +cur) / DAY)
+          jaarAcc += base * (rateAt(cur) / 100) * (dagen / 365)
+          cur = segEind
+          if (+cur === +anniv) { base += jaarAcc; totaal += jaarAcc; jaarAcc = 0; anniv = addYear(anniv) }
+        }
+        totaal += jaarAcc
+        slotNote = contractueel
+          ? `Over ${dagenTotaal} dagen, samengesteld per verstreken jaar tegen ${pct.toLocaleString('nl-NL')}% per jaar.`
+          : `Over ${dagenTotaal} dagen, samengesteld per verstreken jaar (huidig tarief ${rateAt(eind).toLocaleString('nl-NL')}%).`
+      }
+      $('rt-uitkomst').textContent = eur.format(totaal)
+      $('rt-totaal').textContent = `Hoofdsom + rente: ${eur.format(P + totaal)}`
+      $('rt-toelichting').textContent = slotNote + ' Kleine afrondingsverschillen met andere rekenmethodes zijn mogelijk.'
+      meld('rente')
+    }
+    const vandaag = new Date().toISOString().slice(0, 10)
+    $('rt-eind').value = vandaag
+    $('rt-eind').max = vandaag
+    ;['rt-type', 'rt-hoofdsom', 'rt-start', 'rt-eind', 'rt-pct', 'rt-methode'].forEach((id) => $(id).addEventListener('input', rekenRente))
+  </script>
+</BaseLayout>

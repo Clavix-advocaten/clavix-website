@@ -1,0 +1,201 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABand from '@components/CTABand.astro'
+import { breadcrumbSchema } from '@lib/schema-markup'
+
+const faqs = [
+  {
+    q: 'Hoe hoog zijn de wettelijke incassokosten?',
+    a: 'De vergoeding volgt de staffel uit het Besluit vergoeding voor buitengerechtelijke incassokosten: 15% over de eerste € 2.500 van de hoofdsom, 10% over de volgende € 2.500, 5% over de volgende € 5.000, 1% over de volgende € 190.000 en 0,5% over het meerdere. Het minimum is € 40, het maximum € 6.775.',
+  },
+  {
+    q: 'Moet ik eerst een veertiendagenbrief sturen?',
+    a: 'Alleen bij een consument-schuldenaar. Die moet eerst een kosteloze aanmaning ontvangen met een termijn van veertien dagen die begint op de dag nadat de brief is bezorgd, onder vermelding van het exacte bedrag aan incassokosten. Pas als betaling dan uitblijft, zijn de incassokosten verschuldigd. Tussen bedrijven geldt deze eis niet.',
+  },
+  {
+    q: 'Mag ik btw over de incassokosten rekenen?',
+    a: 'Alleen als u als schuldeiser de btw over incassokosten niet kunt verrekenen, bijvoorbeeld omdat u vrijgestelde prestaties levert. Bij een consument-schuldenaar moet de btw-verhoging bovendien in de veertiendagenbrief zijn aangekondigd. Kunt u de btw wel verrekenen, dan blijft het bij het staffelbedrag.',
+  },
+  {
+    q: 'Mogen bedrijven onderling afwijken van de staffel?',
+    a: 'Ja. Tegenover consumenten is de staffel dwingend recht, maar tussen bedrijven mag bij overeenkomst een hogere of andere vergoeding worden afgesproken, bijvoorbeeld in algemene voorwaarden. Zonder afspraak geldt ook tussen bedrijven de wettelijke staffel.',
+  },
+  {
+    q: 'Komen de incassokosten bovenop de rente?',
+    a: 'Ja. De incassokosten vergoeden de kosten van het innen; daarnaast loopt over de hoofdsom de wettelijke rente of handelsrente vanaf het verzuim. Beide kunnen in dezelfde procedure worden gevorderd.',
+  },
+]
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Kosten', url: '/kosten' },
+    { name: 'Incassokosten berekenen', url: '/incassokosten-berekenen' },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+]
+---
+
+<BaseLayout
+  title="Incassokosten berekenen: de wettelijke staffel (WIK) 2026"
+  description="Bereken de buitengerechtelijke incassokosten over uw vordering volgens de wettelijke WIK-staffel: 15% tot 0,5%, minimaal € 40 en maximaal € 6.775. Met uitleg over de veertiendagenbrief en btw."
+  schemaJsonLd={schemas}
+>
+  {/* === HERO === */}
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-20">
+      <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
+        Home › <a href="/kosten" class="no-underline hover:underline text-text-secondary">Kosten</a> › Incassokosten
+      </p>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
+        Incassokosten berekenen
+      </h1>
+      <p class="text-lead text-text-secondary mb-6 max-w-readable">
+        Bereken de buitengerechtelijke incassokosten die u aan uw schuldenaar mag doorberekenen, volgens de wettelijke staffel uit het Besluit vergoeding voor buitengerechtelijke incassokosten (de WIK-staffel). De tool rekent direct in uw browser; er wordt niets opgeslagen of verstuurd.
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-container mx-auto px-4 md:px-8 py-16 space-y-16">
+
+    {/* === REKENTOOL === */}
+    <section id="rekentool" class="scroll-mt-24">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="p-6 bg-bg-elevated border border-border rounded-lg space-y-4">
+          <div>
+            <label for="ik-hoofdsom" class="block text-small font-semibold text-text mb-1">Hoofdsom (€)</label>
+            <input id="ik-hoofdsom" type="number" min="0" step="100" placeholder="bijv. 8500" class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+          </div>
+          <label class="flex items-start gap-2 text-small text-text">
+            <input id="ik-btw" type="checkbox" class="w-4 h-4 mt-0.5" />
+            <span>Verhoog met 21% btw — alleen toegestaan als u als schuldeiser de btw niet kunt verrekenen (bijvoorbeeld bij vrijgestelde prestaties)</span>
+          </label>
+        </div>
+        <div class="p-6 bg-bg-tinted border border-border rounded-lg">
+          <p class="text-small font-semibold uppercase tracking-wider text-text-secondary mb-2">Incassokosten</p>
+          <p id="ik-uitkomst" class="text-h1 font-extrabold text-text mb-3">—</p>
+          <p id="ik-toelichting" class="text-small text-text-secondary">Vul de hoofdsom in.</p>
+        </div>
+      </div>
+    </section>
+
+    {/* === STAFFEL === */}
+    <section class="border-t border-border pt-16">
+      <h2 class="text-h2 font-bold mb-2 text-text">De wettelijke staffel</h2>
+      <p class="text-body text-text-secondary mb-6 max-w-readable">
+        De vergoeding is een percentage van de hoofdsom, in schijven. De grondslag is artikel 6:96 lid 2 onder c BW, uitgewerkt in het Besluit vergoeding voor buitengerechtelijke incassokosten.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full max-w-2xl text-body text-text border-collapse">
+          <thead>
+            <tr class="border-b-2 border-border text-left">
+              <th class="py-3 pr-6 font-semibold">Deel van de hoofdsom</th>
+              <th class="py-3 font-semibold">Percentage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-border"><td class="py-3 pr-6">Over de eerste € 2.500</td><td class="py-3">15% (minimaal € 40)</td></tr>
+            <tr class="border-b border-border"><td class="py-3 pr-6">Over de volgende € 2.500</td><td class="py-3">10%</td></tr>
+            <tr class="border-b border-border"><td class="py-3 pr-6">Over de volgende € 5.000</td><td class="py-3">5%</td></tr>
+            <tr class="border-b border-border"><td class="py-3 pr-6">Over de volgende € 190.000</td><td class="py-3">1%</td></tr>
+            <tr class="border-b border-border"><td class="py-3 pr-6">Over het meerdere</td><td class="py-3">0,5% (maximaal € 6.775 totaal)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    {/* === UITLEG === */}
+    <section class="border-t border-border pt-16">
+      <h2 class="text-h2 font-bold mb-4 text-text">Consument of bedrijf: de regels verschillen</h2>
+      <div class="max-w-readable space-y-4">
+        <p class="text-body text-text">
+          Bij een <strong>consument-schuldenaar</strong> is de staffel dwingend recht: meer vragen mag niet, en de kosten zijn pas verschuldigd nadat de consument een kosteloze aanmaning heeft ontvangen met een termijn van veertien dagen die begint op de dag nadat de brief is bezorgd, met daarin het exacte bedrag aan incassokosten. Een brief die de termijn verkeerd formuleert ("binnen veertien dagen na heden") voldoet niet, en dan zijn geen incassokosten verschuldigd. Een correct model vindt u bij de <a href="/modelbrieven/" class="text-brand-primary no-underline hover:underline">modelbrieven</a>.
+        </p>
+        <p class="text-body text-text">
+          Bij een <strong>zakelijke schuldenaar</strong> zijn de kosten direct na het intreden van het verzuim verschuldigd, zonder veertiendagenbrief. Bovendien mag tussen bedrijven bij overeenkomst van de staffel worden afgeweken, bijvoorbeeld met een incassobeding in de algemene voorwaarden. Hoe u een zakelijke debiteur aanpakt, van eerste aanmaning tot beslag, staat stap voor stap in de kennisbank: <a href="/clusters/factuur-niet-betaald/" class="text-brand-primary no-underline hover:underline">factuur niet betaald</a>.
+        </p>
+        <p class="text-body text-text">
+          De incassokosten staan los van de rente: over de hoofdsom loopt daarnaast de <a href="/wettelijke-rente-berekenen/" class="text-brand-primary no-underline hover:underline">wettelijke rente of handelsrente</a> vanaf het verzuim. Betaalt de schuldenaar ook na aanmaning niet, dan kunnen hoofdsom, rente én incassokosten samen worden gevorderd in een procedure; wat dat kost rekent u door met de <a href="/proceskosten-berekenen/" class="text-brand-primary no-underline hover:underline">proceskosten-rekentools</a>.
+        </p>
+      </div>
+    </section>
+
+    {/* === FAQ === */}
+    <section class="border-t border-border pt-16">
+      <h2 class="text-h2 font-bold mb-8 text-text">Veelgestelde vragen over incassokosten</h2>
+      <div class="space-y-4 max-w-readable">
+        {faqs.map((f) => (
+          <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+            <h3 class="text-h4 font-bold text-text mb-2">{f.q}</h3>
+            <p class="text-body text-text-secondary">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* === VERDER === */}
+    <section class="border-t border-border pt-16">
+      <h2 class="text-h3 font-bold mb-4 text-text">Verder rekenen en lezen</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a href="/wettelijke-rente-berekenen/" class="block p-6 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+          <h3 class="text-h4 font-bold text-text mb-1">Wettelijke rente berekenen</h3>
+          <p class="text-small text-text-secondary">Samengestelde rente met de actuele percentages: 4% wettelijk, 10,4% handel.</p>
+        </a>
+        <a href="/modelbrieven/" class="block p-6 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+          <h3 class="text-h4 font-bold text-text mb-1">Gratis modelbrieven</h3>
+          <p class="text-small text-text-secondary">Ingebrekestelling en veertiendagenbrief, juridisch correct opgesteld.</p>
+        </a>
+        <a href="/proceskosten-berekenen/" class="block p-6 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+          <h3 class="text-h4 font-bold text-text mb-1">Alle rekentools</h3>
+          <p class="text-small text-text-secondary">Griffierecht, kostenveroordeling en deurwaarderstarieven 2026.</p>
+        </a>
+      </div>
+    </section>
+
+    {/* === BRONNEN === */}
+    <section class="border-t border-border pt-10">
+      <p class="text-small text-text-secondary max-w-readable">
+        <strong class="text-text">Bronnen en peildatum.</strong> Staffel: Besluit vergoeding voor buitengerechtelijke incassokosten (grondslag artikel 6:96 lid 2 onder c BW). Veertiendagenbrief: artikel 6:96 lid 6 BW en HR 25 november 2016, ECLI:NL:HR:2016:2704. Peildatum: augustus 2026. De uitkomst is een feitelijke indicatie; aan de berekening kunnen geen rechten worden ontleend. Voor incasso van een concrete vordering <a href="/contact" class="text-brand-primary no-underline hover:underline">neemt u gerust contact op</a>.
+      </p>
+    </section>
+  </div>
+
+  <CTABand />
+
+  <script>
+    const eur = new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' })
+    const $ = (id: string) => document.getElementById(id) as any
+    const gemeld: Record<string, boolean> = {}
+    const meld = (tool: string) => { if (!gemeld[tool]) { gemeld[tool] = true; (window as any).plausible && (window as any).plausible('Rekentool', { props: { tool } }) } }
+
+    function rekenIncasso() {
+      const h = parseFloat($('ik-hoofdsom').value)
+      if (isNaN(h) || h <= 0) {
+        $('ik-uitkomst').textContent = '—'
+        $('ik-toelichting').textContent = 'Vul de hoofdsom in.'
+        return
+      }
+      let k = 0.15 * Math.min(h, 2500)
+      if (h > 2500) k += 0.10 * (Math.min(h, 5000) - 2500)
+      if (h > 5000) k += 0.05 * (Math.min(h, 10000) - 5000)
+      if (h > 10000) k += 0.01 * (Math.min(h, 200000) - 10000)
+      if (h > 200000) k += 0.005 * (h - 200000)
+      k = Math.min(Math.max(k, 40), 6775)
+      const metBtw = $('ik-btw').checked
+      const bedrag = metBtw ? k * 1.21 : k
+      $('ik-uitkomst').textContent = eur.format(bedrag)
+      $('ik-toelichting').textContent = (metBtw ? `Staffelbedrag ${eur.format(k)} verhoogd met 21% btw. ` : '') +
+        'Minimaal € 40, maximaal € 6.775. Bij een consument-schuldenaar is eerst een kosteloze veertiendagenbrief vereist.'
+      meld('incassokosten')
+    }
+    ;['ik-hoofdsom', 'ik-btw'].forEach((id) => $(id).addEventListener('input', rekenIncasso))
+  </script>
+</BaseLayout>
