@@ -58,7 +58,7 @@ const schemas = [
             <p class="text-small text-text-secondary">Wij gebruiken uw adres uitsluitend voor de nieuwsbrief.</p>
           </form>
         </div>
-        <div id="nb-succes" style="display: none;" class="p-6 bg-bg-elevated border-2 border-brand-primary rounded-lg">
+        <div id="nb-succes" role="status" style="display: none;" class="p-6 bg-bg-elevated border-2 border-brand-primary rounded-lg">
           <h2 class="text-h3 font-bold mb-2 text-text">U staat op de lijst</h2>
           <p class="text-body text-text-secondary">Dank voor uw aanmelding — de eerstvolgende editie ontvangt u in uw inbox. Tot die tijd: de <a href="/notities/" class="text-brand-primary no-underline hover:underline">notities</a> en de <a href="/clusters/conservatoir-beslag/" class="text-brand-primary no-underline hover:underline">kennisbank</a> staan voor u klaar.</p>
         </div>
@@ -74,7 +74,7 @@ const schemas = [
         var f = document.getElementById('nb-form-wrap');
         var s = document.getElementById('nb-succes');
         if (f) f.style.display = 'none';
-        if (s) { s.style.display = 'block'; s.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+        if (s) { s.style.display = 'block'; s.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' }); }
       }
     })();
   </script>

@@ -120,8 +120,18 @@
 /* === BASE RESET + STYLES === */
 *, *::before, *::after { box-sizing: border-box; }
 
+/* Metrisch passende fallback: voorkomt layout-shift terwijl Montserrat laadt */
+@font-face {
+  font-family: 'Montserrat-fallback';
+  src: local('Arial');
+  size-adjust: 112.55%;
+  ascent-override: 86%;
+  descent-override: 22.3%;
+  line-gap-override: 0%;
+}
+
 html {
-  font-family: 'Montserrat Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Montserrat Variable', 'Montserrat-fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: var(--color-text);
@@ -164,8 +174,10 @@ a {
 }
 
 *:focus { outline: none; }
+/* Echte outline naast de box-shadow: blijft zichtbaar in high-contrast/forced-colors */
 *:focus-visible {
-  outline: none;
+  outline: 2px solid var(--color-action, currentColor);
+  outline-offset: 2px;
   box-shadow: var(--focus-ring);
   border-radius: 0.25rem;
 }

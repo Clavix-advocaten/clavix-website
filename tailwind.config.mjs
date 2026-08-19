@@ -58,8 +58,8 @@ export default {
       },
 
       fontFamily: {
-        display: ['Montserrat Variable', 'system-ui', 'sans-serif'],
-        body: ['Montserrat Variable', 'system-ui', 'sans-serif'],
+        display: ['Montserrat Variable', 'Montserrat-fallback', 'system-ui', 'sans-serif'],
+        body: ['Montserrat Variable', 'Montserrat-fallback', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'IBM Plex Mono', 'monospace'],
       },
 

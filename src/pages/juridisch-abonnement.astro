@@ -216,7 +216,7 @@ const waarde = [
               <p class="text-tiny text-text-secondary">Wij gebruiken uw gegevens uitsluitend om contact met u op te nemen en, als u dat aanvinkt, voor de nieuwsbrief.</p>
             </form>
           </div>
-          <div id="ab-succes" style="display: none;" class="p-6 bg-bg-elevated border-2 border-brand-primary rounded-lg">
+          <div id="ab-succes" role="status" style="display: none;" class="p-6 bg-bg-elevated border-2 border-brand-primary rounded-lg">
             <h3 class="text-h3 font-bold mb-2 text-text">Uw gegevens zijn ontvangen</h3>
             <p class="text-body text-text-secondary">Hartelijk dank. Mr. Kumar neemt binnen enkele werkdagen persoonlijk contact met u op voor de kennismaking. Tot die tijd staan de <a href="/proceskosten-berekenen/" class="text-brand-primary no-underline hover:underline">rekentools</a> en <a href="/modelbrieven/" class="text-brand-primary no-underline hover:underline">modelbrieven</a> al voor u klaar.</p>
           </div>
@@ -252,7 +252,7 @@ const waarde = [
         var f = document.getElementById('ab-form-wrap');
         var s = document.getElementById('ab-succes');
         if (f) f.style.display = 'none';
-        if (s) { s.style.display = 'block'; s.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+        if (s) { s.style.display = 'block'; s.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' }); }
       }
     })();
   </script>

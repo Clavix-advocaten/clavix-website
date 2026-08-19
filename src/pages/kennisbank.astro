@@ -1,0 +1,142 @@
+---
+/**
+ * Kennisbank-overzicht: alle juridische artikelen gegroepeerd per rechtsgebied,
+ * plus de zelfhulpmiddelen (woordenlijst, FAQ, rekentools, modelbrieven).
+ */
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABand from '@components/CTABand.astro'
+import Breadcrumbs from '@components/Breadcrumbs.astro'
+import { getAllClustersWithPillar, getAllPillarsForNav } from '@lib/queries'
+import { breadcrumbSchema } from '@lib/schema-markup'
+
+const clusters = await getAllClustersWithPillar()
+const pillars = await getAllPillarsForNav()
+
+// Vaste volgorde van de pijlers, daarna alfabetisch op titel binnen de pijler
+const pillarVolgorde = [
+  'vastgoed-en-ondernemers',
+  'ondernemingsrecht',
+  'vastgoedrecht',
+  'insolventie-en-herstructurering',
+  'burgerlijk-procesrecht',
+]
+
+const groepen = pillarVolgorde
+  .map((ps) => {
+    const pillar = pillars.find((p: any) => p.slug === ps)
+    return {
+      slug: ps,
+      titel: pillar?.shortTitle || ps,
+      clusters: clusters.filter((c: any) => c.pillarSlug === ps),
+    }
+  })
+  .filter((g) => g.clusters.length > 0)
+
+const overig = clusters.filter((c: any) => !pillarVolgorde.includes(c.pillarSlug))
+
+const totaal = clusters.length
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': 'https://clavix.nl/kennisbank/',
+    name: 'Kennisbank | Clavix Advocaten',
+    url: 'https://clavix.nl/kennisbank/',
+    inLanguage: 'nl-NL',
+    description: `Juridische kennisbank met ${totaal} verdiepende artikelen over ondernemingsrecht, vastgoedrecht, insolventie en procederen, geschreven door een advocaat.`,
+    isPartOf: { '@type': 'WebSite', url: 'https://clavix.nl/' },
+    publisher: { '@type': 'LegalService', '@id': 'https://clavix.nl/#organization' },
+  },
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Kennisbank', url: '/kennisbank/' },
+  ]),
+]
+
+const zelfRegelen = [
+  { titel: 'Woordenlijst', href: '/woordenlijst/', sub: 'Juridische begrippen in gewoon Nederlands' },
+  { titel: 'Veelgestelde vragen', href: '/veelgestelde-vragen/', sub: 'Antwoorden per rechtsgebied' },
+  { titel: 'Wettelijke rente berekenen', href: '/wettelijke-rente-berekenen/', sub: 'Handelsrente en gewone rente' },
+  { titel: 'Incassokosten berekenen', href: '/incassokosten-berekenen/', sub: 'Volgens de wettelijke staffel' },
+  { titel: 'Proceskosten berekenen', href: '/proceskosten-berekenen/', sub: 'Griffierecht en salaris' },
+  { titel: 'Modelbrieven', href: '/modelbrieven/', sub: 'Ingebrekestelling, betalingsherinnering en meer' },
+]
+---
+
+<BaseLayout
+  title="Kennisbank: juridische artikelen voor ondernemers"
+  description={`${totaal} verdiepende artikelen over ondernemingsrecht, vastgoedrecht, insolventie en procederen. Geschreven door een advocaat, gratis toegankelijk.`}
+  schemaJsonLd={jsonLd}
+>
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Kennisbank' }]} />
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Kennisbank</h1>
+      <p class="text-lead text-text-secondary max-w-readable">
+        {totaal} verdiepende artikelen over de juridische vragen waar ondernemers met vastgoed tegenaan lopen. Geschreven door een advocaat, in gewoon Nederlands, gratis toegankelijk.
+      </p>
+    </div>
+  </section>
+
+  {groepen.map((groep) => (
+    <section class="max-w-container mx-auto px-4 md:px-8 py-12" aria-labelledby={`kb-${groep.slug}`}>
+      <div class="flex items-baseline justify-between gap-4 mb-6 flex-wrap">
+        <h2 id={`kb-${groep.slug}`} class="text-h2 font-bold text-text">{groep.titel}</h2>
+        <a href={`/praktijkgebieden/${groep.slug}/`} class="text-small font-semibold text-text-accent no-underline hover:underline whitespace-nowrap">
+          Naar het rechtsgebied →
+        </a>
+      </div>
+      <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 list-none p-0">
+        {groep.clusters.map((c: any) => (
+          <li>
+            <a href={`/clusters/${c.slug}/`} class="block h-full border border-border rounded-lg p-5 no-underline hover:border-text-accent hover:shadow-sm transition bg-bg">
+              <div class="font-semibold text-text mb-1">{c.title}</div>
+              {c.subtitle && <div class="text-small text-text-secondary">{c.subtitle}</div>}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+
+  {overig.length > 0 && (
+    <section class="max-w-container mx-auto px-4 md:px-8 py-12" aria-labelledby="kb-overig">
+      <h2 id="kb-overig" class="text-h2 font-bold text-text mb-6">Overige artikelen</h2>
+      <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 list-none p-0">
+        {overig.map((c: any) => (
+          <li>
+            <a href={`/clusters/${c.slug}/`} class="block h-full border border-border rounded-lg p-5 no-underline hover:border-text-accent hover:shadow-sm transition bg-bg">
+              <div class="font-semibold text-text mb-1">{c.title}</div>
+              {c.subtitle && <div class="text-small text-text-secondary">{c.subtitle}</div>}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-12" aria-labelledby="kb-zelf">
+      <h2 id="kb-zelf" class="text-h2 font-bold text-text mb-2">Zelf regelen</h2>
+      <p class="text-body text-text-secondary mb-6 max-w-readable">
+        Hulpmiddelen waarmee u zelf een eerste stap zet: berekenen wat een vordering waard is, een brief opstellen of een begrip opzoeken.
+      </p>
+      <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 list-none p-0">
+        {zelfRegelen.map((z) => (
+          <li>
+            <a href={z.href} class="block h-full border border-border rounded-lg p-5 no-underline hover:border-text-accent hover:shadow-sm transition bg-bg">
+              <div class="font-semibold text-text mb-1">{z.titel}</div>
+              <div class="text-small text-text-secondary">{z.sub}</div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <CTABand
+    heading="Liever direct een advocaat spreken?"
+    description="Een kennismakingsgesprek van 30 minuten is kosteloos. U weet daarna waar u staat en wat de logische volgende stap is."
+  />
+</BaseLayout>

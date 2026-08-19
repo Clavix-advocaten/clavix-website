@@ -20,7 +20,7 @@ const currentYear = new Date().getFullYear()
         </form>
       </div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
       {/* Kolom 1: Clavix branding */}
       <div>
         <img src="/clavix-logo-light.svg" alt="Clavix" class="h-9 w-auto mb-3" width="180" height="36" />
@@ -81,6 +81,15 @@ const currentYear = new Date().getFullYear()
           <li><a href="/praktijkgebieden/burgerlijk-procesrecht/" class="no-underline hover:underline" style="color: var(--ns-100);">Burgerlijk procesrecht</a></li>
           <li><a href="/praktijkgebieden/insolventie-en-herstructurering/" class="no-underline hover:underline" style="color: var(--ns-100);">Insolventie & herstructurering</a></li>
         </ul>
+        <h3 class="font-semibold mb-4 mt-8 text-base" style="color: var(--neutral-0);">Sectoren</h3>
+        <ul class="space-y-2 text-small">
+          <li><a href="/sectoren/zorg/" class="no-underline hover:underline" style="color: var(--ns-100);">Zorg</a></li>
+          <li><a href="/sectoren/tech/" class="no-underline hover:underline" style="color: var(--ns-100);">Tech & SaaS</a></li>
+          <li><a href="/sectoren/horeca/" class="no-underline hover:underline" style="color: var(--ns-100);">Horeca</a></li>
+          <li><a href="/sectoren/bouw/" class="no-underline hover:underline" style="color: var(--ns-100);">Bouw</a></li>
+          <li><a href="/sectoren/retail/" class="no-underline hover:underline" style="color: var(--ns-100);">Retail</a></li>
+          <li><a href="/sectoren/vastgoed-projecten/" class="no-underline hover:underline" style="color: var(--ns-100);">Vastgoed & Projecten</a></li>
+        </ul>
       </div>
 
       {/* Kolom 3: Het kantoor */}
@@ -90,17 +99,29 @@ const currentYear = new Date().getFullYear()
           <li><a href="/kumar/" class="no-underline hover:underline" style="color: var(--ns-100);">Over mr. Kumar</a></li>
           <li><a href="/werkwijze/" class="no-underline hover:underline" style="color: var(--ns-100);">Werkwijze en tarieven</a></li>
           <li><a href="/kosten/" class="no-underline hover:underline" style="color: var(--ns-100);">Wat kost een advocaat?</a></li>
-          <li><a href="/juridisch-abonnement/" class="no-underline hover:underline" style="color: var(--ns-100);">Juridisch abonnement</a></li>
           <li><a href="/advocaat-zuidas/" class="no-underline hover:underline" style="color: var(--ns-100);">Advocaat op de Zuidas</a></li>
+          <li><a href="/kennisbank/" class="no-underline hover:underline" style="color: var(--ns-100);">Kennisbank</a></li>
           <li><a href="/veelgestelde-vragen/" class="no-underline hover:underline" style="color: var(--ns-100);">Veelgestelde vragen</a></li>
-          <li><a href="/woordenlijst/" class="no-underline hover:underline" style="color: var(--ns-100);">Woordenlijst</a></li>
           <li><a href="/notities/" class="no-underline hover:underline" style="color: var(--ns-100);">Notities</a></li>
           <li><a href="/contact/" class="no-underline hover:underline" style="color: var(--ns-100);">Contact</a></li>
           <li><a href="/en/" class="no-underline hover:underline" style="color: var(--ns-100);" hreflang="en" lang="en">English</a></li>
         </ul>
       </div>
 
-      {/* Kolom 4: Juridisch */}
+      {/* Kolom 4: Zelf regelen */}
+      <div>
+        <h3 class="font-semibold mb-4 text-base" style="color: var(--neutral-0);">Zelf regelen</h3>
+        <ul class="space-y-2 text-small">
+          <li><a href="/wettelijke-rente-berekenen/" class="no-underline hover:underline" style="color: var(--ns-100);">Wettelijke rente berekenen</a></li>
+          <li><a href="/incassokosten-berekenen/" class="no-underline hover:underline" style="color: var(--ns-100);">Incassokosten berekenen</a></li>
+          <li><a href="/proceskosten-berekenen/" class="no-underline hover:underline" style="color: var(--ns-100);">Proceskosten berekenen</a></li>
+          <li><a href="/modelbrieven/" class="no-underline hover:underline" style="color: var(--ns-100);">Modelbrieven</a></li>
+          <li><a href="/woordenlijst/" class="no-underline hover:underline" style="color: var(--ns-100);">Woordenlijst</a></li>
+          <li><a href="/juridisch-abonnement/" class="no-underline hover:underline" style="color: var(--ns-100);">Juridisch abonnement</a></li>
+        </ul>
+      </div>
+
+      {/* Kolom 5: Juridisch */}
       <div>
         <h3 class="font-semibold mb-4 text-base" style="color: var(--neutral-0);">Juridisch</h3>
         <ul class="space-y-2 text-small">

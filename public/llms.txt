@@ -113,9 +113,14 @@
 - [Wettelijke rente berekenen](https://clavix.nl/wettelijke-rente-berekenen/): Rekentool voor de wettelijke rente (4% per 1-1-2026), handelsrente (10,4% per 1-7-2026) en contractuele rente, samengesteld per jaar conform 6:119/6:119a BW, met alle percentages sinds 2015.
 - [Incassokosten berekenen](https://clavix.nl/incassokosten-berekenen/): Rekentool voor de buitengerechtelijke incassokosten volgens de wettelijke WIK-staffel (15% tot 0,5%, min € 40, max € 6.775), met uitleg over de veertiendagenbrief bij consumenten en btw-opslag.
 - [Modelbrieven](https://clavix.nl/modelbrieven/): Gratis Word-modellen: betalingsherinnering (zakelijk), ingebrekestelling (zakelijke debiteur) en veertiendagenbrief (consument, met de door de rechtspraak aanbevolen termijnformulering).
-- [Notities](https://clavix.nl/notities/): Wat ons opvalt in jurisprudentie en praktijk.
+- [Notities](https://clavix.nl/notities/): Wat ons opvalt in jurisprudentie en praktijk. Recente notities:
+  - [Vastgoed bij verkoop van de BV: drie valkuilen](https://clavix.nl/notities/vastgoed-bij-verkoop-van-de-bv-drie-valkuilen/)
+  - [De eerste 14 dagen na een faillissement](https://clavix.nl/notities/de-eerste-14-dagen-na-een-faillissement-vier-dingen-die-de-curator-als-eerste-doet/)
+  - [Conservatoir beslag: wat het kost en wanneer het loont](https://clavix.nl/notities/conservatoir-beslag-kost-en-wanneer/)
+  - [Vier momenten waarop bestuurders te laat juridisch advies inschakelen](https://clavix.nl/notities/vier-momenten-waarop-bestuurders-te-laat-juridisch-advies-inschakelen/)
+- [Kennisbank](https://clavix.nl/kennisbank/): Overzicht van alle verdiepende artikelen per rechtsgebied, plus rekentools, modelbrieven en woordenlijst.
 - [Veelgestelde vragen](https://clavix.nl/veelgestelde-vragen/): 24 vragen per rechtsgebied, met korte antwoorden en doorkliks.
-- [Juridische woordenlijst](https://clavix.nl/woordenlijst/): 105 begrippen uit ondernemingsrecht, vastgoedrecht, procesrecht en insolventierecht, elk met eigen anchor (bijv. /woordenlijst/#terme-de-grace) en link naar de verdiepende kennisbankpagina.
+- [Juridische woordenlijst](https://clavix.nl/woordenlijst/): 139 begrippen uit ondernemingsrecht, vastgoedrecht, procesrecht en insolventierecht, elk met eigen anchor (bijv. /woordenlijst/#terme-de-grace) en link naar de verdiepende kennisbankpagina.
 - [Juridisch abonnement](https://clavix.nl/juridisch-abonnement/): Het Clavix-netwerk — huisadvocaat, preventie, netwerk, als eerste op de hoogte van ontwikkelingen, mediators binnen het netwerk en procesvertegenwoordiging door een kantoor dat de onderneming kent; exclusief voor ondernemers die bij Clavix passen, aansluiting na kennismakingsgesprek.
 - [Nieuwsbrief](https://clavix.nl/nieuwsbrief/): Maandelijkse update over wetgeving, rechtspraak en tarieven voor ondernemers met vastgoed — vijf minuten leestijd.
 - [Contact](https://clavix.nl/contact/): Eerste gesprek van 30 minuten is een verkennende kennismaking. Talen: Nederlands en Engels. Parkeren: WTC-parkeergarage; station Amsterdam Zuid op loopafstand.
@@ -132,4 +137,4 @@
 
 ## Contact
 
-Strawinskylaan 257, 1077 XX Amsterdam · 020 747 1121 · info@clavix.nl
+Strawinskylaan 257, 1077 XX Amsterdam · +31 20 747 1121 · info@clavix.nl

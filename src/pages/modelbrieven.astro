@@ -63,7 +63,7 @@ const schemas = [
             <button type="submit" class="w-full bg-brand-primary text-white font-semibold px-8 py-3 rounded-lg hover:opacity-90 transition cursor-pointer">Naar de downloads</button>
           </form>
         </div>
-        <div id="mb-downloads" style="display: none;" class="p-6 bg-bg-elevated border-2 border-brand-primary rounded-lg max-w-md space-y-4">
+        <div id="mb-downloads" role="status" style="display: none;" class="p-6 bg-bg-elevated border-2 border-brand-primary rounded-lg max-w-md space-y-4">
           <p class="text-body font-semibold text-text">Dank u — hier zijn de brieven:</p>
           <a href="/downloads/modelbrief-betalingsherinnering.docx" class="block bg-brand-primary text-white font-semibold px-6 py-3 rounded-lg no-underline hover:opacity-90 transition text-center" download>⬇ Betalingsherinnering (zakelijk) — Word</a>
           <a href="/downloads/modelbrief-ingebrekestelling.docx" class="block bg-brand-primary text-white font-semibold px-6 py-3 rounded-lg no-underline hover:opacity-90 transition text-center" download>⬇ Ingebrekestelling (zakelijk) — Word</a>
@@ -116,7 +116,7 @@ const schemas = [
         var f = document.getElementById('mb-form-wrap');
         var d = document.getElementById('mb-downloads');
         if (f) f.style.display = 'none';
-        if (d) { d.style.display = 'block'; d.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+        if (d) { d.style.display = 'block'; d.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' }); }
       }
     })();
   </script>

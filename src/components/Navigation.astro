@@ -44,6 +44,7 @@ const navItems: any[] = [
       },
     ],
   },
+  { label: 'Kennisbank', href: '/kennisbank/' },
   { label: 'Werkwijze', href: '/werkwijze/' },
   { label: 'Kosten', href: '/kosten/' },
   { label: 'mr. Kumar', href: '/kumar/' },
@@ -69,11 +70,13 @@ const navItems: any[] = [
                 data-dropdown-trigger
                 class="text-text hover:text-text-accent transition flex items-center gap-1 py-2 whitespace-nowrap"
                 aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="mega-menu-expertise"
               >
                 {item.label}
                 <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
               </button>
-              <div data-dropdown class="absolute top-full left-0 mt-2 bg-bg-elevated border border-border rounded-lg shadow-lg p-6 min-w-[900px] grid grid-cols-3 gap-6 opacity-0 invisible transition pointer-events-none">
+              <div data-dropdown id="mega-menu-expertise" class="absolute top-full left-0 mt-2 bg-bg-elevated border border-border rounded-lg shadow-lg p-6 min-w-[900px] grid grid-cols-3 gap-6 opacity-0 invisible transition pointer-events-none">
                 {item.columns.map((col: any) => (
                   <div>
                     <div class="text-tiny font-mono uppercase tracking-wider text-text-muted mb-3 pb-2 border-b border-border">
@@ -168,6 +171,8 @@ const navItems: any[] = [
         id="mobile-menu-toggle"
         class="p-2"
         aria-label="Menu openen"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
       >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -201,13 +206,11 @@ const navItems: any[] = [
     <div class="px-4 py-2 border-t border-border bg-bg-tinted text-tiny text-text-muted flex flex-wrap gap-3">
       <span>Tip:</span>
       <span><kbd class="px-1.5 py-0.5 bg-bg-elevated border border-border rounded font-mono">Cmd K</kbd> openen</span>
-      <span><kbd class="px-1.5 py-0.5 bg-bg-elevated border border-border rounded font-mono">/</kbd> snelzoeken</span>
       <span><kbd class="px-1.5 py-0.5 bg-bg-elevated border border-border rounded font-mono">Esc</kbd> sluiten</span>
     </div>
   </div>
 </div>
 
-<script src="/pagefind/pagefind-ui.js" is:inline defer></script>
 <script>
   (function() {
     const modal = document.getElementById('search-modal');
@@ -216,58 +219,89 @@ const navItems: any[] = [
     const closeBtns = modal.querySelectorAll('[data-search-close]');
     const backdrop = modal.querySelector('[data-search-backdrop]');
     let pagefindInited = false;
+    let pagefindLoading = false;
+    let lastFocused = null;
+
+    function initPagefind() {
+      if (pagefindInited || typeof PagefindUI === 'undefined') return;
+      new PagefindUI({
+        element: '#search-modal-input',
+        showSubResults: true,
+        showImages: false,
+        resetStyles: false,
+        translations: {
+          placeholder: 'Zoek in artikelen, woorden, vragen...',
+          clear_search: 'Wissen',
+          load_more: 'Meer resultaten',
+          search_label: 'Zoeken bij Clavix',
+          zero_results: 'Geen resultaten voor [SEARCH_TERM]',
+          many_results: '[COUNT] resultaten voor [SEARCH_TERM]',
+          one_result: '1 resultaat voor [SEARCH_TERM]',
+          alt_search: 'Geen resultaten voor [SEARCH_TERM]. Resultaten voor [DIFFERENT_TERM]:',
+          search_suggestion: 'Geen resultaten. Probeer: [DIFFERENT_TERM]',
+          searching: 'Zoeken...'
+        }
+      });
+      pagefindInited = true;
+      setTimeout(focusInput, 60);
+    }
+
+    // Pagefind pas laden bij de eerste keer zoeken, niet op elke paginaweergave
+    function loadPagefind() {
+      if (pagefindInited || pagefindLoading) return;
+      if (typeof PagefindUI !== 'undefined') { initPagefind(); return; }
+      pagefindLoading = true;
+      const s = document.createElement('script');
+      s.src = '/pagefind/pagefind-ui.js';
+      s.onload = initPagefind;
+      document.head.appendChild(s);
+    }
+
+    function focusInput() {
+      const input = modal.querySelector('input[type="text"]');
+      if (input) input.focus();
+    }
 
     function openModal() {
+      lastFocused = document.activeElement;
       modal.classList.remove('hidden');
       modal.classList.add('flex');
       document.body.style.overflow = 'hidden';
-      if (!pagefindInited && typeof PagefindUI !== 'undefined') {
-        new PagefindUI({
-          element: '#search-modal-input',
-          showSubResults: true,
-          showImages: false,
-          resetStyles: false,
-          translations: {
-            placeholder: 'Zoek in artikelen, woorden, vragen...',
-            clear_search: 'Wissen',
-            load_more: 'Meer resultaten',
-            search_label: 'Zoeken bij Clavix',
-            zero_results: 'Geen resultaten voor [SEARCH_TERM]',
-            many_results: '[COUNT] resultaten voor [SEARCH_TERM]',
-            one_result: '1 resultaat voor [SEARCH_TERM]',
-            alt_search: 'Geen resultaten voor [SEARCH_TERM]. Resultaten voor [DIFFERENT_TERM]:',
-            search_suggestion: 'Geen resultaten. Probeer: [DIFFERENT_TERM]',
-            searching: 'Zoeken...'
-          }
-        });
-        pagefindInited = true;
-      }
-      setTimeout(() => {
-        const input = modal.querySelector('input[type="text"]');
-        if (input) input.focus();
-      }, 60);
+      loadPagefind();
+      setTimeout(focusInput, 60);
     }
 
     function closeModal() {
       modal.classList.add('hidden');
       modal.classList.remove('flex');
       document.body.style.overflow = '';
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
     }
 
     openBtns.forEach(b => b.addEventListener('click', openModal));
     closeBtns.forEach(b => b.addEventListener('click', closeModal));
     backdrop && backdrop.addEventListener('click', closeModal);
 
+    // Focus-trap: Tab blijft binnen de modal zolang die open is
+    modal.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+      const focusables = modal.querySelectorAll('a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      if (!focusables.length) return;
+      const eerste = focusables[0];
+      const laatste = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === eerste) {
+        e.preventDefault(); laatste.focus();
+      } else if (!e.shiftKey && document.activeElement === laatste) {
+        e.preventDefault(); eerste.focus();
+      }
+    });
+
     document.addEventListener('keydown', (e) => {
-      const isInput = ['INPUT','TEXTAREA'].includes(document.activeElement?.tagName);
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
         openModal();
       } else if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
         closeModal();
-      } else if (e.key === '/' && !isInput && modal.classList.contains('hidden')) {
-        e.preventDefault();
-        openModal();
       }
     });
   })();
@@ -319,12 +353,14 @@ const navItems: any[] = [
   const toggle = document.getElementById('mobile-menu-toggle')
   const menu = document.getElementById('mobile-menu')
   toggle?.addEventListener('click', () => {
-    menu?.classList.toggle('hidden')
+    const openen = menu?.classList.toggle('hidden') === false
+    toggle.setAttribute('aria-expanded', String(openen))
+    toggle.setAttribute('aria-label', openen ? 'Menu sluiten' : 'Menu openen')
   })
 </script>
 
 <script>
-  // Dropdown hover-bridge met 250ms vertraging op sluiten
+  // Dropdown: hover-bridge met 250ms vertraging, plus klik- en toetsenbordbediening
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-dropdown-trigger]').forEach((trigger) => {
       const parentLi = trigger.closest('li');
@@ -332,22 +368,37 @@ const navItems: any[] = [
       const dropdown = parentLi.querySelector('[data-dropdown]');
       if (!dropdown) return;
       let closeTimer: any = null;
+      const isOpen = () => trigger.getAttribute('aria-expanded') === 'true';
       const open = () => {
         if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
         dropdown.classList.remove('opacity-0', 'invisible', 'pointer-events-none');
         dropdown.classList.add('opacity-100', 'visible');
+        trigger.setAttribute('aria-expanded', 'true');
+      };
+      const close = () => {
+        dropdown.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+        dropdown.classList.remove('opacity-100', 'visible');
+        trigger.setAttribute('aria-expanded', 'false');
       };
       const scheduleClose = () => {
         if (closeTimer) clearTimeout(closeTimer);
-        closeTimer = setTimeout(() => {
-          dropdown.classList.add('opacity-0', 'invisible', 'pointer-events-none');
-          dropdown.classList.remove('opacity-100', 'visible');
-        }, 250);
+        closeTimer = setTimeout(close, 250);
       };
       parentLi.addEventListener('mouseenter', open);
       parentLi.addEventListener('mouseleave', scheduleClose);
       dropdown.addEventListener('mouseenter', open);
       dropdown.addEventListener('mouseleave', scheduleClose);
+      trigger.addEventListener('click', () => (isOpen() ? close() : open()));
+      // Sluit wanneer de focus het menu verlaat (Tab voorbij het laatste item)
+      parentLi.addEventListener('focusout', (e: any) => {
+        if (!parentLi.contains(e.relatedTarget)) close();
+      });
+      parentLi.addEventListener('keydown', (e: any) => {
+        if (e.key === 'Escape' && isOpen()) {
+          close();
+          (trigger as HTMLElement).focus();
+        }
+      });
     });
   });
 </script>

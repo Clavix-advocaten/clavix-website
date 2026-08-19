@@ -1,5 +1,6 @@
 ---
 import '@fontsource-variable/montserrat';
+import montserratLatinWoff2 from '@fontsource-variable/montserrat/files/montserrat-latin-wght-normal.woff2?url';
 /**
  * Base layout — gebruikt op alle pagina's.
  * Bevat: HTML doctype, head met meta + Montserrat font + schema markup, base structure.
@@ -53,6 +54,8 @@ if (schemaJsonLd) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href={montserratLatinWoff2} as="font" type="font/woff2" crossorigin />
+    <link rel="preconnect" href="https://plausible.io" />
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />

@@ -151,6 +151,9 @@ const pillars = [
         {attorney?.photoUrl ? (
           <img
             src="/portrait.webp"
+            srcset="/portrait-430.webp 430w, /portrait.webp 860w"
+            sizes="(max-width: 767px) 92vw, (max-width: 1200px) 38vw, 460px"
+            width="860" height="1283"
             alt={`Portretfoto van ${attorney.name}`}
             class="rounded-lg shadow-lg w-full h-auto aspect-[4/5] object-cover"
             fetchpriority="high" loading="eager"

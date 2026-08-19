@@ -51,7 +51,7 @@ const seoDescription = post.seo?.metaDescription || post.excerpt
 
     <div class="max-w-container mx-auto px-4 md:px-8 py-12">
       {post.featuredImageUrl && (
-        <img src={post.featuredImageUrl} alt={post.title} class="w-full h-auto rounded-lg mb-8" />
+        <img src={post.featuredImageUrl} alt={post.title} class="w-full h-auto rounded-lg mb-8" loading="lazy" decoding="async" />
       )}
 
       <p class="text-lead text-text-secondary mb-8 max-w-readable">{post.excerpt}</p>
@@ -61,7 +61,7 @@ const seoDescription = post.seo?.metaDescription || post.excerpt
       {post.author && (
         <div class="mt-16 pt-8 border-t border-border flex items-center gap-4">
           {post.author.photoUrl && (
-            <img src={post.author.photoUrl} alt={post.author.name} class="w-16 h-16 rounded-full object-cover" />
+            <img src={post.author.photoUrl} alt={post.author.name} width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover" />
           )}
           <div>
             <div class="font-semibold text-text">{post.author.name}</div>

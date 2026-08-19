@@ -185,7 +185,7 @@ const blogPostBySlugQuery = groq`*[_type == "blogPost" && slug.current == $slug 
   author-> {
     name,
     "slug": slug.current,
-    "photoUrl": photo.asset->url + "?w=860&fm=webp&q=80&fit=max"
+    "photoUrl": photo.asset->url + "?w=128&h=128&fit=crop&fm=webp&q=80"
   },
   relatedPosts[]-> {
     _id,
@@ -332,6 +332,21 @@ const allSectorsQuery = groq`*[_type == "sectorPage" && !(_id in path("drafts.**
 
 export async function getAllSectors() {
   return sanityClient.fetch(allSectorsQuery)
+}
+
+// === KENNISBANK ===
+// Alle clusters met hun pijler, voor het kennisbank-overzicht en de pillar-hubs
+
+const allClustersWithPillarQuery = groq`*[_type == "clusterPage" && defined(slug.current) && !(_id in path("drafts.**"))] | order(title asc) {
+  title,
+  subtitle,
+  "slug": slug.current,
+  "pillarSlug": parentPillar->slug.current,
+  "pillarTitle": parentPillar->shortTitle
+}`
+
+export async function getAllClustersWithPillar() {
+  return sanityClient.fetch(allClustersWithPillarQuery)
 }
 
 const allSectorSlugsQuery = groq`*[_type == "sectorPage" && defined(slug.current) && !(_id in path("drafts.**"))] {

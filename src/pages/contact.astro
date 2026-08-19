@@ -44,8 +44,8 @@ const praktischeVragen = [
 
 const schemas = [
   breadcrumbSchema([
-    { name: 'Home', url: 'https://clavix.nl' },
-    { name: 'Contact', url: 'https://clavix.nl/contact' },
+    { name: 'Home', url: '/' },
+    { name: 'Contact', url: '/contact/' },
   ]),
   {
     '@context': 'https://schema.org',
@@ -87,7 +87,7 @@ const schemas = [
         </div>
       </section>
 
-      <section id="success-message" class="mb-12 p-6 bg-brand-primary text-white rounded-lg" style="display: none;">
+      <section id="success-message" role="status" class="mb-12 p-6 bg-brand-primary text-white rounded-lg" style="display: none;">
         <h2 class="text-h3 font-bold mb-2">Uw bericht is verzonden</h2>
         <p class="text-body">
           Bedankt voor uw bericht. U ontvangt op werkdagen binnen 24 uur antwoord per e-mail of telefoon, afhankelijk van uw voorkeur. Bij een urgente zaak nemen wij vaak dezelfde dag contact op.
@@ -138,14 +138,14 @@ const schemas = [
               <textarea id="bericht" name="bericht" rows="5" placeholder="Bijvoorbeeld: U hebt een aangetekende brief ontvangen, er speelt een conflict met een compagnon, u overweegt een bedrijfsoverdracht..." class="w-full px-4 py-3 border border-border rounded-md bg-white text-text focus:outline-none focus:border-brand-primary"></textarea>
             </div>
 
-            <div>
-              <label class="block text-small font-semibold text-text mb-2">Hoe wilt u dat wij reageren</label>
+            <fieldset class="border-0 p-0 m-0">
+              <legend class="block text-small font-semibold text-text mb-2">Hoe wilt u dat wij reageren</legend>
               <div class="space-y-2">
                 <label class="flex items-center gap-2"><input type="radio" name="voorkeur_reactie" value="telefoon" class="text-brand-primary" /> <span class="text-body text-text">Telefonisch terugbellen</span></label>
                 <label class="flex items-center gap-2"><input type="radio" name="voorkeur_reactie" value="email" class="text-brand-primary" checked /> <span class="text-body text-text">Per e-mail antwoorden</span></label>
                 <label class="flex items-center gap-2"><input type="radio" name="voorkeur_reactie" value="afspraak" class="text-brand-primary" /> <span class="text-body text-text">Direct een gesprek inplannen</span></label>
               </div>
-            </div>
+            </fieldset>
 
             <label class="flex items-start gap-2 text-small text-text">
               <input type="checkbox" name="nieuwsbrief" value="ja" data-nieuwsbrief class="w-4 h-4 mt-0.5" />
@@ -173,7 +173,8 @@ const schemas = [
               </div>
               <div>
                 <p class="text-tiny text-text-muted uppercase tracking-wider mb-1">Kantoor</p>
-                <p class="text-body text-text">Strawinskylaan 257<br />1077 XX Amsterdam<br /><span class="text-small text-text-secondary">Zuidas</span></p>
+                <p class="text-body text-text">Strawinskylaan 257<br />1077 XX Amsterdam<br /><span class="text-small text-text-secondary">Zuidas, in het WTC naast station Amsterdam Zuid</span></p>
+                <a href="https://www.google.com/maps?cid=7869689075875714479" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 text-small font-semibold text-brand-primary no-underline hover:underline">Route via Google Maps →</a>
               </div>
             </div>
           </div>
@@ -223,7 +224,7 @@ const schemas = [
       if (el) {
         el.style.display = 'block';
         setTimeout(function() {
-          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          el.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
         }, 300);
       }
     }

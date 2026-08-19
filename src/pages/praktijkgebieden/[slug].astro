@@ -5,7 +5,8 @@ import AnswerCapsule from '@components/AnswerCapsule.astro'
 import TLDR from '@components/TLDR.astro'
 import FAQAccordion from '@components/FAQAccordion.astro'
 import TableOfContents from '@components/TableOfContents.astro'
-import { getPillarPage, getAllPillarSlugs } from '@lib/queries'
+import Breadcrumbs from '@components/Breadcrumbs.astro'
+import { getPillarPage, getAllPillarSlugs, getAllClustersWithPillar } from '@lib/queries'
 import { renderPortableText } from '@lib/portable-text'
 import { articleSchema, faqPageSchema, breadcrumbSchema, legalCaseSchema } from '@lib/schema-markup'
 
@@ -16,6 +17,22 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params
 const pillar = await getPillarPage(slug as string)
+
+// ALLE clusters binnen deze silo (niet alleen de handmatig gecureerde):
+// eerst de gecureerde volgorde, daarna de rest alfabetisch
+const alleClusters = await getAllClustersWithPillar()
+const siloClusters = alleClusters.filter((c: any) => c.pillarSlug === slug)
+const gecureerd = (pillar?.relatedClusters || []).filter((c: any) =>
+  siloClusters.some((s: any) => s.slug === c.slug)
+)
+const rest = siloClusters.filter(
+  (s: any) => !gecureerd.some((c: any) => c.slug === s.slug)
+)
+const siloLijst = [...gecureerd, ...rest]
+// Gecureerde clusters uit ANDERE silo's blijven apart zichtbaar als verwante artikelen
+const kruisLinks = (pillar?.relatedClusters || []).filter(
+  (c: any) => !siloClusters.some((s: any) => s.slug === c.slug)
+)
 
 // Specialisme cross-link mapping
 const specialismes: Record<string, any> = {
@@ -75,7 +92,6 @@ const schemas: any[] = [
   articleSchema(pillar, pillar.author?.name || 'mr. Mukesh Kumar', `/praktijkgebieden/${slug}/`),
   breadcrumbSchema([
     { name: 'Home', url: '/' },
-    { name: 'Praktijkgebieden', url: '/praktijkgebieden/' },
     { name: pillar.shortTitle || pillar.title, url: `/praktijkgebieden/${slug}/` },
   ]),
 ]
@@ -116,11 +132,11 @@ const alternates = enHref
     {/* === HERO === */}
     <section class="bg-bg-tinted">
       <div class="max-w-container mx-auto px-4 md:px-8 py-12 md:py-16">
-        <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
-          <a href="/" class="hover:text-text-accent">Home</a> ›{' '}
-          Praktijkgebieden ›{' '}
-          {pillar.shortTitle || pillar.title}
-        </p>
+        <Breadcrumbs items={[
+          { label: 'Home', href: '/' },
+          { label: 'Praktijkgebieden' },
+          { label: pillar.shortTitle || pillar.title },
+        ]} />
         <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
           {pillar.title}
         </h1>
@@ -237,14 +253,32 @@ const alternates = enHref
         </section>
       )}
 
-      {/* Related clusters */}
-      {pillar.relatedClusters && pillar.relatedClusters.length > 0 && (
+      {/* Alle clusters binnen deze silo */}
+      {siloLijst.length > 0 && (
         <section class="mt-20">
-          <h2 class="text-h2 font-bold mb-8 text-text">Verdiepende artikelen</h2>
-          <ul class="space-y-3">
-            {pillar.relatedClusters.map((c: any) => (
+          <h2 class="text-h2 font-bold mb-2 text-text">Verdiepende artikelen</h2>
+          <p class="text-body text-text-secondary mb-8">Alle {siloLijst.length} artikelen binnen {pillar.shortTitle || pillar.title}, uit onze <a href="/kennisbank/" class="text-text-accent hover:underline">kennisbank</a>.</p>
+          <ul class="grid md:grid-cols-2 gap-3">
+            {siloLijst.map((c: any) => (
               <li>
-                <a href={`/clusters/${c.slug}/`} class="block p-4 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary no-underline transition">
+                <a href={`/clusters/${c.slug}/`} class="block h-full p-4 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary no-underline transition">
+                  <div class="font-semibold text-text">{c.title}</div>
+                  {c.subtitle && <div class="text-small text-text-secondary mt-1">{c.subtitle}</div>}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {/* Gecureerde artikelen uit andere rechtsgebieden */}
+      {kruisLinks.length > 0 && (
+        <section class="mt-12">
+          <h2 class="text-h3 font-bold mb-6 text-text">Ook relevant</h2>
+          <ul class="grid md:grid-cols-2 gap-3">
+            {kruisLinks.map((c: any) => (
+              <li>
+                <a href={`/clusters/${c.slug}/`} class="block h-full p-4 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary no-underline transition">
                   <div class="font-semibold text-text">{c.title}</div>
                   {c.subtitle && <div class="text-small text-text-secondary mt-1">{c.subtitle}</div>}
                 </a>

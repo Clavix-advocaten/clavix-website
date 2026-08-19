@@ -4,6 +4,7 @@ import CTABand from '@components/CTABand.astro'
 import AnswerCapsule from '@components/AnswerCapsule.astro'
 import TLDR from '@components/TLDR.astro'
 import FAQAccordion from '@components/FAQAccordion.astro'
+import Breadcrumbs from '@components/Breadcrumbs.astro'
 import { getClusterPage, getAllClusterSlugs } from '@lib/queries'
 import { renderPortableText } from '@lib/portable-text'
 import { articleSchema, faqPageSchema, breadcrumbSchema } from '@lib/schema-markup'
@@ -109,24 +110,43 @@ const seoTitle = cluster.seo?.metaTitle || cluster.title
 const seoDescription = cluster.seo?.metaDescription || cluster.tldr?.body?.slice(0, 160) || cluster.subtitle
 
 const formatDate = (iso: string) => new Date(iso).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })
+
+// Contextuele CTA per rechtsgebied in plaats van een generieke band
+const ctaPerPillar: Record<string, { heading: string; description: string }> = {
+  'ondernemingsrecht': {
+    heading: 'Een vennootschapsrechtelijke kwestie bespreken?',
+    description: 'Van aandeelhoudersgeschil tot bestuurdersaansprakelijkheid: in een kosteloos eerste gesprek hoort u waar u staat en wat de logische volgende stap is.',
+  },
+  'vastgoedrecht': {
+    heading: 'Een huur- of vastgoedkwestie bespreken?',
+    description: 'Of het nu om een huurgeschil, een gebrek na aankoop of een bouwconflict gaat: in een kosteloos eerste gesprek hoort u waar u staat.',
+  },
+  'insolventie-en-herstructurering': {
+    heading: 'Financiële druk of een naderend faillissement?',
+    description: 'Hoe eerder u belt, hoe meer opties er zijn. In een kosteloos eerste gesprek hoort u welke routes nog openstaan.',
+  },
+  'burgerlijk-procesrecht': {
+    heading: 'Een procedure starten of u verweren?',
+    description: 'Wij beoordelen uw processpositie eerlijk: ook wanneer schikken verstandiger is dan procederen. Het eerste gesprek is kosteloos.',
+  },
+  'vastgoed-en-ondernemers': {
+    heading: 'Uw bedrijf en uw vastgoed in één hand?',
+    description: 'Precies op het snijvlak van ondernemingsrecht en vastgoed ligt onze praktijk. Het eerste gesprek is kosteloos.',
+  },
+}
+const ctaContext = cluster.parentPillar ? ctaPerPillar[cluster.parentPillar.slug] : undefined
+
+// Halverwege het artikel een korte inline-CTA tonen
+const midIndex = cluster.sections?.length >= 4 ? Math.floor(cluster.sections.length / 2) : -1
 ---
 
 <BaseLayout title={seoTitle} description={seoDescription} schemaJsonLd={schemas}>
   <article>
     <section class="bg-bg-tinted">
       <div class="max-w-content mx-auto px-4 md:px-8 py-12 md:py-16">
-        <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
-          {breadcrumbs.map((b, i) => (
-            <>
-              {i > 0 && ' › '}
-              {i === breadcrumbs.length - 1 ? (
-                <span>{b.name}</span>
-              ) : (
-                <a href={b.url} class="hover:text-text-accent">{b.name}</a>
-              )}
-            </>
-          ))}
-        </p>
+        <Breadcrumbs items={breadcrumbs.map((b, i) => (
+          i === breadcrumbs.length - 1 ? { label: b.name } : { label: b.name, href: b.url }
+        ))} />
         <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
           {cluster.title}
         </h1>
@@ -137,7 +157,7 @@ const formatDate = (iso: string) => new Date(iso).toLocaleDateString('nl-NL', { 
         )}
         <div class="text-tiny text-text-muted">
           {cluster.modifiedAt && <>Laatst bijgewerkt: {formatDate(cluster.modifiedAt)}</>}
-          {cluster.author?.name && <> · Door {cluster.author.name}</>}
+          {cluster.author?.name && <> · Door <a href="/kumar/" class="text-text-muted underline hover:text-text-accent">{cluster.author.name}</a></>}
         </div>
       </div>
     </section>
@@ -145,14 +165,22 @@ const formatDate = (iso: string) => new Date(iso).toLocaleDateString('nl-NL', { 
     <div class="max-w-content mx-auto px-4 md:px-8 py-12">
       {cluster.tldr?.body && <TLDR heading={cluster.tldr.heading} body={cluster.tldr.body} />}
 
-      {cluster.sections && cluster.sections.map((section: any) => (
-        <section id={section.anchor} class="mt-16 scroll-mt-24">
-          <h2 class="text-h2 font-bold mb-4 text-text">{section.heading}</h2>
-          {section.answerCapsule && <AnswerCapsule text={section.answerCapsule} />}
-          {section.body && (
-            <div class="prose-content space-y-4 text-body text-text mt-6" set:html={renderPortableText(section.body)} />
+      {cluster.sections && cluster.sections.map((section: any, i: number) => (
+        <>
+          <section id={section.anchor} class="mt-16 scroll-mt-24">
+            <h2 class="text-h2 font-bold mb-4 text-text">{section.heading}</h2>
+            {section.answerCapsule && <AnswerCapsule text={section.answerCapsule} />}
+            {section.body && (
+              <div class="prose-content space-y-4 text-body text-text mt-6" set:html={renderPortableText(section.body)} />
+            )}
+          </section>
+          {i === midIndex && (
+            <aside class="mt-12 p-6 bg-bg-tinted border-l-4 border-brand-primary rounded-r-lg">
+              <p class="text-body text-text mb-3"><strong>Speelt dit bij u?</strong> Een eerste gesprek van 30 minuten is kosteloos. U weet daarna waar u staat.</p>
+              <a href="/contact/" class="inline-block bg-action text-action-fg hover:bg-action-hover px-5 py-2.5 rounded-md font-semibold text-small no-underline transition">Plan een eerste gesprek</a>
+            </aside>
           )}
-        </section>
+        </>
       ))}
 
       {cluster.faqs && cluster.faqs.length > 0 && <FAQAccordion faqs={cluster.faqs} />}
@@ -165,6 +193,20 @@ const formatDate = (iso: string) => new Date(iso).toLocaleDateString('nl-NL', { 
           </a>
         </section>
       )}
+
+      {/* Auteursblok */}
+      <div class="mt-16 pt-8 border-t border-border flex items-start gap-4">
+        <img src="/portrait-128.webp" alt="Portretfoto van mr. Mukesh Kumar" width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover flex-shrink-0" />
+        <div>
+          <div class="font-semibold text-text">{cluster.author?.name || 'mr. Mukesh Kumar'}</div>
+          <p class="text-small text-text-secondary mt-1 max-w-readable">Advocaat ondernemingsrecht en vastgoed in Amsterdam Zuidas. Schrijft deze kennisbank voor ondernemers die eerst zelf willen begrijpen waar ze staan.</p>
+          <p class="text-small mt-2">
+            <a href="/kumar/" class="font-semibold text-text-accent no-underline hover:underline">Over mr. Kumar</a>
+            <span class="text-text-muted"> · </span>
+            <a href="/contact/" class="font-semibold text-text-accent no-underline hover:underline">Plan een kosteloos eerste gesprek</a>
+          </p>
+        </div>
+      </div>
     </div>
 
 
@@ -182,6 +224,6 @@ const formatDate = (iso: string) => new Date(iso).toLocaleDateString('nl-NL', { 
         </section>
       )}
 
-    <CTABand />
+    {ctaContext ? <CTABand heading={ctaContext.heading} description={ctaContext.description} /> : <CTABand />}
   </article>
 </BaseLayout>
