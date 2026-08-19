@@ -16,10 +16,10 @@ const faqs = await sanityClient.fetch(`
 
 // Categorie-volgorde (wedge eerst, dan de andere drie pillars)
 const CATEGORIES = [
-  { slug: 'vastgoed-ondernemers', title: 'Vastgoed × Ondernemers', pillarLink: '/praktijkgebieden/vastgoed-en-ondernemers' },
-  { slug: 'vastgoedrecht',        title: 'Vastgoedrecht',           pillarLink: '/praktijkgebieden/vastgoedrecht' },
-  { slug: 'ondernemingsrecht',    title: 'Ondernemingsrecht',       pillarLink: '/praktijkgebieden/ondernemingsrecht' },
-  { slug: 'insolventie',          title: 'Insolventie & herstructurering', pillarLink: '/praktijkgebieden/insolventie-en-herstructurering' },
+  { slug: 'vastgoed-ondernemers', title: 'Vastgoed × Ondernemers', pillarLink: '/praktijkgebieden/vastgoed-en-ondernemers/' },
+  { slug: 'vastgoedrecht',        title: 'Vastgoedrecht',           pillarLink: '/praktijkgebieden/vastgoedrecht/' },
+  { slug: 'ondernemingsrecht',    title: 'Ondernemingsrecht',       pillarLink: '/praktijkgebieden/ondernemingsrecht/' },
+  { slug: 'insolventie',          title: 'Insolventie & herstructurering', pillarLink: '/praktijkgebieden/insolventie-en-herstructurering/' },
 ];
 
 // Groepeer FAQ's per categorie
@@ -56,7 +56,8 @@ function portableTextToHtml(blocks: any[]): string {
         } else if (mark === 'em') {
           text = `<em>${text}</em>`;
         } else if (markDefMap[mark]?._type === 'link') {
-          const href = markDefMap[mark].href;
+          let href = markDefMap[mark].href || '#';
+          if (href.startsWith('/') && !/[.#?]/.test(href) && href !== '/' && !href.endsWith('/')) href += '/';
           text = `<a href="${href}" class="text-brand-primary underline hover:no-underline">${text}</a>`;
         }
       });
@@ -66,11 +67,12 @@ function portableTextToHtml(blocks: any[]): string {
   }).join('');
 }
 
-// JSON-LD FAQPage markup
+// JSON-LD FAQPage markup — uitsluitend de vragen die op deze pagina zichtbaar worden gerenderd
+const zichtbareFaqs = grouped.flatMap((g) => g.items);
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faqs.map((f: any) => ({
+  mainEntity: zichtbareFaqs.map((f: any) => ({
     '@type': 'Question',
     name: f.question,
     acceptedAnswer: {

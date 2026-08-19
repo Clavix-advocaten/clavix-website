@@ -9,7 +9,7 @@ const rawSectors = await getAllSectors()
 // Pre-compute href per sector (vermijdt template literals in JSX attributes)
 const sectors = (rawSectors || []).map((s: any) => ({
   ...s,
-  href: '/sectoren/' + s.slug,
+  href: '/sectoren/' + s.slug + '/',
   excerpt: s.leadParagraph
     ? (s.leadParagraph.length > 140 ? s.leadParagraph.substring(0, 140) + '...' : s.leadParagraph)
     : '',
@@ -20,7 +20,7 @@ const seoDescription = 'Specialistisch juridisch advies voor uw sector: healthca
 
 const breadcrumbs = breadcrumbSchema([
   { name: 'Home', url: '/' },
-  { name: 'Sectoren', url: '/sectoren' },
+  { name: 'Sectoren', url: '/sectoren/' },
 ])
 
 const collectionPage = {

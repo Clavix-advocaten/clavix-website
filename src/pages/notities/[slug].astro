@@ -19,8 +19,8 @@ const schemas = [
   blogPostingSchema(post, post.author?.name || 'mr. Mukesh Kumar'),
   breadcrumbSchema([
     { name: 'Home', url: '/' },
-    { name: 'Notities', url: '/notities' },
-    { name: post.title, url: `/notities/${slug}` },
+    { name: 'Notities', url: '/notities/' },
+    { name: post.title, url: `/notities/${slug}/` },
   ]),
 ]
 
@@ -36,7 +36,7 @@ const seoDescription = post.seo?.metaDescription || post.excerpt
       <div class="max-w-container mx-auto px-4 md:px-8 py-12 md:py-16">
         <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
           <a href="/" class="hover:text-text-accent">Home</a> ›{' '}
-          <a href="/notities" class="hover:text-text-accent">Notities</a>
+          <a href="/notities/" class="hover:text-text-accent">Notities</a>
         </p>
         <h1 class="text-display font-extrabold text-text mb-4 tracking-tight">
           {post.title}
@@ -65,7 +65,7 @@ const seoDescription = post.seo?.metaDescription || post.excerpt
           )}
           <div>
             <div class="font-semibold text-text">{post.author.name}</div>
-            <a href="/kumar" class="text-small text-text-accent hover:underline no-underline">Lees meer →</a>
+            <a href="/kumar/" class="text-small text-text-accent hover:underline no-underline">Lees meer →</a>
           </div>
         </div>
       )}
@@ -75,7 +75,7 @@ const seoDescription = post.seo?.metaDescription || post.excerpt
           <h3 class="text-h3 font-semibold mb-6 text-text">Lees ook</h3>
           <div class="grid md:grid-cols-3 gap-6">
             {post.relatedPosts.map((rp: any) => (
-              <a href={`/notities/${rp.slug}`} class="block p-4 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary no-underline transition">
+              <a href={`/notities/${rp.slug}/`} class="block p-4 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary no-underline transition">
                 <div class="text-tiny font-semibold uppercase tracking-wider text-text-accent mb-2">{rp.category}</div>
                 <h4 class="font-semibold text-text mb-2">{rp.title}</h4>
                 <p class="text-small text-text-secondary">{rp.excerpt}</p>

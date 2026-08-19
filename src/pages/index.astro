@@ -7,8 +7,8 @@ import { personSchema, serviceSchema } from '@lib/schema-markup'
 const attorney = await getAttorney().catch(() => null)
 const recentPosts = await getHomepageBlogPosts().catch(() => [])
 
-const pageTitle = 'Advocatenkantoor in Amsterdam Zuidas'
-const description = 'Advocatenkantoor in Amsterdam Zuidas voor ondernemers met vastgoed. NOvA-geregistreerd ondernemingsrecht en burgerlijk procesrecht.'
+const pageTitle = 'Clavix Advocaten | Ondernemingsrecht & vastgoed in Amsterdam'
+const description = 'Het juridisch huis voor ondernemers en vastgoedinvesteerders: ondernemingsrecht, vastgoedrecht, procesrecht en insolventie. Direct met de advocaat.'
 
 const homeFaqs = [
   {
@@ -39,13 +39,13 @@ const homeFaqs = [
 ]
 
 const specialismeServices = [
-  { name: 'Aandeelhoudersgeschillen', description: 'Conflicten in de BV: mediation, exit-regelingen en de geschillenregeling van 2:336a BW.', url: '/specialisme/aandeelhoudersgeschillen', serviceType: 'Ondernemingsrecht' },
-  { name: 'Bestuurdersaansprakelijkheid', description: 'Voorkomen, beoordelen en verweren bij claims op grond van artikel 2:9 of 2:248 BW.', url: '/specialisme/bestuurdersaansprakelijkheid', serviceType: 'Ondernemingsrecht' },
-  { name: 'Bouwgeschillen', description: 'UAV-2012, oplevering, meerwerk, bouwfouten en gebreken bij aanneming.', url: '/specialisme/bouwgeschillen', serviceType: 'Vastgoedrecht' },
-  { name: 'Bedrijfsoverdracht met vastgoed', description: 'M&A waarbij onroerend goed onderdeel van de transactie is: structurering en due diligence.', url: '/specialisme/bedrijfsoverdracht-met-vastgoed', serviceType: 'Ondernemingsrecht' },
-  { name: 'Contractgeschillen', description: 'Wanprestatie, ontbinding, exoneratie en nakoming in zakelijke contracten.', url: '/specialisme/contractgeschillen', serviceType: 'Ondernemingsrecht' },
-  { name: 'Incasso en executie', description: 'Beslag, verhaal, executiegeschillen en zakelijke incasso.', url: '/specialisme/incasso-en-executie', serviceType: 'Burgerlijk procesrecht' },
-  { name: 'Kort geding', description: 'Spoedprocedures en voorlopige voorzieningen bij de voorzieningenrechter.', url: '/specialisme/kort-geding', serviceType: 'Burgerlijk procesrecht' },
+  { name: 'Aandeelhoudersgeschillen', description: 'Conflicten in de BV: mediation, exit-regelingen en de geschillenregeling van 2:336a BW.', url: '/specialisme/aandeelhoudersgeschillen/', serviceType: 'Ondernemingsrecht' },
+  { name: 'Bestuurdersaansprakelijkheid', description: 'Voorkomen, beoordelen en verweren bij claims op grond van artikel 2:9 of 2:248 BW.', url: '/specialisme/bestuurdersaansprakelijkheid/', serviceType: 'Ondernemingsrecht' },
+  { name: 'Bouwgeschillen', description: 'UAV-2012, oplevering, meerwerk, bouwfouten en gebreken bij aanneming.', url: '/specialisme/bouwgeschillen/', serviceType: 'Vastgoedrecht' },
+  { name: 'Bedrijfsoverdracht met vastgoed', description: 'M&A waarbij onroerend goed onderdeel van de transactie is: structurering en due diligence.', url: '/specialisme/bedrijfsoverdracht-met-vastgoed/', serviceType: 'Ondernemingsrecht' },
+  { name: 'Contractgeschillen', description: 'Wanprestatie, ontbinding, exoneratie en nakoming in zakelijke contracten.', url: '/specialisme/contractgeschillen/', serviceType: 'Ondernemingsrecht' },
+  { name: 'Incasso en executie', description: 'Beslag, verhaal, executiegeschillen en zakelijke incasso.', url: '/specialisme/incasso-en-executie/', serviceType: 'Burgerlijk procesrecht' },
+  { name: 'Kort geding', description: 'Spoedprocedures en voorlopige voorzieningen bij de voorzieningenrechter.', url: '/specialisme/kort-geding/', serviceType: 'Burgerlijk procesrecht' },
 ]
 
 const homeFaqSchema = {
@@ -73,7 +73,7 @@ const featuredPillar = {
     'Erfpacht voor ondernemers',
     'Vastgoed-aandeelhoudersgeschillen',
   ],
-  href: '/praktijkgebieden/vastgoed-en-ondernemers',
+  href: '/praktijkgebieden/vastgoed-en-ondernemers/',
 }
 
 // Drie pijlers eronder (3-koloms grid)
@@ -88,7 +88,7 @@ const pillars = [
       'Fusies en overnames',
       'Agentuur en distributie',
     ],
-    href: '/praktijkgebieden/ondernemingsrecht',
+    href: '/praktijkgebieden/ondernemingsrecht/',
   },
   {
     title: 'Vastgoedrecht',
@@ -100,7 +100,7 @@ const pillars = [
       'Bouwgeschillen en aanneming',
       'Vastgoed-BV-structuren',
     ],
-    href: '/praktijkgebieden/vastgoedrecht',
+    href: '/praktijkgebieden/vastgoedrecht/',
   },
   {
     title: 'Insolventie & herstructurering',
@@ -112,7 +112,7 @@ const pillars = [
       'Beslag en executie',
       'Crediteurenpositie en uitwinning',
     ],
-    href: '/praktijkgebieden/insolventie-en-herstructurering',
+    href: '/praktijkgebieden/insolventie-en-herstructurering/',
   },
 ]
 ---
@@ -131,13 +131,13 @@ const pillars = [
         </p>
         <div class="flex flex-col sm:flex-row gap-4 mb-8">
           <a
-            href="/contact"
+            href="/contact/"
             class="bg-action text-action-fg hover:bg-action-hover px-7 py-3.5 rounded-md font-semibold no-underline transition text-center"
           >
             Plan een eerste gesprek
           </a>
           <a
-            href="/werkwijze"
+            href="/werkwijze/"
             class="bg-action-secondary text-action-secondary-fg hover:bg-action-secondary-hover px-7 py-3.5 rounded-md font-semibold no-underline transition text-center"
           >
             Zo werken wij
@@ -236,25 +236,25 @@ const pillars = [
       <p class="text-lead text-text-secondary italic">Deep-dive op specifieke vraagstukken die wij vaak begeleiden.</p>
     </div>
     <div class="grid md:grid-cols-2 gap-4">
-      <a href="/specialisme/aandeelhoudersgeschillen" class="group block p-6 rounded-xl border border-border bg-bg-elevated hover:border-brand-primary hover:shadow-md transition no-underline">
+      <a href="/specialisme/aandeelhoudersgeschillen/" class="group block p-6 rounded-xl border border-border bg-bg-elevated hover:border-brand-primary hover:shadow-md transition no-underline">
         <div class="text-tiny font-semibold uppercase tracking-wider text-text-accent mb-2">Specialisme</div>
         <h3 class="text-h3 font-bold text-text mb-2">Aandeelhoudersgeschillen</h3>
         <p class="text-small text-text-secondary mb-4">Conflicten in de BV. Mediation, exit-regelingen, geschillenregeling op basis van 2:336a BW.</p>
         <div class="text-text-accent font-semibold text-small group-hover:underline">Lees verder →</div>
       </a>
-      <a href="/specialisme/bestuurdersaansprakelijkheid" class="group block p-6 rounded-xl border border-border bg-bg-elevated hover:border-brand-primary hover:shadow-md transition no-underline">
+      <a href="/specialisme/bestuurdersaansprakelijkheid/" class="group block p-6 rounded-xl border border-border bg-bg-elevated hover:border-brand-primary hover:shadow-md transition no-underline">
         <div class="text-tiny font-semibold uppercase tracking-wider text-text-accent mb-2">Specialisme</div>
         <h3 class="text-h3 font-bold text-text mb-2">Bestuurdersaansprakelijkheid</h3>
         <p class="text-small text-text-secondary mb-4">Voorkomen, beoordelen, en verweren bij claims op grond van artikel 2:9 of 2:248 BW.</p>
         <div class="text-text-accent font-semibold text-small group-hover:underline">Lees verder →</div>
       </a>
-      <a href="/specialisme/bouwgeschillen" class="group block p-6 rounded-xl border border-border bg-bg-elevated hover:border-brand-primary hover:shadow-md transition no-underline">
+      <a href="/specialisme/bouwgeschillen/" class="group block p-6 rounded-xl border border-border bg-bg-elevated hover:border-brand-primary hover:shadow-md transition no-underline">
         <div class="text-tiny font-semibold uppercase tracking-wider text-text-accent mb-2">Specialisme</div>
         <h3 class="text-h3 font-bold text-text mb-2">Bouwgeschillen</h3>
         <p class="text-small text-text-secondary mb-4">UAV-2012, oplevering, meerwerk, bouwfouten en gebreken bij aanneming.</p>
         <div class="text-text-accent font-semibold text-small group-hover:underline">Lees verder →</div>
       </a>
-      <a href="/specialisme/bedrijfsoverdracht-met-vastgoed" class="group block p-6 rounded-xl border border-border bg-bg-elevated hover:border-brand-primary hover:shadow-md transition no-underline">
+      <a href="/specialisme/bedrijfsoverdracht-met-vastgoed/" class="group block p-6 rounded-xl border border-border bg-bg-elevated hover:border-brand-primary hover:shadow-md transition no-underline">
         <div class="text-tiny font-semibold uppercase tracking-wider text-text-accent mb-2">Specialisme</div>
         <h3 class="text-h3 font-bold text-text mb-2">Bedrijfsoverdracht met vastgoed</h3>
         <p class="text-small text-text-secondary mb-4">M&A waarbij onroerend goed onderdeel uitmaakt van de transactie. Structurering, due diligence, fiscale optimalisatie.</p>
@@ -282,7 +282,7 @@ const pillars = [
         <p class="text-body text-text-secondary mb-6 max-w-readable">
           NOvA-geregistreerd voor ondernemingsrecht en burgerlijk procesrecht. Werkt persoonlijk aan elk dossier dat hij aanneemt. Gespecialiseerd in het juridisch snijvlak van vastgoed en ondernemen.
         </p>
-        <a href="/kumar" class="font-semibold text-text-accent hover:underline no-underline">
+        <a href="/kumar/" class="font-semibold text-text-accent hover:underline no-underline">
           Lees meer over mr. Kumar →
         </a>
       </div>
@@ -301,7 +301,7 @@ const pillars = [
       <div class="grid md:grid-cols-3 gap-6">
         {recentPosts.map((post: any) => (
           <a
-            href={`/notities/${post.slug}`}
+            href={`/notities/${post.slug}/`}
             class="group block p-6 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary hover:shadow-md transition no-underline"
           >
             <div class="text-tiny font-semibold uppercase tracking-wider text-text-accent mb-3">
@@ -319,7 +319,7 @@ const pillars = [
         ))}
       </div>
       <div class="mt-12 text-center">
-        <a href="/notities" class="font-semibold text-text-accent hover:underline no-underline">
+        <a href="/notities/" class="font-semibold text-text-accent hover:underline no-underline">
           Bekijk alle artikelen →
         </a>
       </div>
@@ -342,12 +342,12 @@ const pillars = [
       <div class="p-6 bg-bg-tinted border border-border rounded-lg flex flex-col justify-center">
         <p class="text-small text-text-secondary mb-3">
           Meer antwoorden over kosten, werkwijze en procedures vindt u bij de
-          <a href="/veelgestelde-vragen" class="text-brand-primary no-underline hover:underline"> veelgestelde vragen</a>, op de
-          <a href="/kosten" class="text-brand-primary no-underline hover:underline"> kostenpagina</a> en in de
+          <a href="/veelgestelde-vragen/" class="text-brand-primary no-underline hover:underline"> veelgestelde vragen</a>, op de
+          <a href="/kosten/" class="text-brand-primary no-underline hover:underline"> kostenpagina</a> en in de
           <a href="/proceskosten-berekenen/" class="text-brand-primary no-underline hover:underline"> rekentools</a>.
         </p>
         <p class="text-small text-text-secondary">
-          Juridische begrippen zoekt u op in de <a href="/woordenlijst" class="text-brand-primary no-underline hover:underline">woordenlijst</a> met ruim honderd termen.
+          Juridische begrippen zoekt u op in de <a href="/woordenlijst/" class="text-brand-primary no-underline hover:underline">woordenlijst</a> met ruim honderd termen.
         </p>
       </div>
     </div>
@@ -362,14 +362,14 @@ const pillars = [
           <h3 class="text-small font-semibold text-text mb-1">NOvA-registraties</h3>
           <p class="text-small text-text-secondary">
             Geregistreerd in het rechtsgebiedenregister voor ondernemingsrecht en burgerlijk procesrecht, met de daarbij horende jaarlijkse opleidingsverplichting per rechtsgebied.
-            <a href="/kumar" class="text-brand-primary no-underline hover:underline"> Bekijk de registraties</a>.
+            <a href="/kumar/" class="text-brand-primary no-underline hover:underline"> Bekijk de registraties</a>.
           </p>
         </div>
         <div>
           <h3 class="text-small font-semibold text-text mb-1">Kantoorklachtenregeling</h3>
           <p class="text-small text-text-secondary">
             Heldere afspraken vooraf, en een formele
-            <a href="/klachtenregeling" class="text-brand-primary no-underline hover:underline"> klachtenregeling</a> voor het geval u desondanks ontevreden bent.
+            <a href="/klachtenregeling/" class="text-brand-primary no-underline hover:underline"> klachtenregeling</a> voor het geval u desondanks ontevreden bent.
           </p>
         </div>
         <div>
@@ -382,7 +382,7 @@ const pillars = [
           <h3 class="text-small font-semibold text-text mb-1">Kantoor op de Zuidas</h3>
           <p class="text-small text-text-secondary">
             <a href="/advocaat-zuidas/" class="text-brand-primary no-underline hover:underline">Advocatenkantoor in Amsterdam Zuidas</a>: Strawinskylaan 257, 1077 XX Amsterdam. Telefonisch bereikbaar op +31 20 747 1121;
-            <a href="/contact" class="text-brand-primary no-underline hover:underline"> plan een gesprek</a> op kantoor of online.
+            <a href="/contact/" class="text-brand-primary no-underline hover:underline"> plan een gesprek</a> op kantoor of online.
           </p>
         </div>
       </div>

@@ -31,7 +31,9 @@ const components: Partial<PortableTextHtmlComponents> = {
     code: ({ children }) =>
       `<code class="font-mono text-small bg-bg-tinted px-1.5 py-0.5 rounded">${children}</code>`,
     link: ({ children, value }) => {
-      const href = value?.href || '#'
+      let href = value?.href || '#'
+      // Normaliseer interne links naar de canonieke vorm met trailing slash
+      if (href.startsWith('/') && !/[.#?]/.test(href) && href !== '/' && !href.endsWith('/')) href += '/'
       const isInternal = value?.internal || href.startsWith('/')
       const target = isInternal ? '' : 'target="_blank" rel="noopener noreferrer"'
       return `<a href="${href}" ${target} class="text-text-accent underline underline-offset-2 hover:text-action-hover">${children}</a>`

@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: /downloads/
 Allow: /
 
 # AI-crawlers expliciet toestaan voor citation-coverage

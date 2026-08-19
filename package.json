@@ -2,7 +2,7 @@
   "name": "clavix-frontend",
   "type": "module",
   "version": "1.0.0",
-  "description": "Clavix Advocaten — Astro frontend",
+  "description": "Clavix Advocaten \u2014 Astro frontend",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -10,7 +10,8 @@
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "astro check"
+    "check": "astro check",
+    "prebuild": "node scripts/fetch-lastmod.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",

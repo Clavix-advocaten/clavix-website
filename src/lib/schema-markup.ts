@@ -6,17 +6,32 @@
 const SITE_URL = 'https://clavix.nl' // Pas aan naar staging voor staging-build
 const ORG_NAME = 'Clavix Advocaten'
 const ORG_LEGAL = 'Clavix B.V.'
+const GOOGLE_MAPS_URL = 'https://www.google.com/maps?cid=7869689075875714479'
 
-export function organizationSchema() {
+/** Canonieke absolute URL: altijd met trailing slash (behalve bestanden en anchors). */
+function canon(path: string): string {
+  if (!path) return SITE_URL + '/'
+  if (path.startsWith('http')) return path
+  let p = path.startsWith('/') ? path : '/' + path
+  if (!p.endsWith('/') && !/[.#?]/.test(p)) p += '/'
+  return SITE_URL + p
+}
+
+export function organizationSchema(lang: 'nl' | 'en' = 'nl') {
   return {
     '@context': 'https://schema.org',
     '@type': 'LegalService',
     '@id': `${SITE_URL}/#organization`,
     name: ORG_NAME,
     legalName: ORG_LEGAL,
-    url: SITE_URL,
+    url: `${SITE_URL}/`,
     description:
-      'Boutique advocatenkantoor in Amsterdam Zuidas voor ondernemers met vastgoed. Ondernemingsrecht, vastgoedrecht en insolventie.',
+      lang === 'en'
+        ? 'Boutique Dutch law firm in the Zuidas business district of Amsterdam, acting for companies and real estate investors. Corporate law, real estate, insolvency and litigation.'
+        : 'Boutique advocatenkantoor in Amsterdam Zuidas voor ondernemers met vastgoed. Ondernemingsrecht, vastgoedrecht en insolventie.',
+    inLanguage: lang === 'en' ? 'en' : 'nl',
+    availableLanguage: ['Dutch', 'English'],
+    vatID: 'NL867766839B01',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Strawinskylaan 257',
@@ -46,6 +61,7 @@ export function organizationSchema() {
       latitude: 52.3393,
       longitude: 4.8730,
     },
+    hasMap: GOOGLE_MAPS_URL,
     priceRange: '€€€',
     image: 'https://cdn.sanity.io/images/74qey4fk/production/d692d2c9a732c5010a38270d4a3afc220e84c7a9-4350x6490.jpg?w=1200&h=630&fit=crop&crop=top&fm=jpg&q=85',
     logo: { '@type': 'ImageObject', url: `${SITE_URL}/clavix-logo.svg` },
@@ -53,6 +69,7 @@ export function organizationSchema() {
       'https://www.linkedin.com/company/106861158/',
       'https://www.instagram.com/clavix_nl/',
       'https://www.facebook.com/clavixnl/',
+      GOOGLE_MAPS_URL,
     ],
   }
 }
@@ -68,7 +85,7 @@ export function personSchema(attorney: any) {
     image: attorney.photoUrl,
     email: attorney.email,
     telephone: attorney.phone,
-    url: `${SITE_URL}/kumar`,
+    url: `${SITE_URL}/kumar/`,
     nationality: { '@type': 'Country', name: 'Netherlands' },
     address: {
       '@type': 'PostalAddress',
@@ -81,13 +98,18 @@ export function personSchema(attorney: any) {
       '@type': 'LegalService',
       '@id': `${SITE_URL}/#organization`,
       name: ORG_NAME,
-      url: SITE_URL,
+      url: `${SITE_URL}/`,
     },
     memberOf: {
       '@type': 'Organization',
       name: 'Nederlandse Orde van Advocaten',
       url: 'https://www.advocatenorde.nl',
     },
+    alumniOf: [
+      { '@type': 'CollegeOrUniversity', name: 'Vrije Universiteit Amsterdam' },
+      { '@type': 'CollegeOrUniversity', name: 'University of Leeds' },
+      { '@type': 'CollegeOrUniversity', name: 'Universiteit van Amsterdam' },
+    ],
     hasOccupation: {
       '@type': 'Occupation',
       name: 'Advocaat',
@@ -106,34 +128,22 @@ export function personSchema(attorney: any) {
       'Pre-pack doorstart',
     ],
     knowsLanguage: attorney.languages || ['nl', 'en'],
-    sameAs: attorney.sameAs || [],
+    sameAs: [...(attorney.sameAs || []), 'https://zoekeenadvocaat.advocatenorde.nl/'],
     award: (attorney.awards || []).map((a: any) => a.title),
   }
 }
 
-export function articleSchema(page: any, attorneyName: string = 'mr. Mukesh Kumar') {
+export function articleSchema(page: any, attorneyName: string = 'mr. Mukesh Kumar', pagePath?: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: page.title,
     description: page.tldr?.body || page.subtitle,
     image: page.imageUrl || page.coverImage?.url || 'https://cdn.sanity.io/images/74qey4fk/production/d692d2c9a732c5010a38270d4a3afc220e84c7a9-4350x6490.jpg?w=1200&h=630&fit=crop&crop=top&fm=jpg&q=85',
-    author: { '@type': 'Person', name: attorneyName, url: `${SITE_URL}/kumar` },
-    publisher: {
-      '@type': 'LegalService',
-      name: ORG_NAME,
-      url: SITE_URL,
-      telephone: '+31 20 747 1121',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Strawinskylaan 257',
-        addressLocality: 'Amsterdam',
-        postalCode: '1077 XX',
-        addressCountry: 'NL',
-      },
-      image: 'https://cdn.sanity.io/images/74qey4fk/production/d692d2c9a732c5010a38270d4a3afc220e84c7a9-4350x6490.jpg?w=1200&h=630&fit=crop&crop=top&fm=jpg&q=85',
-      logo: { '@type': 'ImageObject', url: `${SITE_URL}/clavix-logo.svg` },
-    },
+    ...(pagePath ? { mainEntityOfPage: { '@type': 'WebPage', '@id': canon(pagePath) } } : {}),
+    inLanguage: 'nl-NL',
+    author: { '@type': 'Person', '@id': `${SITE_URL}/kumar#person`, name: attorneyName, url: `${SITE_URL}/kumar/` },
+    publisher: { '@type': 'LegalService', '@id': `${SITE_URL}/#organization`, name: ORG_NAME, url: `${SITE_URL}/` },
     datePublished: page.publishedAt,
     dateModified: page.modifiedAt || page.publishedAt,
     speakable: {
@@ -178,7 +188,7 @@ export function breadcrumbSchema(items: { name: string; url: string }[]) {
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: `${SITE_URL}${item.url}`,
+      item: canon(item.url),
     })),
   }
 }
@@ -200,9 +210,9 @@ export function serviceSchema(service: { name: string; description: string; url:
     '@type': 'Service',
     name: service.name,
     description: service.description,
-    url: `${SITE_URL}${service.url}`,
+    url: canon(service.url),
     serviceType: service.serviceType || 'Juridische dienstverlening',
-    provider: { '@type': 'LegalService', '@id': `${SITE_URL}/#organization`, name: ORG_NAME, url: SITE_URL },
+    provider: { '@type': 'LegalService', '@id': `${SITE_URL}/#organization`, name: ORG_NAME, url: `${SITE_URL}/` },
     areaServed: { '@type': 'Country', name: 'Netherlands' },
   }
 }
@@ -216,27 +226,14 @@ export function blogPostingSchema(post: any, attorneyName: string = 'mr. Mukesh 
     image: post.coverImage?.url || post.imageUrl,
     author: {
       '@type': 'Person',
+      '@id': `${SITE_URL}/kumar#person`,
       name: attorneyName,
-      url: `${SITE_URL}/kumar`,
+      url: `${SITE_URL}/kumar/`,
     },
-    publisher: {
-      '@type': 'LegalService',
-      name: ORG_NAME,
-      url: SITE_URL,
-      telephone: '+31 20 747 1121',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Strawinskylaan 257',
-        addressLocality: 'Amsterdam',
-        postalCode: '1077 XX',
-        addressCountry: 'NL',
-      },
-      image: 'https://cdn.sanity.io/images/74qey4fk/production/d692d2c9a732c5010a38270d4a3afc220e84c7a9-4350x6490.jpg?w=1200&h=630&fit=crop&crop=top&fm=jpg&q=85',
-      logo: { '@type': 'ImageObject', url: `${SITE_URL}/clavix-logo.svg` },
-    },
+    publisher: { '@type': 'LegalService', '@id': `${SITE_URL}/#organization`, name: ORG_NAME, url: `${SITE_URL}/` },
     datePublished: post.publishedAt,
     dateModified: post.modifiedAt || post.publishedAt,
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/notities/${post.slug?.current || post.slug}` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canon(`/notities/${post.slug?.current || post.slug}`) },
     articleSection: post.category || 'Juridische analyses',
     inLanguage: 'nl-NL',
     speakable: {
@@ -252,18 +249,23 @@ export function siteNavigationSchema() {
     '@type': 'ItemList',
     name: 'Hoofdmenu Clavix Advocaten',
     itemListElement: [
-      { '@type': 'SiteNavigationElement', position: 1, name: 'Home', url: SITE_URL },
-      { '@type': 'SiteNavigationElement', position: 2, name: 'Vastgoed x Ondernemers', url: `${SITE_URL}/praktijkgebieden/vastgoed-en-ondernemers` },
-      { '@type': 'SiteNavigationElement', position: 3, name: 'Ondernemingsrecht', url: `${SITE_URL}/praktijkgebieden/ondernemingsrecht` },
-      { '@type': 'SiteNavigationElement', position: 4, name: 'Vastgoedrecht', url: `${SITE_URL}/praktijkgebieden/vastgoedrecht` },
-      { '@type': 'SiteNavigationElement', position: 5, name: 'Insolventie & herstructurering', url: `${SITE_URL}/praktijkgebieden/insolventie-en-herstructurering` },
-      { '@type': 'SiteNavigationElement', position: 6, name: 'Over mr. Kumar', url: `${SITE_URL}/kumar` },
-      { '@type': 'SiteNavigationElement', position: 7, name: 'Werkwijze', url: `${SITE_URL}/werkwijze` },
-      { '@type': 'SiteNavigationElement', position: 8, name: 'Notities', url: `${SITE_URL}/notities` },
-      { '@type': 'SiteNavigationElement', position: 9, name: 'Veelgestelde vragen', url: `${SITE_URL}/veelgestelde-vragen` },
-      { '@type': 'SiteNavigationElement', position: 10, name: 'Woordenlijst', url: `${SITE_URL}/woordenlijst` },
-      { '@type': 'SiteNavigationElement', position: 11, name: 'Contact', url: `${SITE_URL}/contact` },
-    ],
+      { name: 'Home', url: '/' },
+      { name: 'Vastgoed x Ondernemers', url: '/praktijkgebieden/vastgoed-en-ondernemers/' },
+      { name: 'Ondernemingsrecht', url: '/praktijkgebieden/ondernemingsrecht/' },
+      { name: 'Vastgoedrecht', url: '/praktijkgebieden/vastgoedrecht/' },
+      { name: 'Insolventie & herstructurering', url: '/praktijkgebieden/insolventie-en-herstructurering/' },
+      { name: 'Burgerlijk procesrecht', url: '/praktijkgebieden/burgerlijk-procesrecht/' },
+      { name: 'Kennisbank', url: '/kennisbank/' },
+      { name: 'Kosten', url: '/kosten/' },
+      { name: 'Over mr. Kumar', url: '/kumar/' },
+      { name: 'Werkwijze', url: '/werkwijze/' },
+      { name: 'Notities', url: '/notities/' },
+      { name: 'Contact', url: '/contact/' },
+    ].map((item, index) => ({
+      '@type': 'SiteNavigationElement',
+      position: index + 1,
+      name: item.name,
+      url: canon(item.url),
+    })),
   }
 }
-

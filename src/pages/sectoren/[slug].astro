@@ -21,6 +21,16 @@ const seoTitle = sector.seo?.metaTitle || sector.title
 const seoDescription =
   sector.seo?.metaDescription || sector.subtitle || sector.tldr?.body || sector.leadParagraph
 
+// Portable text (Sanity) naar platte tekst, voor de zichtbare FAQ-antwoorden
+function faqPlain(answer: any): string {
+  if (typeof answer === 'string') return answer
+  if (!Array.isArray(answer)) return ''
+  return answer
+    .map((block: any) => (block?.children || []).map((c: any) => c.text || '').join(''))
+    .filter(Boolean)
+    .join('\n\n')
+}
+
 
 function formatDateNL(iso: string | undefined): string {
   if (!iso) return ''
@@ -31,7 +41,7 @@ function formatDateNL(iso: string | undefined): string {
 
 const breadcrumbs = breadcrumbSchema([
   { name: 'Home', url: '/' },
-  { name: 'Sectoren', url: '/sectoren' },
+  { name: 'Sectoren', url: '/sectoren/' },
   { name: sector.shortTitle, url: `/sectoren/${sector.slug}` },
 ])
 
@@ -81,7 +91,7 @@ const kennisbank: Record<string, { label: string; href: string }[]> = {
 const verderLezen = kennisbank[sector.slug] || []
 
 const schemas: any[] = [
-  articleSchema(sector, 'mr. Mukesh Kumar'),
+  articleSchema(sector, 'mr. Mukesh Kumar', `/sectoren/${slug}/`),
   breadcrumbs,
 ]
 if (service) schemas.push(service)
@@ -95,7 +105,7 @@ if (sector.faqs?.length) {
   <nav class="max-w-container mx-auto px-4 md:px-8 pt-6 text-tiny text-text-secondary" aria-label="Breadcrumb">
     <a href="/" class="hover:text-text-accent no-underline">Home</a>
     <span class="mx-2">/</span>
-    <a href="/sectoren" class="hover:text-text-accent no-underline">Sectoren</a>
+    <a href="/sectoren/" class="hover:text-text-accent no-underline">Sectoren</a>
     <span class="mx-2">/</span>
     <span class="text-text">{sector.shortTitle}</span>
   </nav>
@@ -146,7 +156,7 @@ if (sector.faqs?.length) {
             <p class="text-body text-text-secondary mb-4 whitespace-pre-line">{pp.description}</p>
             {pp.relevantCluster && (
                 <a
-                href={'/clusters/' + pp.relevantCluster.slug}
+                href={'/clusters/' + pp.relevantCluster.slug + '/'}
                 class="text-text-accent font-semibold no-underline hover:underline"
               >
                 Meer over {pp.relevantCluster.shortTitle} &rarr;
@@ -174,7 +184,7 @@ if (sector.faqs?.length) {
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {sector.relevantPillars.map((p: any) => (
                   <a
-                  href={'/praktijkgebieden/' + p.slug}
+                  href={'/praktijkgebieden/' + p.slug + '/'}
                   class="block p-4 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary no-underline transition"
                 >
                   <div class="font-semibold text-text mb-1">{p.shortTitle}</div>
@@ -191,7 +201,7 @@ if (sector.faqs?.length) {
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {sector.relevantClusters.map((c: any) => (
                   <a
-                  href={'/clusters/' + c.slug}
+                  href={'/clusters/' + c.slug + '/'}
                   class="block p-3 bg-bg-elevated border border-border rounded-md hover:border-brand-primary no-underline transition"
                 >
                   <div class="font-medium text-text">{c.shortTitle}</div>
@@ -250,7 +260,7 @@ if (sector.faqs?.length) {
         {sector.faqs.map((f: any) => (
           <details class="p-6 bg-bg-elevated border border-border rounded-lg">
             <summary class="font-semibold text-text cursor-pointer">{f.question}</summary>
-            <p class="text-body text-text-secondary mt-3 whitespace-pre-line">{f.answer}</p>
+            <p class="text-body text-text-secondary mt-3 whitespace-pre-line">{faqPlain(f.answer)}</p>
           </details>
         ))}
       </div>
