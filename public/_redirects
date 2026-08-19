@@ -157,3 +157,5 @@
 /cookiebeleid                      /cookies/                                                 301
 
 /mukesh                                /kumar/                               301
+
+/clusters/huurachterstand-bedrijfsruimte/*        /clusters/huurachterstand-bedrijfsruimte-ontbinding/     301
