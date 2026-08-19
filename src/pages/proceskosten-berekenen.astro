@@ -102,7 +102,7 @@ const tools = [
           </div>
           <label class="flex items-start gap-2 text-small text-text">
             <input id="ik-btw" type="checkbox" class="w-4 h-4 mt-0.5" />
-            <span>Verhoog met 21% btw — alleen toegestaan als u als schuldeiser de btw niet kunt verrekenen (bijvoorbeeld bij vrijgestelde prestaties)</span>
+            <span>Verhoog met 21% btw: alleen toegestaan als u als schuldeiser de btw niet kunt verrekenen (bijvoorbeeld bij vrijgestelde prestaties)</span>
           </label>
         </div>
         <div class="p-6 bg-bg-tinted border border-border rounded-lg">
@@ -124,8 +124,8 @@ const tools = [
           <div>
             <label for="rt-type" class="block text-small font-semibold text-text mb-1">Soort rente</label>
             <select id="rt-type" class="w-full p-3 border border-border rounded-md bg-bg text-text">
-              <option value="handel">Handelsrente (6:119a BW — tussen bedrijven)</option>
-              <option value="wettelijk">Wettelijke rente (6:119 BW — overig)</option>
+              <option value="handel">Handelsrente (6:119a BW, tussen bedrijven)</option>
+              <option value="wettelijk">Wettelijke rente (6:119 BW, overig)</option>
               <option value="contractueel">Contractuele rente (zelf afgesproken percentage)</option>
             </select>
           </div>
@@ -170,7 +170,7 @@ const tools = [
     <section id="kostenveroordeling" class="scroll-mt-24 border-t border-border pt-16">
       <h2 class="text-h2 font-bold mb-2 text-text">Proceskostenveroordeling (indicatie)</h2>
       <p class="text-body text-text-secondary mb-6 max-w-readable">
-        Wat de verliezende partij bij een bodemprocedure doorgaans aan de winnende partij vergoedt: het griffierecht plus een salaris volgens het liquidatietarief (per 1 februari 2026). Het aantal punten hangt af van de proceshandelingen; een standaardzaak met dagvaarding en één zitting telt twee punten. Het liquidatietarief is een forfait — de werkelijke advocaatkosten liggen doorgaans hoger.
+        Wat de verliezende partij bij een bodemprocedure doorgaans aan de winnende partij vergoedt: het griffierecht plus een salaris volgens het liquidatietarief (per 1 februari 2026). Het aantal punten hangt af van de proceshandelingen; een standaardzaak met dagvaarding en één zitting telt twee punten. Het liquidatietarief is een forfait; de werkelijke advocaatkosten liggen doorgaans hoger.
       </p>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div class="p-6 bg-bg-elevated border border-border rounded-lg space-y-4">
@@ -195,10 +195,10 @@ const tools = [
           <div>
             <label for="pk-punten" class="block text-small font-semibold text-text mb-1">Aantal proceshandelingen (punten)</label>
             <select id="pk-punten" class="w-full p-3 border border-border rounded-md bg-bg text-text">
-              <option value="2">2 — dagvaarding + mondelinge behandeling (standaard)</option>
-              <option value="1">1 — alleen dagvaarding (verstek)</option>
-              <option value="3">3 — extra conclusie of akte</option>
-              <option value="4">4 — uitgebreid debat of getuigenverhoor</option>
+              <option value="2">2: dagvaarding + mondelinge behandeling (standaard)</option>
+              <option value="1">1: alleen dagvaarding (verstek)</option>
+              <option value="3">3: extra conclusie of akte</option>
+              <option value="4">4: uitgebreid debat of getuigenverhoor</option>
             </select>
           </div>
           <label class="flex items-center gap-2 text-small text-text">
@@ -246,7 +246,10 @@ const tools = [
     {/* === BRONNEN / DISCLAIMER === */}
     <section class="border-t border-border pt-10">
       <p class="text-small text-text-secondary max-w-readable">
-        <strong class="text-text">Bronnen en peildatum.</strong> Griffierechten 2026 en liquidatietarieven per 1 februari 2026: rechtspraak.nl (Stcrt. 2025, 39855). Incassostaffel: Besluit vergoeding voor buitengerechtelijke incassokosten. Rentepercentages: officiële halfjaarlijkse vaststellingen tot en met 1 juli 2026 (rijksoverheid.nl). Deurwaarderstarieven: Besluit tarieven ambtshandelingen gerechtsdeurwaarders, geldend per 1 januari 2026. Peildatum: augustus 2026. Deze tools geven een feitelijke indicatie op basis van openbare tarieven; de uitkomst is geen juridisch advies en aan de berekening kunnen geen rechten worden ontleend. Hoe de bedragen in een concrete zaak uitpakken, hangt af van de omstandigheden — <a href="/contact/" class="text-brand-primary no-underline hover:underline">neem gerust contact op</a> voor een verkennende kennismaking.
+        <strong class="text-text">Bronnen en peildatum.</strong> Griffierechten 2026 en liquidatietarieven per 1 februari 2026: rechtspraak.nl (Stcrt. 2025, 39855). Incassostaffel: Besluit vergoeding voor buitengerechtelijke incassokosten. Rentepercentages: officiële halfjaarlijkse vaststellingen tot en met 1 juli 2026 (rijksoverheid.nl). Deurwaarderstarieven: Besluit tarieven ambtshandelingen gerechtsdeurwaarders, geldend per 1 januari 2026. Peildatum: augustus 2026. Deze tools geven een feitelijke indicatie op basis van openbare tarieven; de uitkomst is geen juridisch advies en aan de berekening kunnen geen rechten worden ontleend. Hoe de bedragen in een concrete zaak uitpakken, hangt af van de omstandigheden; <a href="/contact/" class="text-brand-primary no-underline hover:underline">neem gerust contact op</a> voor een verkennende kennismaking.
+      </p>
+      <p class="text-small text-text-secondary max-w-readable mt-4">
+        <strong class="text-text">Deze tool citeren?</strong> Dat mag vrij, met bronvermelding: "Rekentools proceskosten en griffierecht, Clavix Advocaten, clavix.nl/proceskosten-berekenen/", of link rechtstreeks naar deze pagina. Journalisten en redacties kunnen voor duiding terecht via <a href="mailto:info@clavix.nl" class="text-brand-primary no-underline hover:underline">info@clavix.nl</a>.
       </p>
     </section>
   </div>

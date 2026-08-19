@@ -149,15 +149,18 @@ const pillars = [
       </div>
       <div class="md:col-span-2">
         {attorney?.photoUrl ? (
-          <img
-            src="/portrait.webp"
-            srcset="/portrait-430.webp 430w, /portrait.webp 860w"
-            sizes="(max-width: 767px) 92vw, (max-width: 1200px) 38vw, 460px"
-            width="860" height="1283"
-            alt={`Portretfoto van ${attorney.name}`}
-            class="rounded-lg shadow-lg w-full h-auto aspect-[4/5] object-cover"
-            fetchpriority="high" loading="eager"
-          />
+          <picture>
+            <source type="image/avif" srcset="/portrait-430.avif 430w, /portrait.avif 860w" sizes="(max-width: 767px) 92vw, (max-width: 1200px) 38vw, 460px" />
+            <img
+              src="/portrait.webp"
+              srcset="/portrait-430.webp 430w, /portrait.webp 860w"
+              sizes="(max-width: 767px) 92vw, (max-width: 1200px) 38vw, 460px"
+              width="860" height="1283"
+              alt={`Portretfoto van ${attorney.name}`}
+              class="rounded-lg shadow-lg w-full h-auto aspect-[4/5] object-cover"
+              fetchpriority="high" loading="eager"
+            />
+          </picture>
         ) : (
           <div class="rounded-lg overflow-hidden aspect-[4/5] flex items-center justify-center" style="background: linear-gradient(135deg, var(--rb-600), var(--rb-700));">
             <div class="text-center px-6">

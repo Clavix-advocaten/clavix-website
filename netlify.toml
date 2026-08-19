@@ -8,3 +8,14 @@
 # Redirects voor de oude Wix-site (later in te vullen na live-gang)
 # /expertise/advocaat-bestuurdersaansprakelijkheid /praktijkgebieden/ondernemingsrecht 301
 # /post/* /notities/:splat 301
+
+# Plausible-proxy: analytics via het eigen domein (sneller, adblocker-bestendiger)
+[[redirects]]
+  from = "/stats/js/*"
+  to = "https://plausible.io/js/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/stats/api/event"
+  to = "https://plausible.io/api/event"
+  status = 200
