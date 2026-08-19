@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CTABand from '../../components/CTABand.astro';
+import AnswerCapsule from '../../components/AnswerCapsule.astro';
 import { serviceSchema, breadcrumbSchema } from '@lib/schema-markup';
 
 const pageTitle = "Advocaat contractenrecht in Amsterdam";
@@ -153,6 +154,10 @@ const schemas = [
     </section>
 
     <div class="max-w-container mx-auto px-4 md:px-8 py-16">
+
+      <div class="max-w-readable">
+        <AnswerCapsule text="Bij een contractgeschil bepalen de tekst van de overeenkomst, de bedoeling van partijen (Haviltex) en de formele stappen (ingebrekestelling, verzuim) wie sterk staat. Wij adviseren en procederen over wanprestatie, ontbinding, dwaling en exoneraties, voor ondernemers die willen weten waar ze staan voordat het geschil escaleert." />
+      </div>
 
       {/* === VOOR WIE === */}
       <section class="mb-16">

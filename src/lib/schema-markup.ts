@@ -143,6 +143,7 @@ export function articleSchema(page: any, attorneyName: string = 'mr. Mukesh Kuma
     ...(pagePath ? { mainEntityOfPage: { '@type': 'WebPage', '@id': canon(pagePath) } } : {}),
     inLanguage: 'nl-NL',
     author: { '@type': 'Person', '@id': `${SITE_URL}/kumar#person`, name: attorneyName, url: `${SITE_URL}/kumar/` },
+    reviewedBy: { '@type': 'Person', '@id': `${SITE_URL}/kumar#person`, name: attorneyName, jobTitle: 'Advocaat', url: `${SITE_URL}/kumar/` },
     publisher: { '@type': 'LegalService', '@id': `${SITE_URL}/#organization`, name: ORG_NAME, url: `${SITE_URL}/` },
     datePublished: page.publishedAt,
     dateModified: page.modifiedAt || page.publishedAt,

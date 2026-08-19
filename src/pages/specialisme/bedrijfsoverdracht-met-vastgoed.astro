@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CTABand from '../../components/CTABand.astro';
+import AnswerCapsule from '../../components/AnswerCapsule.astro';
 import { serviceSchema, breadcrumbSchema } from '@lib/schema-markup';
 
 const pageTitle = "Bedrijfsoverdracht met vastgoed";
@@ -137,6 +138,10 @@ const schemas = [
     </section>
 
     <div class="max-w-container mx-auto px-4 md:px-8 py-16">
+
+      <div class="max-w-readable">
+        <AnswerCapsule text="Bij een bedrijfsoverdracht waar vastgoed in de structuur zit, bepalen transactiestructuur (aandelen of activa), garanties en vrijwaringen, en de fiscale route het eindresultaat. Wij begeleiden kopers en verkopers in het MKB van intentieverklaring tot levering, met bijzondere aandacht voor het pand: huurverhoudingen, overdrachtsbelasting en de waardering daarvan in de koopprijs." />
+      </div>
 
       {/* === VOOR WIE === */}
       <section class="mb-16">
