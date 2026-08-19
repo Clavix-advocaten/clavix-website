@@ -1,0 +1,59 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABandEN from '@components/CTABandEN.astro'
+---
+
+<BaseLayout
+  title="Real Estate Lawyer in Amsterdam"
+  description="Dutch real estate law for investors: commercial lease, acquisitions, hidden defects, construction disputes and enforcement. English-speaking lawyer in Amsterdam Zuidas."
+  lang="en"
+  ogLocale="en_US"
+  alternates={[
+    { hreflang: 'nl', href: '/praktijkgebieden/vastgoedrecht' },
+    { hreflang: 'en', href: '/en/real-estate/' },
+    { hreflang: 'x-default', href: '/praktijkgebieden/vastgoedrecht' },
+  ]}
+>
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">
+      <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
+        <a href="/en/" class="text-text-secondary no-underline hover:underline">English</a> › Real estate
+      </p>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Real estate law</h1>
+      <p class="text-lead text-text-secondary max-w-readable">
+        For international investors in Dutch commercial property: the legal side of buying, letting, building and, when necessary, litigating.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <div class="max-w-readable space-y-6">
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Commercial lease under Dutch law</h2>
+        <p class="text-body text-text">
+          Dutch commercial lease law is unusually protective of tenants of retail and hospitality premises, with semi-mandatory rules on duration, termination and rent review. For offices and other premises the regime is lighter but the termination formalities remain strict. We draft and litigate for both landlords and tenants, including eviction and rent arrears proceedings.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Acquisitions and hidden defects</h2>
+        <p class="text-body text-text">
+          Purchases of Dutch commercial property are shaped by contractual risk allocation: as-is clauses, age clauses for older buildings and warranty carve-outs. When a defect surfaces after completion, the outcome turns on the clause wording, what the seller knew and how quickly the buyer complained. We advise before signing and act when the dispute has already arrived.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Construction disputes</h2>
+        <p class="text-body text-text">
+          Defects, delays, additional work and contractor insolvency, under Dutch standard conditions or bespoke contracts. We act for principals and investors in negotiations, expert proceedings and court litigation.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Attachments and enforcement</h2>
+        <p class="text-body text-text">
+          Dutch law allows a creditor to attach real estate and other assets before judgment, with court leave obtained ex parte. That makes prejudgment attachment a powerful pressure instrument, for and against investors. We obtain attachments, defend against them and enforce judgments against Dutch property.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CTABandEN heading="Discuss your Dutch property matter" description="A 30-minute conversation, free of charge and in English. We tell you where you stand under Dutch law." />
+</BaseLayout>

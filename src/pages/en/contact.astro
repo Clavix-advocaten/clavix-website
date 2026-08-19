@@ -1,0 +1,53 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+  title="Contact | Clavix Advocaten Amsterdam"
+  description="Contact Clavix Advocaten: Strawinskylaan 257, Amsterdam Zuidas (WTC area). Phone +31 20 747 1121, info@clavix.nl. Response within 24 hours on business days."
+  lang="en"
+  ogLocale="en_US"
+  alternates={[
+    { hreflang: 'nl', href: '/contact/' },
+    { hreflang: 'en', href: '/en/contact/' },
+    { hreflang: 'x-default', href: '/contact/' },
+  ]}
+>
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">
+      <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
+        <a href="/en/" class="text-text-secondary no-underline hover:underline">English</a> › Contact
+      </p>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Contact</h1>
+      <p class="text-lead text-text-secondary max-w-readable">
+        Call, e-mail or visit us at the Zuidas. On business days we respond within 24 hours; urgent matters, such as an attachment or an expiring deadline, are usually returned the same day.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+        <h2 class="text-h4 font-bold text-text mb-2">Visiting address</h2>
+        <p class="text-body text-text-secondary">Strawinskylaan 257<br />1077 XX Amsterdam<br />World Trade Center area, Zuidas</p>
+      </div>
+      <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+        <h2 class="text-h4 font-bold text-text mb-2">Getting here</h2>
+        <p class="text-body text-text-secondary">Parking in the WTC garage. Amsterdam Zuid station (train and metro) is a few minutes' walk, with a direct connection to Schiphol Airport.</p>
+      </div>
+      <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+        <h2 class="text-h4 font-bold text-text mb-2">Direct contact</h2>
+        <p class="text-body text-text-secondary">
+          <a href="tel:+31207471121" class="text-brand-primary no-underline hover:underline">+31 20 747 1121</a><br />
+          <a href="mailto:info@clavix.nl" class="text-brand-primary no-underline hover:underline">info@clavix.nl</a><br />
+          Response within 24 hours on business days
+        </p>
+      </div>
+    </div>
+    <div class="max-w-readable mt-10">
+      <p class="text-body text-text-secondary">
+        Company details: Clavix B.V., Chamber of Commerce (KvK) 96800747, VAT NL867766839B01. mr. M. Kumar is a member of the Netherlands Bar (Nederlandse Orde van Advocaten), registered in the register of practice areas for corporate law and civil procedure.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

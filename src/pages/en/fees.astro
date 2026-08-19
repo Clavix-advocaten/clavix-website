@@ -1,0 +1,59 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABandEN from '@components/CTABandEN.astro'
+---
+
+<BaseLayout
+  title="Fees | Dutch Law Firm Amsterdam"
+  description="How Clavix Advocaten charges: fixed fees agreed in advance where possible, hourly rates with monthly specifications otherwise. First 30-minute meeting free."
+  lang="en"
+  ogLocale="en_US"
+  alternates={[
+    { hreflang: 'nl', href: '/kosten/' },
+    { hreflang: 'en', href: '/en/fees/' },
+    { hreflang: 'x-default', href: '/kosten/' },
+  ]}
+>
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">
+      <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
+        <a href="/en/" class="text-text-secondary no-underline hover:underline">English</a> › Fees
+      </p>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Fees, agreed before we start</h1>
+      <p class="text-lead text-text-secondary max-w-readable">
+        Legal costs should be a decision, not a surprise. This is how we charge.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <div class="max-w-readable space-y-6">
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Fixed fees where possible</h2>
+        <p class="text-body text-text">
+          For matters whose scope can be defined, a contract, an advice, a first-instance procedure, we quote a fixed fee per matter or per phase, confirmed in writing before the engagement starts. You decide with full knowledge of the costs.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Hourly rates with monthly specifications</h2>
+        <p class="text-body text-text">
+          Where the scope genuinely cannot be estimated, we work on an hourly basis. You receive itemised monthly specifications, and we flag it early when a matter develops differently than expected. No end-of-case surprises.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Court fees and other costs</h2>
+        <p class="text-body text-text">
+          Dutch litigation involves court fees, bailiff costs and, if you lose, a capped contribution to the other side's costs based on fixed tariffs rather than actual costs. We map these out per scenario before you decide to litigate, so the business case of a procedure is clear in advance.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">The first meeting is free</h2>
+        <p class="text-body text-text">
+          The first 30-minute meeting is an introduction, free of charge and without obligation: you outline your situation, we tell you whether and how we can assist and what a realistic outcome looks like.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CTABandEN heading="Get a fee proposal" description="Describe your matter in a free 30-minute meeting and receive a concrete fee proposal before you commit." />
+</BaseLayout>

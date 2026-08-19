@@ -17,6 +17,9 @@ interface Props {
   canonical?: string
   noindex?: boolean
   schemaJsonLd?: object | object[] | null
+  lang?: string
+  ogLocale?: string
+  alternates?: { hreflang: string; href: string }[]
 }
 
 const {
@@ -26,6 +29,9 @@ const {
   canonical,
   noindex = false,
   schemaJsonLd,
+  lang = 'nl',
+  ogLocale = 'nl_NL',
+  alternates = [],
 } = Astro.props
 
 const siteUrl = 'https://clavix.nl' // Wordt later netlify-env-aware
@@ -41,7 +47,7 @@ if (schemaJsonLd) {
 ---
 
 <!doctype html>
-<html lang="nl" data-theme="light">
+<html lang={lang} data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -51,6 +57,9 @@ if (schemaJsonLd) {
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
+    {alternates.map((a) => (
+      <link rel="alternate" hreflang={a.hreflang} href={a.href.startsWith('http') ? a.href : `${siteUrl}${a.href}`} />
+    ))}
 
     {noindex ? (
       <meta name="robots" content="noindex, nofollow" />
@@ -64,7 +73,7 @@ if (schemaJsonLd) {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`} />
-    <meta property="og:locale" content="nl_NL" />
+    <meta property="og:locale" content={ogLocale} />
     <meta property="og:site_name" content="Clavix Advocaten" />
 
     {/* Twitter Card */}

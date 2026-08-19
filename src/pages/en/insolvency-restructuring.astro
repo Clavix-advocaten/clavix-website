@@ -1,0 +1,59 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABandEN from '@components/CTABandEN.astro'
+---
+
+<BaseLayout
+  title="Insolvency & Restructuring Lawyer in Amsterdam"
+  description="Dutch insolvency law for creditors and companies: creditor strategy, bankruptcy petitions, the Dutch scheme (WHOA) and restructuring. English-speaking lawyer."
+  lang="en"
+  ogLocale="en_US"
+  alternates={[
+    { hreflang: 'nl', href: '/praktijkgebieden/insolventie-en-herstructurering' },
+    { hreflang: 'en', href: '/en/insolvency-restructuring/' },
+    { hreflang: 'x-default', href: '/praktijkgebieden/insolventie-en-herstructurering' },
+  ]}
+>
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">
+      <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
+        <a href="/en/" class="text-text-secondary no-underline hover:underline">English</a> › Insolvency & restructuring
+      </p>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Insolvency & restructuring</h1>
+      <p class="text-lead text-text-secondary max-w-readable">
+        When a Dutch counterparty stops paying, or your own Dutch entity comes under pressure: creditor strategy, insolvency proceedings and restructuring under Dutch law.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <div class="max-w-readable space-y-6">
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Creditor strategy and debt collection</h2>
+        <p class="text-body text-text">
+          Dutch law gives creditors sharper instruments than many jurisdictions: prejudgment attachment on bank accounts and assets, a bankruptcy petition as a pressure instrument, and personal liability of directors in cases of genuine mismanagement. We build the sequence that fits the debtor and the amount at stake.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">The Dutch scheme (WHOA)</h2>
+        <p class="text-body text-text">
+          The WHOA, the Dutch equivalent of Chapter 11 and the UK scheme of arrangement, allows a company to impose a restructuring plan on dissenting creditors and shareholders, outside formal insolvency. We advise companies preparing a plan and creditors confronted with one, including cross-border cases.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Bankruptcy and its aftermath</h2>
+        <p class="text-body text-text">
+          Filing and opposing bankruptcy petitions, dealing with the trustee, submitting claims, retention of title and reclaiming goods, and disputes over transactions concluded before the insolvency. For directors: defending claw-back and liability claims brought by the trustee.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Distressed situations and workouts</h2>
+        <p class="text-body text-text">
+          Standstill and workout negotiations, security packages, and the position of shareholders and financiers of a company in difficulty. Early, quiet restructuring is almost always cheaper than the formal alternatives; we help you keep it that way.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CTABandEN heading="Discuss your insolvency matter" description="A 30-minute conversation, free of charge and in English. We tell you where you stand under Dutch law." />
+</BaseLayout>

@@ -1,0 +1,59 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABandEN from '@components/CTABandEN.astro'
+---
+
+<BaseLayout
+  title="Litigation Lawyer in Amsterdam"
+  description="Civil litigation before the Dutch courts: interim relief (kort geding), proceedings on the merits, attachments, enforcement and appeal. English-speaking litigator."
+  lang="en"
+  ogLocale="en_US"
+  alternates={[
+    { hreflang: 'nl', href: '/praktijkgebieden/burgerlijk-procesrecht' },
+    { hreflang: 'en', href: '/en/litigation/' },
+    { hreflang: 'x-default', href: '/praktijkgebieden/burgerlijk-procesrecht' },
+  ]}
+>
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">
+      <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
+        <a href="/en/" class="text-text-secondary no-underline hover:underline">English</a> › Litigation
+      </p>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Litigation</h1>
+      <p class="text-lead text-text-secondary max-w-readable">
+        Commercial litigation before the Dutch civil courts, from urgent interim relief to appeal. Based minutes from the Amsterdam District Court.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <div class="max-w-readable space-y-6">
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Interim relief: the kort geding</h2>
+        <p class="text-body text-text">
+          The Dutch kort geding delivers an enforceable decision in weeks, sometimes days: orders to perform or refrain, evictions, lifting of attachments, advance payments. It is the workhorse of Dutch commercial litigation and often ends the dispute in practice, even though the decision is formally provisional.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Proceedings on the merits</h2>
+        <p class="text-body text-text">
+          Full proceedings before the Dutch courts: contract and liability claims, evidence, witness hearings and expert reports. Dutch civil procedure is predominantly written, which makes the quality of the submissions decisive. We litigate lean: no unnecessary procedural skirmishes, focus on what wins the case.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Attachments and enforcement</h2>
+        <p class="text-body text-text">
+          Prejudgment attachment of bank accounts, real estate and other assets, obtained ex parte, and the enforcement of Dutch and foreign judgments against assets in the Netherlands. For defendants: challenging attachments and enforcement through summary proceedings.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Appeal</h2>
+        <p class="text-body text-text">
+          Appeals before the Dutch courts of appeal give the case a genuine second, full hearing, within strict and fatal deadlines. We handle appeals in our own cases and take over matters litigated by others in first instance.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CTABandEN heading="Discuss your dispute" description="A 30-minute conversation, free of charge and in English. We tell you where you stand under Dutch law." />
+</BaseLayout>

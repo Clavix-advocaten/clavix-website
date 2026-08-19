@@ -93,9 +93,25 @@ const seoTitle = pillar.seo?.metaTitle || pillar.title
 const seoDescription = pillar.seo?.metaDescription || pillar.tldr?.body?.slice(0, 160) || pillar.subtitle
 
 const formatDate = (iso: string) => new Date(iso).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })
+
+// hreflang-koppeling naar de Engelse laag
+const enCounterparts: Record<string, string> = {
+  'ondernemingsrecht': '/en/corporate-law/',
+  'vastgoedrecht': '/en/real-estate/',
+  'insolventie-en-herstructurering': '/en/insolvency-restructuring/',
+  'burgerlijk-procesrecht': '/en/litigation/',
+}
+const enHref = enCounterparts[slug as string]
+const alternates = enHref
+  ? [
+      { hreflang: 'nl', href: `/praktijkgebieden/${slug}` },
+      { hreflang: 'en', href: enHref },
+      { hreflang: 'x-default', href: `/praktijkgebieden/${slug}` },
+    ]
+  : []
 ---
 
-<BaseLayout title={seoTitle} description={seoDescription} schemaJsonLd={schemas}>
+<BaseLayout title={seoTitle} description={seoDescription} schemaJsonLd={schemas} alternates={alternates}>
   <article>
     {/* === HERO === */}
     <section class="bg-bg-tinted">

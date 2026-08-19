@@ -20,6 +20,10 @@ const faqs = [
     q: 'Hoe snel kan ik terecht?',
     a: 'Op werkdagen reageren wij binnen 24 uur. Bij urgente zaken, zoals een curator-sommatie, een gelegd beslag of een aankomende termijn, bellen wij doorgaans dezelfde dag.',
   },
+  {
+    q: 'Waarin verschilt Clavix van andere advocatenkantoren in Amsterdam Zuidas?',
+    a: 'De Zuidas kent vooral grote kantoren met teams per dossier. Clavix is bewust een boutique: u werkt direct met mr. Kumar, tegen een prijsafspraak die vooraf vastligt, met gratis rekentools voor griffierecht, rente en incassokosten. Dezelfde locatie en hetzelfde speelveld, maar met de korte lijnen van een eenmanskantoor.',
+  },
 ]
 
 const schemas = [
@@ -47,8 +51,8 @@ const praktijk = [
 ---
 
 <BaseLayout
-  title="Advocatenkantoor op de Zuidas — Clavix Advocaten"
-  description="Advocatenkantoor aan de Strawinskylaan op de Zuidas in Amsterdam. Ondernemingsrecht, vastgoedrecht en procesrecht voor ondernemers met vastgoed. Direct met de advocaat."
+  title="Advocatenkantoor Amsterdam Zuidas"
+  description="Advocatenkantoor in Amsterdam Zuidas: Clavix Advocaten, Strawinskylaan 257 (WTC). Ondernemingsrecht, vastgoedrecht, procesrecht en insolventie. Direct met de advocaat."
   schemaJsonLd={schemas}
 >
   {/* === HERO === */}
@@ -58,13 +62,13 @@ const praktijk = [
         Home › Advocaat Zuidas
       </p>
       <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
-        Advocatenkantoor op de Zuidas
+        Advocatenkantoor in Amsterdam Zuidas
       </h1>
       <p class="text-h3 text-text-secondary font-display font-semibold mb-6 italic">
         Strawinskylaan 257, Amsterdam. Direct met de advocaat, met een prijsafspraak vooraf.
       </p>
       <p class="text-lead text-text-secondary mb-8 max-w-readable">
-        Clavix Advocaten is een boutique-kantoor voor ondernemers, familiebedrijven en vastgoedinvesteerders, gevestigd in het World Trade Center-gebied op de Zuidas — op loopafstand van station Amsterdam Zuid en de rechtbank Amsterdam.
+        Clavix Advocaten is een boutique-advocatenkantoor voor ondernemers, familiebedrijven en vastgoedinvesteerders, gevestigd in het World Trade Center-gebied in Amsterdam Zuidas, op loopafstand van station Amsterdam Zuid en de rechtbank Amsterdam.
       </p>
       <a
         href="/contact"
@@ -80,13 +84,29 @@ const praktijk = [
     <h2 class="text-h2 font-bold mb-6 text-text">Een kantoor óp de Zuidas</h2>
     <div class="max-w-readable space-y-4">
       <p class="text-body text-text">
-        De Zuidas is het zakelijke hart van Amsterdam, en sinds de rechtbank Amsterdam aan de Parnassusweg zit, ook het juridische. Ons kantoor aan de Strawinskylaan 257 ligt daar middenin: enkele minuten lopen van station Amsterdam Zuid, met de rechtbank om de hoek. Voor spoedzaken — een beslagrekest, een kort geding, een verzetstermijn — betekent dat korte, letterlijke lijnen.
+        De Zuidas is het zakelijke hart van Amsterdam, en sinds de rechtbank Amsterdam aan de Parnassusweg zit, ook het juridische. Ons kantoor aan de Strawinskylaan 257 ligt daar middenin: enkele minuten lopen van station Amsterdam Zuid, met de rechtbank om de hoek. Voor spoedzaken (een beslagrekest, een kort geding, een verzetstermijn) betekent dat korte, letterlijke lijnen.
       </p>
       <p class="text-body text-text">
         Anders dan de grote kantoren om ons heen werkt u bij Clavix direct met de advocaat die uw zaak behandelt, van het eerste gesprek tot de afronding. Geen wisselende teams, geen doorschuiven naar een junior. En waar mogelijk met een vaste prijs die vóór de opdrachtbevestiging vastligt.
       </p>
       <p class="text-body text-text">
-        Wij zijn NOvA-geregistreerd voor ondernemingsrecht en burgerlijk procesrecht, en werken in het Nederlands en het Engels.
+        Wij zijn <a href="/kumar" class="text-brand-primary no-underline hover:underline">NOvA-geregistreerd</a> voor ondernemingsrecht en burgerlijk procesrecht, en werken in het Nederlands en het Engels.
+      </p>
+    </div>
+  </section>
+
+  {/* === VOOR ZUIDAS-ONDERNEMERS === */}
+  <section class="max-w-container mx-auto px-4 md:px-8 pb-20">
+    <h2 class="text-h2 font-bold mb-6 text-text">Voor wie op en rond de Zuidas onderneemt</h2>
+    <div class="max-w-readable space-y-4">
+      <p class="text-body text-text">
+        Onze cliënten lijken op onze buren: holdings en werkmaatschappijen met kantoor in of rond het WTC, vastgoedinvesteerders met portefeuilles in de regio Amsterdam, en familiebedrijven waarvan de volgende generatie hier werkt. De zaken die daarbij horen, aandeelhoudersgeschillen, zakelijke huur en bouwgeschillen, incasso en beslag, herstructurering, vormen precies onze vier praktijkgebieden.
+      </p>
+      <p class="text-body text-text">
+        Wat u vooraf zelf kunt doen: met onze gratis <a href="/proceskosten-berekenen/" class="text-brand-primary no-underline hover:underline">rekentools</a> berekent u griffierecht, wettelijke rente, incassokosten en de proceskostenveroordeling voordat u belt. En op de <a href="/kosten/" class="text-brand-primary no-underline hover:underline">kostenpagina</a> leest u hoe onze prijsafspraken werken, per traject uitgewerkt.
+      </p>
+      <p class="text-body text-text">
+        Verwacht u een procedure bij de rechtbank Amsterdam? In de kennisbank leest u wat u te wachten staat bij een <a href="/clusters/kort-geding/" class="text-brand-primary no-underline hover:underline">kort geding</a> of een <a href="/clusters/bodemprocedure/" class="text-brand-primary no-underline hover:underline">bodemprocedure</a>, geschreven voor ondernemers, niet voor juristen.
       </p>
     </div>
   </section>

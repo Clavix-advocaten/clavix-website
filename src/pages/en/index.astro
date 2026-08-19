@@ -1,0 +1,119 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABandEN from '@components/CTABandEN.astro'
+
+const areas = [
+  { label: 'Corporate law', href: '/en/corporate-law/', sub: 'Shareholder disputes, director liability, commercial contracts, M&A' },
+  { label: 'Real estate', href: '/en/real-estate/', sub: 'Commercial lease, acquisitions, construction disputes, hidden defects' },
+  { label: 'Insolvency & restructuring', href: '/en/insolvency-restructuring/', sub: 'Creditor strategy, attachments, Dutch scheme (WHOA), restructuring' },
+  { label: 'Litigation', href: '/en/litigation/', sub: 'Interim relief, proceedings on the merits, enforcement, appeals' },
+]
+
+const faqs = [
+  {
+    q: 'Do you work for international clients?',
+    a: 'Yes. A substantial part of our practice consists of international investors and companies with Dutch operations or Dutch real estate. All services are available in English, from contracts to court proceedings, and we are based in the Zuidas, the international business district of Amsterdam.',
+  },
+  {
+    q: 'What does a Dutch business lawyer cost?',
+    a: 'Wherever possible we agree a fixed fee per matter or per phase, confirmed before the engagement starts. If the scope cannot be estimated in advance, we work on an hourly basis with monthly specifications. The first 30-minute meeting is free of charge.',
+  },
+  {
+    q: 'Can you represent us in Dutch courts?',
+    a: 'Yes. Clavix is a Dutch law firm and mr. M. Kumar is a member of the Netherlands Bar (NOvA), registered for corporate law and civil procedure. We litigate before the Dutch civil courts, including interim relief proceedings and appeals.',
+  },
+]
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+}
+---
+
+<BaseLayout
+  title="Dutch Business Law Firm in Amsterdam"
+  description="Clavix Advocaten is a boutique Dutch law firm in Amsterdam Zuidas. Corporate law, real estate, insolvency and litigation for companies and investors. English spoken."
+  lang="en"
+  ogLocale="en_US"
+  alternates={[
+    { hreflang: 'nl', href: '/' },
+    { hreflang: 'en', href: '/en/' },
+    { hreflang: 'x-default', href: '/' },
+  ]}
+  schemaJsonLd={faqSchema}
+>
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">
+      <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">English</p>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">
+        Dutch business law firm in Amsterdam Zuidas
+      </h1>
+      <p class="text-h3 text-text-secondary font-display font-semibold mb-6 italic">
+        For companies, family businesses and real estate investors. Direct access to your lawyer.
+      </p>
+      <p class="text-lead text-text-secondary mb-8 max-w-readable">
+        Clavix Advocaten is a boutique law firm at Strawinskylaan 257, in the World Trade Center area of the Zuidas, Amsterdam's business district. We advise and litigate at the intersection of corporate law and real estate, in English and Dutch.
+      </p>
+      <a
+        href="/en/contact/"
+        class="bg-action text-action-fg hover:bg-action-hover px-7 py-3.5 rounded-md font-semibold no-underline transition inline-block"
+      >
+        Schedule an introductory meeting
+      </a>
+    </div>
+  </section>
+
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <h2 class="text-h2 font-bold mb-2 text-text">Practice areas</h2>
+    <p class="text-body text-text-secondary mb-10 max-w-readable">
+      Four practice areas, one lawyer who oversees the whole: most matters we handle touch more than one of them.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {areas.map((p) => (
+        <a href={p.href} class="block p-6 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+          <h3 class="text-h4 font-bold text-text mb-1">{p.label}</h3>
+          <p class="text-small text-text-secondary">{p.sub}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-bg-tinted py-20">
+    <div class="max-w-container mx-auto px-4 md:px-8">
+      <h2 class="text-h2 font-bold mb-6 text-text">Why international clients choose Clavix</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+          <h3 class="text-h4 font-bold text-text mb-2">One lawyer, not a team</h3>
+          <p class="text-body text-text-secondary">You work directly with mr. M. Kumar from the first meeting to the closing of your file. No shifting teams, no juniors learning on your matter.</p>
+        </div>
+        <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+          <h3 class="text-h4 font-bold text-text mb-2">Fees agreed in advance</h3>
+          <p class="text-body text-text-secondary">Fixed fees per matter or phase wherever possible, confirmed before the engagement starts. See <a href="/en/fees/" class="text-brand-primary no-underline hover:underline">how our fees work</a>.</p>
+        </div>
+        <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+          <h3 class="text-h4 font-bold text-text mb-2">At the heart of the Zuidas</h3>
+          <p class="text-body text-text-secondary">Based in the WTC area, minutes from Amsterdam Zuid station and the Amsterdam District Court. Meetings in person or by video call.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <h2 class="text-h2 font-bold mb-8 text-text">Frequently asked questions</h2>
+    <div class="space-y-4 max-w-readable">
+      {faqs.map((f) => (
+        <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+          <h3 class="text-h4 font-bold text-text mb-2">{f.q}</h3>
+          <p class="text-body text-text-secondary">{f.a}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CTABandEN />
+</BaseLayout>

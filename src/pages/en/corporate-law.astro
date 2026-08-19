@@ -1,0 +1,59 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABandEN from '@components/CTABandEN.astro'
+---
+
+<BaseLayout
+  title="Corporate Lawyer in Amsterdam"
+  description="Dutch corporate law for companies and shareholders: shareholder disputes, director liability, commercial contracts and M&A. English-speaking lawyer in Amsterdam."
+  lang="en"
+  ogLocale="en_US"
+  alternates={[
+    { hreflang: 'nl', href: '/praktijkgebieden/ondernemingsrecht' },
+    { hreflang: 'en', href: '/en/corporate-law/' },
+    { hreflang: 'x-default', href: '/praktijkgebieden/ondernemingsrecht' },
+  ]}
+>
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">
+      <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
+        <a href="/en/" class="text-text-secondary no-underline hover:underline">English</a> › Corporate law
+      </p>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Corporate law</h1>
+      <p class="text-lead text-text-secondary max-w-readable">
+        Dutch corporate law for shareholders, directors and the companies between them: from the shareholders' agreement that prevents the dispute to the proceedings that end it.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <div class="max-w-readable space-y-6">
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Shareholder disputes</h2>
+        <p class="text-body text-text">
+          Deadlocks in 50/50 companies, minority shareholders being squeezed out, dividend policy conflicts and forced exits. Dutch law offers a statutory resolution mechanism alongside contractual routes; the right strategy depends on the articles, the shareholders' agreement and the balance of power. We advise and litigate on all of it.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Director and officer liability</h2>
+        <p class="text-body text-text">
+          Directors of Dutch companies face internal liability towards the company and external liability towards creditors, particularly in the vicinity of insolvency. We advise directors on staying on the right side of the line, defend them when claims are made, and act for creditors and trustees pursuing genuine mismanagement.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Commercial contracts and disputes</h2>
+        <p class="text-body text-text">
+          Distribution, franchise, services and supply agreements under Dutch law: drafting, terminating and litigating. Dutch contract law has its own logic on notice of default, termination and damages; getting the formal steps right early usually decides the outcome.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Acquisitions and disposals</h2>
+        <p class="text-body text-text">
+          Share and asset deals in the SME segment, frequently with real estate as part of the transaction. Due diligence, transaction documents, warranties and post-closing disputes over earn-outs, guarantees and information provided.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CTABandEN heading="Discuss your corporate matter" description="A 30-minute conversation, free of charge and in English. We tell you where you stand under Dutch law." />
+</BaseLayout>

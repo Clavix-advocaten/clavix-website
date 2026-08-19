@@ -117,7 +117,7 @@ const pillars = [
 ]
 ---
 
-<BaseLayout title={pageTitle} description={description} schemaJsonLd={schemas}>
+<BaseLayout title={pageTitle} description={description} schemaJsonLd={schemas} alternates={[{ hreflang: 'nl', href: '/' }, { hreflang: 'en', href: '/en/' }, { hreflang: 'x-default', href: '/' }]}>
   {/* === HERO === */}
   <section class="bg-bg-tinted">
     <div class="max-w-container mx-auto px-4 md:px-8 py-12 md:py-20 grid md:grid-cols-5 gap-10 items-center">
@@ -381,7 +381,7 @@ const pillars = [
         <div>
           <h3 class="text-small font-semibold text-text mb-1">Kantoor op de Zuidas</h3>
           <p class="text-small text-text-secondary">
-            Strawinskylaan 257, 1077 XX Amsterdam. Telefonisch bereikbaar op +31 20 747 1121;
+            <a href="/advocaat-zuidas/" class="text-brand-primary no-underline hover:underline">Advocatenkantoor in Amsterdam Zuidas</a>: Strawinskylaan 257, 1077 XX Amsterdam. Telefonisch bereikbaar op +31 20 747 1121;
             <a href="/contact" class="text-brand-primary no-underline hover:underline"> plan een gesprek</a> op kantoor of online.
           </p>
         </div>
