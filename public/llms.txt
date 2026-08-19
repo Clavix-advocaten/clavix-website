@@ -32,8 +32,11 @@
 - [Beslag op een bankrekening](https://clavix.nl/clusters/beslag-op-bankrekening/): Derdenbeslag onder de bank: wat het bevriest en wat niet, de verklaringsplicht en de continuïteitsafweging.
 - [Bestuurdersaansprakelijkheid](https://clavix.nl/clusters/bestuurdersaansprakelijkheid/): Wanneer een bestuurder persoonlijk aansprakelijk is: de ernstig verwijt-maatstaf, 2:9 BW, de Beklamel-norm, de melding betalingsonmacht (36 Iw) en wat decharge en D&O echt beschermen.
 - [Bodemprocedure](https://clavix.nl/clusters/bodemprocedure/): De civiele rechtszaak ten gronde: verloop van dagvaarding tot vonnis, kanton of rechtbank, bewijs, doorlooptijd en kosten.
+- [Dwaling](https://clavix.nl/clusters/dwaling/): De drie dwalingsgronden van 6:228 BW en het kenbaarheidsvereiste, de grenzen van lid 2, vernietiging of aanpassing via 6:230 BW, de driejaarstermijn van 3:52 BW en dwaling bij overnames en vastgoed.
+- [Executoriaal beslag](https://clavix.nl/clusters/executoriaal-beslag/): Van vonnis naar betaling: de executoriale titel en betekening, bank-, loon- en vastgoedbeslag, de verklaringsplicht van de derde en het executiegeschil van 438 Rv.
 - [Hoger beroep in civiele zaken](https://clavix.nl/clusters/hoger-beroep-civiel/): De herkansing bij het gerechtshof: fatale termijnen, het grievenstelsel, executie tijdens appel en de afweging vooraf.
 - [Ingebrekestelling](https://clavix.nl/clusters/ingebrekestelling/): De brief waarmee het verzuim begint: vereisten van 6:82 BW, de redelijke termijn, de uitzonderingen van 6:83 BW en de veelgemaakte fouten, met gratis modelbrief.
+- [Kantonrechter](https://clavix.nl/clusters/kantonrechter/): Welke zaken bij de kantonrechter horen (93 Rv), procederen met of zonder advocaat, griffierecht en proceskosten, het verloop en de appelgrens van 1.750 euro.
 - [Kort geding](https://clavix.nl/clusters/kort-geding/): De spoedprocedure bij de voorzieningenrechter: spoedeisend belang, geldvorderingen, dwangsommen, het verloop en de route na het vonnis.
 - [Aanmaning](https://clavix.nl/clusters/aanmaning/): Van herinnering tot ingebrekestelling: de wettelijke betalingstermijnen (30/60 dagen, veertiendagenbrief bij consumenten), de opbouw van een goede aanmaning en de vervolgstappen.
 - [As is where is-clausule](https://clavix.nl/clusters/as-is-where-is-clausule/): Kopen in de staat waarin het zich bevindt: reikwijdte, de grens van de mededelingsplicht, onderzoeksplicht en de aanpak voor koper en verkoper.
@@ -64,6 +67,7 @@
 - [Pre-pack doorstart](https://clavix.nl/clusters/pre-pack-doorstart/): Voorbereiding, stille curator en randvoorwaarden.
 - [Ouderdomsclausule](https://clavix.nl/clusters/ouderdomsclausule/): Wat de clausule bij ouder vastgoed wel en niet dekt: de beperkte en ruime variant, het ouderdomsverband, de grens bij verzwegen gebreken en de samenloop met as is where is.
 - [Paulianeus handelen](https://clavix.nl/clusters/paulianeus-handelen/): Wanneer transacties vernietigbaar zijn wegens benadeling van schuldeisers: 42/43/47 Fw, 3:45 BW, het gevarenjaar en het verweer tegen de curator.
+- [Rechtsverwerking](https://clavix.nl/clusters/rechtsverwerking/): Wanneer stilzitten en gedrag een recht onafdwingbaar maken: de maatstaf van gewekt vertrouwen of onredelijke benadeling, het verschil met verjaring en klachtplicht, en het voorbehoud van rechten.
 - [Retentierecht in de bouw](https://clavix.nl/clusters/retentierecht-bouw/): Vereisten, derdenwerking, uitoefening als drukmiddel, opheffing via kort geding en de werking in faillissement (art. 60 Fw).
 - [Splitsing eigendom bedrijfspand](https://clavix.nl/clusters/splitsing-eigendom-bedrijfspand/): Appartementsrechten, VvE-structuur en gevolgen bij verkoop.
 - [Statuten BV wijzigen](https://clavix.nl/clusters/statuten-bv-wijzigen/): Stappenplan: AVA, notariële akte, KvK.
