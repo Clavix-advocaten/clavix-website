@@ -1,0 +1,169 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABandEN from '@components/CTABandEN.astro'
+
+const faqs = [
+  {
+    q: 'What is the difference between 7:290 and 7:230a business premises?',
+    a: 'Article 7:290 Dutch Civil Code applies to public-facing premises where customers come through the door for goods or services: shops, hospitality venues, craft businesses. Article 7:230a applies to all other business premises: offices, warehouses, production space, data centres. The legal difference is substantial. Article 7:290 gives the tenant semi-mandatory protection, including five plus five year terms, termination by the landlord on limited statutory grounds only, and rent review through the procedure of article 7:303. Article 7:230a offers only eviction protection after the lease ends.',
+  },
+  {
+    q: 'How does rent review work for a Dutch commercial lease?',
+    a: 'For 7:290 premises, either party can request a rent review after the agreed term has expired, usually five years, based on the rent of comparable business premises in the locality (article 7:303 Dutch Civil Code). The court appoints an expert to advise on that comparison. For 7:230a premises there is no statutory rent review regime: only what the parties have agreed in the contract applies.',
+  },
+  {
+    q: 'May my tenant sublet the premises without my consent?',
+    a: 'The statute is more lenient than many landlords expect: the tenant may give the premises in use to a third party, in whole or in part, unless the tenant had to assume that the landlord has reasonable objections (article 7:221 Dutch Civil Code). That provision is default law, however, and nearly all Dutch commercial leases, including the widely used ROZ model contracts, deviate from it with a prohibition on subletting without prior written consent. Where such a prohibition applies, unauthorised subletting is a breach that can lead to rescission of the lease (ontbinding, court termination for breach), although only through the court. Check the contract first. Note that subletting is distinct from indeplaatsstelling (substitution of tenant) on a business transfer under article 7:307, where the successor takes over the lease itself; that mechanism has its own statutory conditions and procedure.',
+  },
+]
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'Dutch commercial lease law: the 7:290 and 7:230a regimes explained',
+    inLanguage: 'en',
+    mainEntityOfPage: 'https://clavix.nl/en/knowledge/commercial-lease-regimes/',
+    author: { '@type': 'Person', '@id': 'https://clavix.nl/kumar#person', name: 'mr. Mukesh Kumar', url: 'https://clavix.nl/kumar/' },
+    publisher: { '@type': 'LegalService', '@id': 'https://clavix.nl/#organization' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'English', item: 'https://clavix.nl/en/' },
+      { '@type': 'ListItem', position: 2, name: 'Knowledge', item: 'https://clavix.nl/en/knowledge/commercial-lease-regimes/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: 'en',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+]
+---
+
+<BaseLayout
+  ogImage="/og/en-knowledge-commercial-lease-regimes.png"
+  title="Dutch Commercial Lease: 7:290 vs 7:230a"
+  description="Dutch commercial lease law explained: the protected 7:290 regime for retail and hospitality versus 7:230a for offices, and why the classification matters."
+  lang="en"
+  ogLocale="en_US"
+  alternates={[
+    { hreflang: 'nl', href: '/clusters/bedrijfsruimte-290-of-230a-bw/' },
+    { hreflang: 'en', href: '/en/knowledge/commercial-lease-regimes/' },
+    { hreflang: 'x-default', href: '/clusters/bedrijfsruimte-290-of-230a-bw/' },
+  ]}
+  schemaJsonLd={schemas}
+>
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">
+      <nav aria-label="Breadcrumb" class="mb-3">
+        <ol class="flex flex-wrap items-center gap-1 list-none p-0 m-0 text-tiny font-semibold uppercase tracking-wider text-text-secondary">
+          <li><a href="/en/" class="text-text-secondary no-underline hover:underline">English</a></li>
+          <li class="flex items-center gap-1"><span aria-hidden="true">›</span><span aria-current="page">Commercial lease regimes</span></li>
+        </ol>
+      </nav>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Dutch commercial lease law: the 7:290 and 7:230a regimes explained</h1>
+      <p class="text-lead text-text-secondary max-w-readable">
+        For international investors and companies with Dutch commercial property: the classification of the premises determines the termination grounds, the lease term and how much room the contract really leaves. What follows is what a landlord should know before the regime is fixed.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <div class="max-w-readable space-y-10">
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">In brief</h2>
+        <p class="text-body text-text">
+          Article 7:290 Dutch Civil Code applies to public-facing bedrijfsruimte (business premises) such as shops, hospitality venues and craft businesses. Article 7:230a applies to the rest, such as offices, warehouses and industrial units. The regime determines whether the tenant has protected rights on lease term and rent, or whether freedom of contract prevails. Whoever misjudges the classification when the contract is signed tends to pay the price later.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">The difference in one paragraph</h2>
+        <p class="text-body text-text mb-3">
+          The Dutch Civil Code (Burgerlijk Wetboek) contains two regimes for commercial leases. Article 7:290 covers business premises with a point of sale open to the public: shops, restaurants, cafés, craft businesses and pick-up points. For these tenants the legislature has provided protection: a minimum term of five years plus five, substitution of the tenant under conditions, and rent adjustment through a statutory procedure.
+        </p>
+        <p class="text-body text-text">
+          Article 7:230a covers all other commercial property, such as offices, storage, production space and data centres. Here nearly complete freedom of contract applies, supplemented only by a limited form of eviction protection when the lease ends.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">When article 7:290 applies</h2>
+        <p class="text-body text-text mb-3">
+          Three criteria must all be satisfied. The premises are destined for the operation of a retail business, a restaurant or café business, a pick-up or delivery service, or a craft business. That destination has been agreed in the contract; in case of doubt, what the parties had in mind at signing carries weight, derived in part from the actual fit-out and the actual use. And there is a space accessible to the public where the customer is served.
+        </p>
+        <p class="text-body text-text mb-3">
+          In practice this includes a shoe shop, a dental practice with a waiting room, a gym, a hairdresser, a bookshop and a lunchroom. It does not include a wholesaler without a public counter, an online shop with a pick-up point behind a locked door, or a law firm.
+        </p>
+        <p class="text-body text-text">
+          Once article 7:290 applies, the tenant protection rules are largely mandatory law (dwingend recht). A clause that deviates to the tenant's detriment can be annulled, unless the court has approved it in advance under article 7:291. Approval is granted where the clause does not materially impair the tenant's rights, or where the tenant's position in society reasonably does not require the protection. For deviations from article 7:307, the substitution regime, that route is not available.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">When article 7:230a applies</h2>
+        <p class="text-body text-text mb-3">
+          All business premises that do not fall under article 7:290 qualify as overige bedrijfsruimte (other business premises) and are governed by article 7:230a. It is a thin regime: in effect only eviction protection for the tenant. For everything else, freedom of contract is the main rule. This category includes offices, storage units, warehouses, production halls, law and accountancy firms, physiotherapy practices without a public counter, and units in flexible office concepts.
+        </p>
+        <p class="text-body text-text">
+          The contractual freedom is considerable: short lease periods, bespoke notice periods, a tailor-made indexation clause, and termination without any statutory ground. For a landlord this is a markedly more favourable starting position than with 7:290 premises. The flip side is that a wrong classification hurts precisely here: if the premises in fact turn out to be 7:290 business premises, those contractual freedoms do not apply and a termination notice that states no grounds is void.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">The grey areas</h2>
+        <p class="text-body text-text mb-3">
+          Not every property classifies easily. A few recurring dilemmas. Mixed use: is a law firm with a reception desk where clients are received public-facing? The case law looks at the predominant use. An office with occasional client visits is not 7:290 premises; a physiotherapy practice with a waiting room that clients visit daily is. Showroom plus storage: a car dealer with a public-facing showroom and a workshop with a parts warehouse at the rear falls under 7:290 as the main regime for the entire lease, because the showroom is the principal function.
+        </p>
+        <p class="text-body text-text">
+          Multi-tenant buildings and flexible office concepts often work with service agreements and opt-outs designed to stay outside 7:290; the courts look through the structure at the actual situation. Online businesses with a pick-up point behind a counter door are usually not 7:290 premises, because there is no meaningful public traffic.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Why the classification is crucial</h2>
+        <p class="text-body text-text mb-3">
+          The distinction feels technical but has significant consequences. A 7:290 tenant has a five-year term that is extended by operation of law to ten years in total, the right to transfer the lease to a successor through indeplaatsstelling (substitution of tenant), and rent adjustment exclusively through the procedure of article 7:303. For the landlord this means that termination against the end of the first term is possible only for poor performance as a tenant or urgent personal use, and that a balancing of interests only comes into play against the end of later terms.
+        </p>
+        <p class="text-body text-text mb-3">
+          For a 7:230a tenant, the lease determines what applies: a short term, no substitution, its own indexation. What remains is the ontruimingsbescherming (eviction protection) of article 7:230a. The tenant can request an extension of the eviction period within two months after the date against which eviction has been announced in writing, so counted from the notified eviction date and not from the date of the letter. The court can extend by at most one year, and can do so twice more. No appeal lies against that decision.
+        </p>
+        <p class="text-body text-text">
+          A misjudged classification in the lease can surface years later. On the sale of a business, for example: a buyer wants warranties on the lease position, and it suddenly emerges that the office lease is in fact a 7:290 lease, with different implications for valuation and the takeover.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">A practical check for your situation</h2>
+        <p class="text-body text-text mb-3">
+          Three questions quickly indicate which regime is likely in play. One: can a member of the public simply push the door open to buy something, place an order or take a service? If yes, that points towards 7:290; if no, towards 7:230a. Two: what does the lease say about the permitted use? Retail, hospitality or craft points to 7:290; office space, storage or general business purposes points to 7:230a. Three: what is the actual use? In case of doubt, the actual situation outweighs the destination on paper. Premises that are an office on paper but function as a public-facing practice can be brought under 7:290 by the court.
+        </p>
+        <p class="text-body text-text">
+          In any serious situation, such as a new lease, a renewal, a dispute over termination, or an acquisition in which property forms part of the deal, a short legal check is worthwhile. The difference between the regimes costs little to verify in advance, and a great deal to repair afterwards.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-4">Frequently asked questions</h2>
+        <div class="space-y-4">
+          {faqs.map((f) => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{f.q}</h3>
+              <p class="text-body text-text-secondary">{f.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABandEN heading="Discuss your Dutch lease matter" description="A 30-minute conversation, free of charge and in English. We tell you where you stand under Dutch law." />
+</BaseLayout>

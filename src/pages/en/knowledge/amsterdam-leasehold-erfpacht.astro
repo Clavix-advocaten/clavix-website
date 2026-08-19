@@ -1,0 +1,160 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABandEN from '@components/CTABandEN.astro'
+
+const faqs = [
+  {
+    q: 'What is erfpacht and who actually owns the land?',
+    a: 'Leasehold (erfpacht, article 5:85 and following of the Dutch Civil Code) is a right in rem: the leaseholder may use land that remains the property of another party, against payment of an annual ground rent (canon). In Amsterdam, much of the land under homes, offices and commercial buildings was issued in leasehold by the municipality. That gives the system real weight for owners: ground rent revisions, the choice between continuing and perpetual leasehold, and the transfer of the leasehold right on a sale.',
+  },
+  {
+    q: 'What is a ground rent revision in Amsterdam?',
+    a: 'It is the periodic recalculation of the annual canon under continuing leasehold contracts. For commercial property, the cycles typically run fifty years, and at the end of each cycle the rent is recalculated on the basis of the current land value. Since 2017, conversion to perpetual leasehold against a buy-out sum has also been part of the picture. A revision can lead to a considerable increase; objection is possible through the leasehold expert committee (deskundigencommissie erfpacht) or, in very limited cases, before the civil courts.',
+  },
+  {
+    q: 'Can I challenge the new ground rent the municipality proposes?',
+    a: 'Yes, but the deadlines are strict. You can put forward a counter-proposal supported by your own valuation, or start the formal route before the expert committee, which usually has to be requested within two to three months of the offer. Three experts then give a binding advice on the land value, which binds both the municipality and the leaseholder. Ignoring the offer is the one option to avoid: it can leave the municipality free to set the new rent unilaterally.',
+  },
+  {
+    q: 'Is the expert committee procedure worth the cost?',
+    a: 'It depends on the amounts involved. The procedure easily takes six to twelve months and the expert costs run to a multiple of an ordinary valuation, so it is rarely worthwhile for small differences. As a rule of thumb, where the gap between the municipal calculation and your own valuation amounts to 10,000 euros or more in annual ground rent, the cost-benefit analysis tends to come out favourably.',
+  },
+]
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'Amsterdam leasehold (erfpacht): ground rent revisions and how to respond',
+    inLanguage: 'en',
+    mainEntityOfPage: 'https://clavix.nl/en/knowledge/amsterdam-leasehold-erfpacht/',
+    author: { '@type': 'Person', '@id': 'https://clavix.nl/kumar#person', name: 'mr. Mukesh Kumar', url: 'https://clavix.nl/kumar/' },
+    publisher: { '@type': 'LegalService', '@id': 'https://clavix.nl/#organization' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'English', item: 'https://clavix.nl/en/' },
+      { '@type': 'ListItem', position: 2, name: 'Amsterdam leasehold', item: 'https://clavix.nl/en/knowledge/amsterdam-leasehold-erfpacht/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: 'en',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+]
+---
+
+<BaseLayout
+  ogImage="/og/en-knowledge-amsterdam-leasehold-erfpacht.png"
+  title="Amsterdam Leasehold (Erfpacht) Explained"
+  description="Amsterdam leasehold (erfpacht) for international owners: how ground rent (canon) revisions work, deadlines, the expert valuation route and objection options."
+  lang="en"
+  ogLocale="en_US"
+  alternates={[
+    { hreflang: 'nl', href: '/clusters/erfpacht-amsterdam-herziening/' },
+    { hreflang: 'en', href: '/en/knowledge/amsterdam-leasehold-erfpacht/' },
+    { hreflang: 'x-default', href: '/clusters/erfpacht-amsterdam-herziening/' },
+  ]}
+  schemaJsonLd={schemas}
+>
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">
+      <nav aria-label="Breadcrumb" class="mb-3">
+        <ol class="flex flex-wrap items-center gap-1 list-none p-0 m-0 text-tiny font-semibold uppercase tracking-wider text-text-secondary">
+          <li><a href="/en/" class="text-text-secondary no-underline hover:underline">English</a></li>
+          <li class="flex items-center gap-1"><span aria-hidden="true">›</span><span aria-current="page">Amsterdam leasehold</span></li>
+        </ol>
+      </nav>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Amsterdam leasehold (erfpacht): ground rent revisions and how to respond</h1>
+      <p class="text-lead text-text-secondary max-w-readable">
+        Most buildings in Amsterdam stand on land owned by the municipality. The building owner holds a leasehold right (erfpacht) and pays an annual ground rent (canon). Under continuing leasehold (voortdurende erfpacht), that rent is recalculated at the end of each leasehold period, and the new figure can be a multiple of the old one. Objection is possible, but the procedure is technical and the deadlines are strict. This is rarely something to sit out.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <div class="max-w-readable space-y-10">
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">How the Amsterdam leasehold system works</h2>
+        <p class="text-body text-text mb-3">
+          Amsterdam is a leasehold city. The land under the large majority of its homes, offices and commercial buildings belongs to the municipality; the building owner holds a right of leasehold and pays an annual ground rent for the use of the land. Two systems run side by side. Under continuing leasehold (voortdurende erfpacht, the older form, introduced in 1915), the ground rent is reset every 50 years on the basis of the current land value; in 2017 the municipality also introduced a 75-year term for new contracts. During a period the rent merely tracks inflation, but at the end of the period the entire calculation is redone, often with large jumps as a result.
+        </p>
+        <p class="text-body text-text">
+          Perpetual leasehold (eeuwigdurende erfpacht) exists since 2017: the leaseholder buys off the ground rent once, or pays a fixed annual rent that only indexes for inflation, with no further periodic revisions. Between 2017 and 2020 the municipality offered a conversion scheme allowing continuing leaseholders to switch to perpetual leasehold against a calculated lump sum. Many owners accepted; many others did not, often because the sum seemed too high or the information seemed insufficient. For anyone who remains on continuing leasehold, the end-of-period revision remains the point of exposure.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">When a revision arrives</h2>
+        <p class="text-body text-text mb-3">
+          Roughly three years before the current period ends, the municipality sends an offer (aanbieding) for the new ground rent. It states the calculated land value, the applicable percentage, and the proposed rent for the coming period. The leaseholder then has three options: accept the offer, so that the new rent takes effect on the first day of the new period; make a counter-proposal with a different land value, supported by an independent valuation, which becomes the basis if agreement is reached; or start the formal objection route before the municipal expert committee, in which three experts give a binding advice on the land value.
+        </p>
+        <p class="text-body text-text">
+          In all three routes the deadlines are short. An owner who ignores the offer can end up in an unfavourable position in which the municipality sets the new ground rent unilaterally.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">How the new ground rent is calculated</h2>
+        <p class="text-body text-text mb-3">
+          The ground rent is a percentage of the land value, so there are two variables and two points of discussion. The land value is the value of the land without the building on it. The municipality uses its own residual method, deriving the land value from the market value of the property minus the construction costs, for commercial property often with additions for transferability and possible changes of use. This is where most objections concentrate: the municipality frequently arrives at a higher land value than an independent valuer would, particularly in a fast-moving market. The percentage itself is derived from market interest rates plus a margin, set per period and uniform across Amsterdam, which leaves little room for debate.
+        </p>
+        <p class="text-body text-text">
+          The effect of a revision can be severe. A property with a current ground rent of 5,000 euros can come out at 25,000 euros after revision. A fivefold increase is not exceptional, particularly in districts where land values have risen sharply since the previous revision, such as Oud-Zuid, the city centre and parts of the areas bordering the Zuidas.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">The objection route: the expert committee</h2>
+        <p class="text-body text-text mb-3">
+          A leaseholder who disagrees with the offer goes through a procedure before the leasehold expert committee (deskundigencommissie erfpacht). In outline: the procedure must be requested within the deadline set by the municipality, usually two to three months after the offer, with the leaseholder's own substantiated view of the land value. Three experts are then appointed, one by the municipality, one by the leaseholder and a jointly appointed chair. Both sides submit documents, possibly including their own valuations, and can be heard. The committee then fixes the land value in a binding advice. No ordinary appeal lies against that advice; only in very limited cases, procedural defects or evident unreasonableness, can the civil courts review it.
+        </p>
+        <p class="text-body text-text">
+          The procedure easily takes six to twelve months and the expert costs amount to a multiple of an ordinary valuation. For small differences it is not worthwhile; for substantial ones it often is. As a rule of thumb, at a difference of 10,000 euros or more in annual ground rent, the cost-benefit analysis tends to come out favourably.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Recent case law: more room for leaseholders</h2>
+        <p class="text-body text-text mb-3">
+          There has been more movement in the case law on Amsterdam leasehold in recent years than in the decades before. The Dutch Supreme Court has confirmed that the municipality must make its land value calculation transparent to the leaseholder, which in practice creates room for targeted questions about specific parts of the calculation and, where transparency is lacking, for successful objections. The residual method itself is also under pressure: proceedings are running on whether the municipality must take account of property-specific features such as limited commercial possibilities, listed-building status or factual restrictions, and recent rulings point towards a more property-specific approach than the standard municipal calculation applies.
+        </p>
+        <p class="text-body text-text">
+          A third point concerns the General Provisions (Algemene Bepalingen, the AB1937 through AB2016 sets) to which leasehold contracts refer. Which version applies has major consequences for the revision method, and it is not uncommon for the municipality to cite a later version than the one in the original contract, an error that deserves correction in an objection. These developments give an objection more realistic prospects than before. That is no guarantee, but it is a reason not to accept a steep offer too quickly.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Practical points for owners and investors</h2>
+        <p class="text-body text-text mb-3">
+          Know your contract: the first question is always which version of the General Provisions governs your leasehold, and the answer is in the original notarial deed, which for property held in a holding structure often sits deep in the archives. Plan ahead: the offer should appear three years before the period ends, but a pre-valuation and structured preparation are already valuable a year before that.
+        </p>
+        <p class="text-body text-text">
+          It can also pay to combine the revision with other decisions. An approaching revision can be a reason to reconsider conversion to perpetual leasehold, where the municipality is open to a new offer, or to weigh the timing of a sale: a property sold just before an unknown revision fetches less than one sold just after a negotiated revision. Above all, a revision is not an administrative formality. It is a negotiation with the municipality over a substantial financial interest, and it deserves the same attention as any other strategic financial decision. You can also read the <a href="/clusters/erfpacht-amsterdam-herziening/" class="text-text-accent underline underline-offset-2 hover:text-action-hover">original article</a> (in Dutch).
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-4">Frequently asked questions</h2>
+        <div class="space-y-4">
+          {faqs.map((f) => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{f.q}</h3>
+              <p class="text-body text-text-secondary">{f.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABandEN heading="Facing an Amsterdam ground rent revision?" description="A 30-minute conversation, free of charge and in English. We tell you where you stand under Dutch law." />
+</BaseLayout>

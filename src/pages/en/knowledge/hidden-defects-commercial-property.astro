@@ -1,0 +1,167 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABandEN from '@components/CTABandEN.astro'
+
+const faqs = [
+  {
+    q: 'Is asbestos in a commercial building a hidden defect?',
+    a: 'Not automatically. The presence of asbestos in an older building is not in itself always a defect: it becomes one when the asbestos impedes the intended normal use, for instance because removal is needed for a renovation or because there is an acute health risk. Decisive are the purchase agreement (an asbestos or age clause shifts the risk to the buyer), what the seller knew and should have disclosed, and what the buyer, given the age of the building, should have investigated.',
+  },
+  {
+    q: 'How quickly must I complain after discovering a defect?',
+    a: 'Within a reasonable time after you discovered the defect or reasonably should have discovered it. In a commercial purchase there is no fixed period, but waiting is risky: a buyer who complains too late loses all rights in respect of the defect, including the right to damages. Complain in writing as soon as the defect surfaces, even if its extent is still unclear, and follow up with a proper investigation. After the complaint a two-year limitation period runs for the claim, which must be interrupted in time where necessary.',
+  },
+  {
+    q: 'What is an age clause and how far does it reach?',
+    a: 'An age clause (ouderdomsclausule) records that the buyer of an older building accepts the condition that comes with its age, and that the standards are lower than for a new building. Part of the defect risk thereby shifts to the buyer. Dutch courts interpret the clause restrictively: it covers defects genuinely connected to the age of the building, not automatically defects from, say, a recent renovation, even where the wording is broader. And where the seller knew of the defect but concealed it, reliance on the clause may be unacceptable, although the buyer carries the burden of proving that knowledge, which is heavy in practice.',
+  },
+  {
+    q: 'Can I unwind the purchase of a Dutch commercial building?',
+    a: 'There are two routes, but the bar is high. Rescission for breach requires that the defect justifies rescission with all its consequences; with a repairable defect a court will sooner find repair or damages appropriate. Annulment for error requires that, with a correct picture of the facts, you would not have entered into the purchase, or not on these terms. In practice most disputes end not in handing the property back but in a financial solution: repair costs, a price adjustment or damages.',
+  },
+]
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'Hidden defects when buying Dutch commercial property',
+    inLanguage: 'en',
+    mainEntityOfPage: 'https://clavix.nl/en/knowledge/hidden-defects-commercial-property/',
+    author: { '@type': 'Person', '@id': 'https://clavix.nl/kumar#person', name: 'mr. Mukesh Kumar', url: 'https://clavix.nl/kumar/' },
+    publisher: { '@type': 'LegalService', '@id': 'https://clavix.nl/#organization' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'English', item: 'https://clavix.nl/en/' },
+      { '@type': 'ListItem', position: 2, name: 'Hidden defects', item: 'https://clavix.nl/en/knowledge/hidden-defects-commercial-property/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: 'en',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+]
+---
+
+<BaseLayout
+  ogImage="/og/en-knowledge-hidden-defects-commercial-property.png"
+  title="Hidden Defects in Dutch Property Deals"
+  description="Hidden defects in Dutch commercial property: conformity, as-is and age clauses, disclosure duties, the complaint duty and time limits, and your remedies."
+  lang="en"
+  ogLocale="en_US"
+  alternates={[
+    { hreflang: 'nl', href: '/clusters/verborgen-gebreken-bedrijfspand/' },
+    { hreflang: 'en', href: '/en/knowledge/hidden-defects-commercial-property/' },
+    { hreflang: 'x-default', href: '/clusters/verborgen-gebreken-bedrijfspand/' },
+  ]}
+  schemaJsonLd={schemas}
+>
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">
+      <nav aria-label="Breadcrumb" class="mb-3">
+        <ol class="flex flex-wrap items-center gap-1 list-none p-0 m-0 text-tiny font-semibold uppercase tracking-wider text-text-secondary">
+          <li><a href="/en/" class="text-text-secondary no-underline hover:underline">English</a></li>
+          <li class="flex items-center gap-1"><span aria-hidden="true">›</span><span aria-current="page">Hidden defects</span></li>
+        </ol>
+      </nav>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Hidden defects when buying Dutch commercial property</h1>
+      <p class="text-lead text-text-secondary max-w-readable">
+        Leakage, asbestos, a foundation problem or contaminated soil discovered after completion: what international buyers and sellers of Dutch commercial property should know about conformity, complaint deadlines and recovery.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <div class="max-w-readable space-y-10">
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">In short</h2>
+        <p class="text-body text-text">
+          Under Dutch law a commercial building must have the qualities the buyer was entitled to expect on the basis of the purchase agreement, including suitability for normal use. Whether a defect is for the seller's account depends on the contract, notably as-is clauses, age clauses and warranties, and on the balance between the seller's duty to disclose and the buyer's duty to investigate. A buyer who discovers a defect must complain in writing within a reasonable time and then watch the two-year limitation period, or all rights are lost. The outcome is usually financial: repair, a price adjustment or damages.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">What counts as a hidden defect under Dutch law</h2>
+        <p class="text-body text-text mb-3">
+          The legal anchor is the conformity requirement of article 7:17 of the Dutch Civil Code: the building must conform to the agreement and possess the qualities the buyer was entitled to expect, including suitability for normal use. A hidden defect is a defect that was not apparent at the time of the purchase and that defeats that expectation. Typical examples are foundation problems, serious leakage, soil contamination and structural defects.
+        </p>
+        <p class="text-body text-text">
+          What the buyer was entitled to expect is coloured by all the circumstances: the age and the price of the building, the intended use the seller knew about, the statements made during the sale and the clauses in the purchase deed. Visible or knowable defects, such as the broken gutter every viewer could see, fall outside the doctrine: the buyer is taken to have accepted them. In practice the dispute is almost always about what sat beneath the surface: foundations, soil, asbestos, installations and structure.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">The seller's duty to disclose versus the buyer's duty to investigate</h2>
+        <p class="text-body text-text mb-3">
+          Dutch law balances two duties. The seller must disclose what he knows and what is relevant to the buyer, the disclosure duty (mededelingsplicht). The buyer must investigate what can reasonably be investigated, the investigation duty (onderzoeksplicht). A neglected investigation does not automatically release the seller: the weighing depends on all the circumstances of the case, but a seller who stayed silent about a defect he knew of is usually in a weak position.
+        </p>
+        <p class="text-body text-text">
+          With commercial property, serious investigation is expected of the buyer, certainly of a professional buyer or one assisted by advisers. A building survey, a review of maintenance and inspection reports and, where there is reason for doubt, soil and installation surveys are part of that. Against this stands the seller who had concrete knowledge of a defect and concealed it, or who answered specific questions incorrectly: as a rule he cannot hide behind the buyer's failure to investigate. Both sides are well advised to document their position: the seller what was disclosed, the buyer what was asked and investigated.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">The contract usually decides: as-is clauses, age clauses and warranties</h2>
+        <p class="text-body text-text mb-3">
+          In commercial transactions the allocation of defect risk is largely contractual. An as-is clause places the risk of the building's condition on the buyer. An age clause (ouderdomsclausule) lowers the expectations a buyer may have of an older building. Specific warranties, for example on the soil condition, permits or the roof, place risks back on the seller and prevail over general exclusions. Between professional parties this contractual freedom is broad, and exclusion clauses will in principle hold up.
+        </p>
+        <p class="text-body text-text">
+          The wording still has limits. Clauses are interpreted according to what the parties could reasonably have understood: a general as-is provision does not automatically cover a defect that makes normal use impossible, and the courts read age clauses restrictively, covering defects genuinely related to the building's age but not, without more, defects from a recent renovation. Where the seller knew of the defect and concealed it, reliance on such a clause may be unacceptable, although the buyer must be able to prove that knowledge concretely. Buyers and sellers alike should treat these clauses not as boilerplate but as the real price negotiation.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">The complaint duty and the two-year limitation period</h2>
+        <p class="text-body text-text mb-3">
+          The most underestimated rule in Dutch defect disputes is the complaint duty (klachtplicht). A buyer who discovers a defect, or reasonably should have discovered it, must complain to the seller within a reasonable time. A buyer who complains too late loses all rights in respect of that defect, including the right to damages. In a commercial purchase there is no fixed period: what counts as reasonable depends on the circumstances, including the prejudice the seller suffers from a later complaint.
+        </p>
+        <p class="text-body text-text">
+          The safe route is simple: complain in writing as soon as the defect surfaces, even if its extent is still unclear, and follow the complaint with a proper investigation into its nature and scope. After the notification a limitation period (verjaring) of two years runs for the claim, a short period that must be interrupted in time, by a written act preserving the claim, for as long as the dispute continues. Many substantively strong claims have foundered on these two deadlines before a court ever looked at them.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Remedies: from repair costs to unwinding the purchase</h2>
+        <p class="text-body text-text mb-3">
+          The remedies run from performance, meaning repair by or at the cost of the seller, through damages and a price adjustment, to rescission (ontbinding) of the purchase or annulment for error (dwaling). Which route is realistic depends on the seriousness of the defect, the contractual risk allocation and what the buyer actually wants: keep the building or walk away from it.
+        </p>
+        <p class="text-body text-text">
+          A buyer who keeps the building is essentially arguing about money: repair costs, diminution in value and consequential loss such as lost rent during repair. A formal notice of default giving the seller an opportunity to repair is usually the first step. A buyer who wants out faces a higher bar: rescission requires a sufficiently serious failure, and with a repairable defect a court will sooner find repair or damages appropriate, while annulment for error requires an incorrect representation of the facts attributable to the seller. In practice most cases settle on an amount, and the quality of the technical file, expert reports and repair estimates above all, determines that amount.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Prevention: due diligence before signing</h2>
+        <p class="text-body text-text mb-3">
+          The best defect dispute is the purchase that was avoided, or the purchase deed that was properly negotiated. For commercial property that means due diligence beyond the viewing: a building survey, environmental investigation and a legal review covering permits, zoning and any existing leases. When the building is bought with tenants in place, the rent flows and the state of maintenance obligations belong in the investigation as well.
+        </p>
+        <p class="text-body text-text">
+          Let the findings flow back into the deed: an identified risk becomes a price component, a warranty, an indemnity or a condition precedent. Where the building changes hands as part of a share transaction, the playing field shifts to the warranties and indemnities in the share purchase agreement, a materially different dynamic that we describe in our article on <a href="/clusters/verkoop-bedrijfspand-mna/" class="text-text-accent underline underline-offset-2 hover:text-action-hover">selling commercial property in an M&amp;A transaction</a> (in Dutch).
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-4">Frequently asked questions</h2>
+        <div class="space-y-4">
+          {faqs.map((f) => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{f.q}</h3>
+              <p class="text-body text-text-secondary">{f.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABandEN heading="Discuss a defect in your Dutch property" description="A 30-minute conversation, free of charge and in English. We tell you where you stand under Dutch law." />
+</BaseLayout>

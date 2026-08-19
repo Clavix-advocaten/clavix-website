@@ -1,0 +1,171 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABandEN from '@components/CTABandEN.astro'
+
+const faqs = [
+  {
+    q: 'How much rent arrears before a Dutch court will dissolve the lease?',
+    a: 'The statute does not name a number of months. Under article 6:265 Dutch Civil Code, every failure to perform justifies dissolution unless the failure, given its special nature or minor significance, does not justify dissolution, and the Dutch Supreme Court held in 2018 that no single factor is decisive in advance. In practice, cantonal courts treat arrears of roughly three monthly instalments as the threshold at which dissolution is in principle justified. That is a line in the case law, not a statutory rule: in 2025 the Amsterdam District Court refused dissolution despite arrears of over EUR 128,000, partly because of the tenant’s investments in the premises and an ample bank guarantee.',
+  },
+  {
+    q: 'Can I terminate a Dutch commercial lease myself for non-payment?',
+    a: 'No. Article 7:231(1) Dutch Civil Code provides that a lease of built immovable property can only be dissolved for a tenant’s breach by the court, and paragraph 3 makes this mandatory law. A contract clause allowing the landlord to dissolve out of court for rent arrears will not hold up. The only statutory exception, for serious disturbance of public order, plays no role in an arrears case. The rule applies equally to retail premises and to offices and other commercial space.',
+  },
+  {
+    q: 'What is a terme de grace in Dutch lease proceedings?',
+    a: 'Under article 7:280 Dutch Civil Code, the court may, before pronouncing dissolution, allow the tenant a final period of at most one month to still perform. It is a discretionary power of the court, not a right of the tenant, and the courts apply it with restraint, as a genuine last chance. In practice, whether it is granted usually turns on whether the tenant can show concretely that the arrears can be cleared within that month.',
+  },
+  {
+    q: 'What happens to the lease if my Dutch tenant goes bankrupt?',
+    a: 'Under article 39 of the Dutch Bankruptcy Act, both the bankruptcy trustee and the landlord may terminate the lease early, observing the agreed or customary notice period, with three months in any event sufficient. Rent from the date of the bankruptcy order is an estate debt. The Dutch Supreme Court has held that such a termination does not oblige the estate to pay vacancy damages, even where the contract says otherwise, but also that this protection only benefits the estate: a bank or group guarantee that covers vacancy damages can still be called on the guarantor. The wording of the guarantee is therefore decisive.',
+  },
+]
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'A Dutch commercial tenant stops paying: arrears, termination and eviction',
+    inLanguage: 'en',
+    mainEntityOfPage: 'https://clavix.nl/en/knowledge/rent-arrears-eviction-netherlands/',
+    author: { '@type': 'Person', '@id': 'https://clavix.nl/kumar#person', name: 'mr. Mukesh Kumar', url: 'https://clavix.nl/kumar/' },
+    publisher: { '@type': 'LegalService', '@id': 'https://clavix.nl/#organization' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'English', item: 'https://clavix.nl/en/' },
+      { '@type': 'ListItem', position: 2, name: 'Rent arrears', item: 'https://clavix.nl/en/knowledge/rent-arrears-eviction-netherlands/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: 'en',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+]
+---
+
+<BaseLayout
+  ogImage="/og/en-knowledge-rent-arrears-eviction-netherlands.png"
+  title="Rent Arrears & Eviction in the Netherlands"
+  description="What a landlord of Dutch commercial premises can do about rent arrears: demand letters, court dissolution, eviction and bank guarantees under Dutch law."
+  lang="en"
+  ogLocale="en_US"
+  alternates={[
+    { hreflang: 'nl', href: '/clusters/huurachterstand-bedrijfsruimte-ontbinding/' },
+    { hreflang: 'en', href: '/en/knowledge/rent-arrears-eviction-netherlands/' },
+    { hreflang: 'x-default', href: '/clusters/huurachterstand-bedrijfsruimte-ontbinding/' },
+  ]}
+  schemaJsonLd={schemas}
+>
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">
+      <nav aria-label="Breadcrumb" class="mb-3">
+        <ol class="flex flex-wrap items-center gap-1 list-none p-0 m-0 text-tiny font-semibold uppercase tracking-wider text-text-secondary">
+          <li><a href="/en/" class="text-text-secondary no-underline hover:underline">English</a></li>
+          <li class="flex items-center gap-1"><span aria-hidden="true">›</span><span aria-current="page">Rent arrears</span></li>
+        </ol>
+      </nav>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">A Dutch commercial tenant stops paying: arrears, termination and eviction</h1>
+      <p class="text-lead text-text-secondary max-w-readable">
+        For international landlords of Dutch commercial premises: what you can do from the first missed payment, and where the Dutch courts draw the line.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <div class="max-w-readable space-y-10">
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">In short</h2>
+        <p class="text-body text-text">
+          A commercial lease of Dutch built premises can only be dissolved for rent arrears by the court, whatever the contract says. The test is that of article 6:265 Dutch Civil Code: every failure to perform justifies dissolution (ontbinding, court termination for breach), unless it is of minor significance. Even substantial arrears are no guarantee: the court weighs all circumstances, and may in addition grant the tenant a final period of at most one month to pay.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Dissolution only through the court</h2>
+        <p class="text-body text-text mb-3">
+          The first misconception that costs landlords money is the assumption that a Dutch lease can be dissolved by letter when the tenant stops paying. That works for ordinary contracts, but not for the lease of built immovable property. Article 7:231(1) Dutch Civil Code (Burgerlijk Wetboek) provides that dissolution on the ground that the tenant is in breach can only be effected by the court, and paragraph 3 makes this mandatory law: a contract clause permitting out-of-court dissolution for non-payment will not hold up. The only exception, in paragraph 2, concerns serious disturbance of public order and plays no role in an arrears case.
+        </p>
+        <p class="text-body text-text">
+          The rule is the same for both Dutch commercial lease regimes, retail and hospitality premises as well as offices and other space, because article 7:231 sits in the general provisions of the lease title. The differences between those regimes concern termination by notice, not dissolution for non-payment.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">When arrears justify dissolution</h2>
+        <p class="text-body text-text mb-3">
+          Article 6:265(1) Dutch Civil Code states the rule and the exception in one sentence: every failure to perform gives the right to dissolve, unless the failure, given its special nature or minor significance, does not justify dissolution and its consequences. The Dutch Supreme Court (Hoge Raad) clarified in a 2018 preliminary ruling (ECLI:NL:HR:2018:1810) that only a failure of sufficient weight justifies dissolution, and that no single factor is decisive in advance. The landlord must establish the breach; it is for the tenant to invoke the exception.
+        </p>
+        <p class="text-body text-text mb-3">
+          In practice, cantonal courts (kantonrechters, the Dutch courts handling lease disputes) take as their starting point that arrears of roughly three monthly instalments justify dissolution. That is a line in the case law, not a statutory rule, and it should be presented as practice rather than law.
+        </p>
+        <p class="text-body text-text">
+          Nor are substantial arrears a guarantee. In October 2025 the Amsterdam District Court refused dissolution despite arrears of EUR 128,802 on a monthly rent of over EUR 21,000 (ECLI:NL:RBAMS:2025:7632), weighing the tenant’s investments in the premises and an ample bank guarantee. External causes also count: in April 2025 the Court of Appeal in The Hague held that substantial arrears built up during the corona period did not justify dissolution (ECLI:NL:GHDHA:2025:799), a case that also shows how a landlord’s own shortcomings can undermine its collection position.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">The terme de grace: a last chance from the court</h2>
+        <p class="text-body text-text">
+          Under article 7:280 Dutch Civil Code, the court may, before pronouncing dissolution, allow the tenant a final period of at most one month to still perform. It is a discretionary power, not a tenant’s right, and the courts apply it with restraint, as a genuine last chance; the court may also raise it of its own motion. In practice the outcome usually turns on whether the tenant can show concretely that the arrears can be paid off within that month. The landlord’s most effective response is to demonstrate that earlier opportunities were given and not used, which is a reason to document every payment arrangement and how it played out.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Default, interest and collection costs</h2>
+        <p class="text-body text-text">
+          Where the lease contains a fixed payment date, such as rent payable in advance on the first of the month, the tenant is in default by operation of law, without a notice of default (ingebrekestelling, a formal written demand setting a final deadline). A written demand is nonetheless advisable: it records the arrears and simplifies your position in later proceedings. For commercial contracts, the statutory commercial interest of article 6:119a Dutch Civil Code applies, which is considerably higher than ordinary statutory interest, and article 6:96(4) provides a minimum award of extrajudicial collection costs against business debtors. Calculate carefully: an error in your own arrears schedule undermines the whole claim.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Eviction in summary proceedings</h2>
+        <p class="text-body text-text mb-3">
+          Eviction (ontruiming) can be claimed in summary proceedings (kort geding, an expedited interim procedure) where there is sufficient urgency; mounting arrears and the interest in re-letting are usually enough. The substantive test is stricter than in proceedings on the merits: the interim relief judge does not decide the dissolution itself, but assesses whether it is highly likely that the court on the merits will dissolve the lease. This route fits a clear, undisputed and substantial arrears position; where the tenant raises a set-off or suspension defence, the main proceedings are the appropriate forum.
+        </p>
+        <p class="text-body text-text">
+          Bear in mind the restitution risk: an eviction is practically irreversible. If the court on the merits later finds that dissolution was not justified, the landlord is exposed to a damages claim for wrongful enforcement.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">A payment arrangement often beats eviction</h2>
+        <p class="text-body text-text">
+          Eviction does not solve the arrears: it ends the rent stream, leaves the premises empty and makes recovery against a failed tenant illusory. A tight written payment arrangement often yields more. Its fixed elements: acknowledgment of the amount of the arrears, a realistic repayment schedule alongside punctual payment of the current rent, lapse of the arrangement after a single missed instalment with the full balance immediately due, and an express reservation of the right to dissolution and eviction. Where viability is doubtful, consider additional security, such as a topped-up bank guarantee or a guarantee from the holding company or in private. A tenant who structurally cannot pay is not helped by an arrangement; in that case swift action is, on balance, the least damaging route for both sides.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Security and the tenant’s bankruptcy</h2>
+        <p class="text-body text-text mb-3">
+          A bank guarantee can be called once the underlying claim is due and established. If the tenant goes bankrupt, article 39 of the Dutch Bankruptcy Act (Faillissementswet) allows both the bankruptcy trustee and the landlord to terminate the lease early, observing the agreed or customary notice period, with three months in any event sufficient; rent from the date of the bankruptcy order is an estate debt (boedelschuld, a debt paid ahead of ordinary creditors).
+        </p>
+        <p class="text-body text-text">
+          The Supreme Court held in 2011 that such a termination is a regular way of ending the lease that does not oblige the estate to pay damages, even where the contract provides otherwise (ECLI:NL:HR:2011:BO3534): vacancy damages are not a claim against the estate. In 2013 it added that this protection only benefits the estate (ECLI:NL:HR:2013:1244), so a bank or group guarantee covering vacancy damages can still be called on the guarantor. The text of the guarantee is decisive, and it should be called with care: amounts drawn that are not actually owed must be repaid. Which lease regime applies to your premises is explained in our Dutch article on <a href="/clusters/bedrijfsruimte-290-of-230a-bw/" class="underline">7:290 versus 7:230a premises</a> (in Dutch).
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-4">Frequently asked questions</h2>
+        <div class="space-y-4">
+          {faqs.map((f) => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{f.q}</h3>
+              <p class="text-body text-text-secondary">{f.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABandEN heading="Discuss your Dutch rent arrears matter" description="A 30-minute conversation, free of charge and in English. We tell you where you stand under Dutch law." />
+</BaseLayout>

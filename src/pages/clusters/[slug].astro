@@ -138,6 +138,23 @@ const ctaContext = cluster.parentPillar ? ctaPerPillar[cluster.parentPillar.slug
 
 // Halverwege het artikel een korte inline-CTA tonen
 const midIndex = cluster.sections?.length >= 4 ? Math.floor(cluster.sections.length / 2) : -1
+
+// Engelse tegenhangers in de /en/knowledge/-laag
+const enCounterparts: Record<string, string> = {
+  'bedrijfsruimte-290-of-230a-bw': '/en/knowledge/commercial-lease-regimes/',
+  'huurprijswijziging-7-303-roz': '/en/knowledge/rent-review-dutch-law/',
+  'verborgen-gebreken-bedrijfspand': '/en/knowledge/hidden-defects-commercial-property/',
+  'huurachterstand-bedrijfsruimte-ontbinding': '/en/knowledge/rent-arrears-eviction-netherlands/',
+  'erfpacht-amsterdam-herziening': '/en/knowledge/amsterdam-leasehold-erfpacht/',
+}
+const enHref = enCounterparts[slug as string]
+const alternates = enHref
+  ? [
+      { hreflang: 'nl', href: `/clusters/${slug}/` },
+      { hreflang: 'en', href: enHref },
+      { hreflang: 'x-default', href: `/clusters/${slug}/` },
+    ]
+  : []
 ---
 
 <BaseLayout
@@ -148,6 +165,7 @@ const midIndex = cluster.sections?.length >= 4 ? Math.floor(cluster.sections.len
   ogType="article"
   publishedTime={cluster.publishedAt}
   modifiedTime={cluster.modifiedAt || cluster.publishedAt}
+  alternates={alternates}
 >
   <article>
     <section class="bg-bg-tinted">

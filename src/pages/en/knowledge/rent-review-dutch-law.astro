@@ -1,0 +1,174 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABandEN from '@components/CTABandEN.astro'
+
+const faqs = [
+  {
+    q: 'When can the rent of Dutch retail premises be reviewed?',
+    a: 'Article 7:303(1) Dutch Civil Code offers two openings. If the lease runs for a fixed term, either party can claim a new rent determination after the agreed duration has expired. In all other cases, a claim is possible each time at least five years have passed since the last rent agreed between the parties took effect, or since the last court-determined rent was claimed. The statutory benchmark is the rent of comparable premises in the locality over the preceding five years, and the procedure runs before the cantonal court, usually with an advisory report from the BHAC.',
+  },
+  {
+    q: 'What is the 303 procedure?',
+    a: 'The 303 procedure is the statutory route of article 7:303 Dutch Civil Code to have the cantonal court reset the rent of retail and hospitality premises to the level of comparable premises in the locality, measured over the five preceding years. It starts with an expert opinion under article 7:304 and ends with a judgment that works back to the day the claim was brought.',
+  },
+  {
+    q: 'What does a Dutch rent review cost?',
+    a: 'The costs consist of the court fee at the cantonal court (EUR 139 in 2026 for legal entities in a case of undetermined value), the expert report (usually several thousand euros) and lawyer fees, in our case with a fee arrangement agreed in advance per phase. Set against those costs is the annual difference multiplied by the remaining term of the lease. A correction of EUR 15,000 per year with seven years left makes the case worth well over EUR 100,000.',
+  },
+  {
+    q: 'How long does a 7:303 procedure take?',
+    a: 'Typically six to twelve months from petition to judgment. A settlement once the expert report is on the table is often months faster. Because the new rent works back to the day the claim was brought, the length of the procedure itself costs nothing; waiting to start does.',
+  },
+]
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'Rent review of Dutch commercial premises: the article 7:303 procedure',
+    inLanguage: 'en',
+    mainEntityOfPage: 'https://clavix.nl/en/knowledge/rent-review-dutch-law/',
+    author: { '@type': 'Person', '@id': 'https://clavix.nl/kumar#person', name: 'mr. Mukesh Kumar', url: 'https://clavix.nl/kumar/' },
+    publisher: { '@type': 'LegalService', '@id': 'https://clavix.nl/#organization' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'English', item: 'https://clavix.nl/en/' },
+      { '@type': 'ListItem', position: 2, name: 'Rent review', item: 'https://clavix.nl/en/knowledge/rent-review-dutch-law/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: 'en',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+]
+---
+
+<BaseLayout
+  ogImage="/og/en-knowledge-rent-review-dutch-law.png"
+  title="Rent Review Under Dutch Law (7:303)"
+  description="How rent review of Dutch retail and hospitality premises works under article 7:303 Dutch Civil Code: timing, the expert phase, costs and the ROZ model."
+  lang="en"
+  ogLocale="en_US"
+  alternates={[
+    { hreflang: 'nl', href: '/clusters/huurprijswijziging-7-303-roz/' },
+    { hreflang: 'en', href: '/en/knowledge/rent-review-dutch-law/' },
+    { hreflang: 'x-default', href: '/clusters/huurprijswijziging-7-303-roz/' },
+  ]}
+  schemaJsonLd={schemas}
+>
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">
+      <nav aria-label="Breadcrumb" class="mb-3">
+        <ol class="flex flex-wrap items-center gap-1 list-none p-0 m-0 text-tiny font-semibold uppercase tracking-wider text-text-secondary">
+          <li><a href="/en/" class="text-text-secondary no-underline hover:underline">English</a></li>
+          <li class="flex items-center gap-1"><span aria-hidden="true">›</span><span aria-current="page">Rent review</span></li>
+        </ol>
+      </nav>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Rent review of Dutch commercial premises: the article 7:303 procedure</h1>
+      <p class="text-lead text-text-secondary max-w-readable">
+        How a landlord or tenant of Dutch retail or hospitality premises can have the rent reset to the level of comparable premises, and where the procedure tends to be won or lost. Written for international landlords and corporate tenants.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <div class="max-w-readable space-y-10">
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">The rule in outline</h2>
+        <p class="text-body text-text">
+          Article 7:303 of the Dutch Civil Code (Burgerlijk Wetboek) gives both landlord and tenant of retail and hospitality premises the right to have the rent redetermined by the court. If the lease runs for a fixed term, that is possible once the agreed duration has expired; in all other cases, each time at least five years have passed since the rent was last set. The claim is only admissible together with an opinion from a jointly appointed expert, or after the court has appointed one on request. The benchmark is the average rent of comparable premises in the locality over the five years preceding the claim, adjusted to the price level at that moment.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">What article 7:303 covers</h2>
+        <p class="text-body text-text mb-3">
+          The provision applies only to so-called 7:290 premises (bedrijfsruimte, business premises): public-facing space such as shops, restaurants, cafés and craft businesses, where customers come through the door for goods or services. Offices, warehouses, production space and data centres fall under article 7:230a, for which no comparable statutory right exists; there, the lease itself determines whether and how the rent can be changed. The distinction is explained in our <a href="/clusters/bedrijfsruimte-290-of-230a-bw/" class="underline">article on the 290 versus 230a regimes</a> (in Dutch).
+        </p>
+        <p class="text-body text-text mb-3">
+          The statutory principle is that, on review, the rent must correspond to that of comparable premises in the locality over the five years preceding the claim. This is not the market price at the moment of the claim but a multi-year average, which smooths out temporary peaks and troughs and makes the outcome more stable than a direct market test would be.
+        </p>
+        <p class="text-body text-text">
+          Article 7:303 is mandatory law for 7:290 premises: a clause that deviates to the tenant's detriment can be annulled, unless the court has approved it under article 7:291. Rent review also stands apart from the annual indexation found in virtually every Dutch lease: indexation preserves purchasing power, while a review corrects a structural drift away from the market; the two operate side by side.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">When a review can be claimed</h2>
+        <p class="text-body text-text mb-3">
+          The statute recognises two moments. For a fixed-term lease, either party can claim a new determination after the agreed duration has expired: under a ten-year lease that is year ten, not year six. In all other cases, a claim is possible each time at least five years have passed since the day the last rent agreed between the parties took effect, or the last court-determined rent was claimed. On the transition from the customary first five-year term to the second, a new review moment arises, even if one already took place; thereafter a review is possible at most once every five years.
+        </p>
+        <p class="text-body text-text">
+          Termination is no alternative. The Dutch Supreme Court confirmed in 2025 (ECLI:NL:HR:2025:1962) that a landlord who merely wants a higher rent cannot achieve that by terminating the lease, but is confined to the route of articles 7:303 and 7:304. The five-year cycle protects both sides: the tenant against sharp increases, the landlord against falling rents.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">The first hurdle: the expert opinion of article 7:304</h2>
+        <p class="text-body text-text mb-3">
+          Before the figures comes an admissibility test, and claims fail on it before the rent is ever examined. Article 7:304(1) provides that a claim for a new rent determination is only admissible if accompanied by an opinion on the rent drawn up by one or more experts appointed jointly by the parties. If the parties cannot agree on an expert, the court appoints one at the request of the party most ready to act (either party may file), by petition (verzoekschrift); the claim itself is brought by writ of summons (dagvaarding). The Supreme Court held in 2013 (ECLI:NL:HR:2013:856) that prior consultation about a joint expert is required and must be stated in the petition. The Amsterdam Court of Appeal, in the case that led to that judgment (ECLI:NL:GHAMS:2012:BY1906), added that a defect in that consultation cannot be repaired after filing: whoever goes to court without it starts again.
+        </p>
+        <p class="text-body text-text">
+          The date matters. Where a court appointment is requested, the day of that request counts as the day the claim was brought. That fixes both the five-year reference period and the effective date of the new rent, so a month of delay means a month of lost effect. Record the consultation about the expert in writing, with dates and responses; in a dispute over admissibility that file is the only evidence there is.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">The valuation: comparable premises over five years</h2>
+        <p class="text-body text-text">
+          The comparison rests on three criteria: comparable premises (the same category and function, so a prime-location shop against other prime-location shops), in the locality (the same city, often the same district or street) and the five-year average rather than the spot price. The data come from actually concluded lettings, not asking rents, which makes access to a database of realised transactions essential; reports from rent analysts are commonly used. The expert then applies corrections for the specific characteristics of the property, such as floor area, layout, position and quality of fit-out.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">The procedure: BHAC and the cantonal court</h2>
+        <p class="text-body text-text mb-3">
+          There are two main routes. The parties can jointly appoint an expert whose advice serves as a basis for negotiation or, if agreed in advance, binds them; this is faster and cheaper, but requires a willingness to cooperate. Otherwise the matter goes to the kantonrechter (the Dutch cantonal court), which usually engages the Bedrijfshuuradviescommissie or BHAC (the business rent advisory committee used by the Dutch courts), a panel of valuers, agents and lawyers whose report carries considerable weight.
+        </p>
+        <p class="text-body text-text">
+          A procedure typically takes six to twelve months from petition to judgment; an appeal can double that. The newly determined rent applies retroactively from the day the claim was brought, unless, at the claim of one of the parties, the court sets a different date on account of special circumstances, and the court may spread the adjustment over a period of up to five years. In practice a considerable share of cases settles once the expert report is available.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Costs, stakes and typical scenarios</h2>
+        <p class="text-body text-text mb-3">
+          The costs consist of the court fee (in 2026, EUR 139 for legal entities in a case of undetermined value), the expert report (usually several thousand euros) and lawyer fees. The relevant comparison is with the annual difference multiplied by the remaining term: a correction of EUR 15,000 per year with seven years left makes the case worth well over EUR 100,000.
+        </p>
+        <p class="text-body text-text">
+          Two scenarios dominate. Tenants claim reductions, particularly in falling markets, when a neighbour in a comparable unit pays considerably less. Landlords claim increases against long-sitting tenants whose rent has grown only through indexation and now sits well below market. One limitation deserves attention: under article 7:303(3), the court rejects an increase to the extent it is based on improvements paid for by the tenant. Many disputes are resolved through negotiation with the procedure as leverage, which is usually cheaper and faster than litigating to judgment.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">The ROZ model and rent review</h2>
+        <p class="text-body text-text">
+          Virtually all Dutch retail and hospitality leases use the standard model of the ROZ (Raad voor Onroerende Zaken, the Dutch Real Estate Council). The model links the annual rent adjustment to the consumer price index, but the statutory review procedure stands apart from it and cannot be excluded by it. Clauses restricting the review are only valid with court approval under article 7:291. A party to a running ROZ lease whose rent has drifted far from the market therefore almost always has the review route available.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-4">Frequently asked questions</h2>
+        <div class="space-y-4">
+          {faqs.map((f) => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{f.q}</h3>
+              <p class="text-body text-text-secondary">{f.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABandEN heading="Discuss your Dutch lease matter" description="A 30-minute conversation, free of charge and in English. We tell you where you stand under Dutch law." />
+</BaseLayout>

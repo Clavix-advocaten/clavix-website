@@ -151,6 +151,11 @@ def main():
         "fees": ("Fees and engagement", "English"),
         "contact": ("Contact us", "English"),
         "about": ("Mukesh Kumar, Dutch lawyer", "English"),
+        "knowledge-commercial-lease-regimes": ("Dutch commercial lease: the 7:290 and 7:230a regimes", "Knowledge"),
+        "knowledge-rent-review-dutch-law": ("Rent review under Dutch law: article 7:303", "Knowledge"),
+        "knowledge-hidden-defects-commercial-property": ("Hidden defects when buying Dutch commercial property", "Knowledge"),
+        "knowledge-rent-arrears-eviction-netherlands": ("Rent arrears and eviction in the Netherlands", "Knowledge"),
+        "knowledge-amsterdam-leasehold-erfpacht": ("Amsterdam leasehold (erfpacht) and ground rent revisions", "Knowledge"),
     }
     for slug, (titel, eyebrow) in engels.items():
         paginas.append((f"en-{slug}.png", titel, eyebrow))
