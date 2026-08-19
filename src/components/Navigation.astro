@@ -8,6 +8,9 @@ const navItems: any[] = [
     label: 'Expertise',
     href: '#',
     mega: true,
+    id: 'mega-menu-expertise',
+    gridClass: 'min-w-[900px] grid-cols-3',
+    posClass: 'left-0',
     columns: [
       {
         heading: 'Praktijkgebieden',
@@ -44,11 +47,55 @@ const navItems: any[] = [
       },
     ],
   },
-  { label: 'Kennisbank', href: '/kennisbank/' },
-  { label: 'Werkwijze', href: '/werkwijze/' },
+  {
+    label: 'Kennis & tools',
+    href: '#',
+    mega: true,
+    id: 'mega-menu-kennis',
+    gridClass: 'min-w-[640px] grid-cols-2',
+    posClass: 'left-0',
+    columns: [
+      {
+        heading: 'Verdieping',
+        items: [
+          { label: 'Kennisbank', href: '/kennisbank/', sub: 'Alle artikelen per rechtsgebied' },
+          { label: 'Notities', href: '/notities/', sub: 'Wat ons opvalt in praktijk en rechtspraak' },
+          { label: 'Veelgestelde vragen', href: '/veelgestelde-vragen/', sub: 'Antwoorden per rechtsgebied' },
+          { label: 'Woordenlijst', href: '/woordenlijst/', sub: 'Juridische begrippen in gewoon Nederlands' },
+        ],
+      },
+      {
+        heading: 'Zelf regelen',
+        items: [
+          { label: 'Wettelijke rente berekenen', href: '/wettelijke-rente-berekenen/', sub: 'Handelsrente en gewone rente' },
+          { label: 'Incassokosten berekenen', href: '/incassokosten-berekenen/', sub: 'Volgens de wettelijke staffel' },
+          { label: 'Proceskosten berekenen', href: '/proceskosten-berekenen/', sub: 'Griffierecht, salaris, deurwaarder' },
+          { label: 'Modelbrieven', href: '/modelbrieven/', sub: 'Gratis Word-modellen' },
+        ],
+      },
+    ],
+  },
   { label: 'Kosten', href: '/kosten/' },
-  { label: 'mr. Kumar', href: '/kumar/' },
-  { label: 'Notities', href: '/notities/' },
+  {
+    label: 'Het kantoor',
+    href: '#',
+    mega: true,
+    id: 'mega-menu-kantoor',
+    gridClass: 'min-w-[280px] grid-cols-1',
+    posClass: 'right-0',
+    columns: [
+      {
+        heading: 'Het kantoor',
+        items: [
+          { label: 'Over mr. Kumar', href: '/kumar/', sub: 'Advocaat-ondernemer op de Zuidas' },
+          { label: 'Werkwijze', href: '/werkwijze/', sub: 'Van eerste gesprek tot afronding' },
+          { label: 'Advocaat op de Zuidas', href: '/advocaat-zuidas/', sub: 'Het kantoor en de buurt' },
+          { label: 'Juridisch abonnement', href: '/juridisch-abonnement/', sub: 'Vaste juridische partner' },
+          { label: 'English', href: '/en/', sub: 'Dutch law firm, English spoken' },
+        ],
+      },
+    ],
+  },
   { label: 'Contact', href: '/contact/' },
 ]
 ---
@@ -71,12 +118,12 @@ const navItems: any[] = [
                 class="text-text hover:text-text-accent transition flex items-center gap-1 py-2 whitespace-nowrap"
                 aria-haspopup="true"
                 aria-expanded="false"
-                aria-controls="mega-menu-expertise"
+                aria-controls={item.id}
               >
                 {item.label}
                 <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
               </button>
-              <div data-dropdown id="mega-menu-expertise" class="absolute top-full left-0 mt-2 bg-bg-elevated border border-border rounded-lg shadow-lg p-6 min-w-[900px] grid grid-cols-3 gap-6 opacity-0 invisible transition pointer-events-none">
+              <div data-dropdown id={item.id} class={`absolute top-full ${item.posClass} mt-2 bg-bg-elevated border border-border rounded-lg shadow-lg p-6 grid ${item.gridClass} gap-6 opacity-0 invisible transition pointer-events-none`}>
                 {item.columns.map((col: any) => (
                   <div>
                     <div class="text-tiny font-mono uppercase tracking-wider text-text-muted mb-3 pb-2 border-b border-border">
@@ -94,9 +141,6 @@ const navItems: any[] = [
                     </ul>
                   </div>
                 ))}
-                <div class="col-span-3 border-t border-border pt-3 mt-1">
-                  <a href="/veelgestelde-vragen/" class="block px-2 py-1 text-small text-text-secondary hover:text-text-accent no-underline">Veelgestelde vragen →</a>
-                </div>
               </div>
             </>
           ) : (
@@ -334,9 +378,6 @@ const navItems: any[] = [
           )}
         </li>
       ))}
-      <li>
-        <a href="/veelgestelde-vragen/" class="block py-2 text-text no-underline">Veelgestelde vragen</a>
-      </li>
       <li>
         <a
           href="/contact/"
