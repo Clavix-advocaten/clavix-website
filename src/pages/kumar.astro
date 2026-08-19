@@ -30,9 +30,15 @@ const regOpsomming =
 ---
 
 <BaseLayout
+  ogImage="/og/page-kumar.png"
   title="mr. M. Kumar, advocaat in Amsterdam"
   description={"mr. Mukesh Kumar, advocaat in Amsterdam Zuidas. NOvA-geregistreerd ondernemingsrecht en burgerlijk procesrecht. Voor scherpe analyse zonder 30-pagina-memo's."}
   schemaJsonLd={schemas}
+  alternates={[
+    { hreflang: 'nl', href: '/kumar/' },
+    { hreflang: 'en', href: '/en/about/' },
+    { hreflang: 'x-default', href: '/kumar/' },
+  ]}
 >
   {!attorney ? (
     <section class="max-w-content mx-auto px-4 md:px-8 py-20">

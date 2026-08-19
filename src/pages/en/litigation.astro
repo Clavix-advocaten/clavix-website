@@ -1,9 +1,33 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro'
 import CTABandEN from '@components/CTABandEN.astro'
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Dutch litigation services',
+    description: 'Interim relief (kort geding), proceedings on the merits, prejudgment attachments, enforcement and appeal before the Dutch civil courts.',
+    url: 'https://clavix.nl/en/litigation/',
+    inLanguage: 'en',
+    serviceType: 'Legal services, litigation',
+    provider: { '@type': 'LegalService', '@id': 'https://clavix.nl/#organization', name: 'Clavix Advocaten', url: 'https://clavix.nl/' },
+    areaServed: { '@type': 'Country', name: 'Netherlands' },
+    availableLanguage: ['English', 'Dutch'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'English', item: 'https://clavix.nl/en/' },
+      { '@type': 'ListItem', position: 2, name: 'Litigation', item: 'https://clavix.nl/en/litigation/' },
+    ],
+  },
+]
 ---
 
 <BaseLayout
+  ogImage="/og/en-litigation.png"
   title="Litigation Lawyer in Amsterdam"
   description="Civil litigation before the Dutch courts: interim relief (kort geding), proceedings on the merits, attachments, enforcement and appeal. English-speaking litigator."
   lang="en"
@@ -13,13 +37,14 @@ import CTABandEN from '@components/CTABandEN.astro'
     { hreflang: 'en', href: '/en/litigation/' },
     { hreflang: 'x-default', href: '/praktijkgebieden/burgerlijk-procesrecht/' },
   ]}
+  schemaJsonLd={schemas}
 >
   <section class="bg-bg-tinted">
     <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">
       <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
         <a href="/en/" class="text-text-secondary no-underline hover:underline">English</a> › Litigation
       </p>
-      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Litigation</h1>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Litigation lawyer in Amsterdam</h1>
       <p class="text-lead text-text-secondary max-w-readable">
         Commercial litigation before the Dutch civil courts, from urgent interim relief to appeal. Based minutes from the Amsterdam District Court.
       </p>

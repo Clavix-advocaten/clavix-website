@@ -1,9 +1,33 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro'
 import CTABandEN from '@components/CTABandEN.astro'
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Dutch insolvency and restructuring services',
+    description: 'Creditor strategy, bankruptcy petitions, the Dutch scheme (WHOA), workouts and director liability defence under Dutch law.',
+    url: 'https://clavix.nl/en/insolvency-restructuring/',
+    inLanguage: 'en',
+    serviceType: 'Legal services, insolvency law',
+    provider: { '@type': 'LegalService', '@id': 'https://clavix.nl/#organization', name: 'Clavix Advocaten', url: 'https://clavix.nl/' },
+    areaServed: { '@type': 'Country', name: 'Netherlands' },
+    availableLanguage: ['English', 'Dutch'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'English', item: 'https://clavix.nl/en/' },
+      { '@type': 'ListItem', position: 2, name: 'Insolvency & restructuring', item: 'https://clavix.nl/en/insolvency-restructuring/' },
+    ],
+  },
+]
 ---
 
 <BaseLayout
+  ogImage="/og/en-insolvency-restructuring.png"
   title="Insolvency & Restructuring Lawyer in Amsterdam"
   description="Dutch insolvency law for creditors and companies: creditor strategy, bankruptcy petitions, the Dutch scheme (WHOA) and restructuring. English-speaking lawyer."
   lang="en"
@@ -13,13 +37,14 @@ import CTABandEN from '@components/CTABandEN.astro'
     { hreflang: 'en', href: '/en/insolvency-restructuring/' },
     { hreflang: 'x-default', href: '/praktijkgebieden/insolventie-en-herstructurering/' },
   ]}
+  schemaJsonLd={schemas}
 >
   <section class="bg-bg-tinted">
     <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">
       <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
         <a href="/en/" class="text-text-secondary no-underline hover:underline">English</a> › Insolvency & restructuring
       </p>
-      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Insolvency & restructuring</h1>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Insolvency and restructuring lawyer in Amsterdam</h1>
       <p class="text-lead text-text-secondary max-w-readable">
         When a Dutch counterparty stops paying, or your own Dutch entity comes under pressure: creditor strategy, insolvency proceedings and restructuring under Dutch law.
       </p>

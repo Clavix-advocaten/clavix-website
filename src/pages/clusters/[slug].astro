@@ -140,7 +140,15 @@ const ctaContext = cluster.parentPillar ? ctaPerPillar[cluster.parentPillar.slug
 const midIndex = cluster.sections?.length >= 4 ? Math.floor(cluster.sections.length / 2) : -1
 ---
 
-<BaseLayout title={seoTitle} description={seoDescription} schemaJsonLd={schemas}>
+<BaseLayout
+  title={seoTitle}
+  description={seoDescription}
+  schemaJsonLd={schemas}
+  ogImage={`/og/clusters-${slug}.png`}
+  ogType="article"
+  publishedTime={cluster.publishedAt}
+  modifiedTime={cluster.modifiedAt || cluster.publishedAt}
+>
   <article>
     <section class="bg-bg-tinted">
       <div class="max-w-content mx-auto px-4 md:px-8 py-12 md:py-16">

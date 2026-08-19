@@ -1,9 +1,62 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro'
 import CTABandEN from '@components/CTABandEN.astro'
+
+const faqs = [
+  {
+    q: 'How protected is a commercial tenant under Dutch law?',
+    a: 'It depends on the type of premises. Retail and hospitality premises (article 7:290 Dutch Civil Code) enjoy semi-mandatory protection: an initial term of five plus five years, limited termination grounds for the landlord and a statutory rent review procedure. Offices and other premises (article 7:230a) have far lighter protection, limited to eviction protection after the lease ends. Which regime applies follows from the actual use, not from the label on the contract.',
+  },
+  {
+    q: 'Can I claim against the seller for defects discovered after completion?',
+    a: 'Sometimes. The starting point is the contract: Dutch commercial property deals are usually done on an as-is basis with warranty carve-outs, and an age clause is common for older buildings. A claim typically requires that the defect prevents normal use, that the seller breached a warranty or knew more than it disclosed, and that you complained within a reasonable time after discovery. The clause wording decides most cases.',
+  },
+  {
+    q: 'How fast can a creditor attach Dutch real estate?',
+    a: 'Very fast. A prejudgment attachment (conservatoir beslag) is requested ex parte from the interim relief judge and can often be levied within days. The debtor usually learns of it only after the attachment has been made. The attaching creditor must then start proceedings on the merits, and is liable for damages if the claim ultimately fails.',
+  },
+  {
+    q: 'Do you act for both landlords and tenants?',
+    a: 'Yes. We act for landlords and investors on one file and for corporate tenants on another. That dual perspective is useful: we know which arguments the other side will raise, because we make them ourselves in other matters.',
+  },
+]
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Dutch real estate law services',
+    description: 'Commercial lease, property acquisitions, hidden defects, construction disputes, prejudgment attachments and enforcement under Dutch law, for international investors and companies.',
+    url: 'https://clavix.nl/en/real-estate/',
+    inLanguage: 'en',
+    serviceType: 'Legal services, real estate law',
+    provider: { '@type': 'LegalService', '@id': 'https://clavix.nl/#organization', name: 'Clavix Advocaten', url: 'https://clavix.nl/' },
+    areaServed: { '@type': 'Country', name: 'Netherlands' },
+    availableLanguage: ['English', 'Dutch'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'English', item: 'https://clavix.nl/en/' },
+      { '@type': 'ListItem', position: 2, name: 'Real estate', item: 'https://clavix.nl/en/real-estate/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: 'en',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+]
 ---
 
 <BaseLayout
+  ogImage="/og/en-real-estate.png"
   title="Real Estate Lawyer in Amsterdam"
   description="Dutch real estate law for investors: commercial lease, acquisitions, hidden defects, construction disputes and enforcement. English-speaking lawyer in Amsterdam Zuidas."
   lang="en"
@@ -13,44 +66,95 @@ import CTABandEN from '@components/CTABandEN.astro'
     { hreflang: 'en', href: '/en/real-estate/' },
     { hreflang: 'x-default', href: '/praktijkgebieden/vastgoedrecht/' },
   ]}
+  schemaJsonLd={schemas}
 >
   <section class="bg-bg-tinted">
     <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">
-      <p class="text-tiny font-semibold uppercase tracking-wider text-text-secondary mb-3">
-        <a href="/en/" class="text-text-secondary no-underline hover:underline">English</a> › Real estate
-      </p>
-      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Real estate law</h1>
+      <nav aria-label="Breadcrumb" class="mb-3">
+        <ol class="flex flex-wrap items-center gap-1 list-none p-0 m-0 text-tiny font-semibold uppercase tracking-wider text-text-secondary">
+          <li><a href="/en/" class="text-text-secondary no-underline hover:underline">English</a></li>
+          <li class="flex items-center gap-1"><span aria-hidden="true">›</span><span aria-current="page">Real estate</span></li>
+        </ol>
+      </nav>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Real estate lawyer in Amsterdam</h1>
       <p class="text-lead text-text-secondary max-w-readable">
-        For international investors in Dutch commercial property: the legal side of buying, letting, building and, when necessary, litigating.
+        For international investors and companies with Dutch commercial property: the legal side of buying, letting, building and, when necessary, litigating. Based in the Zuidas, working in English, appearing before the Dutch courts.
       </p>
     </div>
   </section>
 
   <section class="max-w-container mx-auto px-4 md:px-8 py-20">
-    <div class="max-w-readable space-y-6">
+    <div class="max-w-readable space-y-10">
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">Why Dutch real estate law surprises foreign investors</h2>
+        <p class="text-body text-text mb-3">
+          Dutch property law combines a highly liquid, professional investment market with a tenant protection regime that has no exact equivalent in most other jurisdictions. Contracts are usually based on standard models drawn up by the Real Estate Council (ROZ), which are landlord-friendly, while the statute pulls in the tenant's direction. The outcome of a dispute often turns on which of the two prevails on the specific point, and that is rarely obvious from the contract alone.
+        </p>
+        <p class="text-body text-text">
+          We guide international clients through that interplay: before signing, when the questions are cheap to answer, and in dispute, when positions have hardened and procedure starts to matter as much as substance.
+        </p>
+      </div>
+
       <div>
         <h2 class="text-h3 font-bold text-text mb-2">Commercial lease under Dutch law</h2>
+        <p class="text-body text-text mb-3">
+          Dutch lease law splits commercial premises into two regimes. Retail and hospitality premises, so-called 7:290 premises, carry semi-mandatory protection: a default term of five plus five years, a closed list of termination grounds for the landlord, court review of a termination, and a statutory procedure to reset the rent to the level of comparable premises over the past five years. Offices, warehouses and other 7:230a premises sit under a much lighter regime, where the main protection is a temporary stay of eviction after the lease ends.
+        </p>
         <p class="text-body text-text">
-          Dutch commercial lease law is unusually protective of tenants of retail and hospitality premises, with semi-mandatory rules on duration, termination and rent review. For offices and other premises the regime is lighter but the termination formalities remain strict. We draft and litigate for both landlords and tenants, including eviction and rent arrears proceedings.
+          Which regime applies is decided by what actually happens in the building, not by the heading of the contract. We draft and negotiate leases on both sides of the market, litigate terminations, evictions and rent arrears, and conduct rent review proceedings before the cantonal court, including the expert phase that usually decides them.
         </p>
       </div>
+
       <div>
         <h2 class="text-h3 font-bold text-text mb-2">Acquisitions and hidden defects</h2>
+        <p class="text-body text-text mb-3">
+          Purchases of Dutch commercial property are shaped by contractual risk allocation. The market standard is an as-is transfer with specific warranties, an age clause for older buildings, and a due diligence acknowledgement that limits later complaints. When a defect surfaces after completion, asbestos, a foundation problem, an unpermitted alteration, the outcome turns on the clause wording, on what the seller knew and should have disclosed, and on how quickly the buyer complained after discovery.
+        </p>
         <p class="text-body text-text">
-          Purchases of Dutch commercial property are shaped by contractual risk allocation: as-is clauses, age clauses for older buildings and warranty carve-outs. When a defect surfaces after completion, the outcome turns on the clause wording, what the seller knew and how quickly the buyer complained. We advise before signing and act when the dispute has already arrived.
+          We advise before signing, when the risk can still be priced or allocated, and we act when the dispute has already arrived: notice letters, expert evidence, and proceedings for repair costs, price reduction or, in serious cases, rescission of the purchase.
         </p>
       </div>
+
       <div>
         <h2 class="text-h3 font-bold text-text mb-2">Construction disputes</h2>
+        <p class="text-body text-text mb-3">
+          Construction work in the Netherlands is typically contracted under standard conditions (UAV, or bespoke development agreements) that modify the statutory rules on defects, delay and additional work. After completion, the contractor's liability narrows considerably: visible defects that were not raised at delivery are in principle accepted, and complaint periods run quickly.
+        </p>
         <p class="text-body text-text">
-          Defects, delays, additional work and contractor insolvency, under Dutch standard conditions or bespoke contracts. We act for principals and investors in negotiations, expert proceedings and court litigation.
+          We act for principals and investors in disputes over defects, delay damages, additional work claims and contractor insolvency, in negotiation, in expert proceedings and before the courts and the Board of Arbitration for the Building Industry.
         </p>
       </div>
+
       <div>
         <h2 class="text-h3 font-bold text-text mb-2">Attachments and enforcement</h2>
-        <p class="text-body text-text">
-          Dutch law allows a creditor to attach real estate and other assets before judgment, with court leave obtained ex parte. That makes prejudgment attachment a powerful pressure instrument, for and against investors. We obtain attachments, defend against them and enforce judgments against Dutch property.
+        <p class="text-body text-text mb-3">
+          Dutch law allows a creditor to attach real estate, bank accounts and other assets before judgment, with court leave obtained ex parte, often within days. That makes prejudgment attachment a powerful pressure instrument, both for and against investors. An attachment on Dutch property blocks a sale in practice and frequently brings a counterparty to the table faster than proceedings ever would.
         </p>
+        <p class="text-body text-text">
+          We obtain attachments, defend against them in summary proceedings for lifting, and enforce Dutch and foreign judgments against Dutch property, through to a forced auction where it comes to that.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-2">How we work with international clients</h2>
+        <p class="text-body text-text mb-3">
+          All correspondence, contracts and advice can be delivered in English; proceedings before the Dutch courts are conducted in Dutch, and we keep you informed with English summaries at every procedural step. Wherever possible we agree a fixed fee per phase, confirmed before the engagement starts. The first 30-minute conversation is free of charge and can take place by video call.
+        </p>
+        <p class="text-body text-text">
+          Clavix is a boutique firm: you deal directly with the lawyer handling your matter, not with a team you never meet. Our practice sits deliberately on the crossroads of real estate and corporate law, which is where most investment disputes actually live.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3 font-bold text-text mb-4">Frequently asked questions</h2>
+        <div class="space-y-4">
+          {faqs.map((f) => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{f.q}</h3>
+              <p class="text-body text-text-secondary">{f.a}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>

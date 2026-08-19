@@ -1,9 +1,21 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro'
 import CTABandEN from '@components/CTABandEN.astro'
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'English', item: 'https://clavix.nl/en/' },
+      { '@type': 'ListItem', position: 2, name: 'Fees', item: 'https://clavix.nl/en/fees/' },
+    ],
+  },
+]
 ---
 
 <BaseLayout
+  ogImage="/og/en-fees.png"
   title="Fees | Dutch Law Firm Amsterdam"
   description="How Clavix Advocaten charges: fixed fees agreed in advance where possible, hourly rates with monthly specifications otherwise. First 30-minute meeting free."
   lang="en"
@@ -13,6 +25,7 @@ import CTABandEN from '@components/CTABandEN.astro'
     { hreflang: 'en', href: '/en/fees/' },
     { hreflang: 'x-default', href: '/kosten/' },
   ]}
+  schemaJsonLd={schemas}
 >
   <section class="bg-bg-tinted">
     <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">

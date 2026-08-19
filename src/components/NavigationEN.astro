@@ -1,0 +1,69 @@
+---
+/**
+ * Engelse navigatie voor de /en/-laag. Compact: geen megamenu,
+ * wel een taalwisselaar terug naar de Nederlandse tegenhanger.
+ */
+interface Props {
+  nlHref?: string
+}
+
+const { nlHref = '/' } = Astro.props
+
+const navItems = [
+  { label: 'Corporate law', href: '/en/corporate-law/' },
+  { label: 'Real estate', href: '/en/real-estate/' },
+  { label: 'Insolvency', href: '/en/insolvency-restructuring/' },
+  { label: 'Litigation', href: '/en/litigation/' },
+  { label: 'Fees', href: '/en/fees/' },
+  { label: 'About', href: '/en/about/' },
+  { label: 'Contact', href: '/en/contact/' },
+]
+---
+
+<header class="sticky top-0 z-50 bg-bg/95 backdrop-blur-md border-b border-border">
+  <nav class="max-w-container mx-auto px-4 md:px-8 py-4 flex items-center justify-between gap-4">
+    <a href="/en/" class="block no-underline" aria-label="Clavix — to the English homepage">
+      <img src="/clavix-logo.svg" alt="Clavix" class="h-9 w-auto" width="180" height="36" />
+    </a>
+
+    <ul class="hidden md:flex items-center gap-5 xl:gap-6 text-small">
+      {navItems.map((item) => (
+        <li>
+          <a href={item.href} class="text-text hover:text-text-accent transition no-underline whitespace-nowrap">
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="flex items-center gap-3">
+      <a href={nlHref} hreflang="nl" lang="nl" class="text-small text-text-secondary hover:text-text-accent no-underline whitespace-nowrap" aria-label="Deze pagina in het Nederlands">
+        Nederlands
+      </a>
+      <a
+        href="tel:+31207471121"
+        class="hidden lg:flex items-center gap-2 text-small font-semibold text-text hover:text-text-accent no-underline transition whitespace-nowrap"
+        aria-label="Call Clavix Advocaten"
+      >
+        +31 20 747 1121
+      </a>
+      <a
+        href="/en/contact/"
+        class="hidden sm:inline-block bg-action text-action-fg hover:bg-action-hover px-5 py-2.5 rounded-md font-semibold text-small no-underline transition whitespace-nowrap"
+      >
+        Get in touch
+      </a>
+    </div>
+  </nav>
+
+  {/* Mobiel: eenvoudige linkrij onder de balk */}
+  <div class="md:hidden border-t border-border overflow-x-auto">
+    <ul class="flex gap-4 px-4 py-2 text-small whitespace-nowrap">
+      {navItems.map((item) => (
+        <li>
+          <a href={item.href} class="text-text-secondary no-underline hover:text-text-accent">{item.label}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</header>

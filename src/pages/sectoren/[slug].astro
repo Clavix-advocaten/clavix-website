@@ -100,7 +100,15 @@ if (sector.faqs?.length) {
 }
 ---
 
-<BaseLayout title={seoTitle} description={seoDescription} schemaJsonLd={schemas}>
+<BaseLayout
+  title={seoTitle}
+  description={seoDescription}
+  schemaJsonLd={schemas}
+  ogImage={`/og/sectoren-${slug}.png`}
+  ogType="article"
+  publishedTime={sector.publishedAt}
+  modifiedTime={sector.modifiedAt || sector._updatedAt}
+>
   {/* Breadcrumbs */}
   <nav class="max-w-container mx-auto px-4 md:px-8 pt-6 text-tiny text-text-secondary" aria-label="Breadcrumb">
     <a href="/" class="hover:text-text-accent no-underline">Home</a>

@@ -127,7 +127,16 @@ const alternates = enHref
   : []
 ---
 
-<BaseLayout title={seoTitle} description={seoDescription} schemaJsonLd={schemas} alternates={alternates}>
+<BaseLayout
+  title={seoTitle}
+  description={seoDescription}
+  schemaJsonLd={schemas}
+  alternates={alternates}
+  ogImage={`/og/praktijkgebieden-${slug}.png`}
+  ogType="article"
+  publishedTime={pillar.publishedAt}
+  modifiedTime={pillar.modifiedAt || pillar.publishedAt}
+>
   <article>
     {/* === HERO === */}
     <section class="bg-bg-tinted">

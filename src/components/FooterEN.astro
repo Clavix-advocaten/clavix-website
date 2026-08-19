@@ -1,0 +1,66 @@
+---
+/**
+ * Engelse footer voor de /en/-laag.
+ */
+const currentYear = new Date().getFullYear()
+---
+
+<footer class="bg-bg-inverse" style="color: var(--ns-50);">
+  <div class="max-w-container mx-auto px-4 md:px-8 py-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div>
+        <img src="/clavix-logo-light.svg" alt="Clavix" class="h-9 w-auto mb-3" width="180" height="36" />
+        <p class="text-small italic mb-4" style="color: var(--ns-300);">The key to your solution.</p>
+        <address class="text-small not-italic space-y-1" style="color: var(--ns-100);">
+          <div>Strawinskylaan 257</div>
+          <div>1077 XX Amsterdam</div>
+          <div>The Netherlands</div>
+          <div class="pt-2">
+            <a href="tel:+31207471121" class="hover:underline" style="color: var(--neutral-0);">+31 20 747 1121</a>
+          </div>
+          <div>
+            <a href="mailto:info@clavix.nl" class="hover:underline" style="color: var(--neutral-0);">info@clavix.nl</a>
+          </div>
+        </address>
+      </div>
+
+      <div>
+        <h3 class="font-semibold mb-4 text-base" style="color: var(--neutral-0);">Practice areas</h3>
+        <ul class="space-y-2 text-small">
+          <li><a href="/en/corporate-law/" class="no-underline hover:underline" style="color: var(--ns-100);">Corporate law</a></li>
+          <li><a href="/en/real-estate/" class="no-underline hover:underline" style="color: var(--ns-100);">Real estate</a></li>
+          <li><a href="/en/insolvency-restructuring/" class="no-underline hover:underline" style="color: var(--ns-100);">Insolvency & restructuring</a></li>
+          <li><a href="/en/litigation/" class="no-underline hover:underline" style="color: var(--ns-100);">Litigation</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-semibold mb-4 text-base" style="color: var(--neutral-0);">The firm</h3>
+        <ul class="space-y-2 text-small">
+          <li><a href="/en/about/" class="no-underline hover:underline" style="color: var(--ns-100);">About Mukesh Kumar</a></li>
+          <li><a href="/en/fees/" class="no-underline hover:underline" style="color: var(--ns-100);">Fees</a></li>
+          <li><a href="/en/contact/" class="no-underline hover:underline" style="color: var(--ns-100);">Contact</a></li>
+          <li><a href="/" class="no-underline hover:underline" style="color: var(--ns-100);" hreflang="nl" lang="nl">Nederlands</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-semibold mb-4 text-base" style="color: var(--neutral-0);">Legal</h3>
+        <ul class="space-y-2 text-small">
+          <li><a href="/algemene-voorwaarden/" class="no-underline hover:underline" style="color: var(--ns-100);">General terms (Dutch)</a></li>
+          <li><a href="/privacy/" class="no-underline hover:underline" style="color: var(--ns-100);">Privacy statement (Dutch)</a></li>
+          <li><a href="/klachtenregeling/" class="no-underline hover:underline" style="color: var(--ns-100);">Complaints procedure (Dutch)</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t mt-12 pt-8 text-tiny flex flex-col md:flex-row justify-between gap-4" style="border-color: var(--rb-700); color: var(--ns-200);">
+      <div>
+        © 2025 - {currentYear} Clavix B.V. — Chamber of Commerce (KvK) 96800747 — VAT NL867766839B01
+      </div>
+      <div>
+        Member of the Netherlands Bar (NOvA) — registered for corporate law and civil procedure
+      </div>
+    </div>
+  </div>
+</footer>

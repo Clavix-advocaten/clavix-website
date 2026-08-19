@@ -30,7 +30,15 @@ const seoTitle = post.seo?.metaTitle || post.title
 const seoDescription = post.seo?.metaDescription || post.excerpt
 ---
 
-<BaseLayout title={seoTitle} description={seoDescription} schemaJsonLd={schemas}>
+<BaseLayout
+  title={seoTitle}
+  description={seoDescription}
+  schemaJsonLd={schemas}
+  ogImage={`/og/notities-${slug}.png`}
+  ogType="article"
+  publishedTime={post.publishedAt}
+  modifiedTime={post.modifiedAt || post.publishedAt}
+>
   <article>
     <section class="bg-bg-tinted">
       <div class="max-w-container mx-auto px-4 md:px-8 py-12 md:py-16">

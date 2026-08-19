@@ -9,12 +9,17 @@ import montserratLatinWoff2 from '@fontsource-variable/montserrat/files/montserr
 import '@styles/tokens.css'
 import Navigation from '@components/Navigation.astro'
 import Footer from '@components/Footer.astro'
+import NavigationEN from '@components/NavigationEN.astro'
+import FooterEN from '@components/FooterEN.astro'
 import { organizationSchema, siteNavigationSchema } from '@lib/schema-markup'
 
 interface Props {
   title: string
   description?: string
   ogImage?: string
+  ogType?: string
+  publishedTime?: string
+  modifiedTime?: string
   canonical?: string
   noindex?: boolean
   schemaJsonLd?: object | object[] | null
@@ -27,6 +32,9 @@ const {
   title,
   description = 'Clavix Advocaten — boutique advocatenkantoor in Amsterdam Zuidas voor ondernemers met vastgoed.',
   ogImage = '/og-default.png',
+  ogType = 'website',
+  publishedTime,
+  modifiedTime,
   canonical,
   noindex = false,
   schemaJsonLd,
@@ -45,6 +53,9 @@ if (schemaJsonLd) {
   if (Array.isArray(schemaJsonLd)) schemas.push(...schemaJsonLd)
   else schemas.push(schemaJsonLd)
 }
+
+// Taalwisselaar op EN-pagina's: de Nederlandse tegenhanger uit de hreflang-paren
+const nlAlternate = alternates.find((a) => a.hreflang === 'nl')?.href || '/'
 ---
 
 <!doctype html>
@@ -71,13 +82,18 @@ if (schemaJsonLd) {
     )}
 
     {/* Open Graph */}
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:locale" content={ogLocale} />
     <meta property="og:site_name" content="Clavix Advocaten" />
+    {ogType === 'article' && publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {ogType === 'article' && modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+    {ogType === 'article' && <meta property="article:author" content="https://clavix.nl/kumar/" />}
 
     {/* Twitter Card */}
     <meta name="twitter:card" content="summary_large_image" />
@@ -148,12 +164,12 @@ if (schemaJsonLd) {
     </script>
   </head>
   <body class="bg-bg text-text font-body antialiased">
-    <a href="#main" class="skip-link">Direct naar inhoud</a>
-    <Navigation />
+    <a href="#main" class="skip-link">{lang === 'en' ? 'Skip to content' : 'Direct naar inhoud'}</a>
+    {lang === 'en' ? <NavigationEN nlHref={nlAlternate} /> : <Navigation />}
     <main id="main">
       <slot />
     </main>
-    <Footer />
+    {lang === 'en' ? <FooterEN /> : <Footer />}
   </body>
 </html>
 

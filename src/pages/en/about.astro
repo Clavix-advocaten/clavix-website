@@ -1,0 +1,127 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import CTABandEN from '@components/CTABandEN.astro'
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': 'https://clavix.nl/kumar#person',
+    name: 'mr. Mukesh Kumar',
+    jobTitle: 'Advocaat (Dutch attorney at law)',
+    url: 'https://clavix.nl/en/about/',
+    worksFor: { '@type': 'LegalService', '@id': 'https://clavix.nl/#organization', name: 'Clavix Advocaten', url: 'https://clavix.nl/' },
+    memberOf: { '@type': 'Organization', name: 'Nederlandse Orde van Advocaten', url: 'https://www.advocatenorde.nl' },
+    alumniOf: [
+      { '@type': 'CollegeOrUniversity', name: 'Vrije Universiteit Amsterdam' },
+      { '@type': 'CollegeOrUniversity', name: 'University of Leeds' },
+      { '@type': 'CollegeOrUniversity', name: 'Universiteit van Amsterdam' },
+    ],
+    knowsLanguage: ['nl', 'en'],
+    knowsAbout: ['Dutch corporate law', 'Dutch real estate law', 'Dutch insolvency law', 'Dutch civil procedure'],
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Strawinskylaan 257',
+      addressLocality: 'Amsterdam',
+      postalCode: '1077 XX',
+      addressCountry: 'NL',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'English', item: 'https://clavix.nl/en/' },
+      { '@type': 'ListItem', position: 2, name: 'About', item: 'https://clavix.nl/en/about/' },
+    ],
+  },
+]
+---
+
+<BaseLayout
+  ogImage="/og/en-about.png"
+  title="Mukesh Kumar, Dutch Lawyer in Amsterdam"
+  description="mr. Mukesh Kumar is a Dutch attorney (advocaat) in Amsterdam Zuidas. Corporate law, real estate and litigation for companies and investors. Educated in Amsterdam and Leeds."
+  lang="en"
+  ogLocale="en_US"
+  alternates={[
+    { hreflang: 'nl', href: '/kumar/' },
+    { hreflang: 'en', href: '/en/about/' },
+    { hreflang: 'x-default', href: '/kumar/' },
+  ]}
+  schemaJsonLd={schemas}
+>
+  <section class="bg-bg-tinted">
+    <div class="max-w-container mx-auto px-4 md:px-8 py-16 md:py-24">
+      <nav aria-label="Breadcrumb" class="mb-3">
+        <ol class="flex flex-wrap items-center gap-1 list-none p-0 m-0 text-tiny font-semibold uppercase tracking-wider text-text-secondary">
+          <li><a href="/en/" class="text-text-secondary no-underline hover:underline">English</a></li>
+          <li class="flex items-center gap-1"><span aria-hidden="true">›</span><span aria-current="page">About</span></li>
+        </ol>
+      </nav>
+      <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">mr. Mukesh Kumar</h1>
+      <p class="text-lead text-text-secondary max-w-readable">
+        Dutch attorney at law (advocaat) in the Zuidas, the business district of Amsterdam. Corporate law, real estate and litigation, for companies, family businesses and international investors.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-container mx-auto px-4 md:px-8 py-20">
+    <div class="grid lg:grid-cols-3 gap-12">
+      <div class="lg:col-span-2 max-w-readable space-y-8">
+        <div>
+          <h2 class="text-h3 font-bold text-text mb-2">A lawyer who thinks like an entrepreneur</h2>
+          <p class="text-body text-text mb-3">
+            Mukesh Kumar founded Clavix on a simple observation: business owners do not want a thirty-page memo, they want to know where they stand and what to do next. His practice sits deliberately on the crossroads of corporate law and real estate, because that is where his clients live: holdings with property in the structure, shareholders in conflict over a building, investors dealing with Dutch tenants, contractors and creditors.
+          </p>
+          <p class="text-body text-text">
+            He was admitted to the Dutch bar in 2022 and is registered with the Netherlands Bar Association (Nederlandse Orde van Advocaten) for corporate law and civil procedure, which carries a mandatory annual continuing education requirement in both fields.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-h3 font-bold text-text mb-2">What does "mr." mean?</h2>
+          <p class="text-body text-text">
+            The Dutch title "mr." (meester in de rechten) is not the English "Mister": it is the protected academic title for holders of a Dutch law degree, comparable to LL.M., and by convention it precedes the name of every Dutch attorney. So "mr. M. Kumar" simply identifies him as a fully qualified Dutch lawyer.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-h3 font-bold text-text mb-2">Education and background</h2>
+          <ul class="list-disc pl-6 space-y-1 text-body text-text">
+            <li>Vrije Universiteit Amsterdam, Dutch law</li>
+            <li>University of Leeds, United Kingdom</li>
+            <li>Universiteit van Amsterdam</li>
+          </ul>
+          <p class="text-body text-text mt-3">
+            He works in Dutch and English. Proceedings before the Dutch courts are conducted in Dutch; international clients receive English summaries at every step, and all advice and contracts can be delivered in English.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-h3 font-bold text-text mb-2">How he works</h2>
+          <p class="text-body text-text">
+            Clavix is a boutique firm by design. You deal directly with the lawyer who handles your matter, fees are agreed before the engagement starts, wherever possible as a fixed fee per phase, and advice comes with a recommendation, not a menu of options. When a case is better served by settling than by litigating, he will say so.
+          </p>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <img src="/portrait.webp" srcset="/portrait-430.webp 430w, /portrait.webp 860w" sizes="(max-width: 1023px) 92vw, 320px" width="860" height="1283" alt="Portrait of mr. Mukesh Kumar" loading="lazy" decoding="async" class="rounded-lg shadow-lg w-full h-auto aspect-[4/5] object-cover" />
+        <div class="p-6 bg-bg-elevated border border-border rounded-lg">
+          <h2 class="text-h4 font-bold text-text mb-3">Direct contact</h2>
+          <p class="text-body text-text-secondary">
+            <a href="tel:+31207471121" class="text-brand-primary no-underline hover:underline">+31 20 747 1121</a><br />
+            <a href="mailto:info@clavix.nl" class="text-brand-primary no-underline hover:underline">info@clavix.nl</a><br />
+            Strawinskylaan 257, Amsterdam
+          </p>
+          <p class="text-small mt-3">
+            <a href="https://zoekeenadvocaat.advocatenorde.nl/" target="_blank" rel="noopener noreferrer" class="font-semibold text-brand-primary no-underline hover:underline">Verify his registration in the Dutch bar register →</a>
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <CTABandEN heading="Meet your Dutch lawyer" description="A 30-minute introduction, free of charge and in English, by video call or at our Amsterdam office." />
+</BaseLayout>
