@@ -66,7 +66,27 @@ const onderscheid = [
   },
 ];
 
+const faqs = [
+  {
+    "vraag": "Is de jaarrekening op tijd gedeponeerd?",
+    "antwoord": "Dit is het eerste dat een curator controleert, en de gevolgen zijn zwaar. Artikel 2:394 lid 3 BW stelt als uiterste grens twaalf maanden na afloop van het boekjaar. Wordt die grens overschreden, dan treedt het bewijsvermoeden van artikel 2:248 lid 2 BW in werking: onbehoorlijke taakvervulling staat dan vast en wordt vermoed een belangrijke oorzaak van het faillissement te zijn. Let op het verschil met de opmaaktermijn van artikel 2:210 BW, die vijf maanden bedraagt met mogelijkheid tot uitstel. Die termijn is niet bepalend voor het bewijsvermoeden."
+  },
+  {
+    "vraag": "Kan het bewijsvermoeden nog worden weerlegd?",
+    "antwoord": "Ja, en dat is de kern van de verdediging. De bestuurder kan het vermoeden ontzenuwen door aannemelijk te maken dat andere feiten of omstandigheden dan zijn onbehoorlijke taakvervulling een belangrijke oorzaak van het faillissement zijn geweest. De bewijslast is zwaar, en het lukt vooral wanneer er een aanwijsbare externe oorzaak is: het wegvallen van een grote afnemer, een marktomslag, of een gebeurtenis buiten de invloedssfeer van het bestuur. Bouw dat dossier op met stukken uit de periode zelf, niet met een reconstructie achteraf."
+  }
+];
+
 const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.vraag,
+      acceptedAnswer: { '@type': 'Answer', text: f.antwoord },
+    })),
+  },
   serviceSchema({
     name: 'Bestuurdersaansprakelijkheid',
     description: 'Verdediging bij curator-claims, preventief risico-advies voor DGA\'s, en bestuurdersaansprakelijkheid bij faillissement.',
@@ -210,6 +230,47 @@ const schemas = [
           Bestuurdersaansprakelijkheid bij faillissement: artikel 2:248 BW in de praktijk →
         </a>
       </section>
+
+      {/* === WAT HET KOST === */}
+      <section id="wat-het-kost" class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Wat het kost</h2>
+        <p class="text-body text-text-secondary mb-4 max-w-prose">
+          Een aansprakelijkstelling vraagt eerst om een nuchtere analyse van uw positie, en pas daarna om actie. Die analyse leveren wij tegen een vaste prijs; wat daarna volgt, spreken wij per fase af.
+        </p>
+        <p class="text-body text-text-secondary mb-4 max-w-prose">
+          Waar de omvang vooraf te overzien is, werken wij met een vaste prijs die vóór de opdrachtbevestiging vastligt. Is dat niet mogelijk, dan geldt een uurtarief met een maandelijkse specificatie en melden wij het tijdig wanneer een zaak anders loopt dan verwacht. Het eerste gesprek van dertig minuten is verkennend en kosteloos.
+        </p>
+        <p class="text-body text-text-secondary max-w-prose">
+          Op de <a href="/kosten/" class="text-brand-primary no-underline hover:underline">kostenpagina</a> staan de griffierechten per instantie en de kostenopbouw per traject. Met onze <a href="/proceskosten-berekenen/" class="text-brand-primary no-underline hover:underline">rekentools</a> berekent u zelf het griffierecht, de wettelijke rente, de incassokosten en de proceskostenveroordeling.
+        </p>
+      </section>
+
+      {/* === VERDIEPING KENNISBANK === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Verdieping in de kennisbank</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Wilt u zich eerst inlezen? Deze pagina's behandelen het juridische kader in detail, met wetsartikelen, termijnen en praktijkvoorbeelden.
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="/clusters/bestuurdersaansprakelijkheid/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">Bestuurdersaansprakelijkheid in het algemeen</h3>
+            <p class="text-small text-text-secondary">De maatstaf van het ernstig verwijt, intern en extern.</p>
+          </a>
+          <a href="/clusters/bestuurdersaansprakelijkheid-faillissement/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">Bestuurdersaansprakelijkheid bij faillissement</h3>
+            <p class="text-small text-text-secondary">Kennelijk onbehoorlijk bestuur en de claim van de curator.</p>
+          </a>
+          <a href="/clusters/decharge-bestuurder/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">Decharge van een bestuurder</h3>
+            <p class="text-small text-text-secondary">Wat decharge wel en niet afdekt.</p>
+          </a>
+          <a href="/clusters/aansprakelijkheid-zakelijk/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">Aansprakelijkheid in zakelijke verhoudingen</h3>
+            <p class="text-small text-text-secondary">De twee grondslagen, de schade en de grenzen aan exoneratie.</p>
+          </a>
+        </div>
+      </section>
+
 
     </div>
 

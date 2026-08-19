@@ -89,7 +89,27 @@ const verwanteSpecialismen = [
   },
 ];
 
+const faqs = [
+  {
+    "vraag": "Wanneer rechtvaardigt een tekortkoming ontbinding?",
+    "antwoord": "Artikel 6:265 lid 1 BW geeft de hoofdregel en de uitzondering in een zin: iedere tekortkoming geeft recht op ontbinding, tenzij die gezien haar bijzondere aard of geringe betekenis de ontbinding met haar gevolgen niet rechtvaardigt. De Hoge Raad heeft die bepaling op 28 september 2018 bij prejudiciele beslissing uitgelegd (ECLI:NL:HR:2018:1810): slechts een tekortkoming van voldoende gewicht geeft recht op ontbinding, en aan geen enkel gezichtspunt komt op voorhand een beslissende rol toe. De stelplicht voor de tekortkoming ligt bij wie ontbindt, het beroep op de tenzij-bepaling bij de wederpartij."
+  },
+  {
+    "vraag": "Is er verzuim, en zo niet, wat dan?",
+    "antwoord": "Artikel 6:265 lid 2 BW bepaalt dat de bevoegdheid tot ontbinding pas ontstaat wanneer de schuldenaar in verzuim is, voor zover nakoming niet blijvend of tijdelijk onmogelijk is. Verzuim treedt in via een schriftelijke aanmaning met een redelijke termijn voor nakoming (artikel 6:82 BW), of van rechtswege wanneer een fatale termijn is verstreken (artikel 6:83 sub a BW). Dit is de meest voorkomende fout in commerciele geschillen: wie ontbindt zonder dat verzuim is ingetreden, ontbindt zonder bevoegdheid, en de wederpartij die dat opmerkt draait de zaak om."
+  }
+];
+
 const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.vraag,
+      acceptedAnswer: { '@type': 'Answer', text: f.antwoord },
+    })),
+  },
   serviceSchema({
     name: 'Contractgeschillen',
     description: "Juridische bijstand bij contractgeschillen voor ondernemers, DGA's en vastgoedinvesteerders. Wanprestatie, ontbinding, uitleg-disputen, dwaling, en procesvoering.",
@@ -235,6 +255,47 @@ const schemas = [
           ))}
         </div>
       </section>
+
+      {/* === WAT HET KOST === */}
+      <section id="wat-het-kost" class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Wat het kost</h2>
+        <p class="text-body text-text-secondary mb-4 max-w-prose">
+          Of een contractgeschil duur wordt, hangt vooral af van hoe snel u de formele stappen zet. Een tijdige ingebrekestelling kost weinig en beslist vaak de zaak; wij spreken die eerste fase tegen een vaste prijs af.
+        </p>
+        <p class="text-body text-text-secondary mb-4 max-w-prose">
+          Waar de omvang vooraf te overzien is, werken wij met een vaste prijs die vóór de opdrachtbevestiging vastligt. Is dat niet mogelijk, dan geldt een uurtarief met een maandelijkse specificatie en melden wij het tijdig wanneer een zaak anders loopt dan verwacht. Het eerste gesprek van dertig minuten is verkennend en kosteloos.
+        </p>
+        <p class="text-body text-text-secondary max-w-prose">
+          Op de <a href="/kosten/" class="text-brand-primary no-underline hover:underline">kostenpagina</a> staan de griffierechten per instantie en de kostenopbouw per traject. Met onze <a href="/proceskosten-berekenen/" class="text-brand-primary no-underline hover:underline">rekentools</a> berekent u zelf het griffierecht, de wettelijke rente, de incassokosten en de proceskostenveroordeling.
+        </p>
+      </section>
+
+      {/* === VERDIEPING KENNISBANK === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Verdieping in de kennisbank</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Wilt u zich eerst inlezen? Deze pagina's behandelen het juridische kader in detail, met wetsartikelen, termijnen en praktijkvoorbeelden.
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="/clusters/ingebrekestelling/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">De ingebrekestelling</h3>
+            <p class="text-small text-text-secondary">De formele stap die het verzuim vastlegt en uw rechten opent.</p>
+          </a>
+          <a href="/clusters/koopovereenkomst-ontbinden/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">Een koopovereenkomst ontbinden</h3>
+            <p class="text-small text-text-secondary">Wanneer ontbinding mag, hoe u dat doet en wat er teruggedraaid wordt.</p>
+          </a>
+          <a href="/clusters/exoneratiebeding-zakelijke-contracten/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">Het exoneratiebeding</h3>
+            <p class="text-small text-text-secondary">Aansprakelijkheid beperken en de grenzen daarvan in B2B.</p>
+          </a>
+          <a href="/clusters/aansprakelijkheid-zakelijk/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">Aansprakelijkheid in zakelijke verhoudingen</h3>
+            <p class="text-small text-text-secondary">Wanprestatie of onrechtmatige daad, en welke schade telt.</p>
+          </a>
+        </div>
+      </section>
+
 
     </div>
 

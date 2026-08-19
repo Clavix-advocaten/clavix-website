@@ -66,7 +66,31 @@ const onderscheid = [
   },
 ];
 
+const faqs = [
+  {
+    "vraag": "Mijn medeaandeelhouder blokkeert elk besluit. Wat kan ik doen?",
+    "antwoord": "Bij een 50/50-verhouding zonder impasseregeling zijn er drie routes. De contractuele: kijk of de aandeelhoudersovereenkomst een escalatieladder, casting vote of shoot-out kent. De vennootschapsrechtelijke: de wettelijke geschillenregeling, waarmee aandeelhouders elkaar onder voorwaarden kunnen dwingen tot overname of overdracht van aandelen. En de route via de Ondernemingskamer, die bij gegronde redenen om aan een juist beleid te twijfelen onderzoek kan gelasten en voorlopige voorzieningen kan treffen, zoals schorsing van een bestuurder of overdracht van aandelen ten titel van beheer. Welke route past, hangt af van wat er in de statuten en de overeenkomst staat en van uw einddoel: doorgaan samen, uitkopen of zelf vertrekken."
+  },
+  {
+    "vraag": "Kan ik mijn medeaandeelhouder dwingen zijn aandelen te verkopen?",
+    "antwoord": "Dat kan via de wettelijke geschillenregeling, maar alleen onder voorwaarden: kort gezegd moet de betrokken aandeelhouder door zijn gedrag het belang van de vennootschap zodanig schaden dat zijn aandeelhouderschap in redelijkheid niet kan worden geduld. Een verstoorde verhouding alleen is niet genoeg. Omgekeerd kan een aandeelhouder die zodanig in zijn rechten of belangen is geschaad dat voortduren van zijn aandeelhouderschap niet meer kan worden gevergd, vorderen dat zijn aandelen worden overgenomen. Sinds 1 januari 2025 lopen deze procedures rechtstreeks bij de Ondernemingskamer, wat de doorlooptijd aanzienlijk verkort."
+  },
+  {
+    "vraag": "Wat levert een goede aandeelhoudersovereenkomst op bij een conflict?",
+    "antwoord": "Vrijwel alles wat een procedure duur en langdurig maakt, valt vooraf te regelen: hoe een impasse wordt doorbroken, tegen welke methode aandelen worden gewaardeerd, wie de deskundige benoemt als partijen er niet uitkomen, en onder welke omstandigheden een aandeelhouder moet aanbieden of mag vertrekken. Onze ervaring is dat het bestaan van zo'n regeling partijen aan tafel houdt: als iedereen weet wat er gebeurt bij escalatie, wordt escaleren minder aantrekkelijk. Ontbreekt die regeling, dan resteren de wettelijke routes, en die kosten tijd en geld."
+  }
+];
+
 const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.vraag,
+      acceptedAnswer: { '@type': 'Answer', text: f.antwoord },
+    })),
+  },
   serviceSchema({
     name: 'Aandeelhoudersgeschillen',
     description: 'Juridische bijstand bij aandeelhoudersgeschillen. 50/50-patstellingen, geschillenregeling, Ondernemingskamer-procedures, en uitkoop-onderhandeling.',
@@ -235,6 +259,64 @@ const schemas = [
           </li>
         </ul>
       </section>
+
+      {/* === VEELGESTELDE VRAGEN === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Veelgestelde vragen</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Drie vragen die in vrijwel elk dossier terugkomen.
+        </p>
+        <div class="space-y-4">
+          {faqs.map((f) => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{f.vraag}</h3>
+              <p class="text-body text-text-secondary">{f.antwoord}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+
+      {/* === WAT HET KOST === */}
+      <section id="wat-het-kost" class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Wat het kost</h2>
+        <p class="text-body text-text-secondary mb-4 max-w-prose">
+          Een aandeelhoudersgeschil kent zelden een vast traject: soms is één goed gesprek met een onderbouwde brief genoeg, soms volgt een procedure bij de Ondernemingskamer. Wij spreken daarom per fase een prijs af, zodat u na de analyse zelf beslist of doorzetten loont.
+        </p>
+        <p class="text-body text-text-secondary mb-4 max-w-prose">
+          Waar de omvang vooraf te overzien is, werken wij met een vaste prijs die vóór de opdrachtbevestiging vastligt. Is dat niet mogelijk, dan geldt een uurtarief met een maandelijkse specificatie en melden wij het tijdig wanneer een zaak anders loopt dan verwacht. Het eerste gesprek van dertig minuten is verkennend en kosteloos.
+        </p>
+        <p class="text-body text-text-secondary max-w-prose">
+          Op de <a href="/kosten/" class="text-brand-primary no-underline hover:underline">kostenpagina</a> staan de griffierechten per instantie en de kostenopbouw per traject. Met onze <a href="/proceskosten-berekenen/" class="text-brand-primary no-underline hover:underline">rekentools</a> berekent u zelf het griffierecht, de wettelijke rente, de incassokosten en de proceskostenveroordeling.
+        </p>
+      </section>
+
+      {/* === VERDIEPING KENNISBANK === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Verdieping in de kennisbank</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Wilt u zich eerst inlezen? Deze pagina's behandelen het juridische kader in detail, met wetsartikelen, termijnen en praktijkvoorbeelden.
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="/clusters/50-50-aandeelhoudersgeschil-oplossen/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">Het 50/50-aandeelhoudersgeschil</h3>
+            <p class="text-small text-text-secondary">Patstelling doorbreken: geschillenregeling, Ondernemingskamer en exitmechanismen.</p>
+          </a>
+          <a href="/clusters/aandeelhoudersovereenkomst-minimaal/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">Wat minimaal in een aandeelhoudersovereenkomst hoort</h3>
+            <p class="text-small text-text-secondary">De bepalingen die een conflict voorkomen of beslissen.</p>
+          </a>
+          <a href="/clusters/ontslag-statutair-bestuurder/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">Ontslag van een statutair bestuurder</h3>
+            <p class="text-small text-text-secondary">De vennootschapsrechtelijke en arbeidsrechtelijke route naast elkaar.</p>
+          </a>
+          <a href="/clusters/beslag-op-aandelen/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">Beslag op aandelen</h3>
+            <p class="text-small text-text-secondary">Zekerheid nemen op aandelen als drukmiddel in een conflict.</p>
+          </a>
+        </div>
+      </section>
+
 
     </div>
 

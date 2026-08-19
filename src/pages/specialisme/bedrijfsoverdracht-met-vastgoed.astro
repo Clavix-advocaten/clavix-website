@@ -66,7 +66,31 @@ const onderscheid = [
   },
 ];
 
+const faqs = [
+  {
+    "vraag": "Verkoop ik de aandelen of het pand apart?",
+    "antwoord": "Dat is de eerste en meest bepalende vraag. Bij een aandelentransactie blijft het pand in de vennootschap en gaan alle rechten en verplichtingen mee, inclusief de risico's die u niet kent. Bij een activatransactie wordt het pand expliciet geleverd en kiest u wat meegaat, maar moeten contracten afzonderlijk worden overgedragen met medewerking van de wederpartij en gaat personeel van rechtswege mee als overgang van onderneming. De keuze heeft ook aanzienlijke fiscale gevolgen, waaronder overdrachtsbelasting; laat haar daarom altijd samen met uw fiscalist maken en niet uit gewoonte."
+  },
+  {
+    "vraag": "Wat gebeurt er met de huurovereenkomst als het bedrijf wordt overgenomen?",
+    "antwoord": "Huurt de onderneming het pand van een derde, dan hangt het af van de transactiestructuur. Bij een aandelentransactie verandert de huurder juridisch niet: dezelfde vennootschap blijft contractspartij, al kan een change-of-controlbeding in het huurcontract de verhuurder rechten geven. Bij een activatransactie gaat de huur niet automatisch mee; dan is contractsoverneming met medewerking van de verhuurder nodig, of, bij 290-bedrijfsruimte, de afdwingbare route van indeplaatsstelling via de kantonrechter. Breng dit vroeg in het traject in kaart: de verhuurder is geen partij bij uw deal maar wel bij uw locatie."
+  },
+  {
+    "vraag": "Welke vrijwaringen zijn gebruikelijk als er vastgoed in de transactie zit?",
+    "antwoord": "Naast de gewone garanties zijn bij vastgoed vier onderwerpen standaard: bodemverontreiniging en milieu, de bouwkundige staat en verborgen gebreken, publiekrechtelijke beperkingen zoals bestemming en vergunningen, en de huurrechtelijke positie met lopende verplichtingen. Voor bekende risico's wordt doorgaans een specifieke vrijwaring opgenomen in plaats van een garantie, omdat een garantie alleen dekt wat op dat moment onbekend was. Laat het boekenonderzoek op vastgoed niet beperken tot de eigendomsakte: de aangehaalde oudere aktes bevatten geregeld erfdienstbaarheden of kwalitatieve verplichtingen die het gebruik beperken."
+  }
+];
+
 const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.vraag,
+      acceptedAnswer: { '@type': 'Answer', text: f.antwoord },
+    })),
+  },
   serviceSchema({
     name: 'Bedrijfsoverdracht met vastgoed',
     description: 'M&A-transacties waar vastgoed onderdeel van is. Earn-outs, vrijwaringen, transactiestructuur, en juridische due diligence.',
@@ -207,6 +231,64 @@ const schemas = [
           </li>
         </ul>
       </section>
+
+      {/* === VEELGESTELDE VRAGEN === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Veelgestelde vragen</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Drie vragen die in vrijwel elk dossier terugkomen.
+        </p>
+        <div class="space-y-4">
+          {faqs.map((f) => (
+            <div class="p-5 bg-bg-elevated border border-border rounded-lg">
+              <h3 class="text-h4 font-bold text-text mb-2">{f.vraag}</h3>
+              <p class="text-body text-text-secondary">{f.antwoord}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+
+      {/* === WAT HET KOST === */}
+      <section id="wat-het-kost" class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Wat het kost</h2>
+        <p class="text-body text-text-secondary mb-4 max-w-prose">
+          Bij een overname met vastgoed werken wij met een vaste prijs per fase: eerst de structuur en de intentiefase, daarna het boekenonderzoek en de contracten. Zo weet u vooraf wat elke stap kost en beslist u per fase over het vervolg.
+        </p>
+        <p class="text-body text-text-secondary mb-4 max-w-prose">
+          Waar de omvang vooraf te overzien is, werken wij met een vaste prijs die vóór de opdrachtbevestiging vastligt. Is dat niet mogelijk, dan geldt een uurtarief met een maandelijkse specificatie en melden wij het tijdig wanneer een zaak anders loopt dan verwacht. Het eerste gesprek van dertig minuten is verkennend en kosteloos.
+        </p>
+        <p class="text-body text-text-secondary max-w-prose">
+          Op de <a href="/kosten/" class="text-brand-primary no-underline hover:underline">kostenpagina</a> staan de griffierechten per instantie en de kostenopbouw per traject. Met onze <a href="/proceskosten-berekenen/" class="text-brand-primary no-underline hover:underline">rekentools</a> berekent u zelf het griffierecht, de wettelijke rente, de incassokosten en de proceskostenveroordeling.
+        </p>
+      </section>
+
+      {/* === VERDIEPING KENNISBANK === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Verdieping in de kennisbank</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Wilt u zich eerst inlezen? Deze pagina's behandelen het juridische kader in detail, met wetsartikelen, termijnen en praktijkvoorbeelden.
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="/clusters/verkoop-bedrijfspand-mna/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">Verkoop van een bedrijfspand bij M&A</h3>
+            <p class="text-small text-text-secondary">Transactiestructuur, earn-outs en vrijwaringen voor vastgoedrisico's.</p>
+          </a>
+          <a href="/clusters/letter-of-intent/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">De letter of intent</h3>
+            <p class="text-small text-text-secondary">Wat de intentieovereenkomst wel en niet bindt, en de voorbehouden die erin horen.</p>
+          </a>
+          <a href="/clusters/geheimhoudingsverklaring-nda/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">De geheimhoudingsverklaring (NDA)</h3>
+            <p class="text-small text-text-secondary">Vertrouwelijke informatie beschermen tijdens het overnametraject.</p>
+          </a>
+          <a href="/clusters/bedrijfsopvolging/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">Bedrijfsopvolging</h3>
+            <p class="text-small text-text-secondary">Overdragen aan familie of management: structuur, zeggenschap en fasering.</p>
+          </a>
+        </div>
+      </section>
+
 
     </div>
 

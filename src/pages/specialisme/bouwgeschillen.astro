@@ -66,7 +66,31 @@ const onderscheid = [
   },
 ];
 
+const faqs = [
+  {
+    "vraag": "Moet de aannemer altijd de kans krijgen gebreken te herstellen?",
+    "antwoord": "In beginsel wel. Artikel 7:759 lid 1 BW verplicht de opdrachtgever de aannemer gelegenheid te geven gebreken binnen een redelijke termijn zelf weg te nemen, tenzij dat gelet op de omstandigheden niet van hem kan worden gevergd. Wie die kans ten onrechte niet biedt en zelf laat herstellen, komt in schuldeisersverzuim en kan de herstelkosten niet verhalen."
+  },
+  {
+    "vraag": "Wat geldt bij verborgen gebreken na oplevering?",
+    "antwoord": "Artikel 7:758 lid 3 BW ontslaat de aannemer van aansprakelijkheid voor gebreken die de opdrachtgever bij oplevering redelijkerwijs had moeten ontdekken. Bij aanneming van een bouwwerk keert lid 4 die regel om: daar blijft de aannemer aansprakelijk voor niet-ontdekte gebreken, tenzij deze hem niet zijn toe te rekenen. Bij een zakelijke opdrachtgever kan daarvan alleen bij uitdrukkelijk beding worden afgeweken, dus loop uw aannemingsovereenkomst na voordat u tekent."
+  },
+  {
+    "vraag": "Had de aannemer moeten waarschuwen?",
+    "antwoord": "Artikel 7:754 BW verplicht de aannemer te waarschuwen voor onjuistheden in de opdracht en voor gebreken in door u aangeleverde plannen, materialen of voorschriften, voor zover hij die kende of behoorde te kennen. Bij een bouwwerk moet die waarschuwing schriftelijk en ondubbelzinnig zijn. Uw eigen deskundigheid ontslaat de aannemer daar niet van."
+  }
+];
+
 const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.vraag,
+      acceptedAnswer: { '@type': 'Answer', text: f.antwoord },
+    })),
+  },
   serviceSchema({
     name: 'Bouwgeschillen',
     description: 'Geschillen tussen opdrachtgever en aannemer. Wanprestatie, gebreken, oplevering, en aanneming van werk.',
@@ -216,6 +240,47 @@ const schemas = [
           Bouwgeschil met aannemer: wanprestatie, oplevering, en verborgen gebreken →
         </a>
       </section>
+
+      {/* === WAT HET KOST === */}
+      <section id="wat-het-kost" class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Wat het kost</h2>
+        <p class="text-body text-text-secondary mb-4 max-w-prose">
+          Bouwgeschillen lopen uiteen van één brief over een opleverpunt tot een arbitrage die maanden duurt. Wij spreken daarom een prijs per fase af en zetten de kosten van een procedure altijd af tegen het belang van het geschil.
+        </p>
+        <p class="text-body text-text-secondary mb-4 max-w-prose">
+          Waar de omvang vooraf te overzien is, werken wij met een vaste prijs die vóór de opdrachtbevestiging vastligt. Is dat niet mogelijk, dan geldt een uurtarief met een maandelijkse specificatie en melden wij het tijdig wanneer een zaak anders loopt dan verwacht. Het eerste gesprek van dertig minuten is verkennend en kosteloos.
+        </p>
+        <p class="text-body text-text-secondary max-w-prose">
+          Op de <a href="/kosten/" class="text-brand-primary no-underline hover:underline">kostenpagina</a> staan de griffierechten per instantie en de kostenopbouw per traject. Met onze <a href="/proceskosten-berekenen/" class="text-brand-primary no-underline hover:underline">rekentools</a> berekent u zelf het griffierecht, de wettelijke rente, de incassokosten en de proceskostenveroordeling.
+        </p>
+      </section>
+
+      {/* === VERDIEPING KENNISBANK === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Verdieping in de kennisbank</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Wilt u zich eerst inlezen? Deze pagina's behandelen het juridische kader in detail, met wetsartikelen, termijnen en praktijkvoorbeelden.
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="/clusters/bouwgeschil-aannemer-wanprestatie/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">Bouwgeschil met de aannemer</h3>
+            <p class="text-small text-text-secondary">Wanprestatie, oplevering, verborgen gebreken en de herstelkans.</p>
+          </a>
+          <a href="/clusters/aannemer-failliet-tijdens-bouw/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">De aannemer gaat failliet tijdens de bouw</h3>
+            <p class="text-small text-text-secondary">Wat er met het werk, de betaalde termijnen en de garanties gebeurt.</p>
+          </a>
+          <a href="/clusters/retentierecht-bouw/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">Retentierecht in de bouw</h3>
+            <p class="text-small text-text-secondary">Wanneer de aannemer het werk mag vasthouden tot betaling volgt.</p>
+          </a>
+          <a href="/clusters/verborgen-gebreken-bedrijfspand/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">Verborgen gebreken bij een bedrijfspand</h3>
+            <p class="text-small text-text-secondary">Klachtplicht, onderzoeksplicht en de grens van de mededelingsplicht.</p>
+          </a>
+        </div>
+      </section>
+
 
     </div>
 

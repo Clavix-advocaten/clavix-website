@@ -89,7 +89,31 @@ const verwanteSpecialismen = [
   },
 ];
 
+const faqs = [
+  {
+    "vraag": "Wat toetst de rechter bij een beslagrekest?",
+    "antwoord": "De voorzieningenrechter toetst summierlijk of de vordering deugdelijk is, en weegt daarnaast de belangen van beide partijen. Die belangenafweging kan zelfstandig tot weigering leiden, ook wanneer de vordering summierlijk deugdelijk is. Een onderbouwd rekest is dus geen formaliteit maar het halve werk."
+  },
+  {
+    "vraag": "Hoe krijg ik een beslag opgeheven?",
+    "antwoord": "Via een kort geding op grond van artikel 705 lid 2 Rv. Opheffing volgt onder meer wanneer summierlijk blijkt dat de vordering ondeugdelijk is, of wanneer voldoende zekerheid wordt gesteld. Opheffing kan ook gedeeltelijk, wanneer de vordering slechts deels ondeugdelijk blijkt."
+  },
+  {
+    "vraag": "Ben ik aansprakelijk als het beslag onterecht blijkt?",
+    "antwoord": "Wie beslag legt voor een vordering die ongegrond blijkt, is in beginsel aansprakelijk voor de daardoor geleden schade. Die schade moet wel aannemelijk worden gemaakt. Weeg dat risico af voordat u een rekest indient, en zet de termijn voor de eis in de hoofdzaak meteen in de agenda: wordt die niet gehaald, dan vervalt het beslag van rechtswege."
+  }
+];
+
 const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.vraag,
+      acceptedAnswer: { '@type': 'Answer', text: f.antwoord },
+    })),
+  },
   serviceSchema({
     name: 'Incasso en executie',
     description: 'Juridische bijstand bij incasso, conservatoir en executoriaal beslag, opheffings-procedures, executiegeschillen en verhaalsstrategie voor ondernemers en crediteuren.',
@@ -244,6 +268,47 @@ const schemas = [
           ))}
         </div>
       </section>
+
+      {/* === WAT HET KOST === */}
+      <section id="wat-het-kost" class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Wat het kost</h2>
+        <p class="text-body text-text-secondary mb-4 max-w-prose">
+          Bij incasso rekent u de kosten grotendeels door aan de debiteur: de wettelijke incassokosten en de handelsrente komen voor zijn rekening. Met onze rekentools ziet u vooraf wat u kunt vorderen en of een procedure loont.
+        </p>
+        <p class="text-body text-text-secondary mb-4 max-w-prose">
+          Waar de omvang vooraf te overzien is, werken wij met een vaste prijs die vóór de opdrachtbevestiging vastligt. Is dat niet mogelijk, dan geldt een uurtarief met een maandelijkse specificatie en melden wij het tijdig wanneer een zaak anders loopt dan verwacht. Het eerste gesprek van dertig minuten is verkennend en kosteloos.
+        </p>
+        <p class="text-body text-text-secondary max-w-prose">
+          Op de <a href="/kosten/" class="text-brand-primary no-underline hover:underline">kostenpagina</a> staan de griffierechten per instantie en de kostenopbouw per traject. Met onze <a href="/proceskosten-berekenen/" class="text-brand-primary no-underline hover:underline">rekentools</a> berekent u zelf het griffierecht, de wettelijke rente, de incassokosten en de proceskostenveroordeling.
+        </p>
+      </section>
+
+      {/* === VERDIEPING KENNISBANK === */}
+      <section class="mb-16">
+        <h2 class="text-h2 font-bold text-text mb-2">Verdieping in de kennisbank</h2>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">
+          Wilt u zich eerst inlezen? Deze pagina's behandelen het juridische kader in detail, met wetsartikelen, termijnen en praktijkvoorbeelden.
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="/clusters/factuur-niet-betaald/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">Factuur niet betaald</h3>
+            <p class="text-small text-text-secondary">Van eerste herinnering tot vonnis: het volledige incassotraject.</p>
+          </a>
+          <a href="/clusters/conservatoir-beslag/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">Conservatoir beslag</h3>
+            <p class="text-small text-text-secondary">Verhaal veiligstellen voordat u een procedure begint.</p>
+          </a>
+          <a href="/clusters/executoriaal-beslag/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">Executoriaal beslag</h3>
+            <p class="text-small text-text-secondary">Van vonnis naar daadwerkelijke betaling.</p>
+          </a>
+          <a href="/clusters/aanmaning/" class="block p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+            <h3 class="text-h4 font-bold text-text mb-1">De aanmaning</h3>
+            <p class="text-small text-text-secondary">De brief die rente en incassokosten opeisbaar maakt.</p>
+          </a>
+        </div>
+      </section>
+
 
     </div>
 
