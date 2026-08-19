@@ -12,8 +12,8 @@ const schemas = [
 ---
 
 <BaseLayout
-  title="Modelbrief ingebrekestelling en veertiendagenbrief (gratis)"
-  description="Download een juridisch doordachte modelbrief: de ingebrekestelling voor zakelijke debiteuren en de veertiendagenbrief voor consumenten, opgesteld door Clavix Advocaten."
+  title="Modelbrieven: betalingsherinnering, ingebrekestelling en veertiendagenbrief"
+  description="Download gratis modelbrieven voor onbetaalde facturen: de betalingsherinnering, de ingebrekestelling (zakelijk) en de veertiendagenbrief (consument), opgesteld door Clavix Advocaten."
   schemaJsonLd={schemas}
 >
   {/* === HERO === */}
@@ -29,6 +29,7 @@ const schemas = [
         Een goede eerste brief bepaalt de rest van het incassotraject. Download onze modelbrieven — juridisch doordacht, direct bruikbaar in Word:
       </p>
       <ul class="text-body text-text space-y-2 max-w-readable list-disc pl-5">
+        <li><strong>Betalingsherinnering (zakelijke debiteur)</strong> — de vriendelijke eerste stap die de relatie spaart en het dossier opbouwt.</li>
         <li><strong>Ingebrekestelling (zakelijke debiteur)</strong> — de formele sommatie die het verzuim en de aanspraak op handelsrente en incassokosten vastlegt.</li>
         <li><strong>Veertiendagenbrief (consument-debiteur)</strong> — de wettelijk verplichte laatste aanmaning, met de exacte termijnformulering die de rechtspraak vereist.</li>
       </ul>
@@ -41,7 +42,7 @@ const schemas = [
       <div>
         <h2 class="text-h2 font-bold mb-4 text-text">Download de modelbrieven</h2>
         <p class="text-body text-text-secondary mb-6 max-w-readable">
-          Laat uw e-mailadres achter en download beide brieven direct. Wij gebruiken uw adres alleen om u eenmalig te kunnen benaderen over de modelbrieven — geen nieuwsbrief, geen verplichtingen.
+          Laat uw e-mailadres achter en download alle drie de brieven direct. Wij gebruiken uw adres alleen om u eenmalig te kunnen benaderen over de modelbrieven — geen nieuwsbrief, geen verplichtingen.
         </p>
         <div id="mb-form-wrap">
           <form name="modelbrieven" method="POST" action="/modelbrieven?download=true" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4 p-6 bg-bg-elevated border border-border rounded-lg max-w-md">
@@ -64,6 +65,7 @@ const schemas = [
         </div>
         <div id="mb-downloads" style="display: none;" class="p-6 bg-bg-elevated border-2 border-brand-primary rounded-lg max-w-md space-y-4">
           <p class="text-body font-semibold text-text">Dank u — hier zijn de brieven:</p>
+          <a href="/downloads/modelbrief-betalingsherinnering.docx" class="block bg-brand-primary text-white font-semibold px-6 py-3 rounded-lg no-underline hover:opacity-90 transition text-center" download>⬇ Betalingsherinnering (zakelijk) — Word</a>
           <a href="/downloads/modelbrief-ingebrekestelling.docx" class="block bg-brand-primary text-white font-semibold px-6 py-3 rounded-lg no-underline hover:opacity-90 transition text-center" download>⬇ Ingebrekestelling (zakelijk) — Word</a>
           <a href="/downloads/modelbrief-veertiendagenbrief.docx" class="block bg-brand-primary text-white font-semibold px-6 py-3 rounded-lg no-underline hover:opacity-90 transition text-center" download>⬇ Veertiendagenbrief (consument) — Word</a>
           <p class="text-small text-text-secondary">Vul de teksten tussen [haken] in en verwijder wat niet van toepassing is. Verstuur de brief aangetekend of op een wijze waarvan u de ontvangst kunt aantonen.</p>
@@ -73,7 +75,7 @@ const schemas = [
         <div class="p-6 bg-bg-tinted border border-border rounded-lg">
           <h3 class="text-h4 font-bold text-text mb-2">Welke brief gebruikt u wanneer?</h3>
           <p class="text-body text-text-secondary mb-3">
-            Is uw debiteur een <strong class="text-text">bedrijf</strong>, dan volstaat de ingebrekestelling: die legt het verzuim vast en kondigt rente en kosten aan. Bij handelstransacties loopt de wettelijke handelsrente overigens vaak al vanaf het verstrijken van de betaaltermijn.
+            Is uw debiteur een <strong class="text-text">bedrijf</strong>, begin dan met de betalingsherinnering: juridisch niet verplicht (het verzuim treedt bij handelstransacties na de <a href="/clusters/wettelijke-betalingstermijn/" class="text-brand-primary no-underline hover:underline">betalingstermijn</a> van rechtswege in), maar de meeste facturen worden erna gewoon betaald. Blijft betaling uit, dan volgt de ingebrekestelling: die legt het verzuim vast en kondigt rente en kosten aan.
           </p>
           <p class="text-body text-text-secondary">
             Is uw debiteur een <strong class="text-text">consument</strong>, dan is de veertiendagenbrief wettelijk verplicht vóórdat u incassokosten in rekening mag brengen — met strikte eisen aan termijn en inhoud. Eén verkeerde formulering en de kosten zijn niet verschuldigd.

@@ -106,7 +106,7 @@
 - [Proceskosten berekenen](https://clavix.nl/proceskosten-berekenen/): Rekentools op basis van de officiële tarieven 2026: griffierecht (kanton, rechtbank, hof), incassokosten (WIK-staffel), wettelijke/handels/contractuele rente, proceskostenveroordeling (liquidatietarief) en deurwaarderstarieven (Btag).
 - [Wettelijke rente berekenen](https://clavix.nl/wettelijke-rente-berekenen/): Rekentool voor de wettelijke rente (4% per 1-1-2026), handelsrente (10,4% per 1-7-2026) en contractuele rente, samengesteld per jaar conform 6:119/6:119a BW, met alle percentages sinds 2015.
 - [Incassokosten berekenen](https://clavix.nl/incassokosten-berekenen/): Rekentool voor de buitengerechtelijke incassokosten volgens de wettelijke WIK-staffel (15% tot 0,5%, min € 40, max € 6.775), met uitleg over de veertiendagenbrief bij consumenten en btw-opslag.
-- [Modelbrieven](https://clavix.nl/modelbrieven/): Gratis Word-modellen: ingebrekestelling (zakelijke debiteur) en veertiendagenbrief (consument, met de door de rechtspraak aanbevolen termijnformulering).
+- [Modelbrieven](https://clavix.nl/modelbrieven/): Gratis Word-modellen: betalingsherinnering (zakelijk), ingebrekestelling (zakelijke debiteur) en veertiendagenbrief (consument, met de door de rechtspraak aanbevolen termijnformulering).
 - [Notities](https://clavix.nl/notities/): Wat ons opvalt in jurisprudentie en praktijk.
 - [Veelgestelde vragen](https://clavix.nl/veelgestelde-vragen/): 24 vragen per rechtsgebied, met korte antwoorden en doorkliks.
 - [Juridische woordenlijst](https://clavix.nl/woordenlijst/): 105 begrippen uit ondernemingsrecht, vastgoedrecht, procesrecht en insolventierecht, elk met eigen anchor (bijv. /woordenlijst/#terme-de-grace) en link naar de verdiepende kennisbankpagina.
