@@ -59,7 +59,7 @@
 - [Huurachterstand bedrijfsruimte: ontbinding](https://clavix.nl/clusters/huurachterstand-bedrijfsruimte-ontbinding/): Wanneer ontbinding wordt toegewezen; terme de grâce en kort geding.
 - [Huurprijs bedrijfsruimte aanpassen (7:303 BW)](https://clavix.nl/clusters/huurprijswijziging-7-303-roz/): De huurprijsherzieningsprocedure: termijnen en deskundigenadvies.
 - [Huurrecht advocaat bedrijfsruimte](https://clavix.nl/clusters/huurrecht-advocaat-bedrijfsruimte/): Voor verhuurders en zakelijke huurders: kwalificatie, huurprijs, opzegging.
-- [Indeplaatsstelling huurder](https://clavix.nl/clusters/indeplaatsstelling-huurder/): Voorwaarden en weigeringsgronden bij bedrijfsoverdracht (7:307 BW).
+- [Indeplaatsstelling huurder](https://clavix.nl/clusters/indeplaatsstelling-huurder/): Huurrechten overdragen aan een opvolger bij bedrijfsoverdracht: de twee vereisten van 7:307 BW (zwaarwichtig belang en voldoende waarborgen), de machtiging door de kantonrechter, weigeringsgronden en de positie van de verhuurder.
 - [Ontruiming van bedrijfsruimte](https://clavix.nl/clusters/ontruiming-bedrijfsruimte/): Kort geding of bodemprocedure, de drie-maanden-vuistregel, de terme de grâce en de uitvoering.
 - [Ontslag statutair bestuurder](https://clavix.nl/clusters/ontslag-statutair-bestuurder/): De dubbele rechtsbetrekking: AVA-besluit, hoorrecht, opzegverboden en de vergoedingen.
 - [Opzegging huurovereenkomst bedrijfsruimte](https://clavix.nl/clusters/opzegging-huurovereenkomst-bedrijfsruimte/): Gronden en termijnen bij 290- en 230a-ruimte.
