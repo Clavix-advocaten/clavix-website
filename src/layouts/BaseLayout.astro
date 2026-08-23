@@ -44,7 +44,14 @@ const {
 } = Astro.props
 
 const siteUrl = 'https://clavix.nl' // Wordt later netlify-env-aware
-const fullTitle = title.includes('Clavix') ? title : `${title} — Clavix Advocaten`
+// Merk-suffix alleen zolang de titel binnen 60 tekens blijft (SERP-afkapgrens)
+const fullTitle = title.includes('Clavix')
+  ? title
+  : title.length <= 41
+    ? `${title} | Clavix Advocaten`
+    : title.length <= 51
+      ? `${title} | Clavix`
+      : title
 const canonicalUrl = canonical || `${siteUrl}${Astro.url.pathname}`
 
 // Bouw schema-array
