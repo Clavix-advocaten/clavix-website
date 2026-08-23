@@ -29,8 +29,7 @@ export function organizationSchema(lang: 'nl' | 'en' = 'nl') {
       lang === 'en'
         ? 'Boutique Dutch law firm in the Zuidas business district of Amsterdam, acting for companies and real estate investors. Corporate law, real estate, insolvency and litigation.'
         : 'Boutique advocatenkantoor in Amsterdam Zuidas voor ondernemers met vastgoed. Ondernemingsrecht, vastgoedrecht en insolventie.',
-    inLanguage: lang === 'en' ? 'en' : 'nl',
-    availableLanguage: ['Dutch', 'English'],
+    knowsLanguage: ['nl', 'en'],
     vatID: 'NL867766839B01',
     address: {
       '@type': 'PostalAddress',
@@ -140,10 +139,18 @@ export function articleSchema(page: any, attorneyName: string = 'mr. Mukesh Kuma
     headline: page.title,
     description: page.tldr?.body || page.subtitle,
     image: page.imageUrl || page.coverImage?.url || 'https://cdn.sanity.io/images/74qey4fk/production/d692d2c9a732c5010a38270d4a3afc220e84c7a9-4350x6490.jpg?w=1200&h=630&fit=crop&crop=top&fm=jpg&q=85',
-    ...(pagePath ? { mainEntityOfPage: { '@type': 'WebPage', '@id': canon(pagePath) } } : {}),
+    ...(pagePath
+      ? {
+          // reviewedBy is een WebPage-eigenschap (niet Article), dus op de mainEntityOfPage-node
+          mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': canon(pagePath),
+            reviewedBy: { '@type': 'Person', '@id': `${SITE_URL}/kumar#person`, name: attorneyName, jobTitle: 'Advocaat', url: `${SITE_URL}/kumar/` },
+          },
+        }
+      : {}),
     inLanguage: 'nl-NL',
     author: { '@type': 'Person', '@id': `${SITE_URL}/kumar#person`, name: attorneyName, url: `${SITE_URL}/kumar/` },
-    reviewedBy: { '@type': 'Person', '@id': `${SITE_URL}/kumar#person`, name: attorneyName, jobTitle: 'Advocaat', url: `${SITE_URL}/kumar/` },
     publisher: { '@type': 'LegalService', '@id': `${SITE_URL}/#organization`, name: ORG_NAME, url: `${SITE_URL}/` },
     datePublished: page.publishedAt,
     dateModified: page.modifiedAt || page.publishedAt,
@@ -263,10 +270,13 @@ export function siteNavigationSchema() {
       { name: 'Notities', url: '/notities/' },
       { name: 'Contact', url: '/contact/' },
     ].map((item, index) => ({
-      '@type': 'SiteNavigationElement',
+      '@type': 'ListItem',
       position: index + 1,
-      name: item.name,
-      url: canon(item.url),
+      item: {
+        '@type': 'SiteNavigationElement',
+        name: item.name,
+        url: canon(item.url),
+      },
     })),
   }
 }
