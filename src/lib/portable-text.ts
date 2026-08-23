@@ -32,6 +32,9 @@ const components: Partial<PortableTextHtmlComponents> = {
       `<code class="font-mono text-small bg-bg-tinted px-1.5 py-0.5 rounded">${children}</code>`,
     link: ({ children, value }) => {
       let href = value?.href || '#'
+      // Absolute clavix.nl-links relatief maken zodat ook zij genormaliseerd worden
+      const abs = href.match(/^https?:\/\/(?:www\.)?clavix\.nl(\/.*)?$/)
+      if (abs) href = abs[1] || '/'
       // Normaliseer interne links naar de canonieke vorm met trailing slash
       if (href.startsWith('/') && !/[.#?]/.test(href) && href !== '/' && !href.endsWith('/')) href += '/'
       const isInternal = value?.internal || href.startsWith('/')

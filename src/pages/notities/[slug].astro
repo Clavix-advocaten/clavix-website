@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro'
 import CTABand from '@components/CTABand.astro'
-import { getBlogPost, getAllBlogSlugs } from '@lib/queries'
+import { getBlogPost, getAllBlogSlugs, getAllBlogPosts } from '@lib/queries'
 import { renderPortableText } from '@lib/portable-text'
 import { blogPostingSchema, breadcrumbSchema } from '@lib/schema-markup'
 
@@ -25,6 +25,10 @@ const schemas = [
 ]
 
 const formatDate = (iso: string) => new Date(iso).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })
+
+// Andere notities voor onderlinge doorverwijzing (elke notitie krijgt zo meerdere inkomende links)
+const alleNotities = await getAllBlogPosts().catch(() => [])
+const andereNotities = alleNotities.filter((p: any) => p.slug !== slug).slice(0, 3)
 
 const seoTitle = post.seo?.metaTitle || post.title
 const seoDescription = post.seo?.metaDescription || post.excerpt
@@ -66,7 +70,24 @@ const seoDescription = post.seo?.metaDescription || post.excerpt
 
       <div class="prose-content space-y-4 text-body text-text" set:html={renderPortableText(post.body)} />
 
+      {andereNotities.length > 0 && (
+        <section class="mt-16 pt-8 border-t border-border">
+          <h2 class="text-h3 font-bold text-text mb-6">Meer notities</h2>
+          <ul class="grid md:grid-cols-3 gap-4 list-none p-0">
+            {andereNotities.map((n: any) => (
+              <li>
+                <a href={`/notities/${n.slug}/`} class="block h-full p-5 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+                  <div class="font-semibold text-text mb-1">{n.title}</div>
+                  {n.excerpt && <div class="text-small text-text-secondary">{n.excerpt.slice(0, 110)}...</div>}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {post.author && (
+
         <div class="mt-16 pt-8 border-t border-border flex items-center gap-4">
           {post.author.photoUrl && (
             <img src={post.author.photoUrl} alt={post.author.name} width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover" />
