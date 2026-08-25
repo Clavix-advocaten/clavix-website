@@ -131,7 +131,7 @@ export function personSchema(attorney: any) {
       'Pre-pack doorstart',
     ],
     knowsLanguage: attorney.languages || ['nl', 'en'],
-    sameAs: [...(attorney.sameAs || []), 'https://zoekeenadvocaat.advocatenorde.nl/'],
+    sameAs: [...(attorney.sameAs || []), 'https://zoekeenadvocaat.advocatenorde.nl/advocaten/amsterdam/de-heer-mr-m-kumar/17380843267'],
     award: (attorney.awards || []).map((a: any) => a.title),
   }
 }
