@@ -104,6 +104,18 @@ export function personSchema(attorney: any) {
       name: 'Nederlandse Orde van Advocaten',
       url: 'https://www.advocatenorde.nl',
     },
+    // Registraties in het rechtsgebiedenregister als formele credentials (uit Sanity)
+    hasCredential: (attorney.novaRegistrations || []).map((r: any) => ({
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'Registratie rechtsgebiedenregister NOvA',
+      name: r.specialisations ? `${r.area} (${r.specialisations})` : r.area,
+      recognizedBy: {
+        '@type': 'Organization',
+        name: 'Nederlandse Orde van Advocaten',
+        url: 'https://www.advocatenorde.nl',
+      },
+      url: 'https://zoekeenadvocaat.advocatenorde.nl/advocaten/amsterdam/de-heer-mr-m-kumar/17380843267',
+    })),
     alumniOf: [
       { '@type': 'CollegeOrUniversity', name: 'Vrije Universiteit Amsterdam' },
       { '@type': 'CollegeOrUniversity', name: 'University of Leeds' },
