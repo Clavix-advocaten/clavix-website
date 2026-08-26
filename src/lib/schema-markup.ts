@@ -17,6 +17,19 @@ function canon(path: string): string {
   return SITE_URL + p
 }
 
+export function websiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${SITE_URL}/#website`,
+    name: 'Clavix',
+    alternateName: 'Clavix Advocaten',
+    url: `${SITE_URL}/`,
+    publisher: { '@id': `${SITE_URL}/#organization` },
+    inLanguage: 'nl-NL',
+  }
+}
+
 export function organizationSchema(lang: 'nl' | 'en' = 'nl') {
   return {
     '@context': 'https://schema.org',

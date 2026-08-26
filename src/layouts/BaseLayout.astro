@@ -11,7 +11,7 @@ import Navigation from '@components/Navigation.astro'
 import Footer from '@components/Footer.astro'
 import NavigationEN from '@components/NavigationEN.astro'
 import FooterEN from '@components/FooterEN.astro'
-import { organizationSchema, siteNavigationSchema } from '@lib/schema-markup'
+import { organizationSchema, siteNavigationSchema, websiteSchema } from '@lib/schema-markup'
 
 interface Props {
   title: string
@@ -53,7 +53,7 @@ const fullTitle = title.includes('Clavix')
 const canonicalUrl = canonical || `${siteUrl}${Astro.url.pathname}`
 
 // Bouw schema-array
-const schemas = [organizationSchema(lang === 'en' ? 'en' : 'nl')]
+const schemas = [websiteSchema(), organizationSchema(lang === 'en' ? 'en' : 'nl')]
 if (schemaJsonLd) {
   if (Array.isArray(schemaJsonLd)) schemas.push(...schemaJsonLd)
   else schemas.push(schemaJsonLd)
