@@ -1,0 +1,27 @@
+---
+/**
+ * Voorkeursbron-knop: laat lezers clavix.nl instellen als voorkeursbron in Google
+ * (Top Stories, AI Mode en AI Overviews tonen voorkeursbronnen vaker en met badge).
+ * Bewust de directe link i.p.v. Googles script: geen third-party JS, CSP-veilig.
+ * Documentatie: developers.google.com/search/docs/appearance/preferred-sources
+ */
+---
+
+<section class="max-w-container mx-auto px-4 md:px-8 pb-16">
+  <div class="max-w-readable flex flex-col sm:flex-row items-start sm:items-center gap-4 p-6 bg-bg-elevated border border-border rounded-lg">
+    <div class="flex-1">
+      <h2 class="text-h4 font-bold text-text mb-1">Vaker antwoorden van Clavix in Google?</h2>
+      <p class="text-small text-text-secondary">
+        Stel clavix.nl in als voorkeursbron. Google toont onze kennisbank en notities dan vaker in uw eigen zoekresultaten, AI-overzichten en Discover.
+      </p>
+    </div>
+    <a
+      href="https://www.google.com/preferences/source?q=clavix.nl"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="bg-action text-action-fg hover:bg-action-hover px-5 py-2.5 rounded-md font-semibold no-underline transition whitespace-nowrap text-small"
+    >
+      Instellen als voorkeursbron
+    </a>
+  </div>
+</section>

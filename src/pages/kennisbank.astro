@@ -5,6 +5,7 @@
  */
 import BaseLayout from '@layouts/BaseLayout.astro'
 import CTABand from '@components/CTABand.astro'
+import Voorkeursbron from '@components/Voorkeursbron.astro'
 import Breadcrumbs from '@components/Breadcrumbs.astro'
 import { getAllClustersWithPillar, getAllPillarsForNav } from '@lib/queries'
 import { breadcrumbSchema } from '@lib/schema-markup'
@@ -135,6 +136,8 @@ const zelfRegelen = [
       </ul>
     </div>
   </section>
+
+  <Voorkeursbron />
 
   <CTABand
     heading="Liever direct een advocaat spreken?"

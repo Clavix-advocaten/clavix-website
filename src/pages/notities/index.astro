@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro'
+import Voorkeursbron from '@components/Voorkeursbron.astro'
 import { getAllBlogPosts } from '@lib/queries'
 
 const posts = await getAllBlogPosts().catch(() => [])
@@ -58,4 +59,5 @@ const categoryLabel = (cat: string) => {
       </div>
     )}
   </section>
+  <Voorkeursbron />
 </BaseLayout>

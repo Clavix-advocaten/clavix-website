@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro'
 import CTABand from '@components/CTABand.astro'
+import Voorkeursbron from '@components/Voorkeursbron.astro'
 import { getBlogPost, getAllBlogSlugs, getAllBlogPosts } from '@lib/queries'
 import { renderPortableText } from '@lib/portable-text'
 import { blogPostingSchema, breadcrumbSchema } from '@lib/schema-markup'
@@ -114,6 +115,8 @@ const seoDescription = post.seo?.metaDescription || post.excerpt
         </section>
       )}
     </div>
+
+  <Voorkeursbron />
 
     <CTABand />
   </article>
