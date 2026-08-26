@@ -4,7 +4,7 @@
  */
 
 const SITE_URL = 'https://clavix.nl' // Pas aan naar staging voor staging-build
-const ORG_NAME = 'Clavix Advocaten'
+const ORG_NAME = 'Clavix'
 const ORG_LEGAL = 'Clavix B.V.'
 const GOOGLE_MAPS_URL = 'https://www.google.com/maps?cid=7869689075875714479'
 
@@ -271,7 +271,7 @@ export function siteNavigationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'Hoofdmenu Clavix Advocaten',
+    name: 'Hoofdmenu Clavix',
     itemListElement: [
       { name: 'Home', url: '/' },
       { name: 'Vastgoed x Ondernemers', url: '/praktijkgebieden/vastgoed-en-ondernemers/' },
