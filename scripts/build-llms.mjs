@@ -41,12 +41,21 @@ async function paginas(dir) {
   return uit
 }
 
+// Astro schrijft ook getalsentiteiten (&#38; in "M&A"), dus in één doorgang
+// ontsleutelen: een vaste lijst losse vervangingen decodeert &amp;#38; twee keer.
+const ENTITEITEN = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' }
+const ontsleutel = (s) => s.replace(/&(#x[0-9a-fA-F]+|#\d+|[a-zA-Z]+);/g, (hele, code) => {
+  if (code[0] === '#') {
+    const nr = code[1] === 'x' ? parseInt(code.slice(2), 16) : parseInt(code.slice(1), 10)
+    return Number.isFinite(nr) && nr > 0 ? String.fromCodePoint(nr) : hele
+  }
+  return ENTITEITEN[code.toLowerCase()] ?? hele
+})
+
 const tekst = (html, re) => {
   const m = html.match(re)
   if (!m) return ''
-  return m[1].replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&#39;|&#x27;/g, "'")
-    .replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&nbsp;/g, ' ')
-    .replace(/\s+/g, ' ').trim()
+  return ontsleutel(m[1].replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim()
 }
 
 const bestanden = (await paginas(DIST)).sort()
