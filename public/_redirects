@@ -43,8 +43,8 @@
 /post/post-huurprijs-huurachterstand-huurverhoging                                /clusters/huurachterstand-bedrijfsruimte-ontbinding/  301
 /post/urgente-opzeggronden-voor-verhuurders-eigen-gebruik-en-renovatie            /clusters/opzegging-huurovereenkomst-bedrijfsruimte/  301
 /post/overlast-door-de-huurder-wat-zijn-de-grenzen-en-wat-kunt-u-doen-als-verhuurder  /praktijkgebieden/vastgoedrecht/  301
-/post/tijdelijke-huurcontracten-wat-mag-er-maximaal-2-jaar-en-wat-niet            /praktijkgebieden/vastgoedrecht/  301
-/post/onderhuur-en-inwoning-wat-mag-wel-en-wat-mag-niet-als-huurder               /praktijkgebieden/vastgoedrecht/  301
+/post/tijdelijke-huurcontracten-wat-mag-er-maximaal-2-jaar-en-wat-niet /clusters/huurtermijnen-bedrijfsruimte/  301
+/post/onderhuur-en-inwoning-wat-mag-wel-en-wat-mag-niet-als-huurder    /clusters/illegale-onderverhuur-aanpakken/  301
 /post/gebreken-aan-het-gehuurde-wat-zijn-je-rechten-als-huurder                   /praktijkgebieden/vastgoedrecht/  301
 /post/verplichtingen-van-huurder-en-verhuurder-wie-moet-wat-doen                  /praktijkgebieden/vastgoedrecht/  301
 /post/beeindiging-van-de-huurovereenkomst-hoe-werkt-dat                           /clusters/opzegging-huurovereenkomst-bedrijfsruimte/  301
@@ -57,7 +57,8 @@
 /expertise/advocaat-faillissement              /praktijkgebieden/insolventie-en-herstructurering/  301
 /expertise/advocaat-vastgoedrecht              /praktijkgebieden/vastgoedrecht/                    301
 /expertise/advocaat-ondernemingsrecht          /praktijkgebieden/ondernemingsrecht/                301
-/expertise/advocaat-aansprakelijkheidsrecht    /clusters/bestuurdersaansprakelijkheid-faillissement/  301
+/expertise/advocaat-aansprakelijkheidsrecht                            /clusters/aansprakelijkheid-zakelijk/  301
+/expertise/beslag-en-executierecht                                     /specialisme/incasso-en-executie/  301
 /expertise/advocaat-beslag-en-executierecht    /clusters/conservatoir-beslag/                      301
 /expertise/advocaat-civiel-procesrecht         /praktijkgebieden/burgerlijk-procesrecht/           301
 /expertise/advocaat-contractenrecht            /specialisme/contractgeschillen/                    301
@@ -71,7 +72,9 @@
 /advocaat/faillissementsrecht/bestuurdersaansprakelijkheid-faillissement  /clusters/bestuurdersaansprakelijkheid-faillissement/  301
 /advocaat/faillissementsrecht/doorstart-na-faillissement                  /clusters/pre-pack-doorstart/                          301
 /advocaat/faillissementsrecht/pauliana                                    /clusters/pauliana-actie-curator/                      301
-/advocaat/faillissementsrecht/*                                           /praktijkgebieden/insolventie-en-herstructurering/     301
+/advocaat/faillissementsrecht/verdeling-boedel                         /clusters/rangorde-schuldeisers-faillissement/  301
+/advocaat/faillissementsrecht/zekerheden-in-faillissement              /clusters/rangorde-schuldeisers-faillissement/  301
+/advocaat/faillissementsrecht/*                                        /praktijkgebieden/insolventie-en-herstructurering/  301
 
 # Bestuurdersaansprakelijkheid (typo: bestuudersaansprakelijkheid)
 /advocaat/bestuudersaansprakelijkheid/*    /clusters/bestuurdersaansprakelijkheid-faillissement/  301
@@ -79,7 +82,9 @@
 # Beslag (varianten met dubbele streep + triple); conservatoir-beslag expliciet naar cluster
 /advocaat/beslag-en-executierecht/conservatoir-beslag        /clusters/conservatoir-beslag/     301
 /advocaat/beslag--en-executierecht/conservatoir-beslag       /clusters/conservatoir-beslag/     301
-/advocaat/beslag-en-executierecht/*                          /specialisme/incasso-en-executie/  301
+/advocaat/beslag-en-executierecht/bankbeslag                           /clusters/beslag-op-bankrekening/  301
+/advocaat/beslag--en-executierecht/bankbeslag                          /clusters/beslag-op-bankrekening/  301
+/advocaat/beslag-en-executierecht/*                                    /specialisme/incasso-en-executie/  301
 /advocaat/beslag--en-executierecht/*                         /specialisme/incasso-en-executie/  301
 /advocaat/beslag--en-executierecht--en-executierecht/*       /specialisme/incasso-en-executie/  301
 
@@ -90,18 +95,27 @@
 
 # Civiel procesrecht / Aansprakelijkheid / Incasso
 /advocaat/civiel-procesrecht/kort-geding /specialisme/kort-geding/                  301
-/advocaat/civiel-procesrecht/*           /praktijkgebieden/burgerlijk-procesrecht/  301
-/advocaat/aansprakelijkheidsrecht/*      /clusters/bestuurdersaansprakelijkheid-faillissement/  301
+/advocaat/civiel-procesrecht/hoger-beroep-civiel                       /clusters/hoger-beroep-civiel/  301
+/advocaat/civiel-procesrecht/proceskosten                              /proceskosten-berekenen/  301
+/advocaat/civiel-procesrecht/schorsing-executie                        /clusters/executoriaal-beslag/  301
+/advocaat/civiel-procesrecht/bewijslastverdeling                       /clusters/bodemprocedure/  301
+/advocaat/civiel-procesrecht/*                                         /praktijkgebieden/burgerlijk-procesrecht/  301
+/advocaat/aansprakelijkheidsrecht/causaal-verband                      /clusters/causaal-verband/  301
+/advocaat/aansprakelijkheidsrecht/*                                    /clusters/aansprakelijkheid-zakelijk/  301
 /advocaat/incasso-en-verhaalsrecht/betalingsgeschillen  /specialisme/incasso-en-executie/  301
-/advocaat/incasso-en-verhaalsrecht/*     /specialisme/incasso-en-executie/  301
+/advocaat/incasso-en-verhaalsrecht/verhaal-op-bestuurders              /clusters/bestuurdersaansprakelijkheid-faillissement/  301
+/advocaat/incasso-%26-verhaalsrecht/verhaal-op-bestuurders             /clusters/bestuurdersaansprakelijkheid-faillissement/  301
+/advocaat/incasso-%26-verhaalsrecht/*                                  /specialisme/incasso-en-executie/  301
+/advocaat/incasso-en-verhaalsrecht/*                                   /specialisme/incasso-en-executie/  301
 /advocaat/incasso-&-verhaalsrecht/*      /specialisme/incasso-en-executie/  301
 
 # Contractenrecht
 /advocaat/contractenrecht/exoneratieclausules          /clusters/exoneratiebeding-zakelijke-contracten/  301
-/advocaat/contractenrecht/wanprestatie                 /clusters/bouwgeschil-aannemer-wanprestatie/ 301
+/advocaat/contractenrecht/wanprestatie                                 /clusters/aansprakelijkheid-zakelijk/  301
+/advocaat/contractenrecht/ontbinding-overeenkomst                      /clusters/koopovereenkomst-ontbinden/  301
 /advocaat/contractenrecht/leveringsgeschillen-vastgoed /praktijkgebieden/vastgoedrecht/             301
 /advocaat/contractenrecht/onvoorziene-omstandigheden   /specialisme/contractgeschillen/             301
-/advocaat/contractenrecht/*                            /praktijkgebieden/ondernemingsrecht/         301
+/advocaat/contractenrecht/*                                            /specialisme/contractgeschillen/  301
 
 # Vastgoedrecht — specifieke mappings
 /advocaat/vastgoedrecht/non-conformiteit-vastgoed                 /clusters/verborgen-gebreken-bedrijfspand/    301
@@ -118,6 +132,8 @@
 /advocaat/ondernemingsrecht/aandeelhoudersovereenkomst-geschil  /clusters/aandeelhoudersovereenkomst-minimaal/             301
 /advocaat/ondernemingsrecht/aandeelhoudersgeschillen            /clusters/50-50-aandeelhoudersgeschil-oplossen/            301
 /advocaat/ondernemingsrecht/50%2F50-impasse-binnen-de-bv        /clusters/50-50-aandeelhoudersgeschil-oplossen/            301
+/advocaat/ondernemingsrecht/contractuele-geschillen-tussen-ondernemingen /specialisme/contractgeschillen/  301
+/advocaat/ondernemingsrecht/ontbinding-en-beeindiging-vennootschap     /clusters/turboliquidatie-bv/  301
 /advocaat/ondernemingsrecht/uittreding-aandeelhouder            /clusters/50-50-aandeelhoudersgeschil-oplossen/            301
 /advocaat/ondernemingsrecht/uitkoopregeling-aandeelhouder       /clusters/50-50-aandeelhoudersgeschil-oplossen/            301
 /advocaat/ondernemingsrecht/enqueteprocedure                    /clusters/50-50-aandeelhoudersgeschil-oplossen/            301
