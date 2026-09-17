@@ -1,3 +1,10 @@
+# === PROEF: rechtstreeks vanaf het www-adres, zonder tussenstap ===
+# De oude adressen maken nu twee sprongen (www naar apex, dan de regel). Als
+# Netlify een regel met het volledige adres eerder toepast dan zijn eigen
+# domeinomleiding, scheelt dat een sprong. Eén regel als proef; blijkt hij niet
+# te werken, dan gaat hij er weer uit.
+https://www.clavix.nl/expertise/advocaat-faillissement    /praktijkgebieden/insolventie-en-herstructurering/    301!
+
 # === KORTE LINKS ===
 /review    https://g.page/r/Ca8VWOSEwDZtEBM/review    302
 
