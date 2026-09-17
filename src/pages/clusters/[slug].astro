@@ -310,7 +310,7 @@ const alternates = enHref
         <section class="mt-20 p-6 bg-bg-tinted rounded-lg">
           <h3 class="text-h4 font-semibold text-text mb-3">Lees ook over het bredere onderwerp</h3>
           <a href={`/praktijkgebieden/${cluster.parentPillar.slug}/`} class="text-text-accent font-semibold no-underline hover:underline">
-            {cluster.parentPillar.shortTitle} →
+            {(cluster.parentPillar.seoTitle || cluster.parentPillar.shortTitle).replace(/\s*\|\s*Clavix.*$/, '')} →
           </a>
         </section>
       )}

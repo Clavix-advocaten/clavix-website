@@ -118,6 +118,7 @@ const clusterPageBySlugQuery = groq`*[_type == "clusterPage" && slug.current == 
   "slug": slug.current,
   parentPillar-> {
     shortTitle,
+    "seoTitle": seo.metaTitle,
     "slug": slug.current
   },
   tldr,
