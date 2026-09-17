@@ -197,7 +197,7 @@ const glossarySchema = {
     description: t.def,
     inDefinedTermSet: 'https://clavix.nl/woordenlijst/',
     url: `https://clavix.nl/woordenlijst/#${termSlug(t.term)}`,
-    ...(t.link ? { subjectOf: { '@type': 'WebPage', url: `https://clavix.nl${t.link.endsWith('/') ? t.link : t.link + '/'}` } } : {}),
+    ...(t.link ? { subjectOf: { '@type': 'WebPage', url: `https://clavix.nl${t.link.includes('#') || t.link.endsWith('/') ? t.link : t.link + '/'}` } } : {}),
   })),
 };
 
