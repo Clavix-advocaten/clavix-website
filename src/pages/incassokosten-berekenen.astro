@@ -21,6 +21,10 @@ const faqs = [
     a: 'Ja. Tegenover consumenten is de staffel dwingend recht, maar tussen bedrijven mag bij overeenkomst een hogere of andere vergoeding worden afgesproken, bijvoorbeeld in algemene voorwaarden. Zonder afspraak geldt ook tussen bedrijven de wettelijke staffel.',
   },
   {
+    q: 'Wat is de Wet incassokosten (WIK)?',
+    a: 'Zo wordt in de praktijk de wetswijziging van 1 juli 2012 genoemd die de buitengerechtelijke incassokosten heeft genormeerd. De grondslag staat in artikel 6:96 lid 2 onder c BW en de bedragen staan in het Besluit vergoeding voor buitengerechtelijke incassokosten. Die staffel is sinds 2012 niet gewijzigd en wordt niet geïndexeerd: dezelfde schijven, hetzelfde minimum van € 40 en hetzelfde maximum van € 6.775.',
+  },
+  {
     q: 'Komen de incassokosten bovenop de rente?',
     a: 'Ja. De incassokosten vergoeden de kosten van het innen; daarnaast loopt over de hoofdsom de wettelijke rente of handelsrente vanaf het verzuim. Beide kunnen in dezelfde procedure worden gevorderd.',
   },
@@ -113,6 +117,53 @@ const schemas = [
       </div>
     </section>
 
+    {/* === VOORBEELDBEREKENING === */}
+    <section class="border-t border-border pt-16">
+      <h2 class="text-h2 font-bold mb-2 text-text">Zo rekent u de staffel na</h2>
+      <p class="text-body text-text-secondary mb-6 max-w-readable">
+        Een onbetaalde factuur van € 8.500 valt in drie schijven. Per schijf geldt het eigen percentage, en de uitkomsten worden bij elkaar opgeteld.
+      </p>
+      <div class="overflow-x-auto" tabindex="0" role="region" aria-label="Voorbeeldberekening incassokosten per schijf, horizontaal schuifbaar">
+        <table class="w-full max-w-2xl text-body text-text border-collapse">
+          <thead>
+            <tr class="border-b-2 border-border text-left">
+              <th class="py-2 pr-6 font-semibold">Schijf</th>
+              <th class="py-2 pr-6 font-semibold">Deel van de € 8.500</th>
+              <th class="py-2 pr-6 font-semibold">Percentage</th>
+              <th class="py-2 font-semibold">Bedrag</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-border"><td class="py-2 pr-6">Eerste</td><td class="py-2 pr-6">€ 2.500</td><td class="py-2 pr-6">15%</td><td class="py-2">€ 375,00</td></tr>
+            <tr class="border-b border-border"><td class="py-2 pr-6">Tweede</td><td class="py-2 pr-6">€ 2.500</td><td class="py-2 pr-6">10%</td><td class="py-2">€ 250,00</td></tr>
+            <tr class="border-b border-border"><td class="py-2 pr-6">Derde</td><td class="py-2 pr-6">€ 3.500</td><td class="py-2 pr-6">5%</td><td class="py-2">€ 175,00</td></tr>
+            <tr class="border-b-2 border-border font-semibold"><td class="py-2 pr-6">Totaal</td><td class="py-2 pr-6">€ 8.500</td><td class="py-2 pr-6"></td><td class="py-2">€ 800,00</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="max-w-readable space-y-4 mt-6">
+        <p class="text-body text-text">
+          Kunt u de btw niet verrekenen, dan komt daar 21% bij en wordt het € 968,00. De fout die het vaakst langskomt is één percentage over de hele hoofdsom: 15% over € 8.500 zou € 1.275 zijn, bijna € 500 te veel. Bij een consument kan een te hoog bedrag in de veertiendagenbrief u de aanspraak op de incassokosten kosten, dus reken het precies uit.
+        </p>
+        <p class="text-body text-text">
+          Twee grenzen zijn goed om te kennen. Het <strong class="text-text">minimum van € 40</strong> werkt door tot een hoofdsom van € 266,67; onder dat bedrag is 15% namelijk minder dan € 40, en dan geldt het minimum. Het <strong class="text-text">maximum van € 6.775</strong> wordt pas bereikt bij een hoofdsom van € 1.000.000: over alles daarboven komt er geen vergoeding meer bij.
+        </p>
+      </div>
+    </section>
+
+    {/* === HERKOMST VAN DE STAFFEL === */}
+    <section class="border-t border-border pt-16">
+      <h2 class="text-h2 font-bold mb-4 text-text">Waar de staffel vandaan komt</h2>
+      <div class="max-w-readable space-y-4">
+        <p class="text-body text-text">
+          De staffel bestaat sinds 1 juli 2012. Toen trad de wet in werking die de buitengerechtelijke incassokosten normeerde, in de praktijk de Wet incassokosten of WIK genoemd, met het Besluit vergoeding voor buitengerechtelijke incassokosten als uitwerking. Daarvoor bepaalden algemene voorwaarden en incassotarieven wat een schuldeiser vroeg, en dat liep bij kleine vorderingen hoog op.
+        </p>
+        <p class="text-body text-text">
+          De percentages en de grensbedragen zijn sinds die invoering niet gewijzigd: het besluit van 2012 en de nu geldende tekst noemen dezelfde schijven, hetzelfde minimum van € 40 en hetzelfde maximum van € 6.775. Anders dan het griffierecht wordt deze staffel dus niet jaarlijks geïndexeerd. Een tabel die "staffel 2026" heet, is dezelfde tabel als die van 2012, en dat blijft zo tot de wetgever het besluit aanpast.
+        </p>
+      </div>
+    </section>
+
     {/* === UITLEG === */}
     <section class="border-t border-border pt-16">
       <h2 class="text-h2 font-bold mb-4 text-text">Consument of bedrijf: de regels verschillen</h2>
@@ -124,7 +175,7 @@ const schemas = [
           Bij een <strong>zakelijke schuldenaar</strong> zijn de kosten direct na het intreden van het verzuim verschuldigd, zonder veertiendagenbrief. Bovendien mag tussen bedrijven bij overeenkomst van de staffel worden afgeweken, bijvoorbeeld met een incassobeding in de algemene voorwaarden. Hoe u een zakelijke debiteur aanpakt, van eerste aanmaning tot beslag, staat stap voor stap in de kennisbank: <a href="/clusters/factuur-niet-betaald/" class="text-brand-primary no-underline hover:underline">factuur niet betaald</a>.
         </p>
         <p class="text-body text-text">
-          De incassokosten staan los van de rente: over de hoofdsom loopt daarnaast de <a href="/wettelijke-rente-berekenen/" class="text-brand-primary no-underline hover:underline">wettelijke rente of handelsrente</a> vanaf het verzuim. Betaalt de schuldenaar ook na aanmaning niet, dan kunnen hoofdsom, rente én incassokosten samen worden gevorderd in een procedure; wat dat kost rekent u door met de <a href="/proceskosten-berekenen/" class="text-brand-primary no-underline hover:underline">proceskosten-rekentools</a>.
+          De incassokosten staan los van de rente: over de hoofdsom loopt daarnaast de <a href="/wettelijke-rente-berekenen/" class="text-brand-primary no-underline hover:underline">wettelijke rente of handelsrente</a> vanaf het verzuim. Betaalt de schuldenaar ook na aanmaning niet, dan kunnen hoofdsom, rente én incassokosten samen worden gevorderd in een procedure; wat dat kost rekent u door met de <a href="/proceskosten-berekenen/" class="text-brand-primary no-underline hover:underline">rekenhulp voor griffierecht en proceskosten</a>.
         </p>
       </div>
     </section>
