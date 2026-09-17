@@ -231,6 +231,88 @@ const ctaPerSlug: Record<string, { heading: string; description: string }> = {
 }
 const ctaContext = ctaPerSlug[slug as string] || (cluster.parentPillar ? ctaPerPillar[cluster.parentPillar.slug] : undefined)
 
+// De specialismepagina die bij dit onderwerp hoort.
+//
+// WAAROM DIT BESTAAT. De 87 kennisbankartikelen linkten alle naar hun pijler,
+// maar géén enkele naar een specialismepagina: die kregen hun links alleen van
+// de homepage, de pijlers en van elkaar. Dat zijn wel de pagina's met
+// commerciële intentie ("advocaat aandeelhoudersgeschillen"), en samen haalden
+// ze in 28 dagen 1.606 vertoningen met één klik, op posities 17 tot 78. De
+// artikelen die het verkeer binnenhalen wijzen er nu naartoe, met de zoekterm
+// van die pagina als anker.
+//
+// Niet elk artikel krijgt er een: de huur- en vastgoedartikelen hebben geen
+// eigen specialismepagina (hun commerciële tegenhanger is de pijler
+// vastgoedrecht), en bij leerstukken als causaal verband of rechtsverwerking
+// past geen enkele.
+const specialismen = {
+  aandeelhouders: { href: '/specialisme/aandeelhoudersgeschillen/', anker: 'Advocaat aandeelhoudersgeschillen' },
+  bestuurder: { href: '/specialisme/bestuurdersaansprakelijkheid/', anker: 'Advocaat bestuurdersaansprakelijkheid' },
+  bouwrecht: { href: '/specialisme/bouwgeschillen/', anker: 'Advocaat bouwrecht in Amsterdam' },
+  contracten: { href: '/specialisme/contractgeschillen/', anker: 'Advocaat contractenrecht in Amsterdam' },
+  incasso: { href: '/specialisme/incasso-en-executie/', anker: 'Advocaat incasso en executierecht' },
+  kortGeding: { href: '/specialisme/kort-geding/', anker: 'Advocaat kort geding in Amsterdam' },
+  overdracht: { href: '/specialisme/bedrijfsoverdracht-met-vastgoed/', anker: 'Bedrijfsoverdracht met vastgoed' },
+}
+const specialismePerSlug: Record<string, keyof typeof specialismen> = {
+  '50-50-aandeelhoudersgeschil-oplossen': 'aandeelhouders',
+  'aandeelhoudersovereenkomst-minimaal': 'aandeelhouders',
+  'aandeelhoudersgeschil-bedrijfspand': 'aandeelhouders',
+  'concurrentiebeding-ex-aandeelhouders': 'aandeelhouders',
+  'ondernemingskamer-procedure': 'aandeelhouders',
+  'joint-venture': 'aandeelhouders',
+  'statuten-bv-wijzigen': 'aandeelhouders',
+  'ontslag-statutair-bestuurder': 'aandeelhouders',
+  'bestuurdersaansprakelijkheid': 'bestuurder',
+  'bestuurdersaansprakelijkheid-faillissement': 'bestuurder',
+  'decharge-bestuurder': 'bestuurder',
+  'turboliquidatie-bv': 'bestuurder',
+  'pauliana-actie-curator': 'bestuurder',
+  'paulianeus-handelen': 'bestuurder',
+  'hoofdelijke-aansprakelijkheid-borgtocht': 'bestuurder',
+  'bouwgeschil-aannemer-wanprestatie': 'bouwrecht',
+  'aannemer-failliet-tijdens-bouw': 'bouwrecht',
+  'retentierecht-bouw': 'bouwrecht',
+  'dwaling': 'contracten',
+  'exoneratiebeding-zakelijke-contracten': 'contracten',
+  'koopovereenkomst-ontbinden': 'contracten',
+  'geheimhoudingsverklaring-nda': 'contracten',
+  'franchise-geschillen': 'contracten',
+  'managementovereenkomst': 'contracten',
+  'aansprakelijkheid-zakelijk': 'contracten',
+  'financieringsvoorbehoud': 'contracten',
+  'as-is-where-is-clausule': 'contracten',
+  'ouderdomsclausule': 'contracten',
+  'recht-van-eerste-koop': 'contracten',
+  'aanmaning': 'incasso',
+  'ingebrekestelling': 'incasso',
+  'factuur-niet-betaald': 'incasso',
+  'incassobureau-of-incasso-advocaat': 'incasso',
+  'wettelijke-betalingstermijn': 'incasso',
+  'deurwaarder-inschakelen': 'incasso',
+  'conservatoir-beslag': 'incasso',
+  'executoriaal-beslag': 'incasso',
+  'beslag-op-bankrekening': 'incasso',
+  'beslag-op-aandelen': 'incasso',
+  'beslag-op-onroerend-goed': 'incasso',
+  'beslag-opheffen': 'incasso',
+  'faillissement-aanvragen-schuldeiser': 'incasso',
+  'vordering-indienen-curator': 'incasso',
+  'eigendomsvoorbehoud': 'incasso',
+  'verrekening': 'incasso',
+  'verjaring-stuiting': 'incasso',
+  'kort-geding': 'kortGeding',
+  'dwangsom': 'kortGeding',
+  'smaad-laster-rectificatie': 'kortGeding',
+  'ontruiming-bedrijfsruimte': 'kortGeding',
+  'illegale-onderverhuur-aanpakken': 'kortGeding',
+  'familiebedrijf-vastgoed-opvolging': 'overdracht',
+  'verkoop-bedrijfspand-mna': 'overdracht',
+  'letter-of-intent': 'overdracht',
+  'bedrijfsopvolging': 'overdracht',
+}
+const specialisme = specialismen[specialismePerSlug[slug as string]]
+
 // Halverwege het artikel een korte inline-CTA tonen
 const midIndex = cluster.sections?.length >= 4 ? Math.floor(cluster.sections.length / 2) : -1
 
@@ -306,12 +388,25 @@ const alternates = enHref
 
       {cluster.faqs && cluster.faqs.length > 0 && <FAQAccordion faqs={cluster.faqs} />}
 
-      {cluster.parentPillar && (
+      {(cluster.parentPillar || specialisme) && (
         <section class="mt-20 p-6 bg-bg-tinted rounded-lg">
-          <h3 class="text-h4 font-semibold text-text mb-3">Lees ook over het bredere onderwerp</h3>
-          <a href={`/praktijkgebieden/${cluster.parentPillar.slug}/`} class="text-text-accent font-semibold no-underline hover:underline">
-            {(cluster.parentPillar.seoTitle || cluster.parentPillar.shortTitle).replace(/\s*\|\s*Clavix.*$/, '')} →
-          </a>
+          <h3 class="text-h4 font-semibold text-text mb-3">Verder op deze site</h3>
+          {cluster.parentPillar && (
+            <p class="text-body mb-1">
+              <span class="text-text-secondary">Het bredere onderwerp: </span>
+              <a href={`/praktijkgebieden/${cluster.parentPillar.slug}/`} class="text-text-accent font-semibold no-underline hover:underline">
+                {(cluster.parentPillar.seoTitle || cluster.parentPillar.shortTitle).replace(/\s*\|\s*Clavix.*$/, '')} →
+              </a>
+            </p>
+          )}
+          {specialisme && (
+            <p class="text-body">
+              <span class="text-text-secondary">Speelt dit nu in uw onderneming? </span>
+              <a href={specialisme.href} class="text-text-accent font-semibold no-underline hover:underline">
+                {specialisme.anker} →
+              </a>
+            </p>
+          )}
         </section>
       )}
 
