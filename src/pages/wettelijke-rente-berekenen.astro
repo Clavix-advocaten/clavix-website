@@ -139,7 +139,7 @@ const schemas = [
         De percentages worden halfjaarlijks vastgesteld (bron: rijksoverheid.nl). De rekentool hierboven past bij een langere periode automatisch het juiste percentage per deelperiode toe.
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto" tabindex="0" role="region" aria-label="Tabel wettelijke rente per periode, horizontaal schuifbaar">
           <p class="text-small font-semibold uppercase tracking-wider text-text-secondary mb-2">Wettelijke rente (6:119 BW)</p>
           <table class="w-full text-body text-text border-collapse">
             <thead>
@@ -158,7 +158,7 @@ const schemas = [
             </tbody>
           </table>
         </div>
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto" tabindex="0" role="region" aria-label="Tabel handelsrente per periode, horizontaal schuifbaar">
           <p class="text-small font-semibold uppercase tracking-wider text-text-secondary mb-2">Handelsrente (6:119a BW)</p>
           <table class="w-full text-body text-text border-collapse">
             <thead>

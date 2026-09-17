@@ -21,6 +21,10 @@ const faqs = [
     a: 'Griffierecht is de bijdrage die de rechtspraak per zaak in rekening brengt aan de partij die de procedure start (en aan de verweerder bij de rechtbank). De hoogte hangt af van de instantie en het financiële belang, wordt jaarlijks geïndexeerd, en valt bij winst doorgaans onder de proceskostenveroordeling.',
   },
   {
+    q: 'Wat kost het om in hoger beroep te gaan?',
+    a: 'Bij het gerechtshof betaalt u opnieuw griffierecht (in 2026 vanaf € 851, oplopend met het financiële belang) en is een procesadvocaat verplicht. De grootste kostenpost is de memorie van grieven: het hof beoordeelt de zaak alleen binnen de grenzen van de grieven die u daarin formuleert, dus daar zit het denkwerk. Verliest u ook in appel, dan volgt een tweede kostenveroordeling, berekend naar de hogere hoftarieven. Wij zetten die rekening vooraf naast de kans op een ander oordeel, zodat de afweging op cijfers rust; het volledige kostenbeeld per instantie staat in het overzicht per traject hieronder.',
+  },
+  {
     q: 'Werkt Clavix op basis van no cure no pay?',
     a: 'Nee. De Verordening op de advocatuur verbiedt een resultaatgerelateerd honorarium (artikel 7.7) en kent alleen voor incassozaken een uitzondering (artikel 7.8). Ons alternatief staat hierboven: een vaste prijs per fase, zodat u per stap beslist of doorzetten loont.',
   },
@@ -116,7 +120,7 @@ const trajecten = [
       <p class="text-body text-text-secondary mb-8 max-w-readable">
         Het griffierecht betaalt u aan de rechtspraak per zaak. De belangrijkste tarieven voor zakelijke zaken van onbepaalde waarde (bron: rechtspraak.nl; jaarlijks geïndexeerd):
       </p>
-      <div class="overflow-x-auto">
+      <div class="overflow-x-auto" tabindex="0" role="region" aria-label="Tabel griffierechten 2026, horizontaal schuifbaar">
         <table class="w-full max-w-2xl text-body text-text border-collapse">
           <thead>
             <tr class="border-b-2 border-border text-left">
