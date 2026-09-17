@@ -21,6 +21,10 @@ const faqs = [
     a: 'Samengesteld per jaar: telkens na afloop van een vol jaar wordt de opgebouwde rente bij de hoofdsom opgeteld, waarna over dat hogere bedrag verder wordt gerekend. Dat volgt uit artikel 6:119 lid 2 BW en geldt ook voor de handelsrente. De rekentool op deze pagina past dit automatisch toe.',
   },
   {
+    q: 'Wat wordt de wettelijke rente in 2027?',
+    a: 'De gewone wettelijke rente blijft 4% zolang de regering het Besluit vaststelling wettelijke rente niet wijzigt; daar zit geen automatisme in. De handelsrente wordt per 1 januari 2027 opnieuw bepaald op de herfinancieringsrente van de Europese Centrale Bank plus acht procentpunten. Die rente staat sinds 16 september 2026 op 2,65%, wat op 10,65% zou uitkomen als er tot de jaarwisseling niets verandert.',
+  },
+  {
     q: 'Mag ik een hogere contractuele rente vragen dan de wettelijke rente?',
     a: 'Ja, partijen mogen een eigen rentepercentage afspreken, bijvoorbeeld in algemene voorwaarden. Die contractuele rente vervangt dan de wettelijke rente. Tegenover consumenten kan een onredelijk hoog percentage als oneerlijk beding onverbindend zijn; tussen bedrijven is de vrijheid groter.',
   },
@@ -136,7 +140,7 @@ const schemas = [
     <section class="border-t border-border pt-16">
       <h2 class="text-h2 font-bold mb-2 text-text">Alle percentages sinds 2015</h2>
       <p class="text-body text-text-secondary mb-6 max-w-readable">
-        De percentages worden halfjaarlijks vastgesteld (bron: rijksoverheid.nl). De rekentool hierboven past bij een langere periode automatisch het juiste percentage per deelperiode toe.
+        De handelsrente wordt per 1 januari en 1 juli opnieuw vastgesteld; de gewone wettelijke rente verandert alleen wanneer de regering haar besluit wijzigt (bron: rijksoverheid.nl). De rekentool hierboven past bij een langere periode automatisch het juiste percentage per deelperiode toe.
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div class="overflow-x-auto" tabindex="0" role="region" aria-label="Tabel wettelijke rente per periode, horizontaal schuifbaar">
@@ -183,6 +187,60 @@ const schemas = [
       </div>
     </section>
 
+    {/* === HOE HET PERCENTAGE TOT STAND KOMT === */}
+    <section class="border-t border-border pt-16">
+      <h2 class="text-h2 font-bold mb-4 text-text">Hoe het percentage tot stand komt</h2>
+      <div class="max-w-readable space-y-4">
+        <p class="text-body text-text">
+          De twee rentes worden op verschillende manieren vastgesteld, en dat verklaart waarom de handelsrente veel harder beweegt. De <strong class="text-text">handelsrente</strong> volgt de herfinancieringsrente van de Europese Centrale Bank, vermeerderd met acht procentpunten (artikel 6:120 lid 2 BW), en wordt per 1 januari en 1 juli bepaald op het niveau dat die dag geldt. Dat is na te rekenen: de ECB bracht de herfinancieringsrente op 17 juni 2026 naar 2,40%, en per 1 juli 2026 staat de handelsrente op 10,4%. Dezelfde optelling klopt voor elk tijdvak in de tabel hierboven.
+        </p>
+        <p class="text-body text-text">
+          De <strong class="text-text">gewone wettelijke rente</strong> kent die koppeling niet. De regering stelt haar vast bij besluit (artikel 6:120 lid 1 BW, uitgewerkt in het Besluit vaststelling wettelijke rente), dus zij verandert alleen wanneer dat besluit wordt gewijzigd en niet volgens een vast ritme. Sinds 1 januari 2026 is dat 4%.
+        </p>
+        <p class="text-body text-text">
+          <strong class="text-text">Wat er per 1 januari 2027 kan gebeuren.</strong> De ECB bracht de herfinancieringsrente op 16 september 2026 naar 2,65%. Staat die op 1 januari 2027 nog op dat niveau, dan komt de handelsrente uit op 10,65%. Deze pagina en de rekentool werken wij bij zodra de vaststelling er is.
+        </p>
+      </div>
+    </section>
+
+    {/* === VOORBEELDBEREKENING === */}
+    <section class="border-t border-border pt-16">
+      <h2 class="text-h2 font-bold mb-2 text-text">Zo rekent u een vordering na</h2>
+      <p class="text-body text-text-secondary mb-6 max-w-readable">
+        Een factuur van € 10.000 aan een zakelijke klant, verzuim vanaf 1 juli 2024, rente tot 1 september 2026. Die periode valt in vier rentetijdvakken, en op elke jaargrens gaat de opgebouwde rente bij de hoofdsom. Vul dezelfde gegevens in de rekentool hierboven in en u komt op hetzelfde bedrag uit.
+      </p>
+      <div class="overflow-x-auto" tabindex="0" role="region" aria-label="Voorbeeldberekening per rentetijdvak, horizontaal schuifbaar">
+        <table class="w-full max-w-2xl text-body text-text border-collapse">
+          <thead>
+            <tr class="border-b-2 border-border text-left">
+              <th class="py-2 pr-6 font-semibold">Tijdvak</th>
+              <th class="py-2 pr-6 font-semibold">Dagen</th>
+              <th class="py-2 pr-6 font-semibold">Rente</th>
+              <th class="py-2 pr-6 font-semibold">Grondslag</th>
+              <th class="py-2 font-semibold">Bedrag</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-border"><td class="py-2 pr-6">1 jul 2024 tot 1 jan 2025</td><td class="py-2 pr-6">184</td><td class="py-2 pr-6">12,25%</td><td class="py-2 pr-6">€ 10.000,00</td><td class="py-2">€ 617,53</td></tr>
+            <tr class="border-b border-border"><td class="py-2 pr-6">1 jan 2025 tot 1 jul 2025</td><td class="py-2 pr-6">181</td><td class="py-2 pr-6">11,15%</td><td class="py-2 pr-6">€ 10.000,00</td><td class="py-2">€ 552,92</td></tr>
+            <tr class="border-b border-border bg-bg-tinted"><td class="py-2 pr-6 italic" colspan="5">Jaargrens 1 juli 2025: € 1.170,45 rente gaat bij de hoofdsom, de grondslag wordt € 11.170,45</td></tr>
+            <tr class="border-b border-border"><td class="py-2 pr-6">1 jul 2025 tot 1 jul 2026</td><td class="py-2 pr-6">365</td><td class="py-2 pr-6">10,15%</td><td class="py-2 pr-6">€ 11.170,45</td><td class="py-2">€ 1.133,80</td></tr>
+            <tr class="border-b border-border bg-bg-tinted"><td class="py-2 pr-6 italic" colspan="5">Jaargrens 1 juli 2026: de grondslag wordt € 12.304,25</td></tr>
+            <tr class="border-b border-border"><td class="py-2 pr-6">1 jul 2026 tot 1 sep 2026</td><td class="py-2 pr-6">62</td><td class="py-2 pr-6">10,4%</td><td class="py-2 pr-6">€ 12.304,25</td><td class="py-2">€ 217,36</td></tr>
+            <tr class="border-b-2 border-border font-semibold"><td class="py-2 pr-6">Totaal</td><td class="py-2 pr-6">792</td><td class="py-2 pr-6"></td><td class="py-2 pr-6"></td><td class="py-2">€ 2.521,62</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="max-w-readable space-y-4 mt-6">
+        <p class="text-body text-text">
+          Hoofdsom plus rente is dan € 12.521,62. Dezelfde vordering enkelvoudig gerekend, dus zonder de jaarlijkse bijtelling, komt uit op € 2.362,11 aan rente. Het verschil van € 159,51 op een vordering van € 10.000 is wat een handmatige berekening doorgaans laat liggen, en het loopt op met de looptijd.
+        </p>
+        <p class="text-body text-text">
+          Twee dingen bepalen de uitkomst verder: de <strong class="text-text">begindatum</strong>, want die is de dag waarop het verzuim intreedt en niet de factuurdatum, en de vraag of er een <strong class="text-text">contractuele rente</strong> is afgesproken die de wettelijke vervangt. Over de begindatum wordt in procedures vaker gestreden dan over het percentage.
+        </p>
+      </div>
+    </section>
+
     {/* === FAQ === */}
     <section class="border-t border-border pt-16">
       <h2 class="text-h2 font-bold mb-8 text-text">Veelgestelde vragen over wettelijke rente</h2>
@@ -218,7 +276,7 @@ const schemas = [
     {/* === BRONNEN === */}
     <section class="border-t border-border pt-10">
       <p class="text-small text-text-secondary max-w-readable">
-        <strong class="text-text">Bronnen en peildatum.</strong> Rentepercentages: officiële halfjaarlijkse vaststellingen tot en met 1 juli 2026 (rijksoverheid.nl). Rekenmethode: samengesteld per verstreken jaar conform artikel 6:119 lid 2 en 6:119a lid 3 BW. Peildatum: augustus 2026. De uitkomst is een feitelijke indicatie; aan de berekening kunnen geen rechten worden ontleend. Voor de rentevordering in een concrete zaak <a href="/contact/" class="text-brand-primary no-underline hover:underline">neemt u gerust contact op</a>.
+        <strong class="text-text">Bronnen en peildatum.</strong> Rentepercentages: rijksoverheid.nl, laatste vaststelling per 1 juli 2026. Herfinancieringsrente: ecb.europa.eu (2,40% vanaf 17 juni 2026, 2,65% vanaf 16 september 2026). Rekenmethode: samengesteld per verstreken jaar conform artikel 6:119 lid 2 en 6:119a lid 3 BW, met het werkelijke aantal dagen gedeeld door 365. Peildatum: 17 september 2026. De uitkomst is een feitelijke indicatie; aan de berekening kunnen geen rechten worden ontleend. Voor de rentevordering in een concrete zaak <a href="/contact/" class="text-brand-primary no-underline hover:underline">neemt u gerust contact op</a>.
       </p>
       <p class="text-small text-text-secondary max-w-readable mt-4">
         <strong class="text-text">Deze tool citeren?</strong> Dat mag vrij, met bronvermelding: "Rekentool wettelijke rente en handelsrente, Clavix, clavix.nl/wettelijke-rente-berekenen/", of link rechtstreeks naar deze pagina. Journalisten en redacties kunnen voor duiding terecht via <a href="mailto:info@clavix.nl" class="text-brand-primary no-underline hover:underline">info@clavix.nl</a>.
