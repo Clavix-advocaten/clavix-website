@@ -15,7 +15,7 @@ const currentYear = new Date().getFullYear()
           <p class="hidden"><label>Niet invullen: <input name="bot-field" /></label></p>
           <input type="hidden" name="form-name" value="nieuwsbrief" />
           <label for="footer-nb-email" class="sr-only">E-mailadres</label>
-          <input id="footer-nb-email" name="email" type="email" required placeholder="uw@email.nl" class="flex-1 p-3 rounded-md border border-border bg-bg text-text" />
+          <input id="footer-nb-email" name="email" type="email" required autocomplete="email" placeholder="uw@email.nl" class="flex-1 p-3 rounded-md border border-border bg-bg text-text" />
           <button type="submit" class="bg-brand-primary text-white font-semibold px-6 py-3 rounded-md hover:opacity-90 transition cursor-pointer whitespace-nowrap">Aanmelden</button>
         </form>
       </div>

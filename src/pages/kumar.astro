@@ -93,9 +93,9 @@ const regOpsomming =
           {/* Beëdiging */}
           {attorney.beediging && (
             <div>
-              <h3 class="text-tiny font-semibold uppercase tracking-wider text-text-muted mb-2">
+              <h2 class="text-tiny font-semibold uppercase tracking-wider text-text-muted mb-2">
                 Beëdigd advocaat
-              </h3>
+              </h2>
               <p class="text-body text-text">
                 Sinds {formatDate(attorney.beediging)}
               </p>
@@ -105,9 +105,9 @@ const regOpsomming =
           {/* Talen */}
           {attorney.languages && attorney.languages.length > 0 && (
             <div>
-              <h3 class="text-tiny font-semibold uppercase tracking-wider text-text-muted mb-2">
+              <h2 class="text-tiny font-semibold uppercase tracking-wider text-text-muted mb-2">
                 Talen
-              </h3>
+              </h2>
               <ul class="space-y-1">
                 {attorney.languages.map((lang: string) => (
                   <li class="text-body text-text">{lang}</li>
@@ -119,9 +119,9 @@ const regOpsomming =
           {/* NOvA registraties */}
           {attorney.novaRegistrations && attorney.novaRegistrations.length > 0 && (
             <div class="md:col-span-2">
-              <h3 class="text-tiny font-semibold uppercase tracking-wider text-text-muted mb-2">
+              <h2 class="text-tiny font-semibold uppercase tracking-wider text-text-muted mb-2">
                 NOvA-registraties
-              </h3>
+              </h2>
               <ul class="space-y-2">
                 {attorney.novaRegistrations.map((reg: any) => (
                   <li class="text-body text-text">
@@ -157,9 +157,9 @@ const regOpsomming =
           {/* Lidmaatschappen */}
           {attorney.memberships && attorney.memberships.length > 0 && (
             <div>
-              <h3 class="text-tiny font-semibold uppercase tracking-wider text-text-muted mb-2">
+              <h2 class="text-tiny font-semibold uppercase tracking-wider text-text-muted mb-2">
                 Lidmaatschappen
-              </h3>
+              </h2>
               <ul class="space-y-1">
                 {attorney.memberships.map((m: string) => (
                   <li class="text-body text-text">{m}</li>
@@ -171,9 +171,9 @@ const regOpsomming =
           {/* Awards / Pleitwedstrijden */}
           {attorney.awards && attorney.awards.length > 0 && (
             <div class="md:col-span-2">
-              <h3 class="text-tiny font-semibold uppercase tracking-wider text-text-muted mb-2">
+              <h2 class="text-tiny font-semibold uppercase tracking-wider text-text-muted mb-2">
                 Prijzen en wedstrijden
-              </h3>
+              </h2>
               <ul class="space-y-3">
                 {attorney.awards.map((a: any) => (
                   <li class="text-body text-text">
@@ -189,9 +189,9 @@ const regOpsomming =
           {/* Opleiding */}
           {attorney.education && attorney.education.length > 0 && (
             <div>
-              <h3 class="text-tiny font-semibold uppercase tracking-wider text-text-muted mb-2">
+              <h2 class="text-tiny font-semibold uppercase tracking-wider text-text-muted mb-2">
                 Opleiding
-              </h3>
+              </h2>
               <ul class="space-y-1">
                 {attorney.education.map((edu: any) => (
                   <li class="text-body text-text">

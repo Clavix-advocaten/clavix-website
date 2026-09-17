@@ -61,15 +61,15 @@ import BaseLayout from '@layouts/BaseLayout.astro'
           <p class="hidden"><label>Do not fill in: <input name="bot-field" /></label></p>
           <div>
             <label for="en-name" class="block text-small font-semibold text-text mb-2">Your name <span class="text-brand-primary">*</span></label>
-            <input type="text" id="en-name" name="name" required class="w-full px-4 py-3 border border-border rounded-md bg-white text-text focus:outline-none focus:border-brand-primary" />
+            <input type="text" id="en-name" name="name" required autocomplete="name" class="w-full px-4 py-3 border border-border rounded-md bg-white text-text focus:outline-none focus:border-brand-primary" />
           </div>
           <div>
             <label for="en-email" class="block text-small font-semibold text-text mb-2">E-mail address <span class="text-brand-primary">*</span></label>
-            <input type="email" id="en-email" name="email" required class="w-full px-4 py-3 border border-border rounded-md bg-white text-text focus:outline-none focus:border-brand-primary" />
+            <input type="email" id="en-email" name="email" required autocomplete="email" class="w-full px-4 py-3 border border-border rounded-md bg-white text-text focus:outline-none focus:border-brand-primary" />
           </div>
           <div>
             <label for="en-phone" class="block text-small font-semibold text-text mb-2">Phone number <span class="text-text-muted text-tiny font-normal">(optional)</span></label>
-            <input type="tel" id="en-phone" name="phone" class="w-full px-4 py-3 border border-border rounded-md bg-white text-text focus:outline-none focus:border-brand-primary" />
+            <input type="tel" id="en-phone" name="phone" autocomplete="tel" class="w-full px-4 py-3 border border-border rounded-md bg-white text-text focus:outline-none focus:border-brand-primary" />
           </div>
           <div>
             <label for="en-message" class="block text-small font-semibold text-text mb-2">Brief description of your situation <span class="text-text-muted text-tiny font-normal">(optional)</span></label>

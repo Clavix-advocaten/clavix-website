@@ -48,11 +48,11 @@ const schemas = [
             <input type="hidden" name="form-name" value="nieuwsbrief" />
             <div>
               <label for="nb-naam" class="block text-small font-semibold text-text mb-1">Naam</label>
-              <input id="nb-naam" name="naam" type="text" class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+              <input id="nb-naam" name="naam" type="text" autocomplete="name" class="w-full p-3 border border-border rounded-md bg-bg text-text" />
             </div>
             <div>
               <label for="nb-email" class="block text-small font-semibold text-text mb-1">E-mailadres *</label>
-              <input id="nb-email" name="email" type="email" required class="w-full p-3 border border-border rounded-md bg-bg text-text" />
+              <input id="nb-email" name="email" type="email" required autocomplete="email" class="w-full p-3 border border-border rounded-md bg-bg text-text" />
             </div>
             <button type="submit" class="w-full bg-brand-primary text-white font-semibold px-8 py-3 rounded-lg hover:opacity-90 transition cursor-pointer">Aanmelden</button>
             <p class="text-small text-text-secondary">Wij gebruiken uw adres uitsluitend voor de nieuwsbrief.</p>

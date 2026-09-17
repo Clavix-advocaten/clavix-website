@@ -101,7 +101,7 @@ const seoDescription = post.seo?.metaDescription || post.excerpt
 
       {post.relatedPosts && post.relatedPosts.length > 0 && (
         <section class="mt-16">
-          <h3 class="text-h3 font-semibold mb-6 text-text">Lees ook</h3>
+          <h2 class="text-h3 font-semibold mb-6 text-text">Lees ook</h2>
           <div class="grid md:grid-cols-3 gap-6">
             {post.relatedPosts.map((rp: any) => (
               <a href={`/notities/${rp.slug}/`} class="block p-4 bg-bg-elevated border border-border rounded-lg hover:border-brand-primary no-underline transition">
