@@ -15,10 +15,6 @@ const watWeBeloven = [
     omschrijving: 'U spreekt direct met mr. Kumar, niet met een secretaresse of een junior. Op uw eerste gesprek krijgt u zijn volledige aandacht.',
   },
   {
-    titel: 'Reactie binnen 24 uur',
-    omschrijving: 'Op werkdagen reageren wij binnen 24 uur op uw bericht. Bij urgente zaken (curator-sommatie, aankomende termijn) bellen wij u vaak dezelfde dag.',
-  },
-  {
     titel: 'Eerlijke beoordeling',
     omschrijving: 'Wanneer een advocaat niet nodig is, zeggen wij dat. Wanneer een ander kantoor beter past, vertellen wij dat ook. Uw belang gaat voor het onze.',
   },
@@ -28,7 +24,7 @@ const praktischeVragen = [
   {
     vraag: 'Wat kost een eerste gesprek?',
     antwoord:
-      'Het eerste gesprek van 30 minuten is een verkennende kennismaking, geen adviesgesprek: u licht uw situatie toe, wij geven aan of en hoe wij u kunnen bijstaan. Daar staat geen rekening tegenover en u zit nergens aan vast. Gaan wij voor u aan de slag, dan ontvangt u vooraf een heldere prijsafspraak.',
+      'Het eerste gesprek van 30 minuten is een verkennende kennismaking, geen adviesgesprek: u licht uw situatie toe, wij geven aan of en hoe wij u kunnen bijstaan. Daar staat geen rekening tegenover en u zit nergens aan vast. Gaan wij voor u aan de slag, dan staat de prijsafspraak in de opdrachtbevestiging voordat wij beginnen.',
   },
   {
     vraag: 'In welke talen kunt u mij bijstaan?',
@@ -76,7 +72,7 @@ const schemas = [
 
       <section class="mb-16">
         <h2 class="text-h2 font-bold text-text mb-2">Wat u van ons kunt verwachten</h2>
-        <p class="text-body text-text-secondary mb-8 max-w-prose">Vier eenvoudige beloften die wij elke client geven, ongeacht waar uw situatie over gaat.</p>
+        <p class="text-body text-text-secondary mb-8 max-w-prose">Vier afspraken die voor elke cliënt gelden, wat uw zaak ook is.</p>
         <div class="grid md:grid-cols-2 gap-4">
           {watWeBeloven.map(item => (
             <div class="p-5 bg-bg-elevated border border-border rounded-lg">
@@ -97,7 +93,7 @@ const schemas = [
       <div class="grid lg:grid-cols-3 gap-8 mb-16">
         <section class="lg:col-span-2">
           <h2 class="text-h2 font-bold text-text mb-2">Plan via het formulier</h2>
-          <p class="text-body text-text-secondary mb-6">Vul de onderstaande velden in. Hoe meer context, hoe gerichter wij kunnen reageren, een korte beschrijving van uw situatie volstaat.</p>
+          <p class="text-body text-text-secondary mb-6">Vul de onderstaande velden in. Een korte beschrijving van uw situatie volstaat.</p>
 
           <form name="contact" method="POST" action="/contact?success=true" data-netlify="true" netlify-honeypot="bot-field" class="space-y-5 p-6 bg-bg-elevated border border-border rounded-lg">
             <input type="hidden" name="form-name" value="contact" />
@@ -181,7 +177,7 @@ const schemas = [
 
           <div class="p-6 bg-bg-tinted border border-border rounded-lg">
             <h3 class="text-h4 font-bold text-text mb-2">Urgente zaak?</h3>
-            <p class="text-small text-text-secondary mb-4">Bij een sommatie van de curator, een aankomende termijn, of een aangevraagd faillissement: bel direct. Wij zijn dezelfde week beschikbaar.</p>
+            <p class="text-small text-text-secondary mb-4">Bij een sommatie van de curator, een aankomende termijn of een aangevraagd faillissement: bel direct. Op werkdagen bellen wij doorgaans dezelfde dag terug.</p>
             <a href="tel:+31207471121" class="inline-block bg-brand-primary text-white font-semibold px-5 py-2 rounded-md no-underline hover:opacity-90 transition text-small">Bel +31 20 747 1121</a>
           </div>
         </aside>
@@ -189,7 +185,7 @@ const schemas = [
 
       <section class="p-6 bg-bg-tinted border border-border rounded-lg">
         <h2 class="text-h3 font-bold text-text mb-2">Wat gebeurt er na uw bericht</h2>
-        <p class="text-body text-text-secondary mb-4">U ontvangt op werkdagen binnen 24 uur antwoord. Bij urgente situaties vaak dezelfde dag. Wanneer u een gesprek wilt inplannen, sturen wij twee of drie tijdstipopties die voor u kunnen werken. Het eerste gesprek vindt plaats op kantoor, telefonisch, of via videoverbinding, naar uw voorkeur.</p>
+        <p class="text-body text-text-secondary mb-4">Wanneer u een gesprek wilt inplannen, sturen wij twee of drie tijdstipopties die voor u kunnen werken. Het eerste gesprek vindt plaats op kantoor, telefonisch, of via videoverbinding, naar uw voorkeur.</p>
       </section>
 
       <section class="mt-8">

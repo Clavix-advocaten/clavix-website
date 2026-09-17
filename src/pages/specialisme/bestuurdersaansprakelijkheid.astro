@@ -14,7 +14,7 @@ const voorWie = [
   },
   {
     titel: 'Bestuurders met een curator-claim',
-    omschrijving: 'Bestuurders die zijn aangeschreven door de curator op grond van artikel 2:248 BW (kennelijk onbehoorlijk bestuur). Snelle, onderbouwde reactie en een sterk verweerdossier zijn essentieel voor de uitkomst.',
+    omschrijving: 'Bestuurders die zijn aangeschreven door de curator op grond van artikel 2:248 BW (kennelijk onbehoorlijk bestuur). Reageer binnen de termijn die de curator stelt, met stukken uit de periode zelf.',
   },
   {
     titel: 'Commissarissen onder vuur',
@@ -43,19 +43,19 @@ const aanpak = [
   {
     nummer: '02',
     titel: 'Vroege actie of verweer',
-    omschrijving: 'In de meeste gevallen is de eerste reactie cruciaal. Wij stellen een onderbouwd verweerdossier op, voeren waar mogelijk eerst onderhandelingen, en nemen de juiste preventieve maatregelen om uw positie te versterken voordat een procedure start.',
+    omschrijving: 'De eerste brief aan de curator bepaalt vaak de toon van het hele dossier. Wij stellen een onderbouwd verweerdossier op, voeren waar mogelijk eerst onderhandelingen, en nemen de juiste preventieve maatregelen om uw positie te versterken voordat een procedure start.',
   },
   {
     nummer: '03',
     titel: 'Procedure waar nodig',
-    omschrijving: 'Wanneer een procedure onafwendbaar is, voeren wij die met focus op de feiten en het juridisch kader. Voor procedures bij de civiele rechter, de Ondernemingskamer, of bij arbitrage. Met een sterke voorbereiding van het bewijs en een heldere strategie.',
+    omschrijving: 'Wanneer een procedure onafwendbaar is, voeren wij die met focus op de feiten en het juridisch kader. Voor procedures bij de civiele rechter, de Ondernemingskamer, of bij arbitrage. Wij bereiden het bewijs voor en leggen de lijn van het verweer vooraf aan u voor.',
   },
 ];
 
 const onderscheid = [
   {
     titel: 'Vroeg-betrokken, niet alleen reactief',
-    omschrijving: 'Veel bestuurdersaansprakelijkheids-zaken zijn te voorkomen of te verzachten door vroege juridische analyse. Wij werken liever vooraf dan achteraf, en helpen DGA s om persoonlijke risico s te identificeren voordat een crisis ontstaat.',
+    omschrijving: "Veel bestuurdersaansprakelijkheids-zaken zijn te voorkomen of te verzachten door vroege juridische analyse. Wij werken liever vooraf dan achteraf, en helpen DGA's om persoonlijke risico's te identificeren voordat een crisis ontstaat.",
   },
   {
     titel: 'Ondernemingsrecht en insolventierecht in één hand',
@@ -90,7 +90,7 @@ const schemas = [
   },
   serviceSchema({
     name: 'Bestuurdersaansprakelijkheid',
-    description: 'Verdediging bij curator-claims, preventief risico-advies voor DGA\'s, en bestuurdersaansprakelijkheid bij faillissement.',
+    description: "Verdediging bij curator-claims, preventief risico-advies voor DGA\'s, en bestuurdersaansprakelijkheid bij faillissement.",
     url: '/specialisme/bestuurdersaansprakelijkheid/',
     serviceType: 'Bestuurdersaansprakelijkheid-verweer en advies',
   }),
@@ -126,10 +126,11 @@ const schemas = [
           <a href="/contact/" class="inline-block bg-brand-primary text-white font-semibold px-6 py-3 rounded-lg no-underline hover:opacity-90 transition">
             Plan een eerste gesprek
           </a>
-          <a href="/clusters/bestuurdersaansprakelijkheid-faillissement/" class="inline-block border border-border text-text font-semibold px-6 py-3 rounded-lg no-underline hover:border-brand-primary transition">
-            Lees onze diepgaande analyse
-          </a>
         </div>
+        <p class="text-small text-text-secondary mt-4">
+          <a href="/clusters/bestuurdersaansprakelijkheid-faillissement/" class="text-brand-primary underline">Lees eerst onze uitgebreide analyse</a> als u zich wilt inlezen.
+        </p>
+        
       </div>
     </section>
 
@@ -281,7 +282,7 @@ const schemas = [
     </div>
 
     <CTABand
-      heading="Heeft u een claim ontvangen of ziet u risico s aankomen?"
+      heading="Heeft u een claim ontvangen of ziet u risico's aankomen?"
       description="Plan een eerste gesprek. We luisteren naar uw situatie en geven aan of, en hoe, wij u kunnen bijstaan."
     />
   </article>

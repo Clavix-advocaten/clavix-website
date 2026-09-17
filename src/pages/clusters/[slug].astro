@@ -119,10 +119,10 @@ const ctaPerPillar: Record<string, { heading: string; description: string }> = {
   },
   'vastgoedrecht': {
     heading: 'Een huur- of vastgoedkwestie bespreken?',
-    description: 'Of het nu om een huurgeschil, een gebrek na aankoop of een bouwconflict gaat: in een kosteloos eerste gesprek hoort u waar u staat.',
+    description: 'In een kosteloos eerste gesprek van 30 minuten hoort u waar u staat en wat de logische volgende stap is.',
   },
   'insolventie-en-herstructurering': {
-    heading: 'Financiële druk of een naderend faillissement?',
+    heading: 'Staat u onder druk, of betaalt uw debiteur niet meer?',
     description: 'Hoe eerder u belt, hoe meer opties er zijn. In een kosteloos eerste gesprek hoort u welke routes nog openstaan.',
   },
   'burgerlijk-procesrecht': {
@@ -134,7 +134,102 @@ const ctaPerPillar: Record<string, { heading: string; description: string }> = {
     description: 'Precies op het snijvlak van ondernemingsrecht en vastgoed ligt onze praktijk. Het eerste gesprek is kosteloos.',
   },
 }
-const ctaContext = cluster.parentPillar ? ctaPerPillar[cluster.parentPillar.slug] : undefined
+// Slot dat bij de lezer van dit artikel past; valt terug op het rechtsgebied
+const ctaPerSlug: Record<string, { heading: string; description: string }> = {
+  'aandeelhoudersovereenkomst-minimaal': {
+    heading: 'Een aandeelhoudersovereenkomst laten opstellen of nalopen?',
+    description: 'In een kosteloos eerste gesprek van 30 minuten hoort u welke bepalingen uw situatie vraagt.',
+  },
+  'aanmaning': {
+    heading: 'Een onbetaalde factuur bespreken?',
+    description: 'Factuur open en de termijn verstreken? In een kosteloos eerste gesprek hoort u wat uw vordering nu oplevert en of beslag meer haalt dan dagvaarden.',
+  },
+  'aannemer-failliet-tijdens-bouw': {
+    heading: 'Ligt uw bouwplaats stil?',
+    description: 'In een kosteloos eerste gesprek hoort u of de brief aan de curator al uit kan en wat uw garanties waard zijn.',
+  },
+  'aansprakelijkheid-makelaar': {
+    heading: 'Denkt u dat uw makelaar een fout heeft gemaakt?',
+    description: 'In een kosteloos eerste gesprek hoort u welke route bij u past en welke termijn u in de gaten moet houden.',
+  },
+  'aansprakelijkheid-zakelijk': {
+    heading: 'Aansprakelijk gesteld of schade geleden?',
+    description: 'In een kosteloos gesprek van 30 minuten bekijken wij op welke grondslag de claim rust en waar uw sterkste verweer zit.',
+  },
+  'activatransactie-faillissement': {
+    heading: 'Wilt u bieden op activa uit een faillissement?',
+    description: 'In een kosteloos gesprek van 30 minuten bespreken wij uw bod en wat u vóór het bieden moet laten onderzoeken.',
+  },
+  'as-is-where-is-clausule': {
+    heading: 'Staat as is where is in uw koopcontract?',
+    description: 'In een kosteloos gesprek van 30 minuten hoort u wat de clausule in uw geval dekt en welke garanties u ernaast kunt zetten.',
+  },
+  'bedrijfsopvolging': {
+    heading: 'Uw bedrijf overdragen aan uw kind of uw management?',
+    description: 'In een kosteloos gesprek van 30 minuten bekijken wij welke stap u dit jaar al kunt zetten en wat daarvoor in de statuten moet staan.',
+  },
+  'exoneratiebeding-zakelijke-contracten': {
+    heading: 'Een exoneratie of boetebeding laten toetsen?',
+    description: 'In een kosteloos eerste gesprek van 30 minuten hoort u of het beding standhoudt en wat de volgende stap is.',
+  },
+  'faillissement-aanvragen-schuldeiser': {
+    heading: 'Uw debiteur betaalt niet, maar handelt wel door?',
+    description: 'In een kosteloos eerste gesprek hoort u of een faillissementsaanvraag in uw geval druk zet.',
+  },
+  'financieringsvoorbehoud': {
+    heading: 'Een beroep op het financieringsvoorbehoud betwisten of onderbouwen?',
+    description: 'In een kosteloos eerste gesprek van 30 minuten hoort u waar u staat.',
+  },
+  'franchise-geschillen': {
+    heading: 'Een franchisegeschil?',
+    description: 'In een kosteloos eerste gesprek van 30 minuten hoort u welke bedingen in uw contract nog standhouden.',
+  },
+  'geheimhoudingsverklaring-nda': {
+    heading: 'Een NDA laten opstellen of een schending aanpakken?',
+    description: 'In een kosteloos eerste gesprek van 30 minuten hoort u welke stap nu telt.',
+  },
+  'koop-breekt-geen-huur': {
+    heading: 'Koopt u een verhuurd pand?',
+    description: 'Of wilt u leeg leveren terwijl er nog een huurder zit? In een kosteloos eerste gesprek hoort u wat er meegaat en wat niet.',
+  },
+  'koopovereenkomst-ontbinden': {
+    heading: 'Wilt u van een koop af, of ontbond uw wederpartij te vroeg?',
+    description: 'In een kosteloos eerste gesprek hoort u of de ontbinding standhoudt.',
+  },
+  'kort-geding': {
+    heading: 'Spoed in een geschil?',
+    description: 'Gedagvaard in kort geding, of zelf een spoedvoorziening nodig? Het eerste gesprek van 30 minuten is kosteloos.',
+  },
+  'kwalitatieve-verplichting': {
+    heading: 'Een beding in uw akte dat u niet wilt?',
+    description: 'Of wilt u er een vestigen dat standhoudt? In een kosteloos eerste gesprek hoort u welke route past.',
+  },
+  'letter-of-intent': {
+    heading: 'Ligt er een LOI op tafel, of is de wederpartij afgehaakt?',
+    description: 'In een kosteloos eerste gesprek hoort u wat bindt en wat niet.',
+  },
+  'ontruiming-bedrijfsruimte': {
+    heading: 'Betaalt uw huurder niet meer?',
+    description: 'Hoe eerder de procedure start, hoe kleiner het gat. Het eerste gesprek van 30 minuten is kosteloos.',
+  },
+  'opzegging-huurovereenkomst-bedrijfsruimte': {
+    heading: 'Wilt u een huurder van bedrijfsruimte opzeggen?',
+    description: 'Laat de brief eerst lezen: een nietige opzegging is niet te repareren. Het eerste gesprek van 30 minuten is kosteloos.',
+  },
+  'rangorde-schuldeisers-faillissement': {
+    heading: 'Is uw afnemer failliet?',
+    description: 'In een kosteloos eerste gesprek hoort u of uw eigendomsvoorbehoud nog iets waard is en wat u meteen bij de curator meldt.',
+  },
+  'rechtsverwerking': {
+    heading: 'Wordt u na jaren alsnog aangesproken?',
+    description: 'Of dreigt u zelf een recht te verspelen? In een kosteloos eerste gesprek hoort u of het verweer kans maakt.',
+  },
+  'retentierecht-bouw': {
+    heading: 'Zit uw bouwplaats op slot?',
+    description: 'Of wilt u er zelf een op slot zetten? In een kosteloos eerste gesprek hoort u of het retentierecht standhoudt.',
+  },
+}
+const ctaContext = ctaPerSlug[slug as string] || (cluster.parentPillar ? ctaPerPillar[cluster.parentPillar.slug] : undefined)
 
 // Halverwege het artikel een korte inline-CTA tonen
 const midIndex = cluster.sections?.length >= 4 ? Math.floor(cluster.sections.length / 2) : -1

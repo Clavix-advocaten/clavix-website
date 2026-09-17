@@ -21,7 +21,7 @@ import BaseLayout from '@layouts/BaseLayout.astro'
       </p>
       <h1 class="text-display font-extrabold text-text mb-3 tracking-tight">Contact</h1>
       <p class="text-lead text-text-secondary max-w-readable">
-        Call, e-mail or visit us at the Zuidas. On business days we respond within 24 hours; urgent matters, such as an attachment or an expiring deadline, are usually returned the same day.
+        Call, e-mail or visit us at the Zuidas. On business days we respond within 24 hours. Urgent matters, such as an attachment or an expiring deadline, are usually returned the same day.
       </p>
     </div>
   </section>
@@ -48,14 +48,14 @@ import BaseLayout from '@layouts/BaseLayout.astro'
     <section id="success-message-en" role="status" class="mt-12 p-6 bg-brand-primary text-white rounded-lg" style="display: none;">
       <h2 class="text-h3 font-bold mb-2">Your message has been sent</h2>
       <p class="text-body">
-        Thank you for reaching out. On business days you will hear from us within 24 hours; urgent matters are usually returned the same day.
+        Received. We read your message on the same business day and reply within 24 hours. For anything urgent, call +31 20 747 1121.
       </p>
     </section>
 
     <div class="mt-12 grid lg:grid-cols-3 gap-8">
       <div class="lg:col-span-2">
         <h2 class="text-h2 font-bold text-text mb-2">Or use the form</h2>
-        <p class="text-body text-text-secondary mb-6">A short description of your situation is enough; the more context you give, the more focused our response can be.</p>
+        <p class="text-body text-text-secondary mb-6">A few lines are enough: what happened, and whether there is a deadline.</p>
         <form name="contact-en" method="POST" action="/en/contact/?success=true" data-netlify="true" netlify-honeypot="bot-field" class="space-y-5 p-6 bg-bg-elevated border border-border rounded-lg">
           <input type="hidden" name="form-name" value="contact-en" />
           <p class="hidden"><label>Do not fill in: <input name="bot-field" /></label></p>
@@ -81,7 +81,7 @@ import BaseLayout from '@layouts/BaseLayout.astro'
       </div>
       <aside class="p-6 bg-bg-tinted border border-border rounded-lg h-fit">
         <h2 class="text-h4 font-bold text-text mb-2">Urgent matter?</h2>
-        <p class="text-small text-text-secondary mb-4">A prejudgment attachment, an expiring deadline or a bankruptcy petition: call us directly. We are available the same week.</p>
+        <p class="text-small text-text-secondary mb-4">A prejudgment attachment, an expiring deadline or a bankruptcy petition: call us directly. On business days we usually call back the same day.</p>
         <a href="tel:+31207471121" class="inline-block bg-brand-primary text-white font-semibold px-5 py-2 rounded-md no-underline hover:opacity-90 transition text-small">Call +31 20 747 1121</a>
       </aside>
     </div>

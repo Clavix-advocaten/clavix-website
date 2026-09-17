@@ -11,7 +11,7 @@ const sectors = (rawSectors || []).map((s: any) => ({
   ...s,
   href: '/sectoren/' + s.slug + '/',
   excerpt: s.leadParagraph
-    ? (s.leadParagraph.length > 140 ? s.leadParagraph.substring(0, 140) + '...' : s.leadParagraph)
+    ? (s.leadParagraph.length > 140 ? s.leadParagraph.substring(0, 140).replace(/\s+\S*$/, '') + '\u2026' : s.leadParagraph)
     : '',
 }))
 
@@ -64,7 +64,7 @@ const iconPaths: Record<string, string> = {
   <section class="max-w-container mx-auto px-4 md:px-8 py-12 md:py-16">
     <h1 class="text-display font-extrabold text-text mb-4">Juridisch advies per sector</h1>
     <p class="text-lead text-text-secondary max-w-readable mb-6">
-      Iedere sector heeft eigen pijnpunten. Wij specialiseren ons in industrieen waar wij de juridische context van binnen kennen, zodat advies direct relevant is voor uw situatie.
+      Iedere sector heeft eigen pijnpunten. Deze pagina's gaan over de sectoren waar onze praktijkgebieden het vaakst samenkomen: huur en vastgoed, aanneming, incasso en aandeelhoudersverhoudingen.
     </p>
   </section>
 
@@ -99,6 +99,6 @@ const iconPaths: Record<string, string> = {
 
   <CTABand
     heading="Uw sector niet gezien?"
-    description="Wij adviseren ondernemers in vrijwel elke sector. Bel ons voor een eerste gesprek over uw situatie."
+    description="Dan is de vraag of uw zaak op ons terrein ligt: ondernemingsrecht, vastgoed, incasso of procederen. Bel, dan zeggen wij het eerlijk."
   />
 </BaseLayout>
