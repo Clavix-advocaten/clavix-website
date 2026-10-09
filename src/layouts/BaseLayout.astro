@@ -153,7 +153,11 @@ const nlAlternate = alternates.find((a) => a.hreflang === 'nl')?.href || '/'
 
       <!-- Privacy-friendly analytics by Plausible (geproxyd via /stats/) -->
     <script async src="/stats/js/pa-5d6wDb3LHYrroGyV8RKfM.js"></script>
-    <script>
+    {/* is:inline is nodig: zonder maakt Astro hier een module van, en een module draait
+        pas na het parsen van de pagina. De bevestiging op de bedankpagina's (Contact
+        verzonden, Nieuwsbrief, Modelbrief, Abonnement) draait eerder, zag nog geen
+        window.plausible en meldde niets: die vier doelen stonden sinds juni op nul. */}
+    <script is:inline>
       window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
       plausible.init({ endpoint: 'https://clavix.nl/stats/api/event' })
     </script>
