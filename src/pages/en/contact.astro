@@ -58,6 +58,10 @@ import BaseLayout from '@layouts/BaseLayout.astro'
         <p class="text-body text-text-secondary mb-6">A few lines are enough: what happened, and whether there is a deadline.</p>
         <form name="contact-en" method="POST" action="/en/contact/?success=true" data-netlify="true" netlify-honeypot="bot-field" class="space-y-5 p-6 bg-bg-elevated border border-border rounded-lg">
           <input type="hidden" name="form-name" value="contact-en" />
+          <input type="hidden" name="click_id" value="" />
+          <input type="hidden" name="click_ts" value="" />
+          <input type="hidden" name="landingspagina" value="" />
+          <input type="hidden" name="utm" value="" />
           <p class="hidden"><label>Do not fill in: <input name="bot-field" /></label></p>
           <div>
             <label for="en-name" class="block text-small font-semibold text-text mb-2">Your name <span class="text-brand-primary">*</span></label>
