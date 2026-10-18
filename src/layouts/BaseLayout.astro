@@ -111,7 +111,8 @@ const nlAlternate = alternates.find((a) => a.hreflang === 'nl')?.href || '/'
       <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     ))}
     <script type="application/ld+json" set:html={JSON.stringify(siteNavigationSchema())} />
-      <!-- Google Ads click-id opvang. Geen cookies, sessiegebonden. -->
+      <!-- Google Ads click-id, de landingspagina en de utm-velden opvangen. Geen cookies, sessiegebonden; ze gaan
+           alleen mee als iemand zelf een formulier verstuurt, zodat de herkomst van de aanvraag klopt. -->
     <script is:inline>
       (function () {
         if (typeof window === 'undefined') return;
@@ -130,18 +131,32 @@ const nlAlternate = alternates.find((a) => a.hreflang === 'nl')?.href || '/'
           }
         }
 
+        // De eerste pagina van het bezoek is de landingspagina; de utm-velden komen van de advertentie of link.
+        try {
+          if (!sessionStorage.getItem('clavix_landing')) {
+            sessionStorage.setItem('clavix_landing', window.location.pathname.toLowerCase());
+          }
+          var utm = ['utm_source', 'utm_medium', 'utm_campaign']
+            .map(function (k) { return (params.get(k) || '').slice(0, 80); });
+          if (utm.join('') && !sessionStorage.getItem('clavix_utm')) {
+            sessionStorage.setItem('clavix_utm', utm.join(' / '));
+          }
+        } catch (e) {}
+
+        function zet(naam, waarde) {
+          if (!waarde) return;
+          var a = document.querySelectorAll('input[name="' + naam + '"]');
+          for (var i = 0; i < a.length; i++) a[i].value = waarde;
+        }
+
         // Vul verborgen formuliervelden zodra de pagina geladen is
         function vul() {
-          var id = '', ts = '';
           try {
-            id = sessionStorage.getItem('clavix_click_id') || '';
-            ts = sessionStorage.getItem('clavix_click_ts') || '';
-          } catch (e) { return; }
-          if (!id) return;
-          var a = document.querySelectorAll('input[name="click_id"]');
-          for (var i = 0; i < a.length; i++) a[i].value = id;
-          var b = document.querySelectorAll('input[name="click_ts"]');
-          for (var j = 0; j < b.length; j++) b[j].value = ts;
+            zet('click_id', sessionStorage.getItem('clavix_click_id') || '');
+            zet('click_ts', sessionStorage.getItem('clavix_click_ts') || '');
+            zet('landingspagina', sessionStorage.getItem('clavix_landing') || '');
+            zet('utm', sessionStorage.getItem('clavix_utm') || '');
+          } catch (e) {}
         }
         if (document.readyState === 'loading') {
           document.addEventListener('DOMContentLoaded', vul);
