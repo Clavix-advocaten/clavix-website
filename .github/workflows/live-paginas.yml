@@ -1,0 +1,28 @@
+# De live pagina's van clavix.nl elke ochtend aanleveren aan de SEO-dienst van het Clavix-systeem (ADR-284), voor
+# de compliancecheck in het portaal. De dienst bereikt Netlify niet vanuit Scaleway; GitHub wel.
+name: Live pagina's aanleveren
+
+on:
+  schedule:
+    # 04:30 UTC: vóór de compliancecheck van het portaal om 06:40 Nederlandse tijd.
+    - cron: '30 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: live-paginas
+  cancel-in-progress: false
+
+jobs:
+  aanleveren:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pagina's ophalen en aanleveren
+        env:
+          SEO_URL: https://clavixseocontainers5f5294d7-seo.functions.fnc.nl-ams.scw.cloud
+          SEO_AANLEVERTOKEN: ${{ secrets.SEO_AANLEVERTOKEN }}
+        run: python3 .github/scripts/lever-live-paginas-aan.py
