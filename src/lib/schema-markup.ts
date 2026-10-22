@@ -106,12 +106,7 @@ export function personSchema(attorney: any) {
       postalCode: '1077 XX',
       addressCountry: 'NL',
     },
-    worksFor: {
-      '@type': 'LegalService',
-      '@id': `${SITE_URL}/#organization`,
-      name: ORG_NAME,
-      url: `${SITE_URL}/`,
-    },
+    worksFor: { '@id': `${SITE_URL}/#organization` },
     memberOf: {
       '@type': 'Organization',
       name: 'Nederlandse Orde van Advocaten',
@@ -180,7 +175,7 @@ export function articleSchema(page: any, attorneyName: string = 'mr. Mukesh Kuma
       : {}),
     inLanguage: 'nl-NL',
     author: { '@type': 'Person', '@id': `${SITE_URL}/kumar#person`, name: attorneyName, url: `${SITE_URL}/kumar/` },
-    publisher: { '@type': 'LegalService', '@id': `${SITE_URL}/#organization`, name: ORG_NAME, url: `${SITE_URL}/` },
+    publisher: { '@id': `${SITE_URL}/#organization` },
     datePublished: page.publishedAt,
     dateModified: page.modifiedAt || page.publishedAt,
     speakable: {
@@ -249,7 +244,7 @@ export function serviceSchema(service: { name: string; description: string; url:
     description: service.description,
     url: canon(service.url),
     serviceType: service.serviceType || 'Juridische dienstverlening',
-    provider: { '@type': 'LegalService', '@id': `${SITE_URL}/#organization`, name: ORG_NAME, url: `${SITE_URL}/` },
+    provider: { '@id': `${SITE_URL}/#organization` },
     areaServed: { '@type': 'Country', name: 'Netherlands' },
   }
 }
@@ -267,7 +262,7 @@ export function blogPostingSchema(post: any, attorneyName: string = 'mr. Mukesh 
       name: attorneyName,
       url: `${SITE_URL}/kumar/`,
     },
-    publisher: { '@type': 'LegalService', '@id': `${SITE_URL}/#organization`, name: ORG_NAME, url: `${SITE_URL}/` },
+    publisher: { '@id': `${SITE_URL}/#organization` },
     datePublished: post.publishedAt,
     dateModified: post.modifiedAt || post.publishedAt,
     mainEntityOfPage: { '@type': 'WebPage', '@id': canon(`/notities/${post.slug?.current || post.slug}`) },
