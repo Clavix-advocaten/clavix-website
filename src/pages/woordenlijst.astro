@@ -4,7 +4,7 @@ import CTABand from '../components/CTABand.astro';
 import { organizationSchema, breadcrumbSchema } from '@lib/schema-markup';
 
 const pageTitle = 'Juridische woordenlijst';
-const pageDescription = 'Begrippenlijst met juridische termen uit ondernemingsrecht, vastgoedrecht en insolventierecht — kort en helder uitgelegd voor ondernemers.';
+const pageDescription = 'Begrippenlijst met juridische termen uit ondernemingsrecht, vastgoedrecht en insolventierecht, kort en helder uitgelegd voor ondernemers.';
 
 interface Term {
   term: string;
@@ -100,7 +100,7 @@ const terms: Term[] = [
   { term: 'Conservatoir beslag', def: 'Bewarend beslag dat een schuldeiser vóór of tijdens een procedure legt om verhaal veilig te stellen, met verlof van de voorzieningenrechter. Wordt executoriaal zodra een toewijzend vonnis is verkregen.', link: '/clusters/conservatoir-beslag/' },
   { term: 'Curator', def: 'De door de rechtbank benoemde advocaat die in een faillissement het vermogen van de schuldenaar beheert en vereffent ten behoeve van de gezamenlijke schuldeisers, onder toezicht van de rechter-commissaris.', link: '/clusters/vordering-indienen-curator/' },
   { term: 'Dagvaarding', def: 'Het exploot waarmee een civiele procedure wordt ingeleid: de gedaagde wordt opgeroepen voor de rechter te verschijnen en de eis wordt uiteengezet. Wordt door de deurwaarder betekend.', link: '/clusters/factuur-niet-betaald/' },
-  { term: 'Derdenbeslag', def: 'Beslag onder een derde die iets aan de schuldenaar verschuldigd is — meestal de bank (bankbeslag) of een debiteur van de schuldenaar. De derde moet verklaren wat hij onder zich heeft.', link: '/clusters/beslag-op-bankrekening/' },
+  { term: 'Derdenbeslag', def: 'Beslag onder een derde die iets aan de schuldenaar verschuldigd is, meestal de bank (bankbeslag) of een debiteur van de schuldenaar. De derde moet verklaren wat hij onder zich heeft.', link: '/clusters/beslag-op-bankrekening/' },
   { term: 'Due diligence', def: 'Boekenonderzoek voorafgaand aan een overname of vastgoedtransactie: juridisch, financieel, fiscaal en technisch. De bevindingen vertalen zich in de prijs, garanties en vrijwaringen in het contract.', link: '/clusters/verkoop-bedrijfspand-mna/' },
   { term: 'Dwaling', def: 'Vernietigingsgrond voor een overeenkomst die is gesloten onder een onjuiste voorstelling van zaken (artikel 6:228 BW), bijvoorbeeld door een ondeugdelijke omzetprognose of een verzwegen gebrek.', link: '/clusters/dwaling/' },
   { term: 'Dwangsom', def: 'Door de rechter opgelegde prikkel tot nakoming: een geldbedrag dat verbeurt voor iedere dag of overtreding waarmee een veroordeling niet wordt nageleefd. Verbeurde dwangsommen verjaren al na zes maanden.', link: '/clusters/dwangsom/' },
@@ -121,7 +121,7 @@ const terms: Term[] = [
   { term: 'Kort geding', def: 'Spoedprocedure bij de voorzieningenrechter voor een voorlopige voorziening, zoals een verbod, ontruiming of opheffing van beslag. Geen definitief oordeel: dat blijft aan de bodemrechter.', link: '/clusters/kort-geding/' },
   { term: 'Liquidatietarief', def: 'Het forfaitaire puntensysteem waarmee rechters het salaris van de advocaat begroten in de proceskostenveroordeling. Dekt de werkelijke advocaatkosten doorgaans slechts gedeeltelijk.', link: '/proceskosten-berekenen/' },
   { term: 'Managementovereenkomst', def: 'Overeenkomst van opdracht tussen een vennootschap en een management-BV waarlangs een bestuurder zijn diensten verleent. Het arbeidsrecht geldt dan in beginsel niet, al kijkt de rechter door de constructie heen bij een feitelijke gezagsverhouding.', link: '/clusters/ontslag-statutair-bestuurder/' },
-  { term: 'Natrekking', def: 'Eigendomsverkrijging doordat een zaak bestanddeel wordt van een andere zaak: wat duurzaam met de grond of het gebouw wordt verenigd, wordt eigendom van de eigenaar daarvan — ook als de leverancier nog niet is betaald.', link: '/clusters/aannemer-failliet-tijdens-bouw/' },
+  { term: 'Natrekking', def: 'Eigendomsverkrijging doordat een zaak bestanddeel wordt van een andere zaak: wat duurzaam met de grond of het gebouw wordt verenigd, wordt eigendom van de eigenaar daarvan, ook als de leverancier nog niet is betaald.', link: '/clusters/aannemer-failliet-tijdens-bouw/' },
   { term: 'Ontruimingsbescherming', def: 'De bescherming van huurders van 230a-bedrijfsruimte na het einde van de huur: de ontruiming wordt op verzoek geschorst, telkens met maximaal een jaar, tot ten hoogste drie jaar.', link: '/clusters/bedrijfsruimte-290-of-230a-bw/' },
   { term: 'Opschorting', def: 'Het recht om de eigen prestatie uit te stellen zolang de wederpartij haar opeisbare verplichting niet nakomt (artikel 6:52 en 6:262 BW). Veelgebruikt drukmiddel bij betalings- en bouwgeschillen.', link: '/clusters/factuur-niet-betaald/' },
   { term: 'Ouderdomsclausule', def: 'Beding in een koopovereenkomst van ouder vastgoed dat de verwachtingen van de koper verlaagt tot wat bij de leeftijd van het pand past. Wordt restrictief uitgelegd: leeftijdsgebonden gebreken wel, gebreken uit recente verbouwingen niet zonder meer.', link: '/clusters/ouderdomsclausule/' },
@@ -215,7 +215,7 @@ const schemas = [breadcrumbSchema(breadcrumbs), glossarySchema];
         </p>
         <h1 class="text-display font-extrabold text-text mb-4 tracking-tight">{pageTitle}</h1>
         <p class="text-lead text-text-secondary max-w-prose">
-          Begrippenlijst met de juridische termen die u in onze artikelen tegenkomt — in twee of drie zinnen uitgelegd voor ondernemers, met het wetsartikel erbij. {terms.length} termen uit ondernemingsrecht, vastgoedrecht en insolventierecht.
+          Begrippenlijst met de juridische termen die u in onze artikelen tegenkomt, in twee of drie zinnen uitgelegd voor ondernemers, met het wetsartikel erbij. {terms.length} termen uit ondernemingsrecht, vastgoedrecht en insolventierecht.
         </p>
       </div>
     </section>
