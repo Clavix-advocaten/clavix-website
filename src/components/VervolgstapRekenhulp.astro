@@ -1,0 +1,25 @@
+---
+// De vervolgstap die onder een rekenhulp verschijnt zodra er een uitkomst staat.
+//
+// WAAROM DIT BESTAAT. Wie hier rekent, heeft meestal een concrete vordering of
+// overweegt een procedure. De pagina's eindigden met het algemene slotblok, ver
+// onder de uitkomst. Dit blok staat direct onder de berekening en blijft
+// verborgen tot er iets is uitgerekend; het script van de pagina zet het zichtbaar.
+interface Props {
+  kop: string
+  tekst: string
+  knop?: string
+  tweedeTekst: string
+  tweedeHref: string
+}
+const { kop, tekst, knop = 'Leg uw vordering voor', tweedeTekst, tweedeHref } = Astro.props
+---
+
+<aside id="vervolgstap" hidden class="mt-8 p-6 bg-bg-tinted border-l-4 border-brand-primary rounded-r-lg">
+  <p class="text-h4 font-bold text-text mb-1">{kop}</p>
+  <p class="text-body text-text-secondary mb-4 max-w-readable">{tekst}</p>
+  <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
+    <a href="/contact/" data-vervolgstap="rekenhulp" class="inline-block bg-action text-action-fg hover:bg-action-hover px-5 py-2.5 rounded-md font-semibold text-small no-underline transition text-center">{knop}</a>
+    <a href={tweedeHref} class="text-small font-semibold text-text-accent no-underline hover:underline">{tweedeTekst} →</a>
+  </div>
+</aside>

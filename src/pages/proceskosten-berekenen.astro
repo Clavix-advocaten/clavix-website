@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro'
 import CTABand from '@components/CTABand.astro'
+import VervolgstapRekenhulp from '@components/VervolgstapRekenhulp.astro'
 import { breadcrumbSchema } from '@lib/schema-markup'
 
 const schemas = [
@@ -86,6 +87,13 @@ const tools = [
           <p id="gr-toelichting" class="text-small text-text-secondary">Vul de waarde van de vordering in of vink "onbepaalde waarde" aan.</p>
         </div>
       </div>
+      <VervolgstapRekenhulp
+        kop="Overweegt u een procedure of een incassotraject?"
+        tekst="Leg uw zaak voor. U hoort wat het traject naar verwachting kost, wat u van de wederpartij kunt terugvorderen en of een andere route sneller is."
+        knop="Leg uw zaak voor"
+        tweedeTekst="Wat een advocaat kost"
+        tweedeHref="/kosten/"
+      />
     </section>
 
     {/* === 2. INCASSOKOSTEN === */}
@@ -261,7 +269,12 @@ const tools = [
     const eur0 = new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 })
     const $ = (id: string) => document.getElementById(id) as any
     const gemeld: Record<string, boolean> = {}
-    const meld = (tool: string) => { if (!gemeld[tool]) { gemeld[tool] = true; (window as any).plausible && (window as any).plausible('Rekentool', { props: { tool } }) } }
+    // Na een geldige berekening: de vervolgstap tonen onder de rekenhulp die is gebruikt, en het gebruik één keer melden.
+    const meld = (tool: string) => {
+      const blok = $('vervolgstap'), sectie = document.getElementById(tool) || document.getElementById('rekentool')
+      if (blok && sectie) { if (blok.parentElement !== sectie) sectie.appendChild(blok); blok.hidden = false }
+      if (!gemeld[tool]) { gemeld[tool] = true; (window as any).plausible && (window as any).plausible('Rekentool', { props: { tool } }) }
+    }
 
     // ---- 1. Griffierecht (tarieven 2026, rechtspraak.nl) ----
     const GRIFFIE = {

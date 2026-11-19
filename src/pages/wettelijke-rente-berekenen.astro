@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro'
 import CTABand from '@components/CTABand.astro'
+import VervolgstapRekenhulp from '@components/VervolgstapRekenhulp.astro'
 import { breadcrumbSchema } from '@lib/schema-markup'
 
 const faqs = [
@@ -118,6 +119,12 @@ const schemas = [
           <p id="rt-toelichting" class="text-small text-text-secondary">Vul hoofdsom en begindatum in. De begindatum is meestal de dag waarop het verzuim intreedt (bijvoorbeeld de dag na de vervaldatum van de factuur).</p>
         </div>
       </div>
+      <VervolgstapRekenhulp
+        kop="Loopt de rente op terwijl betaling uitblijft?"
+        tekst="Leg uw vordering voor. U hoort of een sommatie, beslag of een procedure in uw geval het meest oplevert, en wat dat kost."
+        tweedeTekst="Of eerst zelf aanmanen: voorbeeldbrieven"
+        tweedeHref="/modelbrieven/"
+      />
     </section>
 
     {/* === UITLEG === */}
@@ -290,7 +297,12 @@ const schemas = [
     const eur = new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' })
     const $ = (id: string) => document.getElementById(id) as any
     const gemeld: Record<string, boolean> = {}
-    const meld = (tool: string) => { if (!gemeld[tool]) { gemeld[tool] = true; (window as any).plausible && (window as any).plausible('Rekentool', { props: { tool } }) } }
+    // Na een geldige berekening: de vervolgstap tonen onder de rekenhulp die is gebruikt, en het gebruik één keer melden.
+    const meld = (tool: string) => {
+      const blok = $('vervolgstap'), sectie = document.getElementById(tool) || document.getElementById('rekentool')
+      if (blok && sectie) { if (blok.parentElement !== sectie) sectie.appendChild(blok); blok.hidden = false }
+      if (!gemeld[tool]) { gemeld[tool] = true; (window as any).plausible && (window as any).plausible('Rekentool', { props: { tool } }) }
+    }
 
     const RENTES: Record<string, [string, number][]> = {
       wettelijk: [
