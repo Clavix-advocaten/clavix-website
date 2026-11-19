@@ -274,6 +274,7 @@ const specialismePerSlug: Record<string, keyof typeof specialismen> = {
   'aannemer-failliet-tijdens-bouw': 'bouwrecht',
   'retentierecht-bouw': 'bouwrecht',
   'dwaling': 'contracten',
+  'overeenkomst-ontbinden': 'contracten',
   'exoneratiebeding-zakelijke-contracten': 'contracten',
   'koopovereenkomst-ontbinden': 'contracten',
   'geheimhoudingsverklaring-nda': 'contracten',
@@ -405,6 +406,14 @@ const alternates = enHref
               <span class="text-text-secondary">Speelt dit nu in uw onderneming? </span>
               <a href={specialisme.href} data-vervolgstap="specialisme" class="text-text-accent font-semibold no-underline hover:underline">
                 {specialisme.anker} →
+              </a>
+            </p>
+          )}
+          {specialismePerSlug[slug as string] === 'contracten' && (
+            <p class="text-body mt-1">
+              <span class="text-text-secondary">Liever vooraf laten meelezen? </span>
+              <a href="/juridisch-abonnement/" data-vervolgstap="abonnement" class="text-text-accent font-semibold no-underline hover:underline">
+                Het juridisch abonnement →
               </a>
             </p>
           )}
