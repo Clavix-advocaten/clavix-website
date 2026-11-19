@@ -127,7 +127,7 @@ const regOpsomming =
                   <li class="text-body text-text">
                     <strong>{reg.area}</strong>
                     {reg.specialisations && (
-                      <span class="text-text-secondary"> — {reg.specialisations}</span>
+                      <span class="text-text-secondary">: {reg.specialisations}</span>
                     )}
                   </li>
                 ))}
@@ -178,7 +178,7 @@ const regOpsomming =
                 {attorney.awards.map((a: any) => (
                   <li class="text-body text-text">
                     <strong>{a.title}</strong>
-                    {a.year && <span class="text-text-secondary"> — {a.year}</span>}
+                    {a.year && <span class="text-text-secondary">, {a.year}</span>}
                     {a.note && <div class="text-small text-text-secondary mt-1">{a.note}</div>}
                   </li>
                 ))}
@@ -196,7 +196,7 @@ const regOpsomming =
                 {attorney.education.map((edu: any) => (
                   <li class="text-body text-text">
                     {edu.institution}
-                    {edu.degree && <span class="text-text-secondary"> — {edu.degree}</span>}
+                    {edu.degree && <span class="text-text-secondary">, {edu.degree}</span>}
                   </li>
                 ))}
               </ul>

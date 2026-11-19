@@ -320,7 +320,7 @@ const alternates = enHref
       {pillar.author?.name && (
         <div class="mt-20 pt-8 border-t border-border text-tiny text-text-muted italic">
           Door {pillar.author.name}
-          {pillar.publishedAt && <> — gepubliceerd {formatDate(pillar.publishedAt)}</>}
+          {pillar.publishedAt && <>, gepubliceerd {formatDate(pillar.publishedAt)}</>}
           {pillar.modifiedAt && <>, laatst gewijzigd {formatDate(pillar.modifiedAt)}</>}
         </div>
       )}
