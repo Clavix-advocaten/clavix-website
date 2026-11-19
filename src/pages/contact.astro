@@ -82,7 +82,7 @@ const schemas = [
           <h2 class="text-h2 font-bold text-text mb-2">Plan via het formulier</h2>
           <p class="text-body text-text-secondary mb-6">Vul de onderstaande velden in. Een korte beschrijving van uw situatie volstaat.</p>
 
-          <form name="contact" method="POST" action="/contact?success=true" data-netlify="true" netlify-honeypot="bot-field" class="space-y-5 p-6 bg-bg-elevated border border-border rounded-lg">
+          <form name="contact" method="POST" action="/contact/?success=true" data-netlify="true" netlify-honeypot="bot-field" class="space-y-5 p-6 bg-bg-elevated border border-border rounded-lg">
             <input type="hidden" name="form-name" value="contact" />
             <input type="hidden" name="click_id" value="" />
             <input type="hidden" name="click_ts" value="" />
@@ -212,7 +212,7 @@ const schemas = [
     var form = document.querySelector('form[name="contact"]');
     if (form) form.addEventListener('submit', function () {
       var nb = form.querySelector('[data-nieuwsbrief]');
-      if (nb && nb.checked) form.action = '/contact?success=true&nb=1';
+      if (nb && nb.checked) form.action = '/contact/?success=true&nb=1';
     });
     var params = new URLSearchParams(window.location.search);
     if (params.get('success') === 'true') {
