@@ -105,6 +105,37 @@ if (pillar.relatedCases) {
   pillar.relatedCases.forEach((c: any) => schemas.push(legalCaseSchema(c)))
 }
 
+// Ingangen per soort bezoeker, direct onder de samenvatting.
+//
+// WAAROM DIT BESTAAT. De pijler insolventie is de pagina waarop Google de zoektermen
+// "advocaat faillissement" en "insolventie advocaat" laat landen. Wie daar komt, is
+// schuldeiser, bestuurder of ondernemer in zwaar weer, en moest tot nu toe 4.000 woorden
+// door om de pagina te vinden die bij zijn positie hoort. Een pijler zonder ingangen
+// toont dit blok niet.
+const ingangenPerPijler: Record<string, { kop: string; tekst: string; href: string; label: string }[]> = {
+  'insolventie-en-herstructurering': [
+    {
+      kop: 'U hebt een vordering op een bedrijf dat niet betaalt of failliet gaat',
+      tekst: 'Beslag leggen, het faillissement aanvragen of uw vordering indienen bij de curator: welke route past, hangt af van wat er nog te halen valt.',
+      href: '/specialisme/incasso-en-executie/',
+      label: 'Incasso en verhaal',
+    },
+    {
+      kop: 'U bent bestuurder en wordt aangesproken',
+      tekst: 'Door de curator, de Belastingdienst of een schuldeiser. Verweer begint bij de administratie en bij wat u wanneer hebt gemeld.',
+      href: '/specialisme/bestuurdersaansprakelijkheid/',
+      label: 'Bestuurdersaansprakelijkheid',
+    },
+    {
+      kop: 'Uw onderneming kan haar schulden niet meer betalen',
+      tekst: 'Een akkoord met schuldeisers, de WHOA, surseance of een doorstart. Hoe eerder u de opties naast elkaar legt, hoe meer er openstaan.',
+      href: '/clusters/herstructurering-buiten-faillissement/',
+      label: 'Herstructureren buiten faillissement',
+    },
+  ],
+}
+const ingangen = ingangenPerPijler[slug as string]
+
 const seoTitle = pillar.seo?.metaTitle || pillar.title
 const seoDescription = pillar.seo?.metaDescription || pillar.tldr?.body?.slice(0, 160) || pillar.subtitle
 
@@ -177,6 +208,22 @@ const alternates = enHref
     <div class="max-w-container mx-auto px-4 md:px-8 py-12">
       {/* TL;DR */}
       {pillar.tldr?.body && <TLDR heading={pillar.tldr.heading} body={pillar.tldr.body} />}
+
+      {/* Ingangen per soort bezoeker */}
+      {ingangen && (
+        <section class="mt-12" aria-labelledby="ingangen-kop">
+          <h2 id="ingangen-kop" class="text-h3 font-bold mb-4 text-text">Waar staat u?</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {ingangen.map((i) => (
+              <a href={i.href} data-vervolgstap="ingang" class="block p-6 bg-bg-elevated border border-border rounded-lg no-underline hover:border-brand-primary transition">
+                <h3 class="text-h4 font-bold text-text mb-2">{i.kop}</h3>
+                <p class="text-small text-text-secondary mb-3">{i.tekst}</p>
+                <span class="text-small font-semibold text-text-accent">{i.label} →</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* TOC + Sections */}
       <div class="lg:flex lg:gap-12 mt-12">
