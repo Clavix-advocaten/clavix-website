@@ -5,6 +5,11 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Meldt nieuwe en gewijzigde pagina's na een geslaagde productie-uitrol aan bij
+# IndexNow (Bing). Zie plugins/indexnow/index.js.
+[[plugins]]
+  package = "./plugins/indexnow"
+
 # Redirects voor de oude Wix-site (later in te vullen na live-gang)
 # /expertise/advocaat-bestuurdersaansprakelijkheid /praktijkgebieden/ondernemingsrecht 301
 # /post/* /notities/:splat 301
