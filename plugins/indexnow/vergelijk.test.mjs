@@ -64,6 +64,8 @@ test('besluit: alleen productie stuurt, en alleen bij een verschil', () => {
   const oud = stand([['/clusters/a/', 'd1']])
   const anders = stand([['/clusters/a/', 'd2']])
   assert.equal(besluit({ context: 'production', oud, nieuw: oud }).sturen, false, 'niets gewijzigd')
+  assert.match(besluit({ context: 'production', oud, nieuw: oud }).reden, /geen adres/)
+  assert.match(besluit({ context: 'deploy-preview', oud, nieuw: oud }).reden, /geen productie-uitrol \(deploy-preview\)/, 'buiten productie staat dat er altijd bij')
   for (const context of ['deploy-preview', 'branch-deploy', 'dev', undefined]) {
     const b = besluit({ context, oud, nieuw: anders })
     assert.equal(b.sturen, false, String(context))

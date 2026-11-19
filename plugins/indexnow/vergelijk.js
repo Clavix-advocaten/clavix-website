@@ -81,8 +81,8 @@ export function besluit({ context, oud, nieuw }) {
   if (!nieuw || nieuw.size === 0) return { sturen: false, urls: [], reden: 'de gebouwde sitemap is niet te lezen' }
   const delen = vergelijk(oud, nieuw)
   const urls = [...delen.nieuw, ...delen.gewijzigd, ...delen.verdwenen]
-  if (urls.length === 0) return { sturen: false, urls, delen, reden: 'geen adres is nieuw, gewijzigd of verdwenen' }
   if (context !== 'production') return { sturen: false, urls, delen, reden: `dit is geen productie-uitrol (${context || 'onbekend'})` }
+  if (urls.length === 0) return { sturen: false, urls, delen, reden: 'geen adres is nieuw, gewijzigd of verdwenen' }
   return { sturen: true, urls, delen, reden: 'productie-uitrol met verschillen' }
 }
 
