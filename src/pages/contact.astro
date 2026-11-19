@@ -216,8 +216,10 @@ const schemas = [
     });
     var params = new URLSearchParams(window.location.search);
     if (params.get('success') === 'true') {
-      window.plausible && window.plausible('Contact verzonden');
-      if (params.get('nb') === '1') window.plausible && window.plausible('Nieuwsbrief aanmelding', { props: { bron: 'contact' } });
+      if (window.clavixNetVerzonden && window.clavixNetVerzonden('contact')) {
+        window.plausible && window.plausible('Contact verzonden');
+        if (params.get('nb') === '1') window.plausible && window.plausible('Nieuwsbrief aanmelding', { props: { bron: 'contact' } });
+      }
       var el = document.getElementById('success-message');
       if (el) {
         el.style.display = 'block';

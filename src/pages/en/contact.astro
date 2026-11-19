@@ -108,7 +108,7 @@ import BaseLayout from '@layouts/BaseLayout.astro'
         s.style.display = 'block';
         s.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
       }
-      if (window.plausible) window.plausible('Contact EN verzonden');
+      if (window.plausible && window.clavixNetVerzonden && window.clavixNetVerzonden('contact-en')) window.plausible('Contact EN verzonden');
     }
   })();
 </script>
