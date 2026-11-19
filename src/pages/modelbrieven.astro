@@ -49,7 +49,7 @@ const schemas = [
           Laat uw e-mailadres achter en download alle drie de brieven direct. Wij gebruiken uw adres alleen om u één e-mail met de downloadlinks te sturen, en verder niets tenzij u de nieuwsbrief aanvinkt — geen nieuwsbrief, geen verplichtingen.
         </p>
         <div id="mb-form-wrap">
-          <form name="modelbrieven" method="POST" action="/modelbrieven?download=true" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4 p-6 bg-bg-elevated border border-border rounded-lg max-w-md">
+          <form name="modelbrieven" method="POST" action="/modelbrieven/?download=true" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4 p-6 bg-bg-elevated border border-border rounded-lg max-w-md">
             <p class="hidden"><label>Niet invullen: <input name="bot-field" /></label></p>
             <input type="hidden" name="form-name" value="modelbrieven" />
             <div>
@@ -120,7 +120,7 @@ const schemas = [
       var form = document.querySelector('form[name="modelbrieven"]');
       if (form) form.addEventListener('submit', function () {
         var nb = form.querySelector('[data-nieuwsbrief]');
-        if (nb && nb.checked) form.action = '/modelbrieven?download=true&nb=1';
+        if (nb && nb.checked) form.action = '/modelbrieven/?download=true&nb=1';
       });
       var params = new URLSearchParams(window.location.search);
       if (params.get('download') === 'true') {
