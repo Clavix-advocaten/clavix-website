@@ -63,4 +63,8 @@ import BaseLayout from '@layouts/BaseLayout.astro'
       </p>
     </div>
   </section>
+  {/* Meldt een niet-gevonden adres aan Plausible, met het pad als eigenschap. */}
+  <script is:inline>
+    window.plausible && window.plausible('404', { props: { path: document.location.pathname } });
+  </script>
 </BaseLayout>

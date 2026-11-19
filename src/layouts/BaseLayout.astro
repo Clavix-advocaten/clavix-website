@@ -26,6 +26,8 @@ interface Props {
   lang?: string
   ogLocale?: string
   alternates?: { hreflang: string; href: string }[]
+  /** Slug van het rechtsgebied waar de pagina onder valt; gaat als eigenschap mee naar Plausible. */
+  rechtsgebied?: string
 }
 
 const {
@@ -41,7 +43,28 @@ const {
   lang = 'nl',
   ogLocale = 'nl_NL',
   alternates = [],
+  rechtsgebied,
 } = Astro.props
+
+// Eigenschappen die met elke paginaweergave en elke gebeurtenis naar Plausible gaan.
+// Daarmee is het verkeer te splitsen naar soort pagina, rechtsgebied en taal, en zijn
+// funnels per soort pagina te maken. Geen persoonsgegevens: alleen kenmerken van de pagina.
+const meetPad = Astro.url.pathname.replace(/\/?$/, '/')
+const engelseRechtsgebieden = ['/en/real-estate/', '/en/corporate-law/', '/en/litigation/', '/en/insolvency-restructuring/']
+const paginatype =
+  meetPad === '/' || meetPad === '/en/' ? 'home'
+  : /^\/clusters\/.+/.test(meetPad) || /^\/en\/knowledge\/.+/.test(meetPad) ? 'kennisartikel'
+  : /^\/notities\/.+/.test(meetPad) ? 'notitie'
+  : /^\/praktijkgebieden\/.+/.test(meetPad) || engelseRechtsgebieden.includes(meetPad) ? 'rechtsgebied'
+  : /^\/specialisme\/.+/.test(meetPad) ? 'specialisme'
+  : /^\/sectoren\/.+/.test(meetPad) ? 'sector'
+  : /-berekenen\/$/.test(meetPad) ? 'rekenhulp'
+  : meetPad === '/contact/' || meetPad === '/en/contact/' ? 'contact'
+  : meetPad === '/kosten/' || meetPad === '/en/fees/' ? 'kosten'
+  : ['/kumar/', '/werkwijze/', '/advocaat-zuidas/', '/en/about/'].includes(meetPad) ? 'kantoor'
+  : ['/kennisbank/', '/notities/', '/woordenlijst/', '/veelgestelde-vragen/', '/modelbrieven/', '/sectoren/', '/en/knowledge/'].includes(meetPad) ? 'overzicht'
+  : 'overig'
+const meetEigenschappen = { paginatype, taal: lang, ...(rechtsgebied ? { rechtsgebied } : {}) }
 
 const siteUrl = 'https://clavix.nl' // Wordt later netlify-env-aware
 // Merk-suffix alleen zolang de titel binnen 60 tekens blijft (SERP-afkapgrens)
@@ -172,9 +195,9 @@ const nlAlternate = alternates.find((a) => a.hreflang === 'nl')?.href || '/'
         pas na het parsen van de pagina. De bevestiging op de bedankpagina's (Contact
         verzonden, Nieuwsbrief, Modelbrief, Abonnement) draait eerder, zag nog geen
         window.plausible en meldde niets: die vier doelen stonden sinds juni op nul. */}
-    <script is:inline>
+    <script is:inline define:vars={{ meetEigenschappen }}>
       window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-      plausible.init({ endpoint: 'https://clavix.nl/stats/api/event' })
+      plausible.init({ endpoint: 'https://clavix.nl/stats/api/event', customProperties: meetEigenschappen })
     </script>
 
     <script is:inline>
