@@ -205,8 +205,43 @@ const nlAlternate = alternates.find((a) => a.hreflang === 'nl')?.href || '/'
         var t = e.target.closest && e.target.closest('a[href^="tel:"]');
         if (t) { window.plausible && window.plausible("Telefoonklik"); return; }
         var m = e.target.closest && e.target.closest('a[href^="mailto:"]');
-        if (m) { window.plausible && window.plausible("Mailklik"); }
+        if (m) { window.plausible && window.plausible("Mailklik"); return; }
+        // Klik op een knop of link naar de contactpagina (of een link met data-vervolgstap),
+        // met de plek op de pagina erbij: menu, midden, slot, auteur, specialisme, voettekst of pagina.
+        var v = e.target.closest && e.target.closest('[data-vervolgstap], a[href="/contact/"], a[href="/en/contact/"]');
+        if (v) {
+          var plek = v.getAttribute('data-vervolgstap')
+            || (v.closest('header, nav') ? 'menu' : v.closest('footer') ? 'voettekst' : v.closest('#contact') ? 'slot' : v.closest('aside') ? 'midden' : 'pagina');
+          window.plausible && window.plausible("Vervolgstap", { props: { plek: plek } });
+        }
       });
+
+      // Een doel telt alleen als deze bezoeker het formulier net zelf heeft verzonden.
+      // De bedankpagina's zijn gewone adressen (?success=true, ?aangemeld=true, ?download=true).
+      // Een bot die zo'n adres ophaalt, verzond niets, maar telde tot nu toe als aanvraag.
+      (function () {
+        var start = Date.now(), aangeraakt = false;
+        ['keydown', 'pointerdown', 'mousedown', 'touchstart'].forEach(function (soort) {
+          document.addEventListener(soort, function () { aangeraakt = true; }, { capture: true, passive: true });
+        });
+        document.addEventListener('submit', function (e) {
+          var f = e.target, naam = f && f.getAttribute && f.getAttribute('name');
+          if (!naam) return;
+          try {
+            sessionStorage.setItem('clavix_verzonden', [naam, Date.now(), Math.round((Date.now() - start) / 1000), aangeraakt ? 1 : 0].join('|'));
+          } catch (x) {}
+        }, true);
+        // true als het formulier met deze naam in de laatste tien minuten in dit tabblad is verzonden,
+        // door iemand die de pagina heeft aangeraakt en er minstens twee seconden was.
+        window.clavixNetVerzonden = function (naam) {
+          try {
+            var v = (sessionStorage.getItem('clavix_verzonden') || '').split('|');
+            if (v[0] !== naam) return false;
+            sessionStorage.removeItem('clavix_verzonden');
+            return Date.now() - Number(v[1]) < 600000 && Number(v[2]) >= 2 && v[3] === '1';
+          } catch (x) { return false; }
+        };
+      })();
     </script>
   </head>
   <body class="bg-bg text-text font-body antialiased">

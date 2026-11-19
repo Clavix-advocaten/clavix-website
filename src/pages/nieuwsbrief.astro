@@ -70,7 +70,7 @@ const schemas = [
     (function () {
       var params = new URLSearchParams(window.location.search);
       if (params.get('aangemeld') === 'true') {
-        window.plausible && window.plausible('Nieuwsbrief aanmelding');
+        if (window.clavixNetVerzonden && window.clavixNetVerzonden('nieuwsbrief')) window.plausible && window.plausible('Nieuwsbrief aanmelding');
         var f = document.getElementById('nb-form-wrap');
         var s = document.getElementById('nb-succes');
         if (f) f.style.display = 'none';

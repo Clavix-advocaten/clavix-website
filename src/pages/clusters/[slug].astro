@@ -403,7 +403,7 @@ const alternates = enHref
           {specialisme && (
             <p class="text-body">
               <span class="text-text-secondary">Speelt dit nu in uw onderneming? </span>
-              <a href={specialisme.href} class="text-text-accent font-semibold no-underline hover:underline">
+              <a href={specialisme.href} data-vervolgstap="specialisme" class="text-text-accent font-semibold no-underline hover:underline">
                 {specialisme.anker} →
               </a>
             </p>
@@ -420,7 +420,7 @@ const alternates = enHref
           <p class="text-small mt-2">
             <a href="/kumar/" class="font-semibold text-text-accent no-underline hover:underline">Over mr. Kumar</a>
             <span class="text-text-muted"> · </span>
-            <a href="/contact/" class="font-semibold text-text-accent no-underline hover:underline">Plan een eerste gesprek</a>
+            <a href="/contact/" data-vervolgstap="auteur" class="font-semibold text-text-accent no-underline hover:underline">Plan een eerste gesprek</a>
           </p>
         </div>
       </div>

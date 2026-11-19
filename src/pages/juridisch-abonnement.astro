@@ -252,8 +252,10 @@ const waarde = [
       });
       var params = new URLSearchParams(window.location.search);
       if (params.get('aangemeld') === 'true') {
-        window.plausible && window.plausible('Abonnement aanmelding');
-        if (params.get('nb') === '1') window.plausible && window.plausible('Nieuwsbrief aanmelding', { props: { bron: 'abonnement' } });
+        if (window.clavixNetVerzonden && window.clavixNetVerzonden('abonnement-aanmelding')) {
+          window.plausible && window.plausible('Abonnement aanmelding');
+          if (params.get('nb') === '1') window.plausible && window.plausible('Nieuwsbrief aanmelding', { props: { bron: 'abonnement' } });
+        }
         var f = document.getElementById('ab-form-wrap');
         var s = document.getElementById('ab-succes');
         if (f) f.style.display = 'none';
