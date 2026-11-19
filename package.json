@@ -12,7 +12,8 @@
     "astro": "astro",
     "check": "astro check",
     "prebuild": "node scripts/fetch-lastmod.mjs",
-    "postbuild": "node scripts/build-llms.mjs"
+    "postbuild": "node scripts/build-llms.mjs",
+    "test:indexnow": "node --test plugins/indexnow/vergelijk.test.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
