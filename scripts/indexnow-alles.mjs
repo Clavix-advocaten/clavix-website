@@ -2,9 +2,15 @@
  * Meldt één keer alle adressen uit de live sitemap aan bij IndexNow (Bing).
  *
  * WAAROM DIT BESTAAT. De bouwplugin (plugins/indexnow/) meldt alleen wat bij een
- * uitrol verandert. Wat al live stond toen de plugin erbij kwam, is nooit
- * aangemeld. Dit script haalt die achterstand in. Daarna is het niet meer nodig;
- * herhaald alles aanmelden kan als spam worden gezien (antwoord 429).
+ * uitrol verandert. Dit script biedt de hele site in één keer aan, voor wat
+ * tussen twee volledige meldingen is gewijzigd zonder dat de plugin het zag.
+ *
+ * AL TWEE KEER GEDAAN. Op 16 september 2026 zijn de 147 adressen van toen met
+ * de hand aangemeld, op 19 november 2026 de 154 adressen met dit script. Beide
+ * keren was het antwoord 200. Sinds 19 november meldt de plugin zelf wat
+ * verandert, dus dit script is alleen nog nodig als de plugin een tijd heeft
+ * stilgestaan. Niet zomaar herhalen: herhaald alles aanmelden kan als spam
+ * worden gezien (antwoord 429).
  *
  * Gebruik:  node scripts/indexnow-alles.mjs          proef: toont wat er zou gaan
  *           node scripts/indexnow-alles.mjs --echt   verstuurt
